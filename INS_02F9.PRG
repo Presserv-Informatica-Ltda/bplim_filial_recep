@@ -11,7 +11,7 @@ procedure ins_02f9
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
-#include "adrbig.ch"    // inicializa constantes manifestas
+#include "adRbig.ch"    // inicializa constantes manifestas
 
 PRIV idmes
 idmes := (YEAR(DATE()) - YEAR(nascto_))*12

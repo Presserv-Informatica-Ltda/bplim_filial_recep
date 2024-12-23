@@ -10,7 +10,7 @@
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 #include "inkey.ch"          // constantes de codigos das teclas
-#include "fileio.ch"         // funcoes de leitura/gravacao de arquivo
+#include "Fileio.ch"         // funcoes de leitura/gravacao de arquivo
 #include "set.ch"            // constantes da funcao SETKEY()
 
 #define NIV_CRI_LIVRE 2      // define quem podera acessar o criterio livre

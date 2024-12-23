@@ -1,14 +1,15 @@
 
 -L\instalados\tools\clipper\lib
 -lxhb
-#-lhbwin
+-lhbwin
 -lhbct
--oadrbig
+-oADRBIG.exe
+-inc
 -prgflag=/l
--compr=yes
+-compr=def
 -rebuild
 
-adrbig.prg
+ADRBIG.prg
 libg2.prg
 getsys.prg
 smt.prg

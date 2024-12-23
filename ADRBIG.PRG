@@ -60,7 +60,7 @@ Static24:= {"11331","31113","13113","33111","11313","31311","13311","11133","311
 
 REQUEST DESCEND, MTAB, VUF, VDV2, MMAA, DLAPSO, VHORA, NMES, EXT, VCGC, LTOC
 
-#include "adr_publ.ch"  // contem variaveis publicas
+#include "ADR_PUBL.ch"  // contem variaveis publicas
 // campo utilizado em cad_04f9 pra controlar a solicitacao de letra teclada
 PUBL ultcodmsg:=[//\\/\/\]
 

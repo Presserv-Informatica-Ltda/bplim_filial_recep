@@ -19,7 +19,7 @@ IF !(op_menu=INCLUSAO)
  retu .t.
 ENDI
 
-IF !(contraux=ultcodmsg)
+IF .F. //f!(contraux=ultcodmsg)
  msg:=[  --->   A T E N C A O  <---|| FAVOR CONFIRMAR|| CPF e Data de Nascimento||]
  KEY2seek:=[ABCDEFGHIJKLMNOPQRSTUVYXWZ]
  KEY2seek+=key2seek
