@@ -103,7 +103,7 @@ BEGIN SEQUENCE
   ENDI
   ccop++                                           // incrementa contador de copias
   DO WHIL !EOF().AND.POE_GAUGE()
-   IF IN_KEY()=K_ESC                               // se quer cancelar
+   IF INKEY()=K_ESC                               // se quer cancelar
     IF canc()                                      // pede confirmacao
      BREAK                                         // confirmou...
     ENDI
@@ -181,7 +181,7 @@ BEGIN SEQUENCE
      ENDI
      REL_CAB(1)                                    // soma cl/imprime cabecalho
      IMPMEMO([   ],10,1+li_m,cl,000,.f.)           // imprime...
-     IF IN_KEY()=K_ESC                             // se quer cancelar
+     IF INKEY()=K_ESC                             // se quer cancelar
       IF canc()                                    // pede confirmacao
        BREAK                                       // confirmou...
       ENDI
@@ -196,7 +196,7 @@ BEGIN SEQUENCE
  ENDD ccop
 END SEQUENCE
 SETCURSOR(cur_atual)
-SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
+SET PRINTER TO //(drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)

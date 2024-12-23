@@ -885,3 +885,24 @@ Changes not staged for commit:
 	modified:   libg2.prg
 
 no changes added to commit (use "git add" and/or "git commit -a")
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   ADM_R020.PRG
+	modified:   ADM_R023.PRG
+	modified:   ADM_R026.PRG
+	modified:   ADM_R029.PRG
+	modified:   ADM_RS18.PRG
+	modified:   ADM_RX20.PRG
+	modified:   ADRBIG.CH
+	modified:   ADRBIG.EXE
+	modified:   ADR_R029.PRG
+	modified:   ADR_RX29.PRG
+	modified:   OBX_07F9.PRG
+	modified:   bloqueio.ch
+	modified:   chk.md
+
+no changes added to commit (use "git add" and/or "git commit -a")

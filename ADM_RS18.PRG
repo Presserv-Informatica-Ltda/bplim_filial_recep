@@ -170,7 +170,7 @@ BEGIN SEQUENCE
   ENDI
   ccop++                                           // incrementa contador de copias
   DO WHIL !EOF().AND.(!so_um_reg.OR.imp_reg=RECN()).AND.POE_GAUGE()
-   IF IN_KEY()=K_ESC                               // se quer cancelar
+   IF INKEY()=K_ESC                               // se quer cancelar
     IF canc()                                      // pede confirmacao
      BREAK                                         // confirmou...
     ENDI
@@ -359,7 +359,7 @@ END SEQUENCE
 SETCURSOR(cur_atual)
 SET MARG TO                                        // coloca margem esquerda = 0
 IMPCTL(lpp_066)                                    // seta pagina com 66 linhas
-SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
+SET PRINTER TO //(drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)

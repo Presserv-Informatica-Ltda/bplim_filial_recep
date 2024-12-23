@@ -164,7 +164,7 @@ BEGIN SEQUENCE
   ENDI
   DO WHIL !EOF().AND.(!so_um_reg.OR.imp_reg=RECN())
    #ifdef COM_TUTOR
-    IF IN_KEY()=K_ESC                              // se quer cancelar
+    IF INKEY()=K_ESC                              // se quer cancelar
    #else
     IF INKEY()=K_ESC                               // se quer cancelar
    #endi
@@ -341,7 +341,7 @@ BEGIN SEQUENCE
 END SEQUENCE
 SET MARG TO                                        // coloca margem esquerda = 0
 IMPCTL(lpp_066)                                    // seta pagina com 66 linhas
-SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
+SET PRINTER TO //(drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)

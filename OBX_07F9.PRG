@@ -25,7 +25,7 @@ IF EMPT(codigo)
 
  IF PTAB(alltrim(nomx),[GRUPOS],2,.t.)
 	codigo:=GRUPOS->codigo
-	codigo:=VDBF(6,3,20,77,'GRUPOS',{'nome','codigo','endereco','tcarencia'},5,'codigo')
+	codigo:=VDBF(6,3,20,77,'GRUPOS',{'nome','codigo','xDECRIPT(endereco)','tcarencia'},2,'codigo')
 	nome:=GRUPOS->nome
 
  ELSE
@@ -50,6 +50,28 @@ IF EMPT(codigo)
 	POINTER_DBF(reg_dbf)
 	RETU .f.
  ENDI
+ELSEIF LEN(ALLTRIM(codigo))<9.AND.!EMPT(CODIGO)
+ msg_ins:=cod_msg:=[]
+ nopc:=1
+ tem10:=ptab('010'+strzero(VAL(codigo),6),[GRUPOS],1)
+ IF tem10
+  cod_msg+=GRUPOS->codigo
+ 	msg_ins+=GRUPOS->codigo+' '+GRUPOS->nome//+' '+xDECRIPT(GRUPOS->endereco)+' '//+DTOC(GRUPOS->tcarencia)
+ ENDI
+
+ tem20:=ptab('020'+strzero(VAL(codigo),6),[GRUPOS],1)
+ IF tem20
+  IF tem10
+   msg_ins+=[|]
+  ENDI
+  cod_msg+=GRUPOS->codigo
+ 	msg_ins+=GRUPOS->codigo+' '+GRUPOS->nome//+' '+GRUPOS->endereco//+' '+DTOC(GRUPOS->tcarencia)
+ ENDI
+ if len(cod_msg) > 9
+  msg_:=[Escolha o contrato|Codigo Nome                           Endereco]
+  nopc:=DBOX(msg_ins,,,E_MENU,,msg_,,,nopc)
+ endi
+ codigo:=SUBSTR(cod_msg,((nopc-1)*9)+1,9)
 
 ENDI
 respx:=LEFT(codigo,9)

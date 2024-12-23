@@ -122,7 +122,7 @@ BEGIN SEQUENCE
   ccop++                                           // incrementa contador de copias
   DO WHIL !EOF().AND.(!so_um_reg.OR.imp_reg=RECN())
    #ifdef COM_TUTOR
-    IF IN_KEY()=K_ESC                              // se quer cancelar
+    IF INKEY()=K_ESC                              // se quer cancelar
    #else
     IF INKEY()=K_ESC                               // se quer cancelar
    #endi
@@ -183,7 +183,7 @@ BEGIN SEQUENCE
      REL_CAB(1)                                    // soma cl/imprime cabecalho
      IMPMEMO(Rx2001F9(),70,1+li_m,cl,001,(li_m<qli_m))      // imprime...
      #ifdef COM_TUTOR
-      IF IN_KEY()=K_ESC                            // se quer cancelar
+      IF INKEY()=K_ESC                            // se quer cancelar
      #else
       IF INKEY()=K_ESC                             // se quer cancelar
      #endi
@@ -285,7 +285,7 @@ BEGIN SEQUENCE
   ENDD
  ENDD ccop
 END SEQUENCE
-SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
+SET PRINTER TO //(drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)
