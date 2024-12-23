@@ -668,3 +668,26 @@ Changes not staged for commit:
 	modified:   hb_out.log
 
 no changes added to commit (use "git add" and/or "git commit -a")
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   ADRBIG.CH
+	modified:   ADRBIG.EXE
+	modified:   ADRBIG.PRG
+	modified:   ADRBIG.hbp
+	modified:   GRU_02F9.PRG
+	modified:   GUI_02F9.PRG
+	modified:   INS_02F9.PRG
+	modified:   PWGRUPOS.DBF
+	modified:   PWTABELA.DBF
+	modified:   PWUSUA.DBF
+	modified:   chk.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	adrbig
+
+no changes added to commit (use "git add" and/or "git commit -a")

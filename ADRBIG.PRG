@@ -1,4 +1,4 @@
-REQUEST SMTCDX
+
 // *Acertos do arquivo principal
 function main()
 #include "hbgtinfo.ch"
@@ -48,16 +48,19 @@ Static24:= {"11331","31113","13113","33111","11313","31311","13311","11133","311
 */
 
 #include "adrbig.ch"    // inicializa constantes manifestas
-
+/*
+#include "SIXNSX.CH"
+#define RDDNAME "SIXNSX"
+*/
+#define MEMOEXT ".SMT"
 
 /*
    Funcoes chamadas dentro de macros
 */
 
 REQUEST DESCEND, MTAB, VUF, VDV2, MMAA, DLAPSO, VHORA, NMES, EXT, VCGC, LTOC
-REQUEST SMTCDX
 
-#include "ADR_PUBL.ch"  // contem variaveis publicas
+#include "adr_publ.ch"  // contem variaveis publicas
 // campo utilizado em cad_04f9 pra controlar a solicitacao de letra teclada
 PUBL ultcodmsg:=[//\\/\/\]
 
