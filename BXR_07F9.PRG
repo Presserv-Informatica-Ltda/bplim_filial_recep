@@ -26,7 +26,7 @@ IF EMPT(codigo)
 
  IF PTAB(alltrim(nomx),[GRUPOS],2,.t.)
 	codigo:=GRUPOS->codigo
-	codigo:=VDBF(6,3,20,77,'GRUPOS',{'nome','codigo','xDECRIPT(endereco)','tcarencia'},5,'codigo')
+	codigo:=VDBF(6,3,20,77,'GRUPOS',{'nome','codigo','xDECRIPT(endereco)','tcarencia'},2,'codigo')
 	nome:=GRUPOS->nome
 
  ELSE

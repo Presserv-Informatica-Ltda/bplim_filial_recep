@@ -575,6 +575,10 @@ NEXT
 USE
 ****************************************
 nemp:=IIF(EMPT(setup1),nemp,setup1)
+***************************************
+// Bloqueio DTOS, em substituicao ao hprot
+#include "bloqueio.ch"
+****************************************
 dbfsys=LEFT(drvdbf,3)+"PAR_SYS.DBF"
 IF !FILE(dbfsys)
  dbfsys=drvntx+"PAR_SYS.DBF"

@@ -12,9 +12,9 @@ procedure adr_manu
 */
 
 #include "adrbig.ch"    // inicializa constantes manifestas
-
+PRIVA tela_fundo:=SAVESCREEN(0,0,MAXROW(),79)
 opc_01=1
-v01=SAVESCREEN(0,0,MAXROW(),79)
+//v01=SAVESCREEN(0,0,MAXROW(),79)
 arqx_:=M->arq_sos
 arq_sos=direxe+"ADRBIG.TXT"  // nome do arquivo de ajud
 menu02:=[]
@@ -47,7 +47,7 @@ IF FILE(arq_sos)
  ENDD
 ENDI
 M->arq_sos:=arqx_
-RESTSCREEN(0,0,MAXROW(),79,v01)
+RESTSCREEN(0,0,MAXROW(),79,tela_fundo)
 RETU
 
 PROC HELP_PROC    // Apresenta ajuda on-line

@@ -773,3 +773,20 @@ Untracked files:
 	adr_fun2.bem
 
 no changes added to commit (use "git add" and/or "git commit -a")
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   ADRBIG.EXE
+	modified:   ADRBIG.PRG
+	modified:   ADR_MANU.PRG
+	modified:   BXR_07F9.PRG
+	modified:   chk.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	bloqueio.ch
+
+no changes added to commit (use "git add" and/or "git commit -a")
