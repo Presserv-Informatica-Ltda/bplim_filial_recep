@@ -47,7 +47,8 @@ DO WHIL opc_01!=0
             "Consulta Contratos~4|"+;
             "Emiss„o de Guias~5|"+;
             "Avisos / Carencias~6|"+;
-            "Cartinha/Falecidos~7"
+            "Cartinha/Falecidos~7|"+;
+            "Ajuda Procedimentos~8"
      msgt="LAN€AMENTOS"
      ROLAPOP(1)
      opc_02=DBOX(menu02,1,2,E_MENU,NAO_APAGA,msgt,,,opc_02)
@@ -73,6 +74,9 @@ DO WHIL opc_01!=0
 
       CASE opc_02=7     // Cartinha de Falecidos
        ADP_R101(3,10)
+
+      CASE opc_02=8     // Ajuda aos Procedimentos
+       ADR_MANU(3,10)
 
      ENDC
      CLEA GETS

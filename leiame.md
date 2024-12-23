@@ -326,3 +326,21 @@ Changes not staged for commit:
 	modified:   chk.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   ADRBIG.EXE
+	modified:   ADRBIG.LNK
+	modified:   ADRBIG.MAP
+	modified:   ADRBIG.RMK
+	modified:   ADR_MENU.PRG
+	modified:   chk.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	ADR_MANU.PRG
+
+no changes added to commit (use "git add" and/or "git commit -a")
