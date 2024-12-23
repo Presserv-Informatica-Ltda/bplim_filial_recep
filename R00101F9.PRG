@@ -1,15 +1,13 @@
-
 procedure r00101f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: R00101F9.PRG
  \ Data....: 15-10-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: importante do relat¢rio CON_R001
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:58:08 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -30,3 +28,4 @@ msgaux+=[Nao dando o direito a cirurgias, internacoes, entre outros]
 RETU       // <- deve retornar um valor qualquer
 
 * \\ Final de R00101F9.PRG
+

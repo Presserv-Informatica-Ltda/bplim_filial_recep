@@ -1,15 +1,13 @@
-
 procedure bxrec
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (19)3452.3712
  \ Programa: BXREC.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador do subsistema de recebimentos
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
- \ Convert.: v5.0 em 2021081014:57:26 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -139,7 +137,7 @@ DO WHIL cabem>0
  SELE BXREC
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
-
+ 
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -289,7 +287,7 @@ IF RECC()=0                     // se o dbf foi criado agora
  APPEND BLANK                   // os ultomos cps sequenciais
  SELE BXREC
  IF RECC()>0                    // se o DBF nao estiver
-  DBSETORDER(0)                 // retorna ao indice principal
+  SET ORDER TO 0                // vazio, entao enche DBF seq
   GO BOTT                       // com o ultimo reg digitado
   REPL BXR_SEQ->numero WITH numero
   REPL BXR_SEQ->intlan WITH intlan
@@ -358,9 +356,9 @@ i=LEN(sistema[op_sis,O_MENS])/2
 SETCOLOR(drvcortel)
 @ l_s+01,c_s+1 SAY "              Contrato:"
 @ l_s+02,c_s+1 SAY "ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
-@ l_s+03,c_s+1 SAY "                                        ³ Circulares"
-@ l_s+04,c_s+1 SAY "                                        ³  Inicial"
-@ l_s+05,c_s+1 SAY "                            Reg.:       ³  £ltima"
+@ l_s+03,c_s+1 SAY "                                        ³ Dt.Nasc."
+@ l_s+04,c_s+1 SAY "                                        ³ Circular"
+@ l_s+05,c_s+1 SAY "                            Reg.:       ³  Qtdade."
 @ l_s+06,c_s+1 SAY "                                        ³ Admissao"
 @ l_s+07,c_s+1 SAY " Telef.:                                ³ Funerais"
 @ l_s+08,c_s+1 SAY " e-mail:                                ³ Cobrador"
@@ -368,6 +366,7 @@ SETCOLOR(drvcortel)
 @ l_s+10,c_s+1 SAY "ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
 @ l_s+17,c_s+1 SAY " Ref.:                       Vl.Pago:"
 @ l_s+18,c_s+1 SAY " Pago com..:             Troco:"
+@ l_s+19,c_s+1 SAY " Forma pgto:               OBS:"
 @ l_s+20,c_s+1 SAY "  emitida em             por               Caixa:"
 RETU
 
@@ -396,6 +395,14 @@ CRIT("",,"2|18")
                  PICT sistema[op_sis,O_CAMPO,05,O_MASC]
                  CRIT(sistema[op_sis,O_CAMPO,05,O_CRIT],,"17")
 
+@ l_s+19 ,c_s+14 GET  forma_pg;
+                 PICT sistema[op_sis,O_CAMPO,12,O_MASC]
+                 CRIT(sistema[op_sis,O_CAMPO,12,O_CRIT],,"17")
+
+@ l_s+19 ,c_s+34 GET  obs_pg;
+                 PICT sistema[op_sis,O_CAMPO,13,O_MASC]
+                 CRIT(sistema[op_sis,O_CAMPO,13,O_CRIT],,"17")
+
 @ l_s+20 ,c_s+14 GET  emitido_;
                  PICT sistema[op_sis,O_CAMPO,06,O_MASC]
 
@@ -404,7 +411,7 @@ CRIT("",,"2|18")
 @ l_s+20 ,c_s+51 GET  numop;
                  PICT sistema[op_sis,O_CAMPO,08,O_MASC]
 
-CRIT("",,"1|3|4|5|6|7|8|9|10|11|12|13|14|15|16|19")
+CRIT("",,"1|3|4|5|6|7|8|9|10|11|12|13|14|15|16|19|20")
 CLEAR GETS
 RETU
 
@@ -446,6 +453,7 @@ IF tp_mov=INCLUI
                    MOSTRA sistema[op_sis,O_FORMULA,15]
                    MOSTRA sistema[op_sis,O_FORMULA,16]
                    MOSTRA sistema[op_sis,O_FORMULA,19]
+                   MOSTRA sistema[op_sis,O_FORMULA,20]
 
   @ l_s+17 ,c_s+08 GET  cobranca;
                    PICT sistema[op_sis,O_CAMPO,03,O_MASC]
@@ -459,6 +467,14 @@ IF tp_mov=INCLUI
                    PICT sistema[op_sis,O_CAMPO,05,O_MASC]
                    DEFINICAO 5
                    MOSTRA sistema[op_sis,O_FORMULA,17]
+
+  @ l_s+19 ,c_s+14 GET  forma_pg;
+                   PICT sistema[op_sis,O_CAMPO,12,O_MASC]
+                   DEFINICAO 12
+
+  @ l_s+19 ,c_s+34 GET  obs_pg;
+                   PICT sistema[op_sis,O_CAMPO,13,O_MASC]
+                   DEFINICAO 13
 
   READ
   SET KEY K_ALT_F8 TO
@@ -526,21 +542,8 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
   ENDI
  #endi
 
- IF 1=3
-  IF !EMPTY(ORDPGRC->codlan)
-   TIRA_LANC("ORDPGRC",LEFT(ORDPGRC->codlan,16),.f.)
-  ENDI
- ENDI
- IF 1=3
-  IF !EMPTY(IMPPAR->codlan)
-   TIRA_LANC("IMPPAR",LEFT(IMPPAR->codlan,16))
-  ENDI
- ENDI
- IF !EMPTY(ALIAS())
-    POE_NO_LOG(tp_mov)
  IF !EMPTY(ALIAS())
   DELE
- ENDI
  ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
  IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
@@ -616,18 +619,14 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
    ENDI
    IF op_menu=INCLUSAO
     emitido_=DATE()
-   ELSE
-    REPL emitido_ WITH DATE()
-   ENDI
-   IF op_menu=INCLUSAO
     por=M->usuario
-   ELSE
-    REPL por WITH M->usuario
-   ENDI
-   IF op_menu=INCLUSAO
     filial=M->p_filial
+    IF EMPT(idxd)
+     idxd=CALC_IDX()
+    ENDI
    ELSE
-    REPL filial WITH M->p_filial
+    REPL emitido_ WITH DATE(), idxm WITH CALC_IDX()
+    REPL por WITH M->usuario,  filial WITH M->p_filial
    ENDI
    IF EMPT(numop).AND.PTAB(IIF(EMPT(M->usuario),PADR(M->contarec+ide_maq,10,' '),PADR(M->usuario,10,' '))+M->histrcfcc+[       ],'ORDPGRC',2)
     REPBLO('ORDPGRC->valortotal',{||ORDPGRC->valortotal+valorpg})
@@ -659,18 +658,12 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
    ENDI
    IF op_menu=INCLUSAO
     emitido_=DATE()
-   ELSE
-    REPL emitido_ WITH DATE()
-   ENDI
-   IF op_menu=INCLUSAO
     por=M->usuario
-   ELSE
-    REPL por WITH M->usuario
-   ENDI
-   IF op_menu=INCLUSAO
     filial=M->p_filial
+    idxd:=CALC_IDX()
    ELSE
-    REPL filial WITH M->p_filial
+    REPL emitido_ WITH DATE(), idxm WITH CALC_IDX()
+    REPL por WITH M->usuario,  filial WITH M->p_filial
    ENDI
    IF EMPT(numop).AND.PTAB(IIF(EMPT(M->usuario),PADR(M->contarec+ide_maq,10,' '),PADR(M->usuario,10,' '))+M->histrcfcc+[       ],'ORDPGRC',2)
     REPL ORDPGRC->valortotal WITH ORDPGRC->valortotal+valorpg
@@ -683,7 +676,6 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
    ENDI
   #endi
 
-  POE_NO_LOG(tp_mov)
   IF op_menu!=INCLUSAO
    RECA
   ENDI

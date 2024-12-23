@@ -1,18 +1,15 @@
-
 procedure ctainsc
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: CTAINSC.PRG
  \ Data....: 12-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Consulta Inscritos
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
- \ Convert.: v5.0 em 2021081014:57:56 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
-
+*/
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 PRIV t_, i_, col_cp, col_ti, cps_rela
@@ -77,3 +74,4 @@ SET RELA TO                                        // retira os relacionamentos
 RETU                                               // volta para o menu anterior
 
 * \\ Final de CTAINSC.PRG
+

@@ -1,15 +1,13 @@
-
 procedure r08701f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: R08702F9.PRG
  \ Data....: 17-09-97
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Express„o de filtro do relat¢rio ADP_R087.PRG
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:57:28 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -41,3 +39,4 @@ ENDCASE
 RETU  M->donex     // <- deve retornar um valor L¢GICO
 
 * \\ Final de R08701F9.PRG
+

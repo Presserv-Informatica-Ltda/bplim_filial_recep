@@ -1,15 +1,13 @@
-
 procedure adm_r023
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: ADM_R023.PRG
  \ Data....: 27-06-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Outros recibos (2¦Via)
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v3.0
- \ Convert.: v5.0 em 2021081014:57:51 Fase_01
+ \ Criacao.: GAS-Pro v3.0 
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -115,7 +113,7 @@ DO WHILE .t.
     tps:=3                                          // se vai para arquivo/video
  ENDIF
 
- //  Impressora termica de transferencia
+ //  Impressora termica de transferencia  
  ehtermica:=.F.
  IF "BEMA"$UPPER(drvmarca) // Autenticadora Bematech
    ehtermica:=.T.
@@ -178,63 +176,69 @@ BEGIN SEQUENCE
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,000 SAY TRAN(numero,"@R 99-999999")  // N§ Recibo
     @ cl,050 SAY "Valor.:"
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpenf)
      ENDIF
    @ cl,058 SAY TRAN(valorpg,"@E 999,999.99")     // Valor
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvtenf)
     ENDIF
 
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     IMPAC("Referˆnte.:",cl,000)
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpenf)
     ENDIF
     @ cl,014 SAY cobranca                               // Ref
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvtenf)
     ENDIF
      REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,000 SAY "Contrato..:"
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpenf)
     ENDIF
-    @ cl,014 SAY GRUPOS->grupo +[  ]+codigo        // Grupo 1
-    IF !(ehtermica)
+    IF GRUPOS->(EOF())
+     @ cl,014 SAY [  ]+codigo+[ (Nao Encontrado)]        // Grupo 1
+    ELSE
+     @ cl,014 SAY GRUPOS->grupo +[  ]+codigo        // Grupo 1
+    ENDIF
+    IF !(ehtermica)    
      IMPCTL(drvtenf)
     ENDIF
     @ cl,050 SAY "Data..:"
     @ cl,058 SAY TRAN(emitido_,"@D")               // data 1
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,000 SAY "Nome......:"
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpenf)
     ENDIF
     @ cl,014 SAY GRUPOS->nome                      // Nome
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvtenf)
     ENDIF
     REL_CAB(1)                                     // soma cl/imprime cabecalho
-    IMPAC("Endere‡o..:",cl,000)
-    @ cl,014 SAY xDECRIPT(GRUPOS->endereco)                  // Endere‡o
-    REL_CAB(1)                                     // soma cl/imprime cabecalho
-    @ cl,000 SAY "Bairro....:"
-    @ cl,014 SAY xDECRIPT(GRUPOS->bairro)                    // Bairro
-    REL_CAB(1)                                     // soma cl/imprime cabecalho
-    @ cl,000 SAY "Cid./Cobr.:"
-    @ cl,014 SAY xDECRIPT(GRUPOS->cidade)+[ ] +GRUPOS->cobrador// Cidade
+    IF !(GRUPOS->(eof()))
+     IMPAC("Endere‡o..:",cl,000)
+     @ cl,014 SAY xDECRIPT(GRUPOS->endereco)                  // Endere‡o
+     REL_CAB(1)                                     // soma cl/imprime cabecalho
+     @ cl,000 SAY "Bairro....:"
+     @ cl,014 SAY xDECRIPT(GRUPOS->bairro)                    // Bairro
+     REL_CAB(1)                                     // soma cl/imprime cabecalho
+     @ cl,000 SAY "Cid./Cobr.:"
+     @ cl,014 SAY xDECRIPT(GRUPOS->cidade)+[ ] +GRUPOS->cobrador// Cidade
+    ENDIF
     @ cl,052 SAY REPL("Ä",18)
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,052 SAY "Op:"
     @ cl,056 SAY LEFT(por,1)+LOWER(SUBSTR(por,2))  // operador
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,000 SAY "Valor:"
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpcom)
     ENDI
     @ cl,007 SAY '('+SUBSTR(EXT(valorpg),1,AT('/',EXT(valorpg))-1)+')'// Valor Ext
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvtcom)
     ENDI
     REL_CAB(2)                                     // soma cl/imprime cabecalho
@@ -252,7 +256,7 @@ BEGIN SEQUENCE
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,000 SAY M->setup2                         // 2 Ident 2
     REL_CAB(1)                                     // soma cl/imprime cabecalho
-    IF !(ehtermica)
+    IF !(ehtermica)    
      @ cl,000 SAY REPL("-",71)
     ELSE
      @ cl,000 SAY REPL("-",50)
@@ -260,40 +264,40 @@ BEGIN SEQUENCE
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,000 SAY TRAN(numero,"@R 99-999999")  // 2 N§ Recibo
     @ cl,050 SAY "Valor.:"
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpenf)
     ENDIF
     @ cl,058 SAY TRAN(valorpg,"@E 999,999.99")     // Valor pago
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvtenf)
     ENDIF
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     IMPAC("Referˆnte.:",cl,000)
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpenf)
     ENDIF
     @ cl,012 SAY cobranca                               // Ref
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvtenf)
     ENDIF
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,000 SAY "Contrato..:"
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpenf)
     ENDIF
    @ cl,012 SAY GRUPOS->grupo +[  ]+codigo        // Grupo
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvtenf)
     ENDIF
    @ cl,050 SAY "Data..:"
     @ cl,058 SAY TRAN(emitido_,"@D")               // Emitido em
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,000 SAY "Nome......:"
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpenf)
     ENDIF
     @ cl,012 SAY GRUPOS->nome                      // Nome
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvtenf)
     ENDIF
     REL_CAB(1)                                     // soma cl/imprime cabecalho
@@ -310,11 +314,11 @@ BEGIN SEQUENCE
     @ cl,056 SAY LEFT(por,1)+LOWER(SUBSTR(por,2))  // Operador
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,000 SAY "Valor:"
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpcom)
     ENDIF
     @ cl,007 SAY '('+SUBSTR(EXT(valorpg),1,AT('/',EXT(valorpg))-1)+')'// Valor Ext
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvtcom)
     ENDIF
     REL_CAB(1)                                     // soma cl/imprime cabecalho
@@ -334,7 +338,7 @@ BEGIN SEQUENCE
    EXIT
   ENDD
  ENDD ccop
- IF !(ehtermica)
+ IF !(ehtermica)    
   EJEC                                              // salta pagina
  ELSE
   IMPCTL(drvcut2)
@@ -370,3 +374,4 @@ ENDI
 RETU
 
 * \\ Final de ADM_R023.PRG
+

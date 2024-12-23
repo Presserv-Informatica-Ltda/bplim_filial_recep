@@ -1,15 +1,13 @@
-
 procedure r00601f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: R00601F9.PRG
  \ Data....: 14-12-95
  \ Sistema.: Administradora de Funer rias
  \ Funcao..: Processo direto no campo particv, arquivo GRUPOS
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:57:06 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -63,3 +61,4 @@ procedure r00601f9
 RETU 0   // <- deve retornar um valor CARACTER
 
 * \\ Final de R00601F9.PRG
+

@@ -1,15 +1,13 @@
-
 procedure con_r001
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: Ind£stria de Urnas Bignotto Ltda
  \ Programa: CON_R001.PRG
  \ Data....: 15-05-97
  \ Sistema.: Controle de Convˆnios
  \ Funcao..: Emiss„o Guias 1¦ Parte
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v3.0
- \ Convert.: v5.0 em 2021081014:58:03 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -207,7 +205,7 @@ BEGIN SEQUENCE
 END SEQUENCE
 SET MARG TO                                        // coloca margem esquerda = 0
 IMPCTL(lpp_066)                                    // seta pagina com 66 linhas
-SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
+SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)
@@ -267,14 +265,13 @@ FUNC R001GF9
 RETURN ano+numero
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623.
  \ Programa: V00101F9.PRG
  \ Data....: 03-10-95
  \ Sistema.: Controle de Convˆnios
  \ Funcao..: Valida‡„o da variavel GNUMERO, relatorio CON_R001
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:58:04 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -299,3 +296,4 @@ func v00101f9
 RETU .T.      // <- deve retornar um valor L¢GICO
 
 * \\ Final de V00101F9.PRG
+

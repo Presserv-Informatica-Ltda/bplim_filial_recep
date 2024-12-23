@@ -1,15 +1,13 @@
-
 procedure gui_02f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623.
  \ Programa: GUI_02F9.PRG
  \ Data....: 22-11-95
  \ Sistema.: Controle de Convˆnios
  \ Funcao..: F¢rmula (circ 1-4) a mostrar na tela de GUIAS
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:57:59 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -76,3 +74,4 @@ RETU []         // <- deve retornar um valor qualquer
 
 
 * \\ Final de GUI_02F9.PRG
+

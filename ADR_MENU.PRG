@@ -228,8 +228,7 @@ DO WHIL opc_01!=0
                "Funcion†rios~6|"+;
                "Hist¢rico PadrÑo~7|"+;
                "Custos Adicionais~8|"+;
-               "Mensagem p/Contrato~9|"+;
-               "Produtos Adendos~10"
+               "Mensagem p/Contrato~9"
         msgt="TABELAS SECUNDèRIAS"
         opc_03=DBOX(menu03,3,46,E_MENU,NAO_APAGA,msgt,,,opc_03)
         DO CASE
@@ -259,9 +258,6 @@ DO WHIL opc_01!=0
 
          CASE opc_03=9     // mensagem p/contrato
           MENSAG(5,54)
-
-         CASE opc_03=10    // produtos
-          PRADENDO(5,61)
 
         ENDC
         CLEA GETS

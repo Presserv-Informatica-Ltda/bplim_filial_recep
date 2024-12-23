@@ -1,23 +1,22 @@
-// <ADRBIG> - <ADR_>
-procedure ADR_outr
+procedure adr_outr
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Ind£stria de Urnas Bignotto Ltda
- \ Programa: ADR_OUTR.PRG
- \ Data....: 19-08-95
- \ Sistema.: Controle de Processos da Funer ria V.á
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Programa: ADM_OUTR.PRG
+ \ Data....: 23-07-95
+ \ Sistema.: Administradora de Funer rias
  \ Funcao..: Define vari veis p£blicas
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v2.0
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
-#include "ADRBIG.ch"    // inicializa constantes manifestas
+#include "adrbig.ch"    // inicializa constantes manifestas
 
 
 #ifdef COM_CALE
  PROC CALE      // Rotina para exibir calend rio
-
+ 
  /*
     Simplificando a estrutura CASE   (thank you Rick Spence!)
     tbc e' um vetor bidimensional que contem as teclas a serem testadas
@@ -29,12 +28,9 @@ procedure ADR_outr
        tbc:={;
               {K_DOWN, {||datac:=datac-30}},;
               {K_UP,   {||datac:=datac+30}},;
-              {K_PGDN, {||datac:=datac-365}},;
-              {K_PGUP, {||datac:=datac+365}},;
-              {K_RIGHT,{||datac:=datac+1}},;
-              {K_LEFT, {||datac:=datac-1}};
+              {K_RIGHT,{||datac:=datac+365}},;
+              {K_LEFT, {||datac:=datac-365}};
             }
- PRIVA datac:=datac
  SETCOLOR(drvtitmsg)
  vr_cale=NOVAPOSI(@lisu_,@cosu_,@liin_,@coin_)      // posicao atual do calendario
  CAIXA(mold,lisu_,cosu_,liin_,coin_)                // monta tela de apresentacao
@@ -42,18 +38,16 @@ procedure ADR_outr
  @ lisu_+2,cosu_+1 SAY "Do 2a 3a 4a 5a 6a Sa"
  SETCOLOR(drvtitmsg)
  @ lisu_+ 9,cosu_+1 SAY REPL("Ä",coin_-cosu_-1)
- @ lisu_+10,cosu_+2 SAY " Incrementa o mˆs"        // montra teclas disponiveis
- @ lisu_+11,cosu_+2 SAY " Decrementa o mˆs"
- @ lisu_+12,cosu_+2 SAY CHR(26)+" Incrementa o dia"
- @ lisu_+13,cosu_+2 SAY CHR(27)+" Decrementa o dia"
- @ lisu_+14,cosu_+2 SAY CHR(30)+" Incrementa o ano"
- @ lisu_+15,cosu_+2 SAY CHR(31)+" Decrementa o ano"
+ @ lisu_+10,cosu_+2 SAY " Incrementa o MES"        // montra teclas disponiveis
+ @ lisu_+11,cosu_+2 SAY " Decrementa o MES"
+ @ lisu_+12,cosu_+2 SAY CHR(26)+" Incrementa o ANO"
+ @ lisu_+13,cosu_+2 SAY CHR(27)+" Decrementa o ANO"
  SETCOLOR(drvcormsg)
  DO WHIL .t.
   @ lisu_+1,cosu_+1 SAY PADL(TRIM(NMES(datac))+" - "+STR(YEAR(datac)),20)
   dia_1=DOW(datac-DAY(datac)+1)          // dia da semana do 1o. dia do mes
   cl_=lisu_+3
-  @ cl_,cosu_+1 CLEAR TO liin_-8,coin_-1 // limpa area dos dias
+  @ cl_,cosu_+1 CLEAR TO liin_-6,coin_-1 // limpa area dos dias
   col_dia=1+cosu_+3*(dia_1-1)            // coluna inicai do 1o. dia do mes
   m_e_s=MONTH(datac)                     // mes
   a_n_o=YEAR(datac)                      // ano
@@ -93,23 +87,6 @@ procedure ADR_outr
     PUBL &vr_cale.:=STR(lisu_,2)+STR(cosu_,2)
     SAVE TO (arqconf) ALL LIKE drv*      // salva as coordenadas em disco
    ELSE                                  // tecla sem acao, portanto,
-
-    #ifdef COM_MOUSE
-     MOUSEGET(@li_,@co_)                 // pega coordenadas do mouse
-     x=""                                // pega o dia clicado
-     FOR i=co_-1 TO co_+1
-      x+=CHR(PEEK(-18432,(li_*160)+(i*2)))
-     NEXT
-     x=ALLTRIM(x)
-     IF AT(" ",x)=0 .AND. VAL(x)>0       // dia valido, muda a data
-      datac=CTOD(RIGHT(STR(100+VAL(x)),2)+"/"+RIGHT(STR(100+m_e_s),2)+"/"+RIGHT(STR(10000+a_n_o),4))
-      k=K_ENTER
-     ENDI
-    #endi
-
-    IF k=K_ENTER .AND. LEN(READVAR())>0  // enter captura data...
-     KEYB DTOC(datac)
-    ENDI
     EXIT                                 // fora...
    ENDI
   ENDI
@@ -124,7 +101,6 @@ procedure ADR_outr
   ENDI
  #endi
 
- SETCURSOR(curx)                         // volta tamanho original do cursor
  RETU
 #endi
 
@@ -183,10 +159,6 @@ procedure ADR_outr
   @ lisu_+3,cosu_+3 SAY sinal_ant
   @ lisu_+3,cosu_+4 GET num_disp PICT gab // capta operando
   READ
-  IF sinal_="%" .AND. num_disp<>0 .AND. nu_calc<>0  // opera o %
-   num_disp = nu_calc/100*num_disp                  // antes de prosseguir
-   sinal_="="
-  ENDI
   DO CASE
    CASE LASTKEY()=K_ESC.OR.sinal_="R"     // finalizou
     IF fgpaste.AND.sinal_="R"
@@ -258,39 +230,58 @@ procedure ADR_outr
  RETU
 #endi
 
-* \\ Final de ADR_OUTR.PRG
-func extcivil
-para est_civ,se_xo
-if pcount()<2
- se_xo=[M]
-endi
-auxpos=AT(est_civ,tbestcivx) //tbestcivx:=[SO,CA,VI,DI,SE,IG,JU,CO,S.]
-auxpos=INT(auxpos/3)+1
-RETU IIF(se_xo=[M],tbestcivmx[auxpos],tbestcivfx[auxpos])
 
-FUNC CALC_IDX
-RETUR DTOS(DATE())+LEFT(TIME(),5)+M->USUARIO
+* \\ Final de ADM_OUTR.PRG
+FUNC veinscrits(Vinscr)
+vinscr:=[Inscritos n„o cadastrados]
+vcod:=LEFT(codigo,10)
+if PTAB(LEFT(codigo,10),'INSCRITS',1)
+ reg_dbfx:=POINTER_DBF()
+ SELE INSCRITS
+ Vinscr:=[]
+ DO WHILE !EOF() .AND. INSCRITS->codigo=vcod
+  Vinscr+=INSCRITS->nome+[ (]+;
+        SUBSTR([TitPaiMaeSgoSgaEspFilDep],(VAL(grau)-1)*3+1,3)+[) tc ]+;
+        dtoc(tcarencia)+[ ]+vivofalec+[ ]+tipo+[|]
+  SKIP
+ ENDDO
+ POINTER_DBF(reg_dbfx)
+endi
 
-func pulames
-para _data_, _nrmes_
-if pcount() < 2
- _nrmes_:=1
-elseif pcount()<1
- _nrmes_:=1
- _data_:=date()
-endi
-_nrmes_=val(tran(_nrmes_,[999]))
-sinal_:=iif(_nrmes_ < 0 ,-1 ,1)
-_nrmes_:=abs(_nrmes_)
-mes_:=(year(_data_)*12) + month(_data_)+(_nrmes_*sinal_)
-ano_:=int(mes_/12)
-mes_:=strzero(((mes_/12)-int(mes_/12))*12,2)
-if mes_=[00]
- mes_=[12]
- ano_--
-endi
-ano_=strzero(ano_,4)
-retu ctod(tran(strzero(day(_data_),2)+[/]+mes_+[/]+ano_,"@D"))
+retu  DBOX(Vinscr,,,E_MENU,,[INSCRITOS DO CONTRATO])
+// op_cad=DBOX(Vinscr,,,E_MENU,,[INSCRITOS DO CONTRATO],,,op_cad)
+/*
+ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623.
+ \ Programa: V00101F9.PRG
+ \ Data....: 03-10-95
+ \ Sistema.: Controle de Convˆnios
+ \ Funcao..: Valida‡„o da variavel GNUMERO, relatorio CON_R001
+ \ Analista: Ademilson Pedro Bom
+ \ Criacao.: Programado manualmente pelo analista
+ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+*/
+
+func v00101f9
+//PARAMETROS('pnumero',gnumero)
+
+  IF !PTAB(PADR(SUBSTR(M->ide_maq,2),4)+[GUI],[IMPPAR],1)
+   ord_=LEN(sistema[EVAL(qualsis,"IMPPAR"),O_CHAVE])
+   FAZ_LANC("IMPPAR",[ ])
+   REPL IMPPAR->idmaq WITH PADR(SUBSTR(M->ide_maq,2),4),;
+	IMPPAR->base WITH [GUI]
+  ENDI
+   #ifdef COM_REDE
+    IMPPAR->(DBUNLOCK())                           // libera o registro
+   #endi
+
+   IF PTAB(PADR(SUBSTR(M->ide_maq,2),4)+[GUI],[IMPPAR],1)
+    REPBLO('IMPPAR->docto',{||gnumero})
+   ENDI
+
+RETU .T.      // <- deve retornar um valor L¢GICO
+
+* \\ Final de V00101F9.PRG
 
 
 func V_carencia
@@ -314,66 +305,45 @@ IF EMPTY(SELECT([TAXAS]))                      // o arquivo nao esta' em uso, va
  SELE TAXAS
 ELSE
  SELE TAXAS
- SEEK M->mcod
+ SEEK M->mcod       // Verifica todas as taxas do contrato
 ENDI
 SELE TAXAS
 DO WHILE !EOF() .AND. TAXAS->codigo+TAXAS->tipo+TAXAS->circ=M->Mcod //.AND.ct_tx < M->rpend
- IF TAXAS->valorpg>0
-  IF (pgto_ - emissao_) >= v_intervalo
-	 dt_ultpg:=TAXAS->pgto_
-   dt_fimcar:=TAXAS->pgto_ + dias_carencia
-   IF DATE() < dt_fimcar
-    esta_em:=.T.
+ IF TAXAS->valorpg>0    // Das pagas, compara vencto e pgto.
+  IF (pgto_ - emissao_) >= v_intervalo     // se atrasou nn dias,
+	 dt_ultpg:=TAXAS->pgto_                  // guarda data pgto.
+   dt_fimcar:=TAXAS->pgto_ + dias_carencia // calcula fim carencia
+   IF DATE() < dt_fimcar                   // compara com data atual
+    esta_em:=.T.                           // se carencia maior q data = carencia
    ENDI
-  ELSE
-   IF (pgto_ >= dt_fimcar)
+  ELSE  // se nao atrasou (ou intervalo for menor q carencia)
+   IF (pgto_ >= dt_fimcar)     // Se pagou depois do fim de carencia, tira-o
     esta_em:=.F.
    ENDI
   ENDI
- ELSE
-  IF (date() - emissao_) > v_intervalo
-   vai_entrar:=.T.
+ ELSE    // Se ainda num foi paga
+  IF (date() - emissao_) >= v_intervalo // e ja venceu alem do intervalo...
+   vai_entrar:=.T.                     // entra em suspenso...
   ENDI
  ENDI
  SKIP
 ENDDO
-IF DATE() > dt_fimcar
- esta_em:=.F.
+IF DATE() > dt_fimcar   // mas, se ja passou a data final de carencia...
+ esta_em:=.F.           // sai da carencia (ja cumpriu...)
 ENDI
 //POINTER_DBF(reg_dbf)
 sele (i_)
 go (rec_dbf)
 IF (esta_em)
- RETU 2
+ RETU 2      // Pagou e esta na Carencia,
 ELSEIF (vai_entrar)
- RETU 1
+ RETU 1      // num pagou, esta suspenso...
 ENDI
 RETU 0 //(esta_em.OR.vai_entrar)       // <- deve retornar um valor L¢GICO
 
-FUNC MONTA_MENS
-PARA arq_texto
-arqtexto:=drvdbf+arq_texto
-arqorig:=linhax:=textook:=restolin:=[]
-IF FILE(arqtexto)
- arqorig:=memoread(arqtexto)
- FOR aclinha=1 to mlcount(arqorig,70)
-  linhax=memoline(arqorig,70,aclinha)+[ ]
-  posmacro=at([&],linhax)
 
-  DO WHILE !EMPT(posmacro)
-   campomac:=SUBSTR(linhax,posmacro+1,AT([ ],SUBSTR(linhax,posmacro+1))-1)
-   restolin:=SUBSTR(linhax,posmacro+LEN(campomac)+1)
-//   linhax:=LEFT(linhax,posmacro-1)+alltrim(TRAN(&campomac,"@!"))+restolin
-   linhax:=LEFT(linhax,posmacro-1)+ALLTRIM(TRAN(&campomac,[@!]))+restolin
-   posmacro=at([&],linhax)
-  ENDD
-  textook+=linhax
- NEXT aclinha
-ELSE
-// textook:=[Pelo presente, eu ]+ALLTRIM(DECLAR->declarante)+[ representante legal do(a) falecido(a) ]+ALLTRIM(CADPROC->falecido)+[ ap¢s obter informa‡”es sobre o procedimento, solicito e autorizo ]+;
-// [a realiza‡„o de cortes, perfura‡”es, quando necess rio, inje‡„o de l¡quidos e embalsamento, objetivando restaurar, conservar e manter a aparencia natural do corpo]
-ENDI
-RETU M->textook      // <- deve retornar um valor qualquer
+//020760835
+//Cancelamento e reintegra‡ao, verificar os campos transferidos (COROAS)
 
 Function XCRIPTOGRAFA(Pstr, Psenha, Pencript)
 LOCAL Tcript, Tx, Tascii
@@ -399,476 +369,5 @@ return xCRIPTOGRAFA(caracteres, 'bompastor', .t.)
 function xdecript(caracteres)
 return xCRIPTOGRAFA(caracteres, 'bompastor', .f.)
 
-function Upperlower ( mTexto )
-LOCAL mTexto2 := "", mMaiuscula := .T., nCont, mLetra
-FOR nCont = 1 to Len (mTexto)
- mLetra := Substr( mTexto, nCont, 1 )
- DO CASE
- CASE mLetra = " "
-  mTexto2 += mLetra
-  mMaiuscula := .T.
- CASE mMaiuscula
-  mTexto2 += Upper( mLetra )
-  mMaiuscula := .F.
- OtherWise
-  mTexto2 += Lower (mLetra )
- ENDCASE
-Next
-Return ALLTRIM(mTexto2)
-
-function dayext ( ddata )
-Retu ALLTRIM(STR(DAY(ddata)))+[ de ]+ALLTRIM(nmes(ddata))+[ de ]+LTRIM(STR(Year(ddata)))
-
-
-Function TIRAAC(xArg1)
-
-   Local xVar1:= "aeioucAEIOUC",xVar2:= " ‚¡¢£‡¡¢£€ÿ…Š•£‡¡¢£€ÿ„‰ÿ”‡Žÿÿ™š€ÿƒˆŒ“‡Žÿÿ™š€",xVar3:= "'`~^",xVar4,xVar5,xVar6,xVar7
-
-   ts_:= Len(xArg1)
-   If .t.
-      For xVar7:= 1 To Len(xArg1)
-         xVar5:= At(SubStr(xArg1,xVar7,1),xVar2)
-         If (xVar5 > 0)
-            If (SubStr(xArg1,xVar7,1) $ "€‡")
-               xVar4:= IIf(SubStr(xArg1,xVar7,1) = "€","C","c")
-            Else
-               xVar4:= SubStr(xVar1,xVar5%13,1)
-            EndIf
-            xArg1:= Left(xArg1,xVar7-1)+xVar4+SubStr(xArg1,xVar7+1)
-            xVar7:= xVar7+2
-         EndIf
-      Next
-   EndIf
-/*
-   If chr(248) $ xArg1
-    xArg1:= left(xArg1,At(chr(248),xArg1)-1)+[.]+subst(xArg1,At(chr(248),xArg1)+1)
-   Endif
-*/
- for ct_x=1 to len(xArg1)
-  chr2 := substr(xArg1,ct_x,1)
-  IF (chr2 $ [ABCDEFGHIJKLMNOPQRSTUVXYWZ 0123456789:,.-()])
-//  ELSEIF (chr2 $ " ‚¡¢£‡¡¢£€ÿ…Š•£‡¡¢£€ÿ„‰ÿ”‡Žÿÿ™š€ÿƒˆŒ“‡Žÿÿ™š€.:,-()")
-  ELSE
-   xArg1:=left(xArg1,ct_x-1)+[.]+substr(xArg1,ct_x+1)
-  ENDIF
- next ct_x
-
- Return xArg1
-// transfere dados para excel
-// Parametros: arquivo excel, linha inicial, coluna inicial, dados, condição
-Function CopyToExcel
-PARA xls_file, xls_row, xls_col, xls_dados, xls_condic
-// Gera uma planilha Excel a partir de um DBF
-//-----------------------------------------------------------------
-oExcel:= TOleauto():New( "Excel.Application")
-// Ole2TxtError()
-
-if .F. //Ole2TxtError() # "S_OK"
- ?  "EXCEL não está instalado nesta máquina,Impossível gerar planilha"
- return nil
-endif
-xls_file:=drverr+xls_file
-//oExcel:WorkBooks:Add()
-if !file(xls_file)
- oExcel:WorkBooks:Add()
-else
- oExcel:WorkBooks:Open(xls_file)
-endi
-oFolha := oExcel:Get( "ActiveSheet")
-oFolha:Cells:Font:Name := "Arial"
-oFolha:Cells:Font:Size := 10
-xls_range:=CHR(xls_col+64)+ltrim(str(xls_row))+[:]
-//xls_range:=CHR(xls_col+64+len(xls_dados [1]))+ltrim(str(len(xls_dados)))
-xls_range+=[M90]
-
-IF .T. //(xls_condic)
- oFolha:Range(xls_range):Value := xls_dados
-ENDI
-
-oExcel:Visible = .T.
-use
-RETURN NIL
-
-FUNC QTNRDEP
-PARA mcod,mtip
-LOCAL ct_tx:=0 //, reg_dbf:=POINTER_DBF()
-IF pcount()=0                //Se nao passou parametros
- mcod = codigo               // utiliza codigo atual e
- mtip=[8]                    // tipo = 8
-ELSEIF PCOUNT()=1            // Se passou codigo,
- mtip=[8]                    // so tipo = 8
-ENDI
-AREAATU=SELECT()             // guarda area em uso
-IF select([INSCRITS])=0       // se nao tiver inscritos aberto
- PTAB(Mcod,[INSCRITS],1,.T.) // abre-o
-ENDI
-SELE INSCRITS                // vamos contas os inscritos!
-seek Mcod
-DO WHILE !EOF() .AND. INSCRITS->codigo=Mcod //.AND.ct_tx < M->rpend
- IF INSCRITS->grau $ mtip//.OR.; // so dos tipos desejados!
-//  (!EMPT(INSCRITS->nascto_).AND.INSCRITS->nascto_<(DATE()-365.25*30))
-	ct_tx++
- ENDI
- SKIP
-ENDDO
-//POINTER_DBF(reg_dbf)
-SELECT(AREAATU)              // retornando a area original
-
-RETU ct_tx       // <- deve retornar um valor L¢GICO
-
-FUNC QTNRDEp89
-PARA mcod
-LOCAL ct_tx:={0,0,0,0} //, reg_dbf:=POINTER_DBF()
-AREAATU=SELECT()             // guarda area em uso
-IF select([INSCRITS])=0       // se nao tiver inscritos aberto
- PTAB(Mcod,[INSCRITS],1,.T.) // abre-o
-ENDI
-SELE INSCRITS                // vamos contas os inscritos!
-seek Mcod
-DO WHILE !EOF() .AND. INSCRITS->codigo=Mcod //.AND.ct_tx < M->rpend
- IF !(INSCRITS->grau $ [89]) // conta os tipos 8 e 9
-  SKIP
-  LOOP
- ENDI
- IF INSCRITS->vivofalec=[F]
-  SKIP
-  LOOP
- ENDI
- Midade=UPPER(IIF(!EMPT(INSCRITS->nascto_),DLAPSO(DATE(),INSCRITS->nascto_),[ ]))
- WICHLINE:=0
- IF ([ANO]$Midade.AND.VAL(midade)>30)
-  WICHLINE:=2
- ENDI
- IF INSCRITS->grau=[8]
-  ct_tx [1+WICHLINE] ++
- ELSE
-  ct_tx [2+WICHLINE] ++
- ENDIF
- SKIP
-ENDDO
-//POINTER_DBF(reg_dbf)
-SELECT(AREAATU)              // retornando a area original
-
-RETU ct_tx       // <- deve retornar um valor L¢GICO
-
-func unico
-para chave
-set uniq on
-retu (chave)
-
-func agregados(mesaux) // "11/02"
-IF !(GRUPOS->situacao=[1]).OR.GRUPOS->saitxa=[9999]
- retu .f.
-ENDI
-if pcount()<1
- mesaux:=substr(dtoc(date()),4)  // 13/02/2003
-endi
-dt1aux:=ctod([01/]+mesaux)       // 01/02/2003
-mesaux:=substr(dtoc(dt1aux),4,2)+right(dtoc(dt1aux),2)
-dt2aux:=dt1aux-5                // 27/01/2003
-dt2aux-=day(dt2aux)             // 31/12/2002
-dt1aux:=dt2aux-day(dt2aux)+1    // 01/12/2002
-
-// Quantos dependentes cadastrados < 30 >
-  nr_depend:=qtnrdep89(codigo)
-  nr_depend8:=nr_depend [1]+nr_depend [2]
-// J  calcula o valor dos agregados
-//  vlagregado:=(nr_depend8*CLASSES->vldepend)+(nr_depend9*CLASSES->vltotal)
-
-retu (GRUPOS->saitxa=mesaux.OR.(!EMPT(nr_depend8).AND.;
-      GRUPOS->admissao>=dt1aux.AND.GRUPOS->admissao<=dt2aux))
-
-func weekday
-para dt_aux
-dt_par=dt_aux
-//Incluido em 14/01/2004 - nao imprimir cobran‡a com vencto sabados/domingos
-IF DOW(M->dt_aux)=7
- M->dt_aux+=2
-ELSEIF DOW(M->dt_aux)=1
- M->dt_aux+=1
-ENDI
-do while !(substr(dtoc(dt_par),4)=substr(dtoc(dt_aux),4))
- dt_aux:=dt_par
-endd
-retu M->dt_aux
-
-// Funcao de calculo de Termino de Carencia
-func mk_tcar
-PARA dtinic_
-if pcount()<1
- dtinic_=DATE()
-endi
-qtdatac:=0
-msg="Dias de Car‰ncia"
-qtdatac=DBOX(msg,,,,,"ATEN€ŽO!",qtdatac,"999")    // confirma o prazo de carencia
-retu (dtinic_+qtdatac)
-
-// Funcao para substituir macros em um arquivo texto pelo conteudo do campo
-FUNC R01401F9
-PARA ARQ_TEXTO
-ARQ_TEXTO:=drvdbf+ARQ_TEXTO
-arqorig:=linhax:=textook:=restolin:=[]
-IF FILE(ARQ_TEXTO)
- arqorig:=memoread(ARQ_TEXTO)
- FOR aclinha=1 to mlcount(arqorig,70)
-  linhax=memoline(arqorig,70,aclinha)+[ ]
-  posmacro=at([&],linhax)
-
-  DO WHILE !EMPT(posmacro)
-   campomac:=SUBSTR(linhax,posmacro+1,AT([ ],SUBSTR(linhax,posmacro+1)))
-   restolin:=SUBSTR(linhax,posmacro+LEN(campomac)+1)
-//   restolin:=SUBSTR(linhax,AT([ ],SUBSTR(linhax,posmacro+2)))
-   linhax:=LEFT(linhax,posmacro-1)+alltrim(TRAN(&campomac,"@!"))+;
-           ALLTRIM(restolin)
-   posmacro=at([&],linhax)
-  ENDD
-  textook+=linhax
- NEXT aclinha
-ELSE
- textook:=[]
-ENDI
-RETU M->textook      // <- deve retornar um valor qualquer
-
-
-func  vcobrador  // Retorna verdadeiro se o cobrador for lixo.
-if (GRUPOS->cobrador$[C44,C5 ,ZZ ])
- retu .T.
-elseif LEFT(GRUPOS->cobrador,2)=[CJ]
- retu .T.
-elseif LEFT(GRUPOS->cobrador,2)=[AD]
- retu .T.
-elseif LEFT(GRUPOS->cobrador,2)=[ZZ]
- retu .T.
-endi
-retu .F.
-
-func vfatorvcto
-para par_aux
-IF ([/]$par_aux)
- retu ctod(par_aux) - ctod([07/10/1997])
-ELSE
- RETU ctod([07/10/1997]) + VAL(par_aux)
-ENDI
-RETU []
-
-FUNC QMES
-PARA INIC_1, FIM_1
-IF PCOUNT() < 1     // Se nao passou data nenhuma,
- RETU MONTH(DATE()) // retorna o mˆs atual
-ENDI
-IF PCOUNT() = 1  // Se informado apenas uma data,
- fim_1 = DATE()
-ENDI
-IF TYPE([inic_1]) = [C]
- inic_1:=CTOD(inic_1)
-ENDIF
-IF TYPE([fim_1]) = [C]
- fim_1 = CTOD(fim_1)
-ENDI
-donex:=(YEAR(fim_1)-YEAR(inic_1))*12
-donex+=MONTH(fim_1)-MONTH(inic_1)
-IF DAY(fim_1) < DAY(inic_1)
- donex--
-ENDI
-RETU donex //INT((fim_1-inic_1)/30.44)
-
-
-FUNC ATUVALOR
-PARA P_TIPO,P_VALOR,P_DAT1,P_DAT2 // tipo da cobranca, valor e vencimento
-IF PCOUNT() < 4
- P_DAT2:=DATE()
-ENDI
-p_dat2++
-v_add:=p_valor
-IF p_dat1 < p_dat2                 // S¢ acerta os j  vencidos
- IF PTAB(p_tipo,'JUROS',1)         // S¢ acerta se houver na tabela de multa
-  nrd:=(p_dat2 - p_dat1)           // Dias de atraso
-  nrm:=QMES(p_dat1, p_dat2)        // Meses de atraso
-	IF (nrd > JUROS->mltcaren)       // Se h  passou a carˆncia da multa...
-	 v_add+=v_add * JUROS->multa/100 // Cobra multa
-	ENDI
-	IF (nrd > JUROS->jrscaren) // Se h  passou a carˆncia dos juros...
-   IF PCOUNT() < 4 // Se nao for per¡odo fechado, conta os dias
-	  v_add+=p_valor * (JUROS->juros/30) /100 * nrd  // Cobra juros
-   ELSE   //  S¢ mˆs inteiro
-	  v_add+=p_valor * JUROS->juros/100 * nrm  // Cobra juros
-   ENDIF
-	ENDI
- ENDI
-ENDI
-RETU (INT((v_add+0.005)*100)/100) // Retorna o valor total com o acrescimo
-
-/*** Pendentes do VIP5
-FUNC PENDENTES
-PARA mcod,venf_
-LOCAL ct_tx:=0 //,reg_dbf:=POINTER_DBF()
-IF pcount()=0
- mcod = codigo
- venf_:=DATE()
-ELSEIF PCOUNT()=1
- venf_:=DATE()
-ENDI
-
-nWorkArea:=SELECT()
-//PTAB(Mcod,[TAXAS],1,.T.)
-SELE TAXAS
-SEEK Mcod
-
-DO WHILE !EOF() .AND. TAXAS->codigo=Mcod //.AND.ct_tx < M->rpend
- IF TAXAS->valorpg>0
-	SKIP
-	LOOP
- ENDI
- IF TAXAS->emissao_ <= IIF(EMPT(M->venf_),DATE(),M->venf_)
-	ct_tx++
- ENDI
- SKIP
-ENDDO
-
-//POINTER_DBF(reg_dbf)
-SELECT(nWorkArea)
-RETU ct_tx       // <- deve retornar um valor L¢GICO
-********/
-
-FUNC ULTIMATAXA
-PARA mcod,mtipo
-LOCAL dt_tx:=ctod('  /  /  ') //reg_dbf:=POINTER_DBF(),
-rec_dbf:=RECNO()                // inicializa vetor de retorno
-i_=SELECT()                     // salva area atual
-IF pcount()=0
- mcod = codigo
- mtipo=[]
-ELSEIF PCOUNT()=1
- mtipo=[  ]
-ENDI
-IF EMPTY(SELECT([TAXAS]))                      // o arquivo nao esta' em uso, vamos abri-lo...
- PTAB(Mcod,[TAXAS],1,.T.)
- SELE TAXAS
-ELSE
- SELE TAXAS
- SEEK M->mcod
-ENDI
-
-DO WHILE !EOF() .AND. TAXAS->codigo+TAXAS->tipo+TAXAS->circ=M->Mcod //.AND.ct_tx < M->rpend
- IF TAXAS->emissao_ > dt_tx
-    dt_tx:=TAXAS->emissao_
- ENDI
- SKIP
-ENDDO
-
-//POINTER_DBF(reg_dbf)
-sele (i_)
-go (rec_dbf)
-
-RETU dt_tx       // <- deve retornar um valor L¢GICO
-
-FUNC PENDENTES
-PARA mcod,venf_
-LOCAL  vl_tx:=ct_tx:=0 //, reg_dbf:=POINTER_DBF()
-don_e:=[]
-rec_dbf:=RECNO()                // inicializa vetor de retorno
-i_=SELECT()                     // salva area atual
-IF pcount()=0
- mcod :=codigo
- venf_:=DATE()
- don_e:=[Q]
-ELSEIF PCOUNT()=1
- venf_:=DATE()
- IF mcod$[Qq,Vv,1,2]
-  don_e:=UPPER(mcod)
-  mcod:=codigo
- ENDI
-ENDI
-IF EMPTY(SELECT([TAXAS]))                      // o arquivo nao esta' em uso, vamos abri-lo...
- PTAB(Mcod,[TAXAS],1,.T.)
- SELE TAXAS
-ELSE
- SELE TAXAS
- SEEK M->mcod
-ENDI
-DO WHILE !EOF() .AND. TAXAS->codigo+TAXAS->tipo=Mcod
- IF TAXAS->valorpg=0.AND.TAXAS->emissao_ <= M->venf_
-	ct_tx++
-  vl_tx+=TAXAS->valor
- ENDI
- SKIP
-ENDDO
-// POINTER_DBF(reg_dbf)
-sele (i_)
-go (rec_dbf)
-IF DON_E$[V,2]
- ct_tx:=vl_tx
-ENDI
-RETU ct_tx       // <- deve retornar um valor L¢GICO
-
-/* -------------------------------------------------------------------------- */
-// Retorna Digito de Controle Modulo 11 (p/ Banco)                            //
-// bradesco -> DC_Mod11("237", 7, .F., carteira+agencia+nossonumero)
-
-FUNCTION DC_Mod11( mCDBC, mBSDG, mFGCB, mNMOG, lMult10 )
-
-   LOCAL mSMMD, mCTDG, mSQMP, mRSDV, mDCMD
-   mFGCB :=.F.
-   lMult10:=.F.
-   mSMMD := 0
-   mSQMP := 2
-
-   FOR mCTDG := 1 TO LEN(mNMOG)
-       mSMMD += VAL(SUBSTR(mNMOG, LEN(mNMOG) - mCTDG + 1, 1)) * (mSQMP)
-       mSQMP := IF(mSQMP == mBSDG, 2, mSQMP+1)
-   NEXT
-   IF lMult10
-      mSMMD *= 10
-   ENDIF
-   mRSDV := MOD(mSMMD, 11)
-   IF mFGCB
-      mDCMD := IF(mRSDV > 9 .OR. mRSDV < 2, "1", STR(11 - mRSDV, 1))
-   ELSE
-      IF mCDBC == "001"        // Brasil
-         mDCMD := IF(mRSDV == 0, "0", IF(mRSDV == 1, "X", STR(11 - mRSDV, 1)))
-      ELSEIF mCDBC $ "(008|033|353)"  //Santander Banespa
-         mDCMD := IF(mRSDV < 2, "0", IF(mRSDV == 10, "1", STR(11 - mRSDV, 1)))
-       //mDCMD := IF(mRSDV == 0, "0", IF(mRSDV == 1, "X", STR(11 - mRSDV, 1)))
-      ELSEIF mCDBC=="104"      // Caixa
-         mRSDV := 11 - mRSDV
-         mDCMD := IF(mRSDV > 9, "0", STR(mRSDV, 1))
-      ELSEIF mCDBC == "237"    // Bradesco
-         mDCMD := IF(mRSDV == 0, "0", IF(mRSDV == 1, "P", STR(11 - mRSDV, 1)))
-      ELSEIF mCDBC == "341"    // Itau
-         mDCMD := IF(mRSDV == 11, "1", STR(11 - mRSDV, 1))
-      ELSEIF mCDBC == "409"    // Unibanco
-         mDCMD := IF(mRSDV == 0 .OR. mRSDV == 10, "0", STR(mRSDV, 1))
-      ELSEIF mCDBC == "422"    // Safra
-         mDCMD := IF(mRSDV==0, "1", IF(mRSDV == 1, "0", STR(11 - mRSDV, 1)))
-      ENDIF
-   ENDIF
-RETURN mDCMD
-
-FUNC pre_remido // Plano
-para codigo
-IF SELE([ARQGRUP])=0
- PTAB(GRUPOS->grupo,[ARQGRUP],1,.T.)
-ENDI
-SELE ARQGRUP
-SEEK GRUPOS->grupo
-SELE GRUPOS
-RETU (situacao=[1].AND.qtcircs=((funerais+1)*ARQGRUP->qtdremir)-1)
-
-FUNC veinscrits(Vinscr)
-vinscr:=[Inscritos n„o cadastrados]
-vcod:=LEFT(codigo,10)
-if PTAB(LEFT(codigo,10),'INSCRITS',1)
- reg_dbfx:=POINTER_DBF()
- SELE INSCRITS
- Vinscr:=[]
- DO WHILE !EOF() .AND. INSCRITS->codigo=vcod
-  Vinscr+=INSCRITS->nome+[ (]+;
-        SUBSTR([TitPaiMaeSgoSgaEspFilDep],(VAL(grau)-1)*3+1,3)+[) tc ]+;
-        dtoc(tcarencia)+[ ]+vivofalec+[ ]+tipo+[|]
-  SKIP
- ENDDO
- POINTER_DBF(reg_dbfx)
-endi
-
-retu  DBOX(Vinscr,,,E_MENU,,[INSCRITOS DO CONTRATO])
-// op_cad=DBOX(Vinscr,,,E_MENU,,[INSCRITOS DO CONTRATO],,,op_cad)
+function calc_idx()
+return DTOS(DATE())+time()+M->usuario

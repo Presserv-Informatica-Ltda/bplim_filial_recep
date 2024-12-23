@@ -30,12 +30,10 @@ endif
 return upper(drive+':\'+path+"\"+exe)
 
 procedure setrhs
-para file2set
-return Hb_FSetAttr(file2set,7)
+return .f.
 
 procedure fileattrib
-para file2set
-return Hb_FSetAttr(file2set,0)
+return 0
 
 procedure impok
 return .t.
@@ -81,7 +79,7 @@ procedure poke
 return .t.
 
 procedure ok_print(vlin)
-if at('',vlin)>0 .or. at('',vlin)>0 .or.;
+if at('',vlin)>0 .or. at('',vlin)>0 .or.;
    at('',vlin)>0 .or. at('',vlin)>0 .or. at('',vlin)>0
    return .f.
 else
@@ -142,8 +140,8 @@ else
 end if
 
 procedure rwrite
-para file2set
-return Hb_FSetAttr(file2set,"-R-H-S")
+
+return .f.
 
 procedure ronly
 return .f.
@@ -806,8 +804,8 @@ Procedure KEYBUFF(xArg1)
    Return
 
 Procedure POEHORA(xArg1,xArg2,xArg3)
+
    Local xVar1,xVar2,xVar3,xVar4
-RETURN 
    If (Type("_ag_hora") = "C")
       If (Len(_ag_hora) == 0)
          _ag_hora:= "*"
@@ -1747,7 +1745,7 @@ Function Q_TEC(xArg1)
 
    Local xVar1
    poehora()
-   If (Type("acao_mac") = "C")
+   If .F. //(Type("acao_mac") = "C")
       x:= "IN_KEY"
       xVar1:= &x(xArg1)
    Else
@@ -2445,7 +2443,7 @@ Function EDIMEMO(xArg1,xArg2,xArg3,xArg4,xArg5,xArg6)
 
       xGravou:=.t.
       xVar6_:=&xArg1.
-      xVar6_:=memoedit(hardcr(xVar6_),xArg3+1,xArg4+1,xArg5-1,xArg6-1,.T.,"MFUNC")
+      xVar6_:=memoedit(xVar6_,xArg3+1,xArg4+1,xArg5-1,xArg6-1,.T.,"MFUNC")
 
       If xGravou
          If (!Empty(alias()))

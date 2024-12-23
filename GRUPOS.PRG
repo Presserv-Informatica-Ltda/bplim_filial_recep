@@ -1,15 +1,13 @@
-
 procedure grupos
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: GRUPOS.PRG
  \ Data....: 12-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador do subsistema de consulta contratos
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
- \ Convert.: v5.0 em 2021081014:57:33 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -133,7 +131,7 @@ DO WHIL cabem>0
  SELE GRUPOS
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
-
+ 
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -169,7 +167,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
-
+ 
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -279,9 +277,6 @@ DO WHIL cabem>0
  IF sistema[EVAL(qualsis,"INSCRITS"),O_OUTROS,O_NIVEL]<5
   SUBNIVEL("INSCRITS")
  ENDI
- IF sistema[EVAL(qualsis,"ADENDOS"),O_OUTROS,O_NIVEL]<5
-  SUBNIVEL("ADENDOS")
- ENDI
  IF reg_cop!=NIL                                   // estava na consulta e quis rep o campo
   EXIT                                             // cai fora...
  ENDI
@@ -312,23 +307,20 @@ SETCOLOR(drvcortel)
 @ l_s+02,c_s+1 SAY "  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Dados Pessoais ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
 @ l_s+03,c_s+1 SAY " Nome..:                                     Nasc.:"
 @ l_s+04,c_s+1 SAY " ECivil:                  CPF:               RG...:"
-@ l_s+05,c_s+1 SAY " CEP...:             Endereco:"
-@ l_s+06,c_s+1 SAY " Bairro:                           Complement:"
-@ l_s+07,c_s+1 SAY " Cidade:                           UF.:"
-@ l_s+08,c_s+1 SAY " Obs.1.:                           Obs.2:"
-@ l_s+09,c_s+1 SAY " Contato                           Tel:"
-@ l_s+10,c_s+1 SAY " Categor.:     Carnˆ:      F.Pgto:"
-@ l_s+11,c_s+1 SAY " Admiss„o:             T.Carˆncia:              Sai Taxas.:"
-@ l_s+12,c_s+1 SAY " Vendedor:                                      Dia Pgto..:"
-@ l_s+13,c_s+1 SAY " Regi„o..:                                      Observa‡„o:"
-@ l_s+14,c_s+1 SAY " Cobrador:                                      Renova‡„o.:"
-@ l_s+15,c_s+1 SAY " Funerais:       Circ.Inic:       Ult.:        Emit:      Baix:"
-@ l_s+16,c_s+1 SAY " Atendimento.1:                      2:"
-@ l_s+17,c_s+1 SAY " Participantes: Vivos:    Falecidos:    Dependentes:"
-@ l_s+18,c_s+1 SAY " email:                                             "
-@ l_s+19,c_s+1 SAY " Seguro:  Data:              Cod:       Serv:      "
-@ l_s+20,c_s+1 SAY " Ult.Altera‡„o:         -                   Lancto.:"
-@ l_s+21,c_s+1 SAY " Ult.Cobran‡a.:                                     "
+@ l_s+05,c_s+1 SAY " Ender.:                                     Bairr:"
+@ l_s+06,c_s+1 SAY " Cidade:                           UF.:      CEP..:"
+@ l_s+07,c_s+1 SAY " Natur.:                           Relig:"
+@ l_s+08,c_s+1 SAY " Contato                           Tel:"
+@ l_s+09,c_s+1 SAY " Categor.:     Carnˆ:      F.Pgto:"
+@ l_s+10,c_s+1 SAY " Admiss„o:             T.Carˆncia:              Sai Taxas.:"
+@ l_s+11,c_s+1 SAY " Vendedor:                                      Dia Pgto..:"
+@ l_s+12,c_s+1 SAY " Regi„o..:                                      Observa‡„o:"
+@ l_s+13,c_s+1 SAY " Cobrador:                                      Renova‡„o.:"
+@ l_s+14,c_s+1 SAY " Funerais:       Circ.Inic:       Ult.:        Emit:      Baix:"
+@ l_s+15,c_s+1 SAY " Atendimento.1:                      2:"
+@ l_s+16,c_s+1 SAY " Participantes: Vivos:    Falecidos:    Dependentes:"
+@ l_s+17,c_s+1 SAY " email:                                             "
+@ l_s+18,c_s+1 SAY " Ult.Altera‡„o:                       Ult.Impress„o:"
 RETU
 
 PROC GRU_gets     // mostra variaveis do arquivo GRUPOS
@@ -337,7 +329,9 @@ GRU_TELA()
 SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
 PTAB('',[ARQGRUP],1)
 PTAB(TIPCONT,'CLASSES',1)
+PTAB(VENDEDOR,'COBRADOR',1)
 PTAB(REGIAO,'REGIAO',1)
+PTAB(COBRADOR,'COBRADOR',1)
 PTAB(IIF(CLASSES->PRIOR=[S],M->MGRUPVIP,GRUPO)+ULTCIRC,'CIRCULAR',1)
 CRIT("",,"2|3|6|9|10|11|12|13")
 @ l_s+01 ,c_s+10 GET  codigo;
@@ -364,94 +358,89 @@ CRIT("",,"2|3|6|9|10|11|12|13")
 @ l_s+04 ,c_s+53 GET  rg;
                  PICT sistema[op_sis,O_CAMPO,08,O_MASC]
 
-@ l_s+05 ,c_s+10 GET  cep;
-                 PICT sistema[op_sis,O_CAMPO,13,O_MASC]
-
-@ l_s+05 ,c_s+32 GET  endereco;
+@ l_s+05 ,c_s+10 GET  endereco;
                  PICT sistema[op_sis,O_CAMPO,09,O_MASC]
 
-@ l_s+06 ,c_s+10 GET  bairro;
+@ l_s+05 ,c_s+53 GET  bairro;
                  PICT sistema[op_sis,O_CAMPO,10,O_MASC]
 
-@ l_s+06 ,c_s+48 GET  complem;
-                 PICT sistema[op_sis,O_CAMPO,55,O_MASC]
-
-@ l_s+07 ,c_s+10 GET  cidade;
+@ l_s+06 ,c_s+10 GET  cidade;
                  PICT sistema[op_sis,O_CAMPO,11,O_MASC]
 
-@ l_s+07 ,c_s+41 GET  uf;
+@ l_s+06 ,c_s+41 GET  uf;
                  PICT sistema[op_sis,O_CAMPO,12,O_MASC]
 
-@ l_s+08 ,c_s+10 GET  natural;
+@ l_s+06 ,c_s+53 GET  cep;
+                 PICT sistema[op_sis,O_CAMPO,13,O_MASC]
+
+@ l_s+07 ,c_s+10 GET  natural;
                  PICT sistema[op_sis,O_CAMPO,14,O_MASC]
 
-@ l_s+08 ,c_s+43 GET  relig;
+@ l_s+07 ,c_s+43 GET  relig;
                  PICT sistema[op_sis,O_CAMPO,15,O_MASC]
 
-@ l_s+09 ,c_s+10 GET  contato;
+@ l_s+08 ,c_s+10 GET  contato;
                  PICT sistema[op_sis,O_CAMPO,16,O_MASC]
 
-@ l_s+09 ,c_s+41 GET  telefone;
+@ l_s+08 ,c_s+41 GET  telefone;
                  PICT sistema[op_sis,O_CAMPO,17,O_MASC]
 
-@ l_s+10 ,c_s+12 GET  tipcont;
+@ l_s+09 ,c_s+12 GET  tipcont;
                  PICT sistema[op_sis,O_CAMPO,18,O_MASC]
 
-@ l_s+10 ,c_s+23 GET  vlcarne
+@ l_s+09 ,c_s+23 GET  vlcarne
 
-@ l_s+10 ,c_s+36 GET  formapgto;
+@ l_s+09 ,c_s+36 GET  formapgto;
                  PICT sistema[op_sis,O_CAMPO,20,O_MASC]
                  CRIT(sistema[op_sis,O_CAMPO,20,O_CRIT],,"15")
 
-@ l_s+11 ,c_s+12 GET  admissao;
+@ l_s+10 ,c_s+12 GET  admissao;
                  PICT sistema[op_sis,O_CAMPO,22,O_MASC]
 
-@ l_s+11 ,c_s+36 GET  tcarencia;
+@ l_s+10 ,c_s+36 GET  tcarencia;
                  PICT sistema[op_sis,O_CAMPO,23,O_MASC]
 
-@ l_s+11 ,c_s+61 GET  saitxa;
+@ l_s+10 ,c_s+61 GET  saitxa;
                  PICT sistema[op_sis,O_CAMPO,24,O_MASC]
 
-@ l_s+12 ,c_s+61 GET  diapgto;
+@ l_s+11 ,c_s+61 GET  diapgto;
                  PICT sistema[op_sis,O_CAMPO,25,O_MASC]
 
-@ l_s+12 ,c_s+12 GET  vendedor;
+@ l_s+11 ,c_s+12 GET  vendedor;
                  PICT sistema[op_sis,O_CAMPO,26,O_MASC]
 
-@ l_s+13 ,c_s+12 GET  regiao;
+@ l_s+12 ,c_s+12 GET  regiao;
                  PICT sistema[op_sis,O_CAMPO,27,O_MASC]
                  CRIT(sistema[op_sis,O_CAMPO,27,O_CRIT],,"7")
 
-@ l_s+14 ,c_s+12 GET  cobrador;
+@ l_s+13 ,c_s+12 GET  cobrador;
                  PICT sistema[op_sis,O_CAMPO,28,O_MASC]
+                 CRIT(sistema[op_sis,O_CAMPO,28,O_CRIT],,"4|5")
 
-@ l_s+13 ,c_s+61 SAY "{M} "
+@ l_s+12 ,c_s+61 SAY "{M} "
 
-@ l_s+14 ,c_s+61 GET  renovar;
+@ l_s+13 ,c_s+61 GET  renovar;
                  PICT sistema[op_sis,O_CAMPO,30,O_MASC]
 
-@ l_s+15 ,c_s+12 GET  funerais;
+@ l_s+14 ,c_s+12 GET  funerais;
                  PICT sistema[op_sis,O_CAMPO,31,O_MASC]
 
-@ l_s+15 ,c_s+29 GET  circinic;
+@ l_s+14 ,c_s+29 GET  circinic;
                  PICT sistema[op_sis,O_CAMPO,32,O_MASC]
 
-@ l_s+15 ,c_s+41 GET  ultcirc;
+@ l_s+14 ,c_s+41 GET  ultcirc;
                  PICT sistema[op_sis,O_CAMPO,33,O_MASC]
 
-@ l_s+15 ,c_s+54 GET  qtcircs;
+@ l_s+14 ,c_s+54 GET  qtcircs;
                  PICT sistema[op_sis,O_CAMPO,34,O_MASC]
 
-@ l_s+15 ,c_s+65 GET  qtcircpg;
+@ l_s+14 ,c_s+65 GET  qtcircpg;
                  PICT sistema[op_sis,O_CAMPO,35,O_MASC]
 
-@ l_s+16 ,c_s+16 GET  atend1;
+@ l_s+15 ,c_s+16 GET  atend1;
                  PICT sistema[op_sis,O_CAMPO,45,O_MASC]
 
-@ l_s+16 ,c_s+41 GET  atend2;
-                 PICT sistema[op_sis,O_CAMPO,46,O_MASC]
-
-@ l_s+18 ,c_s+16 GET  email;
+@ l_s+17 ,c_s+16 GET  email;
                  PICT sistema[op_sis,O_CAMPO,50,O_MASC]
 
 CLEAR GETS
@@ -496,129 +485,116 @@ IF tp_mov=INCLUI
                    PICT sistema[op_sis,O_CAMPO,08,O_MASC]
                    DEFINICAO 8
 
-  @ l_s+05 ,c_s+10 GET  cep;
-                   PICT sistema[op_sis,O_CAMPO,13,O_MASC]
-                   DEFINICAO 13
-
-  @ l_s+05 ,c_s+32 GET  endereco;
+  @ l_s+05 ,c_s+10 GET  endereco;
                    PICT sistema[op_sis,O_CAMPO,09,O_MASC]
                    DEFINICAO 9
 
-  @ l_s+06 ,c_s+10 GET  bairro;
+  @ l_s+05 ,c_s+53 GET  bairro;
                    PICT sistema[op_sis,O_CAMPO,10,O_MASC]
                    DEFINICAO 10
 
-  @ l_s+06 ,c_s+48 GET  complem;
-                   PICT sistema[op_sis,O_CAMPO,55,O_MASC]
-                   DEFINICAO 55
-
-  @ l_s+07 ,c_s+10 GET  cidade;
+  @ l_s+06 ,c_s+10 GET  cidade;
                    PICT sistema[op_sis,O_CAMPO,11,O_MASC]
                    DEFINICAO 11
 
-  @ l_s+07 ,c_s+41 GET  uf;
+  @ l_s+06 ,c_s+41 GET  uf;
                    PICT sistema[op_sis,O_CAMPO,12,O_MASC]
                    DEFINICAO 12
 
+  @ l_s+06 ,c_s+53 GET  cep;
+                   PICT sistema[op_sis,O_CAMPO,13,O_MASC]
+                   DEFINICAO 13
 
-  @ l_s+08 ,c_s+10 GET  natural;
+  @ l_s+07 ,c_s+10 GET  natural;
                    PICT sistema[op_sis,O_CAMPO,14,O_MASC]
                    DEFINICAO 14
 
-  @ l_s+08 ,c_s+43 GET  relig;
+  @ l_s+07 ,c_s+43 GET  relig;
                    PICT sistema[op_sis,O_CAMPO,15,O_MASC]
                    DEFINICAO 15
 
-  @ l_s+09 ,c_s+10 GET  contato;
+  @ l_s+08 ,c_s+10 GET  contato;
                    PICT sistema[op_sis,O_CAMPO,16,O_MASC]
                    DEFINICAO 16
 
-  @ l_s+09 ,c_s+41 GET  telefone;
+  @ l_s+08 ,c_s+41 GET  telefone;
                    PICT sistema[op_sis,O_CAMPO,17,O_MASC]
                    DEFINICAO 17
 
-  @ l_s+10 ,c_s+12 GET  tipcont;
+  @ l_s+09 ,c_s+12 GET  tipcont;
                    PICT sistema[op_sis,O_CAMPO,18,O_MASC]
                    DEFINICAO 18
 
-  @ l_s+10 ,c_s+23 GET  vlcarne
+  @ l_s+09 ,c_s+23 GET  vlcarne
                    DEFINICAO 19
 
-  @ l_s+10 ,c_s+36 GET  formapgto;
+  @ l_s+09 ,c_s+36 GET  formapgto;
                    PICT sistema[op_sis,O_CAMPO,20,O_MASC]
                    DEFINICAO 20
                    MOSTRA sistema[op_sis,O_FORMULA,15]
 
-  @ l_s+11 ,c_s+12 GET  admissao;
+  @ l_s+10 ,c_s+12 GET  admissao;
                    PICT sistema[op_sis,O_CAMPO,22,O_MASC]
                    DEFINICAO 22
 
-  @ l_s+11 ,c_s+36 GET  tcarencia;
+  @ l_s+10 ,c_s+36 GET  tcarencia;
                    PICT sistema[op_sis,O_CAMPO,23,O_MASC]
                    DEFINICAO 23
 
-  @ l_s+11 ,c_s+61 GET  saitxa;
+  @ l_s+10 ,c_s+61 GET  saitxa;
                    PICT sistema[op_sis,O_CAMPO,24,O_MASC]
                    DEFINICAO 24
 
-  @ l_s+12 ,c_s+61 GET  diapgto;
+  @ l_s+11 ,c_s+61 GET  diapgto;
                    PICT sistema[op_sis,O_CAMPO,25,O_MASC]
                    DEFINICAO 25
 
-  @ l_s+12 ,c_s+12 GET  vendedor;
+  @ l_s+11 ,c_s+12 GET  vendedor;
                    PICT sistema[op_sis,O_CAMPO,26,O_MASC]
                    DEFINICAO 26
 
-	@ l_s+13 ,c_s+12 GET  regiao;
-									 PICT sistema[op_sis,O_CAMPO,27,O_MASC]
-									 DEFINICAO 27
-									 MOSTRA sistema[op_sis,O_FORMULA,7]
+  @ l_s+12 ,c_s+12 GET  regiao;
+                   PICT sistema[op_sis,O_CAMPO,27,O_MASC]
+                   DEFINICAO 27
+                   MOSTRA sistema[op_sis,O_FORMULA,7]
 
-	@ l_s+14 ,c_s+12 GET  cobrador;
-									 PICT sistema[op_sis,O_CAMPO,28,O_MASC]
-									 DEFINICAO 28
-									 MOSTRA sistema[op_sis,O_FORMULA,04]
+  @ l_s+13 ,c_s+12 GET  cobrador;
+                   PICT sistema[op_sis,O_CAMPO,28,O_MASC]
+                   DEFINICAO 28
+                   MOSTRA sistema[op_sis,O_FORMULA,4]
+                   MOSTRA sistema[op_sis,O_FORMULA,5]
 
-	@ l_s+13 ,c_s+61 GET  memo29;
+  @ l_s+12 ,c_s+61 GET  memo29;
                    PICT "@!"
                    DEFINICAO 29
 
-  @ l_s+14 ,c_s+61 GET  renovar;
+  @ l_s+13 ,c_s+61 GET  renovar;
                    PICT sistema[op_sis,O_CAMPO,30,O_MASC]
                    DEFINICAO 30
 
-  @ l_s+15 ,c_s+12 GET  funerais;
+  @ l_s+14 ,c_s+12 GET  funerais;
                    PICT sistema[op_sis,O_CAMPO,31,O_MASC]
                    DEFINICAO 31
 
-  @ l_s+15 ,c_s+29 GET  circinic;
+  @ l_s+14 ,c_s+29 GET  circinic;
                    PICT sistema[op_sis,O_CAMPO,32,O_MASC]
                    DEFINICAO 32
 
-  @ l_s+15 ,c_s+41 GET  ultcirc;
+  @ l_s+14 ,c_s+41 GET  ultcirc;
                    PICT sistema[op_sis,O_CAMPO,33,O_MASC]
                    DEFINICAO 33
 
-  @ l_s+15 ,c_s+54 GET  qtcircs;
+  @ l_s+14 ,c_s+54 GET  qtcircs;
                    PICT sistema[op_sis,O_CAMPO,34,O_MASC]
                    DEFINICAO 34
 
-  @ l_s+15 ,c_s+65 GET  qtcircpg;
+  @ l_s+14 ,c_s+65 GET  qtcircpg;
                    PICT sistema[op_sis,O_CAMPO,35,O_MASC]
                    DEFINICAO 35
 
-  @ l_s+16 ,c_s+16 GET  atend1;
+  @ l_s+15 ,c_s+16 GET  atend1;
                    PICT sistema[op_sis,O_CAMPO,45,O_MASC]
                    DEFINICAO 45
-
-  @ l_s+16 ,c_s+41 GET  atend2;
-                   PICT sistema[op_sis,O_CAMPO,46,O_MASC]
-                   DEFINICAO 46
-
-  @ l_s+18 ,c_s+16 GET  email;
-                   PICT sistema[op_sis,O_CAMPO,50,O_MASC]
-                   DEFINICAO 50
-
   READ
   SETKEY(K_F7,t_f7_)
   SET KEY K_ALT_F8 TO
@@ -636,6 +612,7 @@ IF tp_mov=INCLUI
 ENDI
 PTAB('',[ARQGRUP],1)
 PTAB(TIPCONT,'CLASSES',1)
+PTAB(VENDEDOR,'COBRADOR',1)
 PTAB(REGIAO,'REGIAO',1)
 PTAB(COBRADOR,'COBRADOR',1)
 PTAB(IIF(CLASSES->PRIOR=[S],M->MGRUPVIP,GRUPO)+ULTCIRC,'CIRCULAR',1)
@@ -649,10 +626,7 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
 
  INTREF(FORM_INVERSA)
  IF !EMPTY(ALIAS())
-    POE_NO_LOG(tp_mov)
- IF !EMPTY(ALIAS())
   DELE
- ENDI
  ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
  IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
@@ -683,7 +657,6 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
    ENDI
   #endi
 
-  POE_NO_LOG(tp_mov)
   IF op_menu!=INCLUSAO
    RECA
    INTREF(FORM_DIRETA)
@@ -694,7 +667,7 @@ RETU
 
 PROC GRU_MEMO
 IF READVAR()="MEMO29"
- EDIMEMO("obs",sistema[op_sis,O_CAMPO,29,O_TITU],14,2,23,63)
+ EDIMEMO("obs",sistema[op_sis,O_CAMPO,29,O_TITU],14,2,23,38)
 ENDI
 RETU
 
@@ -735,7 +708,7 @@ DO WHIL cabem>0
  SELE TAXAS
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
-
+ 
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -744,7 +717,7 @@ DO WHIL cabem>0
   msg=FIEL(i)
   M->&msg.=IF((fgrep .OR. reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
  NEXT
-
+ 
  /*
     inicializa campos de relacionamentos do com os campos do arquivo
     superior (pai)
@@ -770,7 +743,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
-
+ 
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -1035,10 +1008,7 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
   #endi
 
   IF !EMPTY(ALIAS())
-    POE_NO_LOG(tp_mov)
- IF !EMPTY(ALIAS())
-  DELE
- ENDI
+   DELE
   ENDI
  ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
@@ -1090,8 +1060,7 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
      ENDI
     #endi
 
-  POE_NO_LOG(tp_mov)
-  IF op_menu!=INCLUSAO
+    IF op_menu!=INCLUSAO
      RECA
     ENDI
    ENDI
@@ -1131,7 +1100,7 @@ DO WHIL cabem>0
  SELE ECOB
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
-
+ 
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -1140,7 +1109,7 @@ DO WHIL cabem>0
   msg=FIEL(i)
   M->&msg.=IF((fgrep .OR. reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
  NEXT
-
+ 
  /*
     inicializa campos de relacionamentos do com os campos do arquivo
     superior (pai)
@@ -1170,7 +1139,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
-
+ 
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -1407,10 +1376,7 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
  #endi
 
  IF !EMPTY(ALIAS())
-    POE_NO_LOG(tp_mov)
- IF !EMPTY(ALIAS())
   DELE
- ENDI
  ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
  IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
@@ -1431,8 +1397,7 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
       REPL flag_excl WITH ' '
      ENDI
     ENDI
-  POE_NO_LOG(tp_mov)
-  IF op_menu!=INCLUSAO
+   IF op_menu!=INCLUSAO
     RECA
    ENDI
   ENDI
@@ -1471,7 +1436,7 @@ DO WHIL cabem>0
  SELE INSCRITS
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
-
+ 
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -1480,7 +1445,7 @@ DO WHIL cabem>0
   msg=FIEL(i)
   M->&msg.=IF((fgrep .OR. reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
  NEXT
-
+ 
  /*
     inicializa campos de relacionamentos do com os campos do arquivo
     superior (pai)
@@ -1805,10 +1770,7 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
  #endi
 
  IF !EMPTY(ALIAS())
-    POE_NO_LOG(tp_mov)
- IF !EMPTY(ALIAS())
   DELE
- ENDI
  ENDI
  IF op_menu!=PROJECOES .AND. op_menu!=TEL_EXTRA
   REIMPTEL()
@@ -1873,8 +1835,7 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
     ENDI
    #endi
 
-  POE_NO_LOG(tp_mov)
-  IF op_menu!=INCLUSAO
+   IF op_menu!=INCLUSAO
     RECA
    ENDI
    IF (tp_mov=INCLUI .OR. tp_mov=RECUPERA) .AND. op_menu!=PROJECOES .AND. op_menu!=TEL_EXTRA
@@ -1885,330 +1846,5 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
 ENDI
 RETU
 
-PROC ADE_incl(reg_cop)  // inclusao no arquivo ADENDOS
-LOCAL getlist:={}, cabem:=1, rep:=ARRAY(FCOU()), ult_reg:=RECN(),;
-      ctl_r, ctl_c, t_f3_, t_f4_, l_max, dele_atu:=SET(_SET_DELETED,.f.)
-PRIV op_menu:=INCLUSAO, op_sis, l_s, c_s, l_i, c_i, cod_sos, tem_borda, criterio:="", cpord:="", l_a
-op_sis=EVAL(qualsis,"ADENDOS")
-IF AT("D",exrot[op_sis])>0
- RETU
-ENDI
-FOR i=1 TO FCOU()                                  // cria/declara privadas as
- msg=FIEL(i)                                       // variaveis de memoria com
- PRIV &msg.                                        // o mesmo nome dos campos
-NEXT                                               // do arquivo
-IF reg_cop!=NIL                                    // quer repetir todo o reg atual
- FOR i=1 TO FCOU()                                 // para cada campo,
-  msg=FIEL(i)                                      // salva o conteudo
-  rep[i]=&msg.                                     // para repetir
- NEXT
-ELSE
- AFILL(rep,"")                                     // eche com valor vazio
-ENDI
-t_f3_=SETKEY(K_F3,{||rep()})                       // repeticao reg anterior
-t_f4_=SETKEY(K_F4,{||conf()})                      // confirma campos com ENTER
-ctl_w=SETKEY(K_CTRL_W,{||nadafaz()})               // enganando o CA-Clipper...
-ctl_c=SETKEY(K_CTRL_C,{||nadafaz()})
-ctl_r=SETKEY(K_CTRL_R,{||nadafaz()})
-DISPBEGIN()                                        // monta tela na pagina de traz
-IMPRELA()                                          // imp telas do pai
-ADE_TELA()                                         // imp tela para inclusao
-INFOSIS(.t.)                                       // exibe informacao no rodape' da tela
-l_a=Sistema[op_sis,O_TELA,O_SCROLL]
-DISPEND()                                          // apresenta tela de uma vez so
-DO WHIL cabem>0
- cod_sos=6
- rola_t=.f.                                        // flag se quer rolar a tela
- SELE ADENDOS
- GO BOTT                                           // forca o
- SKIP                                              // final do arquivo
- 
- /*
-    cria variaveis de memoria identicas as de arquivo, para inclusao
-    de registros
- */
- FOR i=1 TO FCOU()
-  msg=FIEL(i)
-  M->&msg.=IF((fgrep .OR. reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
- NEXT
- 
- /*
-    inicializa campos de relacionamentos do com os campos do arquivo
-    superior (pai)
- */
- FOR i=1 TO LEN(sistema[op_sis,O_CPRELA])
-  msg=FIEL(VAL(SUBS(sistema[op_sis,O_ORDEM,1],i*2-1,2)))
-  M->&msg.=&(sistema[op_sis,O_CPRELA,i])
- NEXT
- cabem=DISKSPACE(;
-          IF(;
-             LEN(sistema[op_sis,O_ARQUI,O_DIR_DBF])<2.OR.sistema[op_sis,O_ARQUI,O_DIR_DBF]="\",;
-             0,;
-             ASC(sistema[op_sis,O_ARQUI,O_DIR_DBF])-64;
-          );
-       )
- cabem=INT((cabem-2048)/ADENDOS->(RECSIZE()))
- IF cabem<1                                        // mais nenhum!!!
-  ALERTA()
-  msg="Verifique ESPA€O EM DISCO, "+usuario
-  DBOX(msg,,,,,"INCLUSŽO INTERROMPIDA!")           // vamos parar por aqui!
-  EXIT
- ENDI
- M->idxd=calc_idx()
- M->idxm=calc_idx()
- SELE 0                                            // torna visiveis variaveis de memoria
- SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
- SET KEY K_ALT_F8 TO ROLATELA
- 
- /*
-    recebe chaves do arquivo de indice basico
- */
- @ l_s+l_a,c_s+02 GET  codproduto;
-                  PICT sistema[op_sis,O_CAMPO,02,O_MASC]
-                  DEFINICAO 2
-                  MOSTRA sistema[op_sis,O_FORMULA,1]
-
- READ
- SET KEY K_ALT_F8 TO
- IF rola_t
-  ROLATELA()
-  LOOP
- ENDI
- SELE ADENDOS
- IF LASTKEY()=K_ESC                                // cancelou ou chave em branco
-  cabem=0                                          // prepara saida da inclusao
-  LOOP                                             // volta p/ menu de cadastramento
- ENDI
- SEEK M->codigo+M->codproduto
- aprov_reg_=(FOUND().AND.DELE().AND.!drvvisivel)   // vai aproveitar o registro?
- IF FOUND() .AND. !aprov_reg_                      // pesquisou e achou!
-  l_a=Sistema[op_sis,O_TELA,O_SCROLL]
-  op_menu=ALTERACAO                                // seta flag de ateracao
-  DISPBEGIN()
-  ADE_GETS()                                       // mostra conteudo do registro
-  INFOSIS(.f.)                                     // exibe informacao no rodape' da tela
-  DISPEND()
-  ALERTA()
-  msg="Consultar/alterar|Retornar … inclus„o"      // pergunta se deseja
-  op_=DBOX(msg,,,E_MENU,,"REGISTRO J EXISTE")     // alterar o registro
-  IF op_ =1                                        // caso afirmativo
-   EDIT()                                          // deixa alterar
-  ENDI
-  op_menu=INCLUSAO
-  DISPBEGIN()
-  ADE_TELA()
-  INFOSIS(.t.)                                     // exibe informacao no rodape' da tela
-  DISPEND()
-  LOOP                                             // volta para inclusao
- ENDI
- SELE 0
- ADE_GET1(INCLUI)                                  // recebe campos
- SELE ADENDOS
- IF LASTKEY()=K_ESC                                // se cancelou
-  ALERTA()                                         // avisa que o registro
-  DBOX("Registro n„o inclu¡do!",18,,1)             // nao foi incluido, e volta
-  LOOP
- ENDI
-
- #ifdef COM_REDE
-  GO BOTT                                          // vamos bloquear o final do
-  SKIP                                             // arq para que nehum outro
-  BLOREG(0,.5)                                     // usuario possa incluir
-  SEEK M->codigo+M->codproduto                     // se registro foi incluido
-  aprov_reg_=(FOUND().AND.DELE().AND.!drvvisivel)  // vai aproveitar o registro?
-  IF FOUND() .AND. !aprov_reg_                     // por outro usuario, entao
-   BLOREG(0,.5)
-   FOR i=1 TO FCOU()
-    msg=FIEL(i)
-    rep[i]=&msg.
-    REPL &msg. WITH M->&msg.
-   NEXT
-   ADE_GET1(FORM_INVERSA)                          // executa formula inversa
-   RECA
-   FOR i=1 TO FCOU()
-    msg=FIEL(i)
-    REPL &msg. WITH rep[i]
-   NEXT
-   ALERTA(4)                                       // beep 4 vezes
-   msg="Registro acabou de ser|inclu¡do por outro usu rio!"
-   DBOX(msg,,,,,"ATEN€ŽO!")                        // avisa
-   SELE ADENDOS
-   UNLOCK                                          // libera o registro
-   LOOP                                            // e recebe chave novamente
-  ENDI
- #endi
-
- IF aprov_reg_                                     // se vai aproveitar reg excluido
-
-  #ifdef COM_REDE
-   BLOREG(0,.5)
-  #endi
-
-  RECA                                             // excluido, vamos recupera-lo
- ELSE                                              // caso contrario
-  APPEND BLANK                                     // inclui reg em branco no dbf
- ENDI
- FOR i=1 TO FCOU()                                 // para cada campo,
-  msg=FIEL(i)                                      // salva o conteudo
-  rep[i]=M->&msg.                                  // para repetir
-  REPL &msg. WITH rep[i]                           // enche o campo do arquivo
- NEXT
-
- #ifdef COM_REDE
-  UNLOCK                                           // libera o registro e
-  COMMIT                                           // forca gravacao
- #else
-  IF RECC()-INT(RECC()/20)*20=0                    // a cada 20 registros
-   COMMIT                                          // digitados forca gravacao
-  ENDI
- #endi
-
- ult_reg=RECN()                                    // ultimo registro digitado
- l_max=l_s+Sistema[op_sis,O_TELA,O_SCROLL]+Sistema[op_sis,O_TELA,O_QTDE]
- IF l_s+l_a+1<l_max                                // se nao atingiu o fim da tela
-  l_a++                                            // digita na proxima linha
- ELSE                                              // se nao rola a campos para cima
-  SCROLL(l_s+Sistema[op_sis,O_TELA,O_SCROLL],c_s+02,l_max-1,c_s+05,1)
-  SCROLL(l_s+Sistema[op_sis,O_TELA,O_SCROLL],c_s+11,l_max-1,c_s+20,1)
-  SCROLL(l_s+Sistema[op_sis,O_TELA,O_SCROLL],c_s+24,l_max-1,c_s+53,1)
- ENDI
- IF reg_cop!=NIL                                   // estava na consulta e quis rep o campo
-  EXIT                                             // cai fora...
- ENDI
-ENDD
-GO ult_reg                                         // para o ultimo reg digitado
-SETKEY(K_F3,t_f3_)                                 // restaura teclas de funcoes
-SETKEY(K_F4,t_f4_)
-SET(_SET_DELETED,dele_atu)                            // ecluidos visiveis/invisiveis
-SETKEY(K_CTRL_W,ctl_w)
-SETKEY(K_CTRL_C,ctl_c)
-SETKEY(K_CTRL_R,ctl_r)
-RETU
-
-
-PROC ADE_tela     // tela do arquivo ADENDOS
-tem_borda=.t.
-l_s=Sistema[op_sis,O_TELA,O_LS]           // coordenadas da tela
-c_s=Sistema[op_sis,O_TELA,O_CS]
-l_i=Sistema[op_sis,O_TELA,O_LI]
-c_i=Sistema[op_sis,O_TELA,O_CI]
-SETCOLOR(drvtittel)
-vr_memo=NOVAPOSI(@l_s,@c_s,@l_i,@c_i)     // pega posicao atual da tela
-CAIXA(mold,l_s,c_s,l_i,c_i)               // monta caixa da tela
-i=LEN(sistema[op_sis,O_MENS])/2
-@ l_s,c_s-1+(c_i-c_s+1)/2-i SAY " "+MAIUSC(sistema[op_sis,O_MENS])+" "
-SETCOLOR(drvcortel)
-@ l_s+01,c_s+1 SAY " Produto³ Inclusao   ³ Item"
-@ l_s+02,c_s+1 SAY "ÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
-@ l_s+03,c_s+1 SAY "        ³            ³"
-@ l_s+04,c_s+1 SAY "        ³            ³"
-@ l_s+05,c_s+1 SAY "        ³            ³"
-@ l_s+06,c_s+1 SAY "        ³            ³"
-@ l_s+07,c_s+1 SAY "        ³            ³"
-@ l_s+08,c_s+1 SAY "        ³            ³"
-@ l_s+09,c_s+1 SAY "        ³            ³"
-RETU
-
-PROC ADE_gets     // mostra variaveis do arquivo ADENDOS
-LOCAL getlist := {}, l_max, reg_atual:=RECNO()
-PRIV  l_a:=Sistema[op_sis,O_TELA,O_SCROLL]
-ADE_TELA()
-l_max=l_s+Sistema[op_sis,O_TELA,O_SCROLL]+Sistema[op_sis,O_TELA,O_QTDE]
-SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
-DO WHILE !EOF() .AND. l_s+l_a<l_max .AND.;
-   &(INDEXKEY(0))=IF(EMPT(criterio),"","T")+chv_1
- PTAB(CODPRODUTO,'PRODUTOS',1)
- @ l_s+l_a,c_s+02 GET  codproduto;
-                  PICT sistema[op_sis,O_CAMPO,02,O_MASC]
-                  CRIT(sistema[op_sis,O_CAMPO,02,O_CRIT],,"1")
-
- @ l_s+l_a,c_s+11 GET  incluido_;
-                  PICT sistema[op_sis,O_CAMPO,03,O_MASC]
-
- SETCOLOR(drvcortel+","+drvcortel+",,,"+drvcortel)
- l_a++
- SKIP
-ENDD
-GO reg_atual
-SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
-CLEAR GETS
-RETU
-
-PROC ADE_get1(tp_mov, excl_rela)     // capta variaveis do arquivo ADENDOS
-LOCAL getlist := {}
-PRIV  blk_adendos:=.t.
-excl_rela=IF(excl_rela=NIL,.f.,excl_rela)
-IF tp_mov=INCLUI
- IF TYPE("l_a")!="N"
-  l_a=Sistema[op_sis,O_TELA,O_SCROLL]
- ENDI
- DO WHILE .t.
-  rola_t=.f.
-  SET KEY K_ALT_F8 TO ROLATELA
-  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
-  @ l_s+l_a,c_s+11 GET  incluido_;
-                   PICT sistema[op_sis,O_CAMPO,03,O_MASC]
-                   DEFINICAO 3
-
-  READ
-  SET KEY K_ALT_F8 TO
-  IF rola_t
-   ROLATELA()
-   LOOP
-  ENDI
-  IF LASTKEY()!=K_ESC .AND. drvincl .AND. op_menu=INCLUSAO
-   IF !CONFINCL()
-    LOOP
-   ENDI
-  ENDI
-  EXIT
- ENDD
-ENDI
-PTAB(CODPRODUTO,'PRODUTOS',1)
-IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
-
- #ifdef COM_REDE
-  IF !excl_rela
-   IF !EMPTY(ALIAS())
-    REPL flag_excl WITH '*'
-   ENDI
-  ENDI
- #else
-  IF !excl_rela
-   IF !EMPTY(ALIAS())
-    REPL flag_excl WITH '*'
-   ENDI
-  ENDI
- #endi
-
- IF !EMPTY(ALIAS())
-  DELE
- ENDI
-ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
- IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
-  IF tp_mov=RECUPERA .AND. op_menu!=INCLUSAO .AND. (GRUPOS->(DELE()))
-   msg="|"+sistema[EVAL(qualsis,"GRUPOS"),O_MENU]
-   ALERTA(2)
-   DBOX("Registro exclu¡do em:"+msg+"|*",,,,,"IMPOSS¡VEL RECUPERAR!")
-  ELSE
-    IF op_menu=INCLUSAO
-     idxm=calc_idx()
-    ELSE
-     REPL idxm WITH calc_idx()
-    ENDI
-    IF !excl_rela
-     IF op_menu=INCLUSAO
-      flag_excl=' '
-     ELSE
-      REPL flag_excl WITH ' '
-     ENDI
-    ENDI
-   IF op_menu!=INCLUSAO
-    RECA
-   ENDI
-  ENDI
- ENDI
-ENDI
-RETU
-
 * \\ Final de GRUPOS.PRG
+

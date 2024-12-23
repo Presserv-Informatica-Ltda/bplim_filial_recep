@@ -1,18 +1,16 @@
-// <ADRBIG> - <ADR_>
-procedure ADR_proc
+procedure adr_proc
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: ADR_PROC.PRG
- \ Data....: 25-06-21
- \ Sistema.: Sistema de Recepção
+ \ Data....: 29-01-04
+ \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Rotinas auxiliares
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
-
-#include "ADRBIG.ch"    // inicializa constantes manifestas
+*/
+#include "adrbig.ch"    // inicializa constantes manifestas
 
 PROC CBC1    // rotina para exibir pano de fundo
 DISPBEGIN()                            // monta tela no buffer
@@ -21,25 +19,12 @@ CAIXA(REPL(drvcara,9),0,0,MAXROW(),79)
 SETCOLOR(drvtitbox)
 CAIXA(mold,01,03,04,77)                // monta caixa da tela
 SETCOLOR(drvcorbox)
-@ 02,04 SAY "                                                              ,"
+@ 02,04 SAY "                                                            ,"
 @ 02,05 SAY nemp
 @ 03,05 SAY nsis
 @ 02,66 SAY DATE()
 @ 02,57 SAY NSEM(DATE())
 @ 03,53 SAY drvdbf
-SETCOLOR(drvtitbox)
-CAIXA(mold,13,37,21,77)                // monta caixa da tela
-SETCOLOR(drvcorbox)
-@ 14,38 SAY "    PresServ Inform tica Ltda. - ME"
-@ 15,38 SAY "     Rua Apparecida B.Boldrin, 221 "
-@ 16,38 SAY "     Limeira,SP  Tel:(19)99886.3225"
-@ 17,38 SAY "           presserv@gmail.com"
-@ 18,38 SAY "          REPRODU€ŽO PROIBIDA"
-@ 19,38 SAY "            ÄÄÍÍÍ * * * ÍÍÍÄÄ"
-@ 20,38 SAY "  Usuario:"
-@ 20,49 SAY PADR(usuario,15)
-@ 20,70 SAY LEFT(TIME(),5)
-//POEHORA(20,70,5)
 DISPEND()                         // mostra tela que esta no buffer
 RETU
 
@@ -57,7 +42,7 @@ PROC AJMOUSE      // Rotina para ajuste da sensibilidade do mouse
   MOUSECUR(.t.)                               // acende o cursor do mouse
   DO WHIL tecl!=K_ESC .AND. tecl!=K_ENTER
    clic=MOUSEGET(@li,@co)                     // capta coordenadas atuais
-   tecl=INKEY()                              // verifica algo digitado
+   tecl=IN_KEY()                              // verifica algo digitado
    IF clic=1 .OR. tecl=80 .OR. tecl=112       // se clicado botao esquerdo ou 'P`
     press=(SECONDS()>tpo+1)                   // tempo maximo retido = 1s
     IF tpo=0 .OR. press                       // se 1o. click ou tempo esgotado
@@ -102,41 +87,7 @@ PROC AJMOUSE      // Rotina para ajuste da sensibilidade do mouse
 #endi
 RETU
 
-FUNC EMBARALHA(_lin)
-LOCAL ret_val:="", i, j, x, k
-x="17389280912340243"
-k=0
-FOR i=1 TO LEN(_lin)
- k++
- IF k>LEN(x)
-  k=1
- ENDI
- j=ASC(SUBS(_lin,i,1))+VAL(SUBS(x,k,1))
- IF j>255
-  j=j-255
- ENDI
- ret_val+=CHR(j)
-NEXT
-RETU ret_val
-
-FUNC DESEMBARALHA(_lin)
-LOCAL ret_val:="", i, j, x, k
-x="17389280912340243"
-k=0
-FOR i=1 TO LEN(_lin)
- k++
- IF k>LEN(x)
-  k=1
- ENDI
- j=ASC(SUBS(_lin,i,1))-VAL(SUBS(x,k,1))
- IF j<0
-  j=255+j
- ENDI
- ret_val+=CHR(j)
-NEXT
-RETU ret_val
-
-PROC BROWSE_REL(arq_, l_sup_, c_sup_,l_inf_, c_inf_,e_log)
+PROC BROWSE_REL(arq_, l_sup_, c_sup_,l_inf_, c_inf_)
 LOCAL cur_atual, cor_atual
 PRIV l_arq[l_inf_-l_sup_+1], maxlin_, area_, tablin_, fim_arq_, offset_ini,;
      offset_fim, lsup_:=l_sup_+1, csup_:=c_sup_+1,linf_:=l_inf_-1, t_w, t_r, ;
@@ -147,7 +98,6 @@ t_d:=SETKEY(K_CTRL_D,NIL)
 t_3:=SETKEY(K_F3,NIL);  t_4:=SETKEY(K_F4,NIL)        // desabilita teclas
 t_7:=SETKEY(K_F7,NIL);  t_9:=SETKEY(K_F9,NIL)        // de funcoes
 t_10:=SETKEY(K_F10,NIL)
-e_log=IF(e_log=NIL,.f.,e_log)
 IF AT(".",arq_)=0               // se o arquivo nao tiver extensao
  arq_+=".prn"                   // vamos forcar ".prn"
 ENDI
@@ -179,7 +129,7 @@ offset_ini:=offset_fim := 0     // inicializa ponteiros de inicio e
 tablin_ = 1                     // da area mostrada
 fim_arq_=FSEEK(area_,0,FS_END)  // tamanho do arquivo
 FSEEK(area_,0)                  // volta para o topo do arquivo
-MONTA_LIN(maxlin_,0,e_log)      // le/imprime as primeiras linhas
+MONTA_LIN(maxlin_,0)            // le/imprime as primeiras linhas
 offset_ini=0                    // reinicializa offset de inicio
 DO WHILE .t.
 
@@ -190,7 +140,7 @@ DO WHILE .t.
          )
  #else
 
-  tecl_p=INKEY(0)              // espera tecla ser digitada
+  tecl_p=IN_KEY(0)              // espera tecla ser digitada
 
  #endi
 
@@ -203,39 +153,37 @@ DO WHILE .t.
    EXIT
 
   CASE tecl_p=K_DOWN            // seta para baixo
-   MONTA_LIN(1,0,e_log)
+   MONTA_LIN(1,0)
 
   CASE tecl_p=K_UP              // seta para cima
-   MONTA_LIN(-1,0,e_log)
+   MONTA_LIN(-1,0)
 
   CASE tecl_p=K_CTRL_PGUP       // inicio do arquivo
    offset_ini:=offset_fim := 0
    AFILL(l_arq,"")
-   MONTA_LIN(maxlin_,0,e_log)
+   MONTA_LIN(maxlin_,0)
    offset_ini=0
 
   CASE tecl_p=K_CTRL_PGDN       // fim do arquivo
    offset_ini:=offset_fim := fim_arq_
    AFILL(l_arq,CHR(0))
    @ l_sup_+1,c_sup_+1 CLEAR TO l_inf_-1,c_inf_-1
-   MONTA_LIN(-1*(maxlin_),0,e_log)
+   MONTA_LIN(-1*(maxlin_),0)
 
   CASE tecl_p=K_RIGHT           // seta para direita
-   MONTA_LIN(0,10,e_log)
+   MONTA_LIN(0,10)
 
   CASE tecl_p=K_LEFT            // seta para esquerda
-   MONTA_LIN(0,-10,e_log)
+   MONTA_LIN(0,-10)
 
   CASE tecl_p=K_PGDN            // pagina para baixo
-   MONTA_LIN(maxlin_-1,0,e_log)
+   MONTA_LIN(maxlin_-1,0)
 
   CASE tecl_p=K_PGUP            // pagina cima/final do arquivo
-   MONTA_LIN(-1*(maxlin_-1),0,e_log)
+   MONTA_LIN(-1*(maxlin_-1),0)
 
   CASE tecl_p=73.OR.tecl_p=105  // impressao do relatorio
-   If !e_log
-    MONTA_IMP(cur_atual,e_log)
-   ENDI
+   MONTA_IMP(cur_atual)
 
  END CASE
 ENDD
@@ -251,36 +199,18 @@ SETCURSOR(cur_atual)            // restaura cursor
 SETCOLOR(cor_atual)             // e a cor
 RETU
 
-STATIC PROC MONTA_LIN(qtlin_,qttab_,e_log)  // le/imprime linhas do arquivo binario
+STATIC PROC MONTA_LIN(qtlin_,qttab_)  // le/imprime linhas do arquivo binario
 LOCAL t_, i_, x_, j_, lin_, buf_, tambuf_, ini_, fim_, qts_:=0,;
       tp_cmd:="pcomtcompc20tc20pelitelipenftenfpexptexppde8tde8landport"
 IF qtlin_!=0                           // quer le outras linhas?
  tambuf_=MIN(ABS(qtlin_)*2700,32000)   // buffer maximo do tamnho das linhas
  IF qtlin_<0 .AND. offset_ini>1        // quer voltar linhas e nao esta no topo
-  DO WHILE .t.
-   IF offset_ini<tambuf_                // se o tamanho buffer e maior do que
-    tambuf_=offset_ini                  // ja foi lido, ajusta seu tamanho
-   ENDI
-   FSEEK(area_,offset_ini-tambuf_)      // posiciona poteiro para a leitura
-   buffer_=SPAC(tambuf_)                // inicializa o buffer e
-   FREAD(area_,@buffer_,tambuf_)        // le o arquivo...
-   IF e_log
-    IF tambuf_=offset_ini
-     EXIT
-    ELSE
-     i_ = AT(CHR(13)+CHR(10),buffer_)
-     IF i_>0
-      t_ = AT(CHR(13)+CHR(10),SUBS(buffer_,i_+2))
-      IF t_>0
-       EXIT
-      ENDI
-     ENDI
-     tambuf_+=ABS(qtlin_)*270
-    ENDI
-   ELSE
-    EXIT
-   ENDI
-  ENDD
+  IF offset_ini<tambuf_                // se o tamanho buffer e maior do que
+   tambuf_=offset_ini                  // ja foi lido, ajusta seu tamanho
+  ENDI
+  FSEEK(area_,offset_ini-tambuf_)      // posiciona poteiro para a leitura
+  buffer_=SPAC(tambuf_)                // inicializa o buffer e
+  FREAD(area_,@buffer_,tambuf_)        // le o arquivo...
   buffer_=STRTRAN(buffer_,CHR(12)+CHR(13),CHR(13)+CHR(10))
   tambuf_++                            // incrementa tamanho do buffer
   buf_=tambuf_                         // salva tamanho original
@@ -295,11 +225,7 @@ IF qtlin_!=0                           // quer le outras linhas?
     ENDI                               // fim do arquivo (acresentando o CR+LF)
     AINS(l_arq,1)                      // insere um linha no top do arranjo
     i_=i_-tambuf_+1
-    IF e_log                           // se for do log esta encriptada
-     l_arq[1]=DESEMBARALHA(SUBS(buffer_,tambuf_,i_)) // inicializa a linha com a linha do arq
-    ELSE
-     l_arq[1]=SUBS(buffer_,tambuf_,i_) // inicializa a linha com a linha do arq
-    ENDI
+    l_arq[1]=SUBS(buffer_,tambuf_,i_)  // inicializa a linha com a linha do arq
     qts_--                             // qtde de linhas do scroll
    ELSE                                // se chegou no inicio do tamanho do
     EXIT                               // buffer lido, cai fora...
@@ -327,11 +253,7 @@ IF qtlin_!=0                           // quer le outras linhas?
      EXIT                              // nao tem mais linha para mostrar
     ENDI
    ELSE                                // caso contrario pega linha corrente
-    IF e_log                           // se for do log esta encriptada
-     l_arq[maxlin_]=DESEMBARALHA(PARSE(@buffer_,CHR(13)+CHR(10)))
-    ELSE
-     l_arq[maxlin_]=PARSE(@buffer_,CHR(13)+CHR(10))
-    ENDI
+    l_arq[maxlin_]=PARSE(@buffer_,CHR(13)+CHR(10))
     offset_fim+=LEN(l_arq[maxlin_])+2  // ajusta offset do fim da janela
    ENDI
   NEXT
@@ -351,22 +273,6 @@ IF qts_!=0                             // se leu alguma linha
  ini_=IF(qts_>0,maxlin_-qts_+1,1)      // inicio e fim das linhas
  fim_=IF(qts_>0,maxlin_,ABS(qts_))     // que foram lidas
  i_=cinf_-csup_+1                      // tamanho da janela
- IF e_log                              // quer ver o log
-  x=l_arq[1]                           // vamos colocar o cabeclho do dbf
-  msg_cab=""
-  db_=ALLTRIM(PARSE(@x,"¯"))           // nome do dbf
-  IF LEN(db_)>2                        // se tem dbf
-   k=PARSE(@x,"¯")                     // nome do usuario
-   k=PARSE(@x,"¯")                     // tipo da transacao
-   op_i=EVAL(qualsis,db_)              // subscricao do vetor sistema
-   msg_cab="ARQUIVO  ¯ USUARIO         ¯ TRANSACAO        DATA       HORA     "
-   FOR j=1 TO LEN(sistema[op_i,O_CAMPO])
-    k=PARSE(@x,"¯")                    // campo
-    msg_cab+="¯ "+PADR(sistema[op_i,O_CAMPO,j,O_TITU],LEN(k)-1)
-   NEXT
-  ENDI
-  @ lsup_+-1,csup_ SAY PADR(SUBS(msg_cab,tablin_,i_),i_)
- ENDI
  FOR t_=ini_ TO fim_                   // imprime linhas lidas
   lin_=l_arq[t_]
   IF !EMPTY(lin_).AND.!OK_PRINT(lin_)  // tem caraceter de controle?
@@ -387,11 +293,10 @@ ENDI
 buffer_=""
 RETU
 
-STATIC PROC MONTA_IMP(cur_atual,e_log)  // imprime arquivo
+STATIC PROC MONTA_IMP(cur_atual)  // imprime arquivo
 LOCAL pgini_, tp, g_off_ini, g_off_fim, qt_lido, buf_, ctpag_, lin_, t_
 SAVE SCREEN                                // salva tela
 SETCURSOR(cur_atual)                       // acende cursor
-e_log=IF(e_log=NIL,.f.,e_log)
 pgini_=DBOX("P gina inicial:",1,45,,NAO_APAGA,"IMPRIME ARQUIVO",1,"99999")
 SETCURSOR(0)                               // apaga cursor
 IF pgini_>0
@@ -424,11 +329,7 @@ IF pgini_>0
     buffer_=buf_+buffer_                   // soma o final do buffer anterior
     buf_=""                                // no buffer atual
     DO WHILE LEN(buffer_)>0                // imprime as linhas do buffer lido
-     IF e_log                              // se for do log esta encriptada
-      lin_=DESEMBARALHA(PARSE(@buffer_,CHR(13)+CHR(10))) // separa uma linha
-     ELSE
-      lin_=PARSE(@buffer_,CHR(13)+CHR(10))  // separa uma linha
-     ENDI
+     lin_=PARSE(@buffer_,CHR(13)+CHR(10))  // separa uma linha
      IF LEN(buffer_)>0 .OR. qt_lido<>10000 // se nao for a ultima do buffer
       IF ctpag_<pgini_                     // se esta pg nao podemos imprimir
        t_=AT(CHR(12)+CHR(13),lin_)         // verifica chr de salto de pg
@@ -437,7 +338,7 @@ IF pgini_>0
         lin_=SUBS(lin_,t_+2)               // pega a linha de inicio da pg
        ENDI
       ENDI
-      IF INKEY()=K_ESC                    // se quer cancelar
+      IF IN_KEY()=K_ESC                    // se quer cancelar
        IF canc()                           // pede confirmacao
         qt_lido=0                          // confirmou,
         EXIT                               // prepara para sair...
@@ -447,11 +348,7 @@ IF pgini_>0
        ? lin_                              // grava no dispositivo de imprissao
       ENDI
      ELSE                                  // fimal do buffer a linha pode
-      IF e_log                             // se for do log encriptada novamente
-       buf_=EMBARALHA(lin_)                // estar incompleta, salva o resto
-      ELSE
-       buf_=lin_                           // estar incompleta, salva o resto
-      ENDI
+      buf_=lin_                            // estar incompleta, salva o resto
      ENDI
     ENDD
    ENDD
@@ -891,7 +788,7 @@ SETKEY(K_F10,t_f10)                                          // reabilita F10
 RETU
 
 PROC INDTMP    // Cr¡a ¡ndices tempor rios
-LOCAL op_sis, ind_ok, ind_an, arqtmp, cur_atual:=SETCURSOR(0), chv_, p_ , x_, ind01, ind02, ind03, ind04, ind05, ind06, ind07, ind08
+LOCAL op_sis, ind_ok, ind_an, arqtmp, cur_atual:=SETCURSOR(0), chv_, p_ , x_, ind01, ind02, ind03, ind04
 op_sis=EVAL(qualsis,ALIAS())                   // subscricao do vetor sistema
 
 /*
@@ -901,9 +798,8 @@ op_sis=EVAL(qualsis,ALIAS())                   // subscricao do vetor sistema
 
 IF LEN(cpord)>1 .OR. !EMPT(criterio) .OR.;     // se tem ordenacao ou filtro
    INDEXORD()>LEN(sistema[op_sis,O_CHAVE])     // ou esta usando indice temporario
-// arqtmp=drvntx+LEFT(ALIAS(),3)+ide_maq+EXTENSAO()                     // nome arquivo ntx temporario
-arqtmp=LEFT(ALIAS(),3)+ide_maq   // nome TAG temporario
-
+ arqtmp=drvntx+LEFT(ALIAS(),3)+;
+        ide_maq+EXTENSAO()                     // nome arquivo ntx temporario
  ind_ok=0
  nord:=juncao_ := ""
  IF !EMPT(criterio)                            // tem filtro?
@@ -943,10 +839,8 @@ arqtmp=LEFT(ALIAS(),3)+ide_maq   // nome TAG temporario
   ind_t=SAVESCREEN(0,0,MAXROW(),79)            // sava tela e da msg
   ind_ok=qt_ind+1                           // ordem do indice a usar
   POE_GAUGE("Criando ¡ndice tempor rio")
-  INDE ON &nord. TAG (arqtmp) EVAL odometer() EVERY 50 ADDITIVE MEMORY // indexando... VERIFICAR
+  INDE ON &nord. TO (arqtmp) EVAL POE_GAUGE() EVERY (LASTREC()/20) // indexando...
   RESTSCREEN(0,0,MAXROW(),79,ind_t)
-  ind01=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,1]
-/*
   ind01=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,1]
   IF qt_ind=1
    SET INDE TO (ind01), (arqtmp)
@@ -962,31 +856,10 @@ arqtmp=LEFT(ALIAS(),3)+ide_maq   // nome TAG temporario
      ind04=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,4]
      IF qt_ind=4
       SET INDE TO (ind01), (ind02), (ind03), (ind04), (arqtmp)
-     ELSE
-      ind05=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,5]
-      IF qt_ind=5
-       SET INDE TO (ind01), (ind02), (ind03), (ind04), (ind05), (arqtmp)
-      ELSE
-       ind06=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,6]
-       IF qt_ind=6
-        SET INDE TO (ind01), (ind02), (ind03), (ind04), (ind05), (ind06), (arqtmp)
-       ELSE
-        ind07=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,7]
-        IF qt_ind=7
-         SET INDE TO (ind01), (ind02), (ind03), (ind04), (ind05), (ind06), (ind07), (arqtmp)
-        ELSE
-         ind08=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,8]
-         IF qt_ind=8
-          SET INDE TO (ind01), (ind02), (ind03), (ind04), (ind05), (ind06), (ind07), (ind08), (arqtmp)
-         ENDI
-        ENDI
-       ENDI
-      ENDI
      ENDI
     ENDI
    ENDI
   ENDI
-*/
  ENDI
  DBSETORDER(ind_ok)                            // usa a ordem apropriada
  REGINICIO()                                   // verifica se reg esta' no filtro
@@ -1554,14 +1427,14 @@ DO WHIL .t.
    ENDI
    novapos=.t.
    KEYB CHR(77)            // coloca "M" no buffer para
-   tecl_p=INKEY(0)        // fazer lastkey() != de ESC
+   tecl_p=IN_KEY(0)        // fazer lastkey() != de ESC
   ENDI
  #else
 
   #ifdef COM_REDE
-   tecl_p=INKEY(drvtempo)  // faz "refresh" da tela a cada drvtempo seg
+   tecl_p=IN_KEY(drvtempo)  // faz "refresh" da tela a cada drvtempo seg
   #else
-   tecl_p=INKEY(0)         // aguarda usuario teclar algo
+   tecl_p=IN_KEY(0)         // aguarda usuario teclar algo
   #endi
 
  #endi
@@ -1586,16 +1459,6 @@ DO WHIL .t.
   IF MOV_PTR(-1*sistema[op_sis,O_TELA,O_QTDE])=0
    ALERTA(2)                              // encontrado o inicio do
    DBOX("* INICIO DO ARQUIVO *",15,,1)    // arquivo, vamos avisar
-  ENDI
- ELSEIF tecl_p=K_PGDN .AND.;              // PgDn p/ proxima tela
-        sistema[op_sis,O_TELA,O_DEF]>1
-  IF sistema[op_sis,O_TELA,O_ATUAL]<sistema[op_sis,O_TELA,O_DEF]
-   sistema[op_sis,O_TELA,O_ATUAL]++
-  ENDI
- ELSEIF tecl_p=K_PGUP .AND.;              // PgDn p/ tela anterior
-        sistema[op_sis,O_TELA,O_DEF]>1
-  IF sistema[op_sis,O_TELA,O_ATUAL]>1
-   sistema[op_sis,O_TELA,O_ATUAL]--
   ENDI
  ELSEIF tecl_p=K_ESC                      // cancelou
   EXIT
@@ -1693,7 +1556,7 @@ DO WHIL .t.
    ENDI
 
   CASE op_edic="A"                        // registro anterior
-
+   
    /*
       se inicio de arquivo ou, se ha filtro e nao atende, nao retrocede
       senao, retrocede um registro por vez
@@ -1841,9 +1704,8 @@ SETKEY(K_CTRL_C,t_c)
 RETU
 
 PROC REGINICIO()   // posiciona no 1 reg do filtro
-//IF &(INDEXKEY(0))!=IF(EMPT(criterio),"","T")+chv_1 // esta fora do filtro/relacao
-IF &(ORDKEY(INDEXORD()))!=IF(EMPT(criterio),"","T")+chv_1 // esta fora do filtro/relacao INI_ARQ()                                         // forca inicio do arquivo
- INI_ARQ()
+IF &(INDEXKEY(0))!=IF(EMPT(criterio),"","T")+chv_1 // esta fora do filtro/relacao
+ INI_ARQ()                                         // forca inicio do arquivo
 ENDI
 RETU
 
@@ -1883,9 +1745,9 @@ DO WHILE LEN(sistema[op_sy_,O_CPRELA])>0    // se existir um pai...
  db_=LEFT(sistema[op_sy_,O_CPRELA,1],p_-3)  // pega o nome do pai e a
  dbf_pais="|"+db_+dbf_pais                  // todos os pais
  FOR i=1 TO LEN(sistema[op_sy_,O_CPRELA])   // chave de ligacao
-  chv_rela+="+"+TRANSCAMPO(.t.,SUBS(sistema[op_sy_,O_CPRELA,i],p_),i)
+  chv_rela+=TRANSCAMPO(.t.,SUBS(sistema[op_sy_,O_CPRELA,i],p_),i)
  NEXT
- PTAB(SUBS(chv_rela,2),db_,1)               // abre/relaciona o pai
+ PTAB(chv_rela,db_,1)                       // abre/relaciona o pai
  op_sy_=EVAL(qualsis,db_)                   // sera que tem avo?...
 ENDD
 dbf_pais=SUBS(dbf_pais,2)                   // ajusta var com nome dos pais
@@ -2052,13 +1914,9 @@ IF op_o>0
     DBOX("Aguarde! ESC cancela",,,,NAO_APAGA)
    ELSEIF brw                                         // se veio da EDITA()
     CBC1()
-    IF sistema[op_sis,O_TELA,O_DEF]>1                 // se o subsistema tem
-     SET KEY K_CTRL_R TO tela_ant                     // mais de uma tela,
-     SET KEY K_CTRL_C TO tela_seg                     // habilita PGDN e PGUP
-    ENDI
    ENDI
    INI_ARQ()                                          // posiciona no inicio do arquivo
-   DO WHIL !EOF() .AND. INKEY()!=K_ESC               // correndo o arquivo
+   DO WHIL !EOF() .AND. IN_KEY()!=K_ESC               // correndo o arquivo
 
     IF cf_                                            // se metodo confirmado
      DISPBEGIN()
@@ -2068,13 +1926,8 @@ IF op_o>0
      &getsx.()                                        // conteudo do registro
      DISPEND()
      ALERTA(1)                                        // beep!
-     volta=0
      msg=mglob+"|N„o "+mglob+"|Cessa confirma‡„o|Cancela"
      op_g=DBOX(msg,0,2,E_MENU,,,,"SELECIONE",2)       // oferece confirmacao
-     IF volta>0                                       // volta>0 significa que
-      sistema[op_sis,O_TELA,O_ATUAL]++                // teclou PGDN ou PGUP
-      LOOP                                            // incrementa tela e sobe
-     ENDI
      IF op_g=0 .OR. op_g=4                            // cancelou
       EXIT
      ENDI
@@ -2130,19 +1983,7 @@ IF op_o>0
      EXIT                                             // acabou o processo global
     ENDI
    ENDD
-   IF op_menu=PROJECOES                               // se veio da EDITA() ve
-    IF sistema[op_sis,O_TELA,O_DEF]>1                 // se o subsistema tem
-     SET KEY K_CTRL_R TO                              // mais de uma tela para
-     SET KEY K_CTRL_C TO                              // desabilita PGDN e PGUP
-    ENDI
-   ENDI
    RESTSCREEN(0,0,MAXROW(),79,t_glob)                 // restaura tela
-   DISPBEGIN()                                        // escreve sem mostrar
-   IF LEN(sistema[op_sis,O_DBRELA])>0                 // se tem filho
-    IMPRELA()                                         // vamos mostra-lo
-   ENDI
-   &getsx.()                                          // conteudo do registro
-   DISPEND()                                          // mostra o que escreveu
   ENDI
  ENDI
 ENDI
@@ -2233,7 +2074,7 @@ SAVE SCREEN                          // salva tela
 arq_=ARQGER()                        // pega nome do arquivo
 IF !EMPTY(arq_)                      // se cancelou ou nao informou
  cod_sos=1
- BROWSE_REL(arq_,2,3,MAXROW()-2,78,.f.) // mostra o arquivo gravado
+ BROWSE_REL(arq_,2,3,MAXROW()-2,78)  // mostra o arquivo gravado
 ENDI
 REST SCREEN                          // restaura a tela
 SETCURSOR(cur_sor)                   // restabelece o cursor
@@ -2302,74 +2143,6 @@ RETU
 PROC NADAFAZ  // desativa ^W/PgUp/PgDn em inclusao
 RETU
 
-PROC VE_LOG()  // ve relatorio gravado em disco
-PRIV cod_sos, cur_sor
-IF nivelop<3        // se usuario nao autorizado,
- RETU               // cai fora..
-ENDI
-cur_sor=SETCURSOR(3)   // salva cursor/acende
-SAVE SCREEN            // salva tela
-cod_sos=1
-BROWSE_REL(arq_log,2,3,MAXROW()-2,78,.t.) // mostra o arquivo de log
-REST SCREEN                               // restaura a tela
-SETCURSOR(cur_sor)                        // restabelece o cursor
-RETU
-
-PROC POE_NO_LOG(tp_mov)  // coloca informacoes no log
-LOCAL i, estr_:={}, nc, j, x, db_:=sistema[op_sis,O_ARQUI,O_NOME] // nome do dbf
-t=FILEATTRIB(arq_log)                     // testa se existe/verif atributos
-IF !(t)                                   // arquivo nao existe
- area_=FCREATE(arq_log,1)                 // tenta criar o arquivo
-ELSE                                      // atributo errado
- RWRITE(arq_log)                          // torna o arquivo R/W
- area_=FOPEN(arq_log,1)                   // abre o arquivo
-ENDI
-IF area_>0                                // arquivo aberto beleza.
- buff=PADR(db_,8)+" ¯ "                   // comeca o log com o nome do dbf
- buff+=PADR(usuario,15)+" ¯ "             // nome do usuario
- IF tp_mov=INCLUI                         // esta incluindo/alterando
-  IF op_menu=INCLUSAO                     // e' inclusao
-   buff+="INCLUSAO         "              // coloca no log
-  ELSE
-   buff+="DEPOIS ALTERACAO "              // modificou o dbf
-  ENDI
- ELSEIF tp_mov=EXCLUI                     // excluindo registro
-  buff+="EXCLUSAO         "
- ELSEIF tp_mov=FORM_INVERSA               // formula inversa e feita
-  buff+="ANTES ALTERACAO  "               // antes da alteracao
- ELSEIF tp_mov=RECUPERA
-  buff+="RECUPERACAO      "               // recuperando reg excluido
- ELSEIF tp_mov=FORM_DIRETA
-  buff+="DEPOIS ALTERACAO "               // modificou o dbf
- ENDI
- buff+=DTOC(DATE())+" "+TIME()            // coloca data e hora no log
- nc=EVAL(&("{||"+db_+"->(FCOU())}"))      // numero de campos do arquivo
- estr_=&db_.->(DBSTRUCT())                // pega estrutura do dbf
- FOR i=1 TO nc                            // coloca todos os campos no log
-  IF db_==ALIAS()
-   msg=&db_.->(FIEL(i))                    // campo do arquivo
-  ELSE
-   msg=db_+"->"+&db_.->(FIEL(i))
-  ENDI
-  x=TRANS(&msg.,sistema[op_sis,O_CAMPO,i,O_MASC])
-  j=IF(LEN(x)>LEN(sistema[op_sis,O_CAMPO,i,O_TITU]),LEN(x),LEN(sistema[op_sis,O_CAMPO,i,O_TITU]))
-  IF estr_[i,2] = "C" .OR. estr_[i,2] = "D" // caracter e data alinha a esquerda
-   buff+=" ¯ "+PADR(TRANS(&msg.,sistema[op_sis,O_CAMPO,i,O_MASC]),j+2)
-  ELSEIF estr_[i,2] = "M"                   // memo tira Cr+Lf
-   buff+=" ¯ "+PADR(STRTRAN(&msg.,CHR(13)+CHR(10),"  "),j+2)
-  ELSE                                      // campo numerico alinha a direita
-   buff+=" ¯ "+PADL(TRANS(&msg.,sistema[op_sis,O_CAMPO,i,O_MASC]),j+2)
-  ENDI
- NEXT
- buff=EMBARALHA(buff)                     // encripta os dados
- buff+=CHR(13)+CHR(10)                    // forca quebra de linha
- FSEEK(area_,0,2)                         // vai para o final do arquivo
- j=FWRITE(area_,buff,LEN(buff))           // grava o log
- FCLOSE(area_)                            // fecha o log
- SETRHS(arq_log)                          // coloca atrigutos rhs
-ENDI
-RETU
-
 PROC INFOSIS(ed_)  // coloca informacao no rodape' da tela
 LOCAL co_r:=SETCOLOR(drvcorenf), MsgEsq, MsgCen, MsgDir, i_
 ed_=IF(ed_=NIL,.f.,ed_)                           // flag - esta editando?
@@ -2387,12 +2160,6 @@ ELSEIF op_menu=ALTERACAO                          // teclas disponiveis na
 ELSE                                              // teclas disponiveis na
  MsgEsq="Ve Global"                               // ve global da func EDITA()
  MsgCen=gcr
-ENDI
-IF sistema[op_sis,O_TELA,O_DEF]>1              // tem varias telas?
- MsgCen+=IF(sistema[op_sis,O_TELA,O_ATUAL]<sistema[op_sis,O_TELA,O_DEF].AND.;
-            op_menu!=INCLUSAO," PgDn","";
-         )
- MsgCen+=IF(sistema[op_sis,O_TELA,O_ATUAL]>1," PgUp","")
 ENDI
 
 #ifdef COM_MOUSE
@@ -2421,21 +2188,6 @@ ELSE
 ENDI
 @ l_i,c_s+1 SAY MsgCen
 SETCOLOR(co_r)
-RETU
-
-PROC TELA_ANT  // Prepara volta para tela anterior (PgUp)
-IF sistema[op_sis,O_TELA,O_ATUAL]>1      // se for a da primeira tela,
- sistema[op_sis,O_TELA,O_ATUAL]-=2       // decrementa em dois e forca
- KEYB CHR(K_ESC)                         // saida com ESC
- volta=1                                 // volta=1 indica ao chamador
-ENDI                                     // que pressionou PGUP
-RETU
-
-PROC TELA_SEG  // Prepara o avanco para a tela seguinte (PgDn)
-IF sistema[op_sis,O_TELA,O_ATUAL]<sistema[op_sis,O_TELA,O_DEF] // se nao estiver na ultima tela,
- KEYB CHR(K_ESC)                         // forca ESC para sair
- volta=2                                 // volta=2 indica ao chamador
-ENDI                                     // que pressionou PGDN
 RETU
 
 PROC TIRA_LANC(db_,lan_,for_inv_)  // Retira o lancamento feito no arquivo alvo
@@ -2622,7 +2374,7 @@ DO WHIL cabem>0
   ENDI
   SKIP                                   // proximo...
  ENDD
-
+ 
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -2686,7 +2438,7 @@ DO WHIL cabem>0
   REPL pw_grupo WITH M->pw_grupo,;       // enche com o codigo do grupo
        pw_dbf WITH sistema[i,O_MENU]     // titulo do dbf
   REPL pw_dbf WITH ENCRIPT(pw_dbf),;
-       pw_permis WITH ENCRIPT("GX"+pw_permis) // e as permissoes (todas)
+       pw_permis WITH ENCRIPT(pw_permis) // e as permissoes (todas)
  NEXT
 
  #ifdef COM_REDE
@@ -2924,4 +2676,4 @@ ERRORBLOCK({|erro| ERROMSG(erro)})
 RETU
 
 * \\ Final de ADR_PROC.PRG
-// troca_nome
+

@@ -1,4 +1,3 @@
-
 procedure recmens
 
 dbox([Informe uma expressao valida])
@@ -19,3 +18,4 @@ endd
 
 dbox(auxiliar)
 retur
+
