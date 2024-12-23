@@ -8,7 +8,8 @@
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
+*/
+
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 PARA lin_menu,col_menu
@@ -412,16 +413,16 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
    IF PTAB(num,'GRUPOS',1)
     REPBLO('GRUPOS->particf',{||GRUPOS->particf - 1})
    ENDI
-   IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+   IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
     REPBLO('INSCRITS->vivofalec',{||[V]})
    ENDI
-   IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+   IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
     REPBLO('INSCRITS->falecto_',{||ctod('  /  /  ')})
    ENDI
-   IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+   IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
     REPBLO('INSCRITS->tipo',{||[  ]})
    ENDI
-   IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+   IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
     REPBLO('INSCRITS->procnr',{||[ ]})
    ENDI
   #else
@@ -440,16 +441,16 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
    IF PTAB(num,'GRUPOS',1)
     REPL GRUPOS->particf WITH GRUPOS->particf - 1
    ENDI
-   IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+   IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
     REPL INSCRITS->vivofalec WITH [V]
    ENDI
-   IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+   IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
     REPL INSCRITS->falecto_ WITH ctod('  /  /  ')
    ENDI
-   IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+   IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
     REPL INSCRITS->tipo WITH [  ]
    ENDI
-   IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+   IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
     REPL INSCRITS->procnr WITH [ ]
    ENDI
   #endi
@@ -482,16 +483,16 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
     IF PTAB(num,'GRUPOS',1)
      REPBLO('GRUPOS->particf',{||GRUPOS->particf + 1})
     ENDI
-    IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+    IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
      REPBLO('INSCRITS->vivofalec',{||[F]})
     ENDI
-    IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+    IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
      REPBLO('INSCRITS->falecto_',{||dfal})
     ENDI
-    IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+    IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
      REPBLO('INSCRITS->tipo',{||categ})
     ENDI
-    IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+    IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
      REPBLO('INSCRITS->procnr',{||processo})
     ENDI
    #else
@@ -510,16 +511,16 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
     IF PTAB(num,'GRUPOS',1)
      REPL GRUPOS->particf WITH GRUPOS->particf + 1
     ENDI
-    IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+    IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
      REPL INSCRITS->vivofalec WITH [F]
     ENDI
-    IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+    IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
      REPL INSCRITS->falecto_ WITH dfal
     ENDI
-    IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+    IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
      REPL INSCRITS->tipo WITH categ
     ENDI
-    IF PTAB(num+grau+STR(seq,02,00),'INSCRITS',1)
+    IF PTAB(num+grau+STR(seq,03,00),'INSCRITS',1)
      REPL INSCRITS->procnr WITH processo
     ENDI
    #endi

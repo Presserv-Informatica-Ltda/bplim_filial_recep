@@ -721,8 +721,8 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
         PRCESSOS->categ WITH categ,;
         PRCESSOS->grup WITH GRUPOS->grupo,;
         PRCESSOS->num WITH contrato,;
-        PRCESSOS->grau WITH SUBSTR(codigofal,7,1),;
-        PRCESSOS->seq WITH VAL(SUBSTR(codigofal,8,2)),;
+        PRCESSOS->grau WITH SUBSTR(codigofal,10,1),;
+        PRCESSOS->seq WITH VAL(SUBSTR(codigofal,11,2)),;
         PRCESSOS->seg WITH nomedec,;
         PRCESSOS->ends WITH ruares,;
         PRCESSOS->cids WITH munres,;
