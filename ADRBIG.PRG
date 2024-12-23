@@ -131,6 +131,7 @@ SETKEY(K_INS,{||;            // muda tamanho do cursor quando inserindo
 msg:=cpord:=criterio:=chv_rela:=chv_1:=chv_2:=vr_memo := ""
 op_sis:=cod_sos:=nucop:=op_posi:=op_menu :=1
 nss=031
+aux:=[]
 exrot:=AFILL(ARRAY(nss),""); usuario:=obs_usuario:=senha:=senhatu:=msg_auto:=pw_grupo:=pw_codigo := ""
 quer_sair:=.f.
 datac=DATE()

@@ -232,6 +232,7 @@ PRIV cp_:="", cond_p:="", tit_cons:={"",""}, db_1rela:="", cpord, qual_prg,;
 IF ! USED()                          // se nao existir arquivo
  RETU .f.                            // aberto, cai fora
 ENDI
+aux:=[]
 qual_prg=PROCNAME(1)                 // nome do prg que chamou a funcao
 cr_ini=IF(cr_ini=NIL,"",cr_ini)      // filtro inicial nao informado
 cmr_=IF(cmr_=NIL,"1=2",cmr_)         // tem condicao de marcar registros?
