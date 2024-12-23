@@ -158,3 +158,11 @@
 24/06/2014  09:28           987.452 adrbig.exe
                1 arquivo(s)        987.452 bytes
                0 pasta(s)    6.997.020.672 bytes dispon¡veis
+ O volume na unidade F ‚ OS
+ O N£mero de S‚rie do Volume ‚ CEB3-9FB5
+
+ Pasta de F:\pers\bplim_filial_recep
+
+24/06/2014  09:28           987.452 adrbig.exe
+               1 arquivo(s)        987.452 bytes
+               0 pasta(s)    6.996.885.504 bytes dispon¡veis

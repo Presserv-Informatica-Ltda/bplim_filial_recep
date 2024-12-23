@@ -9,7 +9,8 @@ procedure adr_fun2
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
+*/
+
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 /*
@@ -1763,10 +1764,10 @@ IF tp_mov=INCLUI
         pw_nivel WITH ENCRIPT(_nivel),;
         pw_obs WITH ENCRIPT(_obs)
   ELSE                                    // na inclusao
-   M->pw_codigo=DECRIPT(_codigo)          // encripta variaveis
-   M->pw_nome=DECRIPT(_nome)              // na memoria
-   M->pw_nivel=DECRIPT(_nivel)
-   M->pw_obs=DECRIPT(_obs)
+   M->pw_codigo=EnCRIPT(_codigo)          // encripta variaveis
+   M->pw_nome=EnCRIPT(_nome)              // na memoria
+   M->pw_nivel=EnCRIPT(_nivel)
+   M->pw_obs=EnCRIPT(_obs)
   ENDI
   EXIT
  ENDD
@@ -2067,4 +2068,3 @@ ENDI
 RETU NIL
 
 * \\ Final de ADR_FUN2.PRG
-

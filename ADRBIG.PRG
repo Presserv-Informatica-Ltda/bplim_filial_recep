@@ -48,11 +48,6 @@ Static24:= {"11331","31113","13113","33111","11313","31311","13311","11133","311
 */
 
 #include "adrbig.ch"    // inicializa constantes manifestas
-/*
-#include "SIXNSX.CH"
-#define RDDNAME "SIXNSX"
-*/
-#define MEMOEXT ".SMT"
 
 /*
    Funcoes chamadas dentro de macros
