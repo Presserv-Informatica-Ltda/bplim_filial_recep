@@ -1,13 +1,15 @@
+
 procedure cob_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: COB_01F9.PRG
  \ Data....: 17-05-98
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Fun‡„o F8 do campo COBRADOR, arquivo COBRADOR
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:58:02 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -22,4 +24,3 @@ procedure cob_01f9
 RETU M->rcodin       // <- deve retornar um valor qualquer
 
 * \\ Final de COB_01F9.PRG
-

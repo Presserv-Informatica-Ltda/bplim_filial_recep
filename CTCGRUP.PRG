@@ -1,13 +1,15 @@
+
 procedure ctcgrup
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: CTCGRUP.PRG
  \ Data....: 06-01-00
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Contratos Cancelados
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v3.0 
+ \ Criacao.: GAS-Pro v3.0
+ \ Convert.: v5.0 em 2021081014:56:58 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -117,4 +119,3 @@ CLOSE ALL                                          // fecha todos os arquivos e
 RETU                                               // volta para o menu anterior
 
 * \\ Final de CTCGRUP.PRG
-

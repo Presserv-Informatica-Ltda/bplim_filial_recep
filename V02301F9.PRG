@@ -1,13 +1,15 @@
+
 procedure v02301f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: V02301F9.PRG
  \ Data....: 26-05-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Valida‡„o da variavel CONFIRME, relatorio ADM_R023
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:56:31 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -30,4 +32,3 @@ procedure v02301f9
 RETU .t.       // <- deve retornar um valor L¢GICO
 
 * \\ Final de V02301F9.PRG
-

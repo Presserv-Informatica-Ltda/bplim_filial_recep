@@ -1,15 +1,15 @@
-
-procedure juros
+procedure pradendo
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Presserv Informatica Ltda (19)99886.3225
- \ Programa: JUROS.PRG
- \ Data....: 04-11-03
- \ Sistema.: Administradora - RECEP€„O
- \ Funcao..: Gerenciador do subsistema de parƒmetro de juros
+ \ Programa: PRADENDO.PRG
+ \ Data....: 23-10-96
+ \ Sistema.: Administradora - PLANO
+ \ Funcao..: Gerenciador do subsistema de produtos do adendo
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v4.0n
- \ Convert.: v5.0 em 2021081014:57:27 Fase_01
+ \ Criacao.: GAS-Pro v3.0
+ \ Convert.: v5.0 em 2021081108:53:51 Fase_01
+ \ Convert.: v5.0 em 2021081014:47:46 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -17,8 +17,7 @@ procedure juros
 
 PARA lin_menu,col_menu
 PRIV op_sis, tela_fundo:=SAVESCREEN(0,0,MAXROW(),79), l_s, c_s, l_i, c_i, l_a
-
-op_sis=EVAL(qualsis,"JUROS")
+op_sis=EVAL(qualsis,"PRADENDO")
 IF nivelop<sistema[op_sis,O_OUTROS,O_NIVEL]        // se usuario nao tem permissao,
  ALERTA()                                          // entao, beep, beep, beep
  DBOX(msg_auto,,,3)                                // lamentamos e
@@ -33,92 +32,55 @@ cn:=fgrep :=.f.
  ENDI
 #endi
 
-t_fundo=SAVESCREEN(0,0,MAXROW(),79)                // salva tela do fundo
-op_cad=1
-DO WHIL op_cad!=0
- criterio=""
- RESTSCREEN(0,0,MAXROW(),79,t_fundo)               // restaura tela do fundo
- cod_sos=5 ; cn=.f.
- CLEA TYPEAHEAD                                    // limpa o buffer do teclado
- fgrep=.f.
- SET KEY K_F3 TO                                   // retira das teclas F3 e F4 as
- SET KEY K_F4 TO                                   // funcoes de repeticao e confirmacao
- msg="Inclus„o~1|"+;
-     "Manuten‡„o~2|"+;
-     "Consulta~3"
- op_cad=DBOX(msg,lin_menu,col_menu,E_MENU,NAO_APAGA,MAIUSC(sistema[op_sis,O_MENU]),,,op_cad)
- IF op_cad!=0                                      // se escolheu uma opcao
-  Tela_fundo=SAVESCREEN(0,0,MAXROW(),79)           // salva a tela para ROLATELA()
-  PARAMETROS(dbfparam)
-  SELE A                                           // e abre o arquivo e seus indices
+criterio=""
+SELE A                                             // e abre o arquivo e seus indices
 
-  #ifdef COM_REDE
-   IF !USEARQ(sistema[op_sis,O_ARQUI,O_NOME],.f.,20,1)
-                                                   // se falhou a abertura do
-    RETU                                           // arquivo volta ao menu anterior
-   ENDI
-  #else
-   USEARQ(sistema[op_sis,O_ARQUI,O_NOME])
-  #endi
-
-  SET KEY K_F9 TO veoutros                         // habilita consulta em outros arquivos
+#ifdef COM_REDE
+ IF !USEARQ(sistema[op_sis,O_ARQUI,O_NOME],.f.,20,1)      // se falhou a abertura do
+  RETU                                             // arquivo volta ao menu anterior
  ENDI
- DO CASE
-  CASE op_cad=01                                   // inclus„o
-   op_menu=INCLUSAO
-   IF AT("D",exrot[op_sis])=0                      // se usuario pode fazer inclusao
-    JUR_INCL()                                     // neste arquivo chama prg de inclusao
-   ELSE                                            // caso contrario vamos avisar que
-    ALERTA()                                       // ele nao tem permissao para isto
-    DBOX(msg_auto,,,3)
-   ENDI
+#else
+ USEARQ(sistema[op_sis,O_ARQUI,O_NOME])
+#endi
 
-  CASE op_cad=02                                   // manuten‡„o
-   op_menu=ALTERACAO
-   cod_sos=7
-   EDIT()
-
-  CASE op_cad=03                                   // consulta
-   op_menu=PROJECOES
-   cod_sos=8
-   EDITA(05,23,MAXROW()-4,56)
-
- ENDC
- SET KEY K_F9 TO                                   // F9 nao mais consultara outros arquivos
- CLOS ALL                                          // fecha todos arquivos abertos
-ENDD
+SET KEY K_F9 TO veoutros                           // habilita consulta em outros arquivos
+op_menu=ALTERACAO
+cod_sos=7
+EDIT()
+SET KEY K_F9 TO                                    // F9 nao mais consultara outros arquivos
+CLOS ALL                                           // fecha todos arquivos abertos
 RETU
 
-PROC JUR_incl(reg_cop)  // inclusao no arquivo JUROS
-LOCAL getlist:={}, cabem:=1, rep:=ARRAY(FCOU()), ult_reg:=RECN(),;
-      ctl_r, ctl_c, t_f3_, t_f4_, l_max, dele_atu:=SET(_SET_DELETED,.f.)
-PRIV op_menu:=INCLUSAO, tem_borda, criterio:="", cpord:="", l_a
+PROC PRA_incl(reg_cop)     // inclusao no arquivo PRODUTOS
+LOCAL getlist:={}, cabem:=1, rep:=ARRAY(FCOU()), ult_reg:=RECN(), cond_incl_,;
+      ctl_r, ctl_c, ctl_w, t_f3_, t_f4_, dele_atu:=SET(_SET_DELETED,.f.)
+PRIV op_menu:=INCLUSAO, tem_borda, criterio:="", cpord:=""
+cond_incl_={||1=3}                                 // condicao de inclusao de registros
+IF !EVAL(cond_incl_)                               // se nao pode incluir
+ ALERTA(2)                                         // avisa o motivo
+ DBOX("Mantido pelo sistema de Estoque",,,4,,"ATEN€ŽO, "+usuario)
+ RETU                                              // e retorna
+ENDI
 FOR i=1 TO FCOU()                                  // cria/declara privadas as
  msg=FIEL(i)                                       // variaveis de memoria com
  PRIV &msg.                                        // o mesmo nome dos campos
 NEXT                                               // do arquivo
-IF reg_cop!=NIL                                    // quer repetir todo o reg atual
- FOR i=1 TO FCOU()                                 // para cada campo,
-  msg=FIEL(i)                                      // salva o conteudo
-  rep[i]=&msg.                                     // para repetir
- NEXT
-ELSE
- AFILL(rep,"")                                     // eche com valor vazio
-ENDI
+IF reg_cop!=NIL                                     // quer repetir todo o reg atual
+  FOR i=1 TO FCOU()                                 // para cada campo,
+   msg=FIEL(i)                                      // salva o conteudo
+   rep[i]=&msg.                                     // para repetir
+  NEXT
+ ELSE
+  AFILL(rep,"")                                     // eche com valor vazio
+ ENDI
 t_f3_=SETKEY(K_F3,{||rep()})                       // repeticao reg anterior
 t_f4_=SETKEY(K_F4,{||conf()})                      // confirma campos com ENTER
 ctl_w=SETKEY(K_CTRL_W,{||nadafaz()})               // enganando o CA-Clipper...
 ctl_c=SETKEY(K_CTRL_C,{||nadafaz()})
 ctl_r=SETKEY(K_CTRL_R,{||nadafaz()})
-DISPBEGIN()                                        // monta tela na pagina de traz
-JUR_TELA()                                         // imp tela para inclusao
-INFOSIS(.t.)                                       // exibe informacao no rodape' da tela
-l_a=Sistema[op_sis,O_TELA,O_SCROLL]
-DISPEND()                                          // apresenta tela de uma vez so
 DO WHIL cabem>0
- cod_sos=6
  rola_t=.f.                                        // flag se quer rolar a tela
- SELE JUROS
+ SELE PRADENDO
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
 
@@ -128,16 +90,23 @@ DO WHIL cabem>0
  */
  FOR i=1 TO FCOU()
   msg=FIEL(i)
-  M->&msg.=IF((fgrep .OR. reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
+  M->&msg.=IF((fgrep.OR.reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
  NEXT
- cabem=DISKSPACE(;
-          IF(;
-             LEN(sistema[op_sis,O_ARQUI,O_DIR_DBF])<2.OR.sistema[op_sis,O_ARQUI,O_DIR_DBF]="\",;
-             0,;
-             ASC(sistema[op_sis,O_ARQUI,O_DIR_DBF])-64;
-          );
-       )
- cabem=INT((cabem-2048)/JUROS->(RECSIZE()))
+ DISPBEGIN()                                       // apresenta a tela de uma vez so
+ PRA_TELA()
+INFOSIS(.T.)
+ DISPEND()
+ IF !EVAL(cond_incl_)
+  EXIT
+ ENDI
+  cabem=DISKSPACE(;
+       IF(;
+          LEN(sistema[op_sis,O_ARQUI,O_DIR_DBF])<2.OR.sistema[op_sis,O_ARQUI,O_DIR_DBF]="\",;
+          0,;
+          ASC(sistema[op_sis,O_ARQUI,O_DIR_DBF])-64;
+       );
+    )
+ cabem=INT((cabem-2048)/PRADENDO->(RECSIZE()))
  IF cabem<1                                        // mais nenhum!!!
   ALERTA()
   msg="Verifique ESPA€O EM DISCO, "+usuario
@@ -151,7 +120,7 @@ DO WHIL cabem>0
  /*
     recebe chaves do arquivo de indice basico
  */
- @ l_s+l_a,c_s+02 GET  tipo;
+ @ l_s+01 ,c_s+24 GET  codigo;
                   PICT sistema[op_sis,O_CAMPO,01,O_MASC]
                   DEFINICAO 1
 
@@ -161,19 +130,18 @@ DO WHIL cabem>0
   ROLATELA()
   LOOP
  ENDI
- SELE JUROS
+ SELE PRADENDO
  IF LASTKEY()=K_ESC                                // cancelou ou chave em branco
   cabem=0                                          // prepara saida da inclusao
   LOOP                                             // volta p/ menu de cadastramento
  ENDI
- SEEK M->tipo
+ SEEK M->codigo
  aprov_reg_=(FOUND().AND.DELE().AND.!drvvisivel)   // vai aproveitar o registro?
  IF FOUND() .AND. !aprov_reg_                      // pesquisou e achou!
-  l_a=Sistema[op_sis,O_TELA,O_SCROLL]
   op_menu=ALTERACAO                                // seta flag de ateracao
   DISPBEGIN()
-  JUR_GETS()                                       // mostra conteudo do registro
-  INFOSIS(.f.)                                     // exibe informacao no rodape' da tela
+  PRA_GETS()                                       // mostra conteudo do registro
+INFOSIS(.f.)
   DISPEND()
   ALERTA()
   msg="Consultar/alterar|Retornar … inclus„o"      // pergunta se deseja
@@ -182,15 +150,11 @@ DO WHIL cabem>0
    EDIT()                                          // deixa alterar
   ENDI
   op_menu=INCLUSAO
-  DISPBEGIN()
-  JUR_TELA()
-  INFOSIS(.t.)                                     // exibe informacao no rodape' da tela
-  DISPEND()
   LOOP                                             // volta para inclusao
  ENDI
  SELE 0
- JUR_GET1(INCLUI)                                  // recebe campos
- SELE JUROS
+ PRA_GET1(INCLUI)                                  // recebe campos
+ SELE PRADENDO
  IF LASTKEY()=K_ESC                                // se cancelou
   ALERTA()                                         // avisa que o registro
   DBOX("Registro n„o inclu¡do!",18,,1)             // nao foi incluido, e volta
@@ -201,7 +165,7 @@ DO WHIL cabem>0
   GO BOTT                                          // vamos bloquear o final do
   SKIP                                             // arq para que nehum outro
   BLOREG(0,.5)                                     // usuario possa incluir
-  SEEK M->tipo                                     // se registro foi incluido
+  SEEK M->codigo                                   // se registro foi incluido
   aprov_reg_=(FOUND().AND.DELE().AND.!drvvisivel)  // vai aproveitar o registro?
   IF FOUND() .AND. !aprov_reg_                     // por outro usuario, entao
    BLOREG(0,.5)
@@ -210,7 +174,7 @@ DO WHIL cabem>0
     rep[i]=&msg.
     REPL &msg. WITH M->&msg.
    NEXT
-   JUR_GET1(FORM_INVERSA)                          // executa formula inversa
+   PRA_GET1(FORM_INVERSA)                          // executa formula inversa
    RECA
    FOR i=1 TO FCOU()
     msg=FIEL(i)
@@ -219,7 +183,7 @@ DO WHIL cabem>0
    ALERTA(4)                                       // beep 4 vezes
    msg="Registro acabou de ser|inclu¡do por outro usu rio!"
    DBOX(msg,,,,,"ATEN€ŽO!")                        // avisa
-   SELE JUROS
+   SELE PRADENDO
    UNLOCK                                          // libera o registro
    LOOP                                            // e recebe chave novamente
   ENDI
@@ -251,17 +215,8 @@ DO WHIL cabem>0
  #endi
 
  ult_reg=RECN()                                    // ultimo registro digitado
- l_max=l_s+Sistema[op_sis,O_TELA,O_SCROLL]+Sistema[op_sis,O_TELA,O_QTDE]
- IF l_s+l_a+1<l_max                                // se nao atingiu o fim da tela
-  l_a++                                            // digita na proxima linha
- ELSE                                              // se nao rola a campos para cima
-  SCROLL(l_s+Sistema[op_sis,O_TELA,O_SCROLL],c_s+02,l_max-1,c_s+02,1)
-  SCROLL(l_s+Sistema[op_sis,O_TELA,O_SCROLL],c_s+09,l_max-1,c_s+13,1)
-  SCROLL(l_s+Sistema[op_sis,O_TELA,O_SCROLL],c_s+20,l_max-1,c_s+22,1)
-  SCROLL(l_s+Sistema[op_sis,O_TELA,O_SCROLL],c_s+29,l_max-1,c_s+33,1)
-  SCROLL(l_s+Sistema[op_sis,O_TELA,O_SCROLL],c_s+41,l_max-1,c_s+43,1)
- ENDI
  IF reg_cop!=NIL                                   // estava na consulta e quis rep o campo
+  sq_atual_=NIL
   EXIT                                             // cai fora...
  ENDI
 ENDD
@@ -274,8 +229,7 @@ SETKEY(K_CTRL_C,ctl_c)
 SETKEY(K_CTRL_R,ctl_r)
 RETU
 
-
-PROC JUR_tela     // tela do arquivo JUROS
+PROC PRA_tela     // tela do arquivo PRODUTOS
 tem_borda=.t.
 l_s=Sistema[op_sis,O_TELA,O_LS]           // coordenadas da tela
 c_s=Sistema[op_sis,O_TELA,O_CS]
@@ -287,76 +241,110 @@ CAIXA(mold,l_s,c_s,l_i,c_i)               // monta caixa da tela
 i=LEN(sistema[op_sis,O_MENS])/2
 @ l_s,c_s-1+(c_i-c_s+1)/2-i SAY " "+MAIUSC(sistema[op_sis,O_MENS])+" "
 SETCOLOR(drvcortel)
-@ l_s+01,c_s+1 SAY " Taxa ³    M U L T A      ³    J U R O S"
-@ l_s+02,c_s+1 SAY " Tipo ³  %       Carˆncia ³   %      Carˆncia"
-@ l_s+03,c_s+1 SAY "ÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
-@ l_s+04,c_s+1 SAY "      ³                   ³"
-@ l_s+05,c_s+1 SAY "      ³                   ³"
-@ l_s+06,c_s+1 SAY "      ³                   ³"
-@ l_s+07,c_s+1 SAY "      ³                   ³"
-@ l_s+08,c_s+1 SAY "      ³                   ³"
+@ l_s+01,c_s+1 SAY " C¢digo do produto...:               Data Atualiza‡„o:"
+@ l_s+02,c_s+1 SAY " Descri‡„o do produto:"
+@ l_s+03,c_s+1 SAY " Unidade do produto..:               Ref. t‚cnica....:"
+@ l_s+04,c_s+1 SAY " Qde em estoque......:               Qde m¡nima......:"
+@ l_s+05,c_s+1 SAY " Preco custo em R$...:               em"
+@ l_s+06,c_s+1 SAY " Pre‡o de Venda......:               em"
+@ l_s+07,c_s+1 SAY " Lucro Bruto (%) ....:"
 RETU
 
-PROC JUR_gets     // mostra variaveis do arquivo JUROS
-LOCAL getlist := {}, l_max, reg_atual:=RECNO()
-PRIV  l_a:=Sistema[op_sis,O_TELA,O_SCROLL]
-JUR_TELA()
-l_max=l_s+Sistema[op_sis,O_TELA,O_SCROLL]+Sistema[op_sis,O_TELA,O_QTDE]
+PROC PRA_gets     // mostra variaveis do arquivo PRODUTOS
+LOCAL getlist := {}, t_f7_
+PRA_TELA()
 SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
-DO WHILE !EOF() .AND. l_s+l_a<l_max
- @ l_s+l_a,c_s+02 GET  tipo;
-                  PICT sistema[op_sis,O_CAMPO,01,O_MASC]
+@ l_s+01 ,c_s+24 GET  codigo;
+                 PICT sistema[op_sis,O_CAMPO,01,O_MASC]
 
- @ l_s+l_a,c_s+09 GET  multa;
-                  PICT sistema[op_sis,O_CAMPO,02,O_MASC]
+@ l_s+02 ,c_s+24 GET  produto;
+                 PICT sistema[op_sis,O_CAMPO,02,O_MASC]
 
- @ l_s+l_a,c_s+20 GET  mltcaren;
-                  PICT sistema[op_sis,O_CAMPO,03,O_MASC]
+@ l_s+03 ,c_s+24 GET  unid;
+                 PICT sistema[op_sis,O_CAMPO,03,O_MASC]
+                 CRIT(sistema[op_sis,O_CAMPO,03,O_CRIT],,"1")
 
- @ l_s+l_a,c_s+29 GET  juros;
-                  PICT sistema[op_sis,O_CAMPO,04,O_MASC]
+@ l_s+03 ,c_s+56 SAY "{M} "
 
- @ l_s+l_a,c_s+41 GET  jrscaren;
-                  PICT sistema[op_sis,O_CAMPO,05,O_MASC]
+@ l_s+04 ,c_s+24 GET  qd_est;
+                 PICT sistema[op_sis,O_CAMPO,05,O_MASC]
 
- SETCOLOR(drvcortel+","+drvcortel+",,,"+drvcortel)
- l_a++
- SKIP
-ENDD
-GO reg_atual
-SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
+@ l_s+04 ,c_s+56 GET  qd_min;
+                 PICT sistema[op_sis,O_CAMPO,06,O_MASC]
+
+@ l_s+05 ,c_s+24 GET  preco_cus;
+                 PICT sistema[op_sis,O_CAMPO,07,O_MASC]
+
+@ l_s+05 ,c_s+42 GET  custo_;
+                 PICT sistema[op_sis,O_CAMPO,08,O_MASC]
+
+@ l_s+06 ,c_s+24 GET  preco_ven;
+                 PICT sistema[op_sis,O_CAMPO,09,O_MASC]
+                 CRIT(sistema[op_sis,O_CAMPO,09,O_CRIT],,"2")
+
+@ l_s+06 ,c_s+42 GET  venda_;
+                 PICT sistema[op_sis,O_CAMPO,10,O_MASC]
+
+@ l_s+01 ,c_s+56 GET  dt_ult_atu;
+                 PICT sistema[op_sis,O_CAMPO,11,O_MASC]
+
 CLEAR GETS
 RETU
 
-PROC JUR_get1(tp_mov)     // capta variaveis do arquivo JUROS
-LOCAL getlist := {}
-PRIV  blk_juros:=.t.
-
+PROC PRA_get1     // capta variaveis do arquivo PRODUTOS
+LOCAL getlist := {}, t_f7_
+PRIV  blk_produtos:=.t.
+PARA tp_mov
 IF tp_mov=INCLUI
- IF TYPE("l_a")!="N"
-  l_a=Sistema[op_sis,O_TELA,O_SCROLL]
- ENDI
  DO WHILE .t.
   rola_t=.f.
+  memo04:="{F7}"
+  t_f7_=SETKEY(K_F7,{||PRA_memo()})
   SET KEY K_ALT_F8 TO ROLATELA
   SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
-  @ l_s+l_a,c_s+09 GET  multa;
+  @ l_s+01 ,c_s+56 GET dt_ult_atu;
+                   PICT sistema[op_sis,O_CAMPO,11,O_MASC]
+  CLEA GETS
+  @ l_s+02 ,c_s+24 GET  produto;
                    PICT sistema[op_sis,O_CAMPO,02,O_MASC]
                    DEFINICAO 2
 
-  @ l_s+l_a,c_s+20 GET  mltcaren;
+  @ l_s+03 ,c_s+24 GET  unid;
                    PICT sistema[op_sis,O_CAMPO,03,O_MASC]
                    DEFINICAO 3
+                   MOSTRA sistema[op_sis,O_FORMULA,1]
 
-  @ l_s+l_a,c_s+29 GET  juros;
-                   PICT sistema[op_sis,O_CAMPO,04,O_MASC]
+  @ l_s+03 ,c_s+56 GET  memo04;
+                   PICT "@!"
                    DEFINICAO 4
 
-  @ l_s+l_a,c_s+41 GET  jrscaren;
+  @ l_s+04 ,c_s+24 GET  qd_est;
                    PICT sistema[op_sis,O_CAMPO,05,O_MASC]
                    DEFINICAO 5
 
+  @ l_s+04 ,c_s+56 GET  qd_min;
+                   PICT sistema[op_sis,O_CAMPO,06,O_MASC]
+                   DEFINICAO 6
+
+  @ l_s+05 ,c_s+24 GET  preco_cus;
+                   PICT sistema[op_sis,O_CAMPO,07,O_MASC]
+                   DEFINICAO 7
+
+  @ l_s+05 ,c_s+42 GET  custo_;
+                   PICT sistema[op_sis,O_CAMPO,08,O_MASC]
+                   DEFINICAO 8
+
+  @ l_s+06 ,c_s+24 GET  preco_ven;
+                   PICT sistema[op_sis,O_CAMPO,09,O_MASC]
+                   DEFINICAO 9
+                   MOSTRA sistema[op_sis,O_FORMULA,2]
+
+  @ l_s+06 ,c_s+42 GET  venda_;
+                   PICT sistema[op_sis,O_CAMPO,10,O_MASC]
+                   DEFINICAO 10
+
   READ
+  SETKEY(K_F7,t_f7_)
   SET KEY K_ALT_F8 TO
   IF rola_t
    ROLATELA()
@@ -376,11 +364,24 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
   DELE
  ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
+ IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
+   IF op_menu=INCLUSAO
+    dt_ult_atu=DATE()
+   ELSE
+    REPL dt_ult_atu WITH DATE()
+   ENDI
   POE_NO_LOG(tp_mov)
   IF op_menu!=INCLUSAO
-  RECA
+   RECA
+  ENDI
  ENDI
 ENDI
 RETU
 
-* \\ Final de JUROS.PRG
+PROC PRA_MEMO
+IF READVAR()="MEMO04"
+ EDIMEMO("reftec",sistema[op_sis,O_CAMPO,04,O_TITU],14,2,23,37)
+ENDI
+RETU
+
+* \\ Final de PRODUTOS.PRG

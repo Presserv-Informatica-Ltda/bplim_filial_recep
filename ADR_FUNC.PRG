@@ -1,17 +1,18 @@
-procedure adr_func
+// <ADRBIG> - <ADR_>
+procedure ADR_func
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda
  \ Programa: ADR_FUNC.PRG
- \ Data....: 29-01-04
- \ Sistema.: Administradora - RECEP€„O
+ \ Data....: 25-06-21
+ \ Sistema.: Controle de Processos da Funer ria
  \ Funcao..: Fun‡”es auxiliares
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
-#include "adrbig.ch"    // inicializa constantes manifestas
+#include "ADRBIG.ch"    // inicializa constantes manifestas
 
 /*
    Sintaxe: PTAB( <ExpC1>, <ExpC2> [,ExpN] [,ExpL] )
@@ -20,7 +21,7 @@ procedure adr_func
               ExpC2 = arquivo alvo
               ExpN  = numero do indice associado a ExpC2
               ExpL  = se .t. deixa na ordem do indice do parametro
-  
+
    Retorna: .t. se o registro existe
 */
 FUNC PTAB(ch_,db_,or_dem,fix_ind_)
@@ -75,7 +76,7 @@ RETU achou
 */
 FUNC USEARQ(db_,use_ex,n_tent,t_tent,com_ntx)
 LOCAL op_sis, qt_ind, p_, drv_dbf, p_sempre, v_r, msg,;
-      ind01, ind02, ind03, ind04
+      ind01, ind02, ind03, ind04, ind05, ind06, ind07, ind08
 n_tent=IF(n_tent=NIL,0,n_tent)
 t_tent=IF(t_tent=NIL,1,t_tent)
 com_ntx=IF(com_ntx=NIL,.t.,com_ntx)
@@ -101,7 +102,7 @@ IF EMPTY(SELECT(db_))                      // o arquivo nao esta' em uso, vamos 
  SELE 0                                    // seleciona proxima area livre
 
  #ifdef COM_REDE
-  msgt="OUTRO USURIO ACESSANDO|O ARQUIVO"
+  msgt="OUTRO USURIO ACESSANDO|O ARQUIVO|"+db_
   DO WHIL n_tent>=0 .OR. p_sempre          // tenta abrir o aruivo n vezes ou p/ sempre
    IF use_ex                               // tenta abrir com exclusividade
     USE (db_f) EXCLUSIVE
@@ -145,8 +146,9 @@ IF EMPTY(SELECT(db_))                      // o arquivo nao esta' em uso, vamos 
    ENDI
   ELSEIF LEN(sistema[op_sis,O_INDIC])>0    // senao, abre indices segundo vetor sistema
    qt_ind=LEN(sistema[op_sis,O_INDIC])
-   ind01=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,1]
-   IF qt_ind=1
+//   ind01=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,1]
+   ind01:=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_ARQUI,O_NOME]//drv_ntx+ALIAS()
+   IF .t. //qt_ind=1
     SET INDE TO (ind01)
    ELSE
     ind02=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,2]
@@ -160,6 +162,26 @@ IF EMPTY(SELECT(db_))                      // o arquivo nao esta' em uso, vamos 
       ind04=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,4]
       IF qt_ind=4
        SET INDE TO (ind01), (ind02), (ind03), (ind04)
+      ELSE
+       ind05=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,5]
+       IF qt_ind=5
+        SET INDE TO (ind01), (ind02), (ind03), (ind04), (ind05)
+       ELSE
+        ind06=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,6]
+        IF qt_ind=6
+         SET INDE TO (ind01), (ind02), (ind03), (ind04), (ind05), (ind06)
+        ELSE
+         ind07=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,7]
+         IF qt_ind=7
+          SET INDE TO (ind01), (ind02), (ind03), (ind04), (ind05), (ind06), (ind07)
+         ELSE
+          ind08=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,8]
+          IF qt_ind=8
+           SET INDE TO (ind01), (ind02), (ind03), (ind04), (ind05), (ind06), (ind07), (ind08)
+          ENDI
+         ENDI
+        ENDI
+       ENDI
       ENDI
      ENDI
     ENDI
@@ -233,7 +255,6 @@ PRIV cp_:="", cond_p:="", tit_cons:={"",""}, db_1rela:="", cpord, qual_prg,;
 IF ! USED()                          // se nao existir arquivo
  RETU .f.                            // aberto, cai fora
 ENDI
-aux:=[]
 qual_prg=PROCNAME(1)                 // nome do prg que chamou a funcao
 cr_ini=IF(cr_ini=NIL,"",cr_ini)      // filtro inicial nao informado
 cmr_=IF(cmr_=NIL,"1=2",cmr_)         // tem condicao de marcar registros?
@@ -530,7 +551,7 @@ IF TYPE("br_outro")="O"                       // tem outra janela aberta?
   SELE (outro_db)                             // seleciona dbf da janela
   op_sis=EVAL(qualsis,ALIAS())                // sua subscricao no vetor sistema
   PEGACHV2()                                  // acha o inicio/fim da relacao
-  IF chv_1 != &chv_rela .OR. !br_outro:stable // precisa remonta-la?
+  IF chv_1 != &chv_rela .OR. br_outro:stable // precisa remonta-la?
    INI_ARQ()                                  // acha o inicio da relacao
    br_reg_out = RECNO()                       // salva reg atual
    br_outro:rowpos := 1                       // cursor na 1a. lin do browse
@@ -667,9 +688,9 @@ DO WHILE volta_db
  #else
 
   #ifdef COM_REDE
-   tecl_p=IN_KEY(drvtempo)                    // espera tecla ser digitada
+   tecl_p=INKEY(drvtempo)                    // espera tecla ser digitada
   #else
-   tecl_p=IN_KEY(0)                           // espera tecla ser digitada
+   tecl_p=INKEY(0)                           // espera tecla ser digitada
   #endi
 
  #endi
@@ -706,7 +727,7 @@ DO WHILE volta_db
     tbmenu+="+-"                               // teclas de "refresh"
    #endi
 
-   l_m=exrot[op_sis]                           // senhas nao tem rotinas
+   l_m=ALLTRIM(exrot[op_sis])                           // senhas nao tem rotinas
    l_m=RTRIM(mo_dif+l_m)                       // para serem retiradas
    FOR i=1 TO LEN(l_m)                         // retira rotina que o usuario
     tbmenu=STRTRAN(tbmenu,SUBS(l_m,i,1),"")    // nao pode acessar e monta menu
@@ -776,8 +797,8 @@ DO WHILE volta_db
      ELSE
       msg=TRANSCAMPO(.t.,cp_)
      ENDI
-     KEYB ALLTRIM(msg)                          // coloca campo no buffer do teclado
     ENDI
+    KEYB ALLTRIM(msg)                           // coloca campo no buffer do teclado
     volta_db=.f.
    ENDI
   ELSEIF tecl_p = K_ALT_F10                     // ALT-F10 esconde e mostra os
@@ -845,7 +866,12 @@ DO WHILE volta_db
     ELSE                                        // se nao,
      DO WHIL .t.                                // procura um nome para gravar
       hms=TIME()                                // a consulta
-      resaq=LEFT(hms,2)+SUBS(hms,4,2)+RIGHT(hms,2)+"."+LEFT(ALIAS(VAL(m_origem)),3)
+      resaq=LEFT(hms,2)+SUBS(hms,4,2)+RIGHT(hms,2)+"."
+      IF TYPE("prefixo_dbf")="C"                // se veio da consulta extra
+       resaq=resaq+prefixo_dbf                  // troca o prefixo do dbf
+      ELSE                                      // para nao confundir com
+       resaq=resaq+LEFT(ALIAS(VAL(m_origem)),3) // as consultas do proprio
+      END IF                                    // dbf
       aqdbe=drvdbf+"DB"+resaq
       IF ! FILE("&aqdbe.")                      // se achou um
        EXIT                                     // cai fora...
@@ -882,7 +908,7 @@ DO WHILE volta_db
    ENDI
   ENDI
   carac_ = UPPER(CHR(tecl_p))                   // escolheu uma rotina...
-  l_m=exrot[op_sis]                             // arq de senhas nao tem restricoes
+  l_m=ALLTRIM(exrot[op_sis])                             // arq de senhas nao tem restricoes
   IF _pesq .AND. !nao_pesq .AND. tecl_p>31      // que pesquisar....
    IF AT("L",mo_dif+l_m)>0                      // se usuario nao tem permissao
     LOOP                                        // nao deixa executar
@@ -932,9 +958,9 @@ DO WHILE volta_db
      cur_atual=SETCURSOR(0)                     // salva/apaga cursor
      POE_GAUGE("Pesquisando...|ESC interrompe","AGUARDE...","Processados:")
      IF LEN(x_)>0                               // se tem relacao pesq somente nela
-      LOCA FOR &cond_p. WHIL IN_KEY()!=K_ESC .AND. POE_GAUGE() .AND. &(INDEXKEY(0))=x_ // tenta localizar registro desejado
+      LOCA FOR &cond_p. WHIL INKEY()!=K_ESC .AND. POE_GAUGE() .AND. &(INDEXKEY(0))=x_ // tenta localizar registro desejado
      ELSE
-      LOCA FOR &cond_p. WHIL IN_KEY()!=K_ESC .AND. POE_GAUGE() // tenta localizar registro desejado
+      LOCA FOR &cond_p. WHIL INKEY()!=K_ESC .AND. POE_GAUGE() // tenta localizar registro desejado
      ENDI
      ind_ok=(FOUND() .AND. IF(LEN(x_)>0,&(INDEXKEY(0))=x_,.t.)) // achou?
     ELSE
@@ -1181,7 +1207,7 @@ DO WHILE volta_db
      DBOX("Condi‡„o:|"+LEFT(condq,78)+"|| AGUARDE...  Contando. ESC cancela",,,,NAO_APAGA)
      INI_ARQ()                                  // move ponteiro para o inicio do arquivo
 
-     COUN FOR &condq WHIL IN_KEY()!=K_ESC TO qu// conta....
+     COUN FOR &condq WHIL INKEY()!=K_ESC TO qu// conta....
 
      IF LASTKEY()!=K_ESC                        // nao cancelou entao mostra
       ALERTA(2)                                 // quantos reg foram contados
@@ -1325,9 +1351,9 @@ DO WHILE volta_db
       INI_ARQ()                                 // move ponteiro para o inicio do arquivo
       IF LEN(chv_rela)>0                        // se tem relacao pesq somente nela
        x_=IF(EMPT(criterio),"","T")+chv_1       // chave de relacionamento
-       LOCA FOR &cond_p. WHIL IN_KEY()!=K_ESC .AND. POE_GAUGE() .AND. &(INDEXKEY(0))=x_ // tenta localizar registro desejado
+       LOCA FOR &cond_p. WHIL INKEY()!=K_ESC .AND. POE_GAUGE() .AND. &(INDEXKEY(0))=x_ // tenta localizar registro desejado
       ELSE
-       LOCA FOR &cond_p. WHIL IN_KEY()!=K_ESC .AND. POE_GAUGE() // tenta localizar registro desejado
+       LOCA FOR &cond_p. WHIL INKEY()!=K_ESC .AND. POE_GAUGE() // tenta localizar registro desejado
       ENDI
       SETCURSOR(cur_atual)                      // retorna o cursor ao normal
       IF ! FOUND().AND.LASTKEY()!=K_ESC         // nao achou ou cancelou
@@ -1579,9 +1605,9 @@ DO WHILE volta_db
     SKIP IF(EOF(),0,1)                         // pula para o proximo, se nao for fim de arq
     IF LEN(chv_rela)>0                         // se tem relacao pesq somente nela
      x_=IF(EMPT(criterio),"","T")+chv_1        // chave de relacionamento
-     LOCA FOR &cond_p. WHIL IN_KEY()!=K_ESC .AND. POE_GAUGE() .AND. &(INDEXKEY(0))=x_ // continua a procura...
+     LOCA FOR &cond_p. WHIL INKEY()!=K_ESC .AND. POE_GAUGE() .AND. &(INDEXKEY(0))=x_ // continua a procura...
     ELSE
-     LOCA FOR &cond_p. WHIL IN_KEY()!=K_ESC .AND. POE_GAUGE() // continua a procura...
+     LOCA FOR &cond_p. WHIL INKEY()!=K_ESC .AND. POE_GAUGE() // continua a procura...
     ENDI
     SETCURSOR(cur_atual)                       // retorna o cursor ao normal
     IF ! FOUND().AND.LASTKEY()!=K_ESC          // se nao achou,
@@ -1611,6 +1637,8 @@ DO WHILE volta_db
    CASE carac_="V"                             // ve todo o registro na tela
     tela_fundo=SAVESCREEN(0,0,MAXROW(),79)     // salva tela
     t_tab:=SETKEY(K_TAB,NIL)                   // desativa o TAB
+    q_tela=sistema[op_sis,O_TELA,O_ATUAL]      // salva numero da tela atual
+    sistema[op_sis,O_TELA,O_ATUAL]=1           // e move para a primeira tela
 
     #ifdef COM_MOUSE
      IF drvmouse                               // se mouse esta' ativo,
@@ -1634,9 +1662,9 @@ DO WHILE volta_db
 
 
       #ifdef COM_REDE
-       tecl_p=IN_KEY(drvtempo)                 // espera tecla ou sai para refresh
+       tecl_p=INKEY(drvtempo)                 // espera tecla ou sai para refresh
       #else
-       tecl_p=IN_KEY(0)                        // espera uma tecla ser digitada
+       tecl_p=INKEY(0)                        // espera uma tecla ser digitada
       #endi
 
      #endi
@@ -1645,6 +1673,18 @@ DO WHILE volta_db
       CASE tecl_p=K_ALT_F8                     // teclou F8 (rolagem da janela)
        rola_t=.t.                              // liga flag e
        ROLATELA()                              // executa a rolagem
+      CASE tecl_p=K_PGUP                       // pagina anterior
+       IF sistema[op_sis,O_TELA,O_ATUAL]=1
+        sistema[op_sis,O_TELA,O_ATUAL]=1
+       ELSE
+        sistema[op_sis,O_TELA,O_ATUAL]--
+       ENDI
+      CASE tecl_p=K_PGDN                       // pagina seguinte
+       IF sistema[op_sis,O_TELA,O_ATUAL]>=sistema[op_sis,O_TELA,O_DEF]
+        sistema[op_sis,O_TELA,O_ATUAL]=sistema[op_sis,O_TELA,O_DEF]
+       ELSE
+        sistema[op_sis,O_TELA,O_ATUAL]++
+       ENDI
       CASE tecl_p=K_ESC.OR.tecl_p=K_ENTER.OR.tecl_p=32
        EXIT                                    // abandona
      ENDC
@@ -1660,6 +1700,7 @@ DO WHILE volta_db
      ENDI
     #endi
 
+    sistema[op_sis,O_TELA,O_ATUAL]=q_tela      // restaura num da tela
     RESTSCREEN(0,0,MAXROW(),79,tela_fundo)     // restaura tela
     SETKEY(K_TAB,t_tab)                        // TAB volta a funcionar
 
@@ -1667,7 +1708,8 @@ DO WHILE volta_db
     cod_sos=32                               // escolhe o formato da exportacao
     msg="Texto - delimitados, para editores de texto|"+;
         "SDF - 'standard Data Format` para outros sistemas|"+;
-        "DBF - formato padr„o dBASE"
+        "DBF - formato padr„o xBASE|"+;
+        "XLSX - formato padr„o excel"
     op_exp=DBOX(msg,,,E_MENU,,"TIPO DE ARQUIVO DE SAIDA")
     IF op_exp!=0
      IF op_exp=1                             // escolheu o delimitado, entao
@@ -1692,6 +1734,11 @@ DO WHILE volta_db
          op_=DBOX("Gravar por cima|Cancelar a opera‡„o",,,E_MENU,,"ARQUIVO "+UPPER(arq_)+".DBF JA EXISTE!")
          cn=(op_!=1)
         ENDI
+       ELSEIF op_exp=4                           // se exporta para outro DBF
+        IF FILE(arq_+".XLSX")                 // verifica se o DBF ja existe
+         op_=DBOX("Gravar por cima|Cancelar a opera‡„o",,,E_MENU,,"ARQUIVO "+UPPER(arq_)+".XLSX JA EXISTE!")
+         cn=(op_!=1)
+        ENDI
        ENDI
       ENDI
       IF !cn                                 // avisa que esta' trabalhando...
@@ -1700,7 +1747,7 @@ DO WHILE volta_db
        FOR i=1 TO br_w:colcount              // exporta todas as colunas
         SEPARA(br_w:getcolumn(i):cargo)      // separa atributo da coluna
         IF tp_cp!="M"                        // campo memo nao e' exportado
-         IF op_exp=3                         // exporta para DBF
+         IF op_exp=3.OR.op_exp=4                         // exporta para DBF
           cp_x=cp_
           casadec=0                          // se a coluna for numerica, verifica
           IF tp_cp="N"                       // a qde de casas decimais
@@ -1763,8 +1810,8 @@ DO WHILE volta_db
        SET CONS ON                           // reabilita o video
        SET(_SET_DELETED,dele_atu)            // restaura situacao do DELE()
        GO brw_reg                            // volta para registro anterior
-       IF op_exp=3                           // exportacao para DBF
-        DBOX("Gerando o arquivo "+arq_+".DBF",15,,,NAO_APAGA)
+       IF op_exp=3.OR.op_exp=4                           // exportacao para DBF
+        DBOX("Gerando o arquivo "+arq_,15,,,NAO_APAGA)
         i_=LEN(estr_dbf)                     // verifica/assegura que os nomes
         FOR t=1 TO i_                        // dos campos nao estao repetidos
          FOR i=t+1 TO i_
@@ -1778,7 +1825,38 @@ DO WHILE volta_db
         DBCREATE(arq_,estr_dbf)              // cria o novo DBF
         USE (arq_)                           // abre
         APPEND FROM (arqexp) SDF             // e anexa os registros
-        USE                                  // fecha
+		USE
+		
+		IF op_exp=4
+		 oExcel := TOleAuto():New( "Excel.Application" )
+         IF  oExcel == nil
+          Alert('Excel no está instalado!','Error')
+		 ELSE
+		  oWorkbook := oExcel:WorkBooks
+		  arqauxxls:=arq_+[.DBF]
+          oWorkbook:Open( arqauxxls )
+		  oExcel:DisplayAlerts := .f.
+		  oExcel:Visible := .t.
+		  arqauxxls:=arq_+[.XLSX]
+		  oWorksheet := oExcel:Get( "ActiveSheet" )
+/*
+          FOR nCol := 1 TO LEN(cp_exp)               // e para todas as colunas
+           c_p=EVAL(&("{||"+cp_exp[t]+"}"))    // "code block" com o conteudo da coluna
+           IF VALTYPE(c_p)="N"
+            oWorksheet:Columns( nCol ):NumberFormat := "#.##0,00"
+           ELSEIF VALTYPE(c_p)="D"                   // se delimitado grava entre aspas
+            oWorksheet:Columns( nCol ):DateFormat := "YYMD"
+           ENDI
+          NEXT
+*/
+		  oWorksheet:SaveAs( arqauxxls, 56 ) // Segundo parâmetro informa o tipo de saída
+//		  oExcel:Quit()
+//		  oWorksheet:End()
+//		  oExcel:End()
+		  DBOX( "Foi criado o arquivo "+arqauxxls )
+
+		 ENDIF
+		ENDIF
         ERASE (arqexp)                       // elimina arq .txt temporario
         SELE (are_a)                         // retorna para area DBF origem
        ENDI
@@ -1801,9 +1879,9 @@ DO WHILE volta_db
      INI_ARQ()                                 // vai para o topo do arquivo
      x=INDEXKEY(0)                             // e comeca a somar
      IF tp_cp="N"
-      SUM &cp_. TO tot_ FOR !DELE() WHIL IN_KEY()!=K_ESC .AND. &x.=IF(EMPTY(criterio),"","T")+chv_1
+      SUM &cp_. TO tot_ FOR !DELE() WHIL INKEY()!=K_ESC .AND. &x.=IF(EMPTY(criterio),"","T")+chv_1
      ELSE
-      SUM VALBR(cp_) TO tot_ FOR !DELE() WHIL IN_KEY()!=K_ESC .AND. &x.=IF(EMPTY(criterio),"","T")+chv_1
+      SUM VALBR(cp_) TO tot_ FOR !DELE() WHIL INKEY()!=K_ESC .AND. &x.=IF(EMPTY(criterio),"","T")+chv_1
      ENDI
      GO brw_reg
      IF LASTKEY()!=K_ESC                       // nao cancelou
@@ -1865,11 +1943,7 @@ IF LASTKEY()!=K_ESC
  IF tps>0 .AND. LASTKEY()!=K_ESC
   cn=.f.
   ALERTA(1)
-  IF "4WIN"$UPPER(drvmarca) // nome da configuracao/marca impressora
-    arq_:=drvdbf+"WIN"+ide_maq
-    tps:=3                                          // se vai para arquivo/video
-    cn:=.F.
-  ELSEIF tps=2                                              // saida para arquivo
+  IF tps=2                                              // saida para arquivo
    arq_=ARQGER()                                        // solicita um nome
    cn=EMPTY(arq_)
   ELSE                                                  // vai para a impressora
@@ -1882,7 +1956,6 @@ IF LASTKEY()!=K_ESC
    brw_tela = SAVESCREEN(0,0,MAXROW(),79)               // salva tela
    qb_=QUEBRA_BRW()                                     // pega quebra da impressao
    ltot := ltot_o := 0                                  // inicializa variaveis
-   lin4win:=iif("4WIN"$UPPER(drvmarca),20,0)
    brw_cb1 = ""; brw_imp:=just_memo:=tot_num:=tot_snum:=tot_sint := .f.
    IF LEN(qb_)>1                                        // se tem quebra
     brw_cb1 = SPACE((3*(LEN(qb_)-1)))                   // coloca cabecalho mais a direita
@@ -1993,7 +2066,11 @@ IF LASTKEY()!=K_ESC
    DBOX("Aguarde o final de impress„o||ESC para interromper",17,,,NAO_APAGA)
    INI_ARQ()                                            // vai para o inicio do arquivo
    cl:=pg:=creg := 0                                    // inicializar variaveis
-   SET PRINTER TO (arq_)                                // abre arq escolhido ou redireciona saida
+   IF "4WIN"$UPPER(drvmarca)
+   arq_:=drvdbf+"WIN"+ide_maq
+   tps:=3
+ ENDIF
+ SET PRINTER TO (arq_)                                // abre arq escolhido ou redireciona saida
    SET DEVI TO PRIN                                     // se tamanho > 80, comprime
    @ PROW(),PCOL() SAY IF(MAX(ltot,ltot_o)>80,&drvpcom.,"")
    cl=CABCONS(brw_cb1,tit_rel)                          // imprime cabecalho da janela superior
@@ -2009,7 +2086,7 @@ IF LASTKEY()!=K_ESC
      cl=CABCONS(brw_cb1,tit_rel)                        // e reimprime o cabecalho
     ENDI
 
-    IF IN_KEY()=K_ESC .OR. MOUSEGET(0,0)=2              // quer cancelar a impressao?
+    IF INKEY()=K_ESC .OR. MOUSEGET(0,0)=2              // quer cancelar a impressao?
      brw_cn = CANC(1)                                   // pede confimacao do cancelamento
      LOOP
     ENDI
@@ -2122,10 +2199,8 @@ IF LASTKEY()!=K_ESC
         lin += SPAC(i+1)
        ENDI
       NEXT
-      IF cl+1>(IF(brw_imp,54,57)+lin4win)
-       IF !("4WIN"$UPPER(drvmarca))
-        EJEC                                             // quebra de folha
-       ENDI
+      IF cl+1>IF(brw_imp,54,57)
+       EJEC                                             // quebra de folha
        cl=CABCONS(brw_cb1,tit_rel)
       ENDI
       IF tot_sint                                       // esta sintetizando
@@ -2133,7 +2208,7 @@ IF LASTKEY()!=K_ESC
       ELSE
        @ cl++,0 SAY lin                                 // joga linha na impressora
       ENDI
-      IF IN_KEY()=K_ESC .OR. MOUSEGET(0,0)=2            // quer cancelar a impressao?
+      IF INKEY()=K_ESC .OR. MOUSEGET(0,0)=2            // quer cancelar a impressao?
        brw_cn = CANC(1)
        LOOP
       ENDI
@@ -2158,12 +2233,10 @@ IF LASTKEY()!=K_ESC
      DO WHIL !EOF().AND.!brw_cn.AND.&ind_outro.=c_antes // imprime so quem atende a relacao
       cl--
       IF cl>57                                          // final da folha
-       IF !("4WIN"$UPPER(drvmarca))
-        EJEC                                             // salta para proxima
-       ENDI
+       EJEC                                             // salta para proxima
        cl=CABCONS(brw_cb1,tit_rel)                      // imprime cabecalho do "pai"
       ENDI
-      IF IN_KEY()=K_ESC .OR. MOUSEGET(0,0)=2            // quer cancelar?
+      IF INKEY()=K_ESC .OR. MOUSEGET(0,0)=2            // quer cancelar?
        brw_cn = CANC(1)                                 // pede confirmacao
        LOOP
       ENDI
@@ -2215,13 +2288,11 @@ IF LASTKEY()!=K_ESC
          ENDI
         NEXT
         IF cl+1>57                                      // chegou no final da folha?
-         IF !("4WIN"$UPPER(drvmarca))
-          EJEC                                           // salta para proxima pagina
-         ENDI
+         EJEC                                           // salta para proxima pagina
          cl=CABCONS(brw_cb1,tit_rel)                    // reimprime cabecalho do "pai"
         ENDI
         @ ++cl,0 SAY PADL(lin,MAX(ltot,ltot_o))         // imprime linhas dos memo
-        IF IN_KEY()=K_ESC .OR. MOUSEGET(0,0)=2          // quer cancelar?
+        IF INKEY()=K_ESC .OR. MOUSEGET(0,0)=2          // quer cancelar?
          brw_cn = CANC(1)
          LOOP
         ENDI
@@ -2260,17 +2331,13 @@ IF LASTKEY()!=K_ESC
     IF LEN(qba_[1])>0                                   // teve alguma quebra impressa?
      FOR ii= LEN(qb_) TO 1 STEP -1                      // corre todas para imprimir sub-total
       IF cl+1>IF(brw_imp,52,55)                         // precisa pular pagina
-       IF !("4WIN"$UPPER(drvmarca))
-        EJEC
-       ENDI
+       EJEC
        cl=CABCONS(brw_cb1,tit_rel)                      // se pulou reimprime cabecalho
       ENDI
       IF ii=LEN(qb_) .AND. tot_sint                     // ultima quebra vai sintetizar...
        FOR tt=1 TO LEN(lin_qb)                          // imprime linhas salvas
-        IF cl+1>(IF(brw_imp,54,57)+lin4win)             // precisa quebrar a pagina
-         IF !("4WIN"$UPPER(drvmarca))
-          EJEC                                           // entao forca
-         ENDI
+        IF cl+1>IF(brw_imp,54,57)                       // precisa quebrar a pagina
+         EJEC                                           // entao forca
          cl=CABCONS(brw_cb1,tit_rel)
         ENDI
         @ cl++,0 SAY lin_qb[tt]                         // linha com total da ultima quebra
@@ -2321,11 +2388,9 @@ IF LASTKEY()!=K_ESC
                     ALLTRIM(TRAN(creg,"@E 999,999"))+;           // listados
                     " registros"+;
                     IF(MAX(ltot,ltot_o)>80,&drvtcom.,"")
-   IF !("4WIN"$UPPER(drvmarca))
-    EJEC
-   ENDI
+   EJEC
    cpord=or_i                                           // restaura ordenacao
-   SET PRINTER TO (drvporta)                            // finaliza o relatorio
+   SET PRINTER TO //(drvporta)                            // finaliza o relatorio
    SET DEVI TO SCRE
    SET(_SET_DELETED,dele_atu)                           // restaura visao dos reg apagados
    GO brw_reg                                           // reposiciona o ponteiro
@@ -2504,7 +2569,7 @@ STATIC FUNC CABCONS(cb_1,tit_rel)
 pg++
 @ 1,ltot-18 SAY DATE()                   // data do sistema
 @ 1,ltot-7  SAY TRAN(pg,"Pag 999")       // numero da pagina
-//@ 2,0 SAY IMPAC(PADC(TRIM(nemp),ltot))   // nome da empresa
+@ 2,0 SAY IMPAC(PADC(TRIM(nemp),ltot))   // nome da empresa
 @ 3,0 SAY PADC(TRIM(tit_rel),ltot)       // titulo informado
 @ 4,0 SAY IMPAC(cb_1)                    // titulo das colunas
 @ 5,0 SAY REPL("=",MAX(ltot,ltot_o))
@@ -2578,7 +2643,12 @@ cod_sos=27
 leat_=.t.
 IF lecons                                            // se quer ler consultas gravadas
  DBOX("AGUARDE!",,,,NAO_APAGA)
- aqdbe=drvdbf+"DB*."+LEFT(ALIAS(),3)                 // mascara dos arquivos
+ aqdbe=drvdbf+"DB*."                                 // mascara dos arquivos
+ IF TYPE("prefixo_dbf")="C"                          // se veio da consulta
+  aqdbe=aqdbe+prefixo_dbf                            // extra troca o prefixo
+ ELSE                                                // do dbf para nao confundir
+  aqdbe=aqdbe+LEFT(ALIAS(),3)                        // com as consultas do
+ END IF                                              // proprio dbf
  qarq=ADIR(aqdbe)                                    // capta arquivo do disco
  IF qarq>0                                           // existe alguma consulta gravada?
   PRIV l_arq[qarq+1], v_arq[qarq+1]
@@ -2600,6 +2670,7 @@ IF lecons                                            // se quer ler consultas gr
    DO WHIL volta_ac
     volta_ac=.f.
     msg=""                                            // tira os espacos dos titulos
+db1_ind_ord:=db1_ind_or
     AEVAL(v_arq,{|ms|;                                // da consulta
                   IF(ms!=NIL,msg+="|"+ALLTRIM(PARSE(ms,"³")),"");
                 };
@@ -2670,7 +2741,7 @@ IF lecons                                            // se quer ler consultas gr
      criterio=db_&pas.arqf                            // filtro
      cpord=db_&pas.expo                               // ordem
      chv_rela=db_&pas.chvr                            // ligacao entre janelas
-     ind_ord=db_&pas.ind_or  //d                          // indice atual
+     ind_ord=db_&pas.ind_or //d                       // indice atual
      br_w:cargo         := {criterio,cpord,chv_rela,ind_ord,cmr_}
      br_w:gobottomblock := {||FIM_ARQ()}
      br_w:gotopblock    := {||INI_ARQ()}
@@ -2724,6 +2795,9 @@ IF leat_
     br_w:addcolumn(tbcolumnnew(col_cp[i],&("{||"+col_cp[i]+"}")))
     i_=IF(TYPE("col_tit[i]")!="UE".AND.!EMPTY(col_tit[i]),col_tit[i],"")
     x_=LEN(&(col_cp[i]))                             // tamanho da coluna
+    IF LEN(i_)>x_                                    // se o titulo maior que o campo
+     x_=LEN(i_)                                      // vamos ajustar pelo titulo
+    ENDI
     br_w:getcolumn(ct_cp):width := x_
     br_w:getcolumn(ct_cp):colorblock := &("{||IF(DELE(),{3,2},IF("+cmr_+",{5,2},{1,2}))}")
     x_="@X"                                          // mascara default
@@ -2785,6 +2859,9 @@ IF LEFT(M->ms,2)="@S"                       // mascara truncada
   M->ms:=ALLTRIM(SUBS(M->ms,AT(ALLTRIM(STR(M->tm)),M->ms)+LEN(ALLTRIM(STR(M->tm)))))
  END IF
 END IF
+IF LEN(sistema[op_sis,O_CAMPO,t,O_TITU])>M->tm // se o titulo maior que o campo
+ M->tm=LEN(sistema[op_sis,O_CAMPO,t,O_TITU])   // vamos ajustar pelo titulo
+ENDI
 ct_cp++
 br_w:addcolumn(;                            // inicializa coluna
        tbcolumnnew(sistema[op_sis,O_CAMPO,t,O_TITU],;
@@ -3021,4 +3098,4 @@ ENDI
 RETU (p_m>0 .AND. p_b>0)           // retorna .t. se relacionou
 
 * \\ Final de ADR_FUNC.PRG
-
+// troca_nome

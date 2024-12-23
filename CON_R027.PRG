@@ -1,13 +1,15 @@
+
 procedure con_r027
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: CON_R027.PRG
  \ Data....: 31-12-98
  \ Sistema.: Controle de Convˆnios
  \ Funcao..: Ranking
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v3.0
+ \ Convert.: v5.0 em 2021081014:57:30 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -89,7 +91,7 @@ BEGIN SEQUENCE
  EJEC                                              // salta pagina
 END SEQUENCE
 IMPCTL(drvtcom)                                    // retira comprimido
-SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
+SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)
@@ -119,4 +121,3 @@ ENDI
 RETU
 
 * \\ Final de CON_R027.PRG
-

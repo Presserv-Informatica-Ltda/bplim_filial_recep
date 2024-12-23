@@ -1,15 +1,18 @@
+
 procedure admbig
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: ADMBIG.PRG
  \ Data....: 29-09-96
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador geral
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v2.0d
+ \ Convert.: v5.0 em 2021081014:57:30 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
+*/
+
 #include "admbig.ch"    // inicializa constantes manifestas
 
 /*
@@ -109,7 +112,7 @@ arqgeral="ADM"
  IF EMPTY(ide_maq)                      // se netname() retornou nulo,
   ide_maq=LEFT(GETENV("ESTACAO"),4)     // tenta variavel de ambiente ESTACAO
  ENDI
- 
+
  /*
     Se rede, e se NETNAME() do Clipper ou ESTACAO retornam "", pede ao usuario
     a identificacao da estacao para gravar arquivos de configuracoes
@@ -151,7 +154,7 @@ IF FILE(arqconf)
  #endi
 
 ELSE
- 
+
  /*
     cria variaveis default de cores, codigos de impressao, etc...
  */
@@ -191,7 +194,7 @@ ELSE
   SETPOS(MAXROW()-1,1)             // cursor na penultima linha, coluna 1
   RETU                             // de volta ao DOS
  ENDI
- 
+
  /*
     cria arquivo de senha e o inicializa com o primeiro usuario
  */
@@ -315,10 +318,10 @@ ADM_ATR2()
    verifica qual subscricao do vetor SISTEMA corresponde ao arquivo
    aberto na area selecionada
 */
-qualsis={|db_f|db_:=db_f,ASCAN(sistema,{|si|si[O_ARQUI]==db_})}
+qualsis={|db_f|db_:=db_f,ASCAN(sistema,{|si|si[O_ARQUI,O_NOME]==db_})}
 
 #ifdef COM_PROTECAO
- 
+
  /*
     protege arquivo de dados contra acesso dBase e muda para "read-only"
     vamos comentar este "code block" ...
@@ -328,7 +331,7 @@ qualsis={|db_f|db_:=db_f,ASCAN(sistema,{|si|si[O_ARQUI]==db_})}
            DBOX("Um momento!",,,,NAO_APAGA),;      // mensagem ao usuario
            AEVAL(sistema,{|sis|;                   // executa o "code block" para cada
                            EDBF(drvdbf+;           // um dos arquivos do vetor sistema
-                                sis[O_ARQUI],pt);  // (se pt, desprotege; senao, protege)
+                                sis[O_ARQUI,O_NOME],pt);  // (se pt, desprotege; senao, protege)
                          };
            ),;
            RESTSCREEN(0,0,MAXROW(),79,tel_p);      // restaura a tela
@@ -822,4 +825,3 @@ SETPOS(MAXROW()-1,1)                               // e cursor na penultima linh
 RETU                                               // volta ao DOS
 
 * \\ Final de ADMBIG.PRG
-

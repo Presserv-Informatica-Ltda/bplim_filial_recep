@@ -1,13 +1,15 @@
+
 procedure ins_02f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: INS_02F9.PRG
  \ Data....: 31-03-97
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Valida‡„o do campo NASCTO_, arquivo INSCRITS
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:58:28 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -24,4 +26,3 @@ RETU .T.       // <- deve retornar um valor L¢GICO
 
 
 * \\ Final de INS_02F9.PRG
-

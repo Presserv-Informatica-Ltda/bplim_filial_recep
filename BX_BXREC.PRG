@@ -1,3 +1,4 @@
+
 procedure bx_bxrec
 para nrdays
 if pcount()<1
@@ -46,5 +47,3 @@ do while .not. eof()
  sele bxrec
  skip
 enddo
-
-

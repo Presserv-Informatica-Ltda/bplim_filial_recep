@@ -1,13 +1,15 @@
+
 procedure r02701f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: R02701F9.PRG
  \ Data....: 24-12-95
  \ Sistema.: Administradora de Funer rias
  \ Funcao..: motivo do relat¢rio ADM_R027 // N„o impress„o do recibo
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:57:53 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -25,4 +27,3 @@ ENDCASE
 RETU doneaux      // <- retorna vazio se contrato em codic”es de emiss„o.
 
 * \\ Final de R02701F9.PRG
-

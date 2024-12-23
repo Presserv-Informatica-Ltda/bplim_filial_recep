@@ -1,13 +1,15 @@
+
 procedure r00201f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: R00201F9.PRG
  \ Data....: 24-12-95
  \ Sistema.: Administradora de Funer rias
  \ Funcao..: Pr‚-valida‡„o da variavel RECMENSAG, relaotiro ADM_R002
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:58:02 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -25,4 +27,3 @@ ENDCASE
 RETU doneaux      // <- retorna vazio se contrato em codic”es de emiss„o.
 
 * \\ Final de R00201F9.PRG
-
