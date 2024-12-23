@@ -365,11 +365,13 @@ SETCOLOR(drvcortel)
 @ l_s+07,c_s+1 SAY "                                      �"
 @ l_s+08,c_s+1 SAY " Admiss꼘:            Sai Taxa:       �"
 @ l_s+09,c_s+1 SAY " Funerais:     Cobrador: "
-@ l_s+10,c_s+1 SAY "컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴"
-@ l_s+15,c_s+1 SAY "컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴"
-@ l_s+16,c_s+1 SAY " Ref.:                       Vl.Pago:"
-@ l_s+17,c_s+1 SAY " Pago com..:             Troco:"
-@ l_s+19,c_s+1 SAY "  emitida em             por"
+@ l_s+10,c_s+1 SAY " Tel:"
+@ l_s+11,c_s+1 SAY " e-mail:"
+//@ l_s+10,c_s+1 SAY "컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴"
+//@ l_s+15,c_s+1 SAY "컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴"
+@ l_s+17,c_s+1 SAY " Ref.:                       Vl.Pago:"
+@ l_s+18,c_s+1 SAY " Pago com..:             Troco:"
+@ l_s+20,c_s+1 SAY "  emitida em             por"
 RETU
 
 PROC BXR_gets     // mostra variaveis do arquivo BXREC
@@ -387,22 +389,22 @@ CRIT("",,"16")
                  PICT sistema[op_sis,O_CAMPO,02,O_MASC]
                  CRIT(sistema[op_sis,O_CAMPO,02,O_CRIT],,"1|2|3|4|5|6|7|8|9|10|11|12|13|14")
 
-@ l_s+16 ,c_s+08 GET  cobranca;
+@ l_s+17 ,c_s+08 GET  cobranca;
                  PICT sistema[op_sis,O_CAMPO,03,O_MASC]
 
-@ l_s+16 ,c_s+39 GET  valorpg;
+@ l_s+17 ,c_s+39 GET  valorpg;
                  PICT sistema[op_sis,O_CAMPO,04,O_MASC]
 
-@ l_s+17 ,c_s+14 GET  valoraux;
+@ l_s+18 ,c_s+14 GET  valoraux;
                  PICT sistema[op_sis,O_CAMPO,05,O_MASC]
                  CRIT(sistema[op_sis,O_CAMPO,05,O_CRIT],,"15")
 
-@ l_s+19 ,c_s+14 GET  emitido_;
+@ l_s+20 ,c_s+14 GET  emitido_;
                  PICT sistema[op_sis,O_CAMPO,06,O_MASC]
 
-@ l_s+19 ,c_s+30 GET  por
+@ l_s+20 ,c_s+30 GET  por
 
-@ l_s+19 ,c_s+44 GET  numop;
+@ l_s+20 ,c_s+44 GET  numop;
                  PICT sistema[op_sis,O_CAMPO,08,O_MASC]
 
 CRIT("",,"1|3|4|5|6|7|8|9|10|11|12|13|14")
@@ -420,10 +422,10 @@ IF tp_mov=INCLUI
   SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
   @ l_s+01 ,c_s+12 GET numero;
                    PICT sistema[op_sis,O_CAMPO,01,O_MASC]
-  @ l_s+19 ,c_s+14 GET emitido_;
+  @ l_s+20 ,c_s+14 GET emitido_;
 		   PICT sistema[op_sis,O_CAMPO,06,O_MASC]
-  @ l_s+19 ,c_s+30 GET por
-  @ l_s+19 ,c_s+44 GET numop;
+  @ l_s+20 ,c_s+30 GET por
+  @ l_s+20 ,c_s+44 GET numop;
                    PICT sistema[op_sis,O_CAMPO,08,O_MASC]
   CLEA GETS
   CRIT("",,"16")
@@ -445,11 +447,11 @@ IF tp_mov=INCLUI
                    MOSTRA sistema[op_sis,O_FORMULA,13]
                    MOSTRA sistema[op_sis,O_FORMULA,14]
 
-  @ l_s+16 ,c_s+08 GET  cobranca;
+  @ l_s+17 ,c_s+08 GET  cobranca;
                    PICT sistema[op_sis,O_CAMPO,03,O_MASC]
                    DEFINICAO 3
 
-  @ l_s+16 ,c_s+39 GET  valorpg;
+  @ l_s+17 ,c_s+39 GET  valorpg;
                    PICT sistema[op_sis,O_CAMPO,04,O_MASC]
                    DEFINICAO 4
 
