@@ -1,13 +1,15 @@
+
 procedure cad_04f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Ind£stria de Urnas Bignotto Ltda
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: CAD_04F9.PRG
  \ Data....: 22-04-97
  \ Sistema.: Controle de Processos da Funer ria
  \ Funcao..: Valida‡„o do campo CONTRATO, arquivo CADPROC
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:57:41 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -119,4 +121,3 @@ ENDD
 RETU .t.  // <- deve retornar um valor L¢GICO
 
 * \\ Final de CAD_04F9.PRG
-

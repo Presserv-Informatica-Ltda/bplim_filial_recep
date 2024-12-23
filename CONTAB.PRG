@@ -1,6 +1,7 @@
+
 procedure contab
 ? "Programa para transferencia de arquivos"
-? 
+?
 ? "Informe sua senha para iniciar o programa"
 cl= row()
 senha="      "
@@ -31,4 +32,3 @@ use f:\vip41\bxrok
 ? " Reposicionando o arquivo correto"
 copy to f:\vip41\arquivos\bxrec
 ? " Procedimento de finaliza‡Æo"
-

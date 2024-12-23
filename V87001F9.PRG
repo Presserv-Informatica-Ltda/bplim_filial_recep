@@ -1,13 +1,15 @@
+
 procedure v87001f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: V87001F9.PRG
  \ Data....: 21-09-97
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Valida‡„o da variavel CONFIRME, relatorio ADM_R038
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:57:50 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -27,4 +29,3 @@ AFILL(detprc,[])
 RETU .t.       // <- deve retornar um valor L¢GICO
 
 * \\ Final de V87001F9.PRG
-

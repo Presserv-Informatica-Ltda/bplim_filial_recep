@@ -1,13 +1,15 @@
+
 procedure adm_r041
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Ind£stria de Urnas Bignotto Ltda
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: ADM_R041.PRG
  \ Data....: 03-03-98
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Contrato Brotas
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v3.0
+ \ Convert.: v5.0 em 2021081014:57:49 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -303,7 +305,7 @@ BEGIN SEQUENCE
 END SEQUENCE
 IMPCTL(lpp_066)                                    // seta pagina com 66 linhas
 SET MARG TO                                        // ajusta a margem esquerda
-SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
+SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)
@@ -358,4 +360,3 @@ ENDCASE
 RETU EMPT(GRUPOS->ultimp_)    //S¢ quero os n„o impressos
 
 * \\ Final de R04101F9.PRG
-

@@ -1,15 +1,18 @@
+
 procedure fncs
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: FNCS.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador do subsistema de funcion rios
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
+ \ Convert.: v5.0 em 2021081014:57:36 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
+*/
+
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 PARA lin_menu,col_menu
@@ -128,7 +131,7 @@ DO WHIL cabem>0
  SELE FNCS
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
- 
+
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -162,7 +165,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
- 
+
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -326,7 +329,7 @@ IF RECC()=0                     // se o dbf foi criado agora
  APPEND BLANK                   // os ultomos cps sequenciais
  SELE FNCS
  IF RECC()>0                    // se o DBF nao estiver
-  SET ORDER TO 0                // vazio, entao enche DBF seq
+  DBSETORDER(0)                 // retorna ao indice principal
   GO BOTT                       // com o ultimo reg digitado
   REPL FNC_SEQ->codigo WITH codigo
   DBSETORDER(1)                 // retorna ao indice principal
@@ -509,9 +512,13 @@ IF tp_mov=INCLUI
  ENDD
 ENDI
 IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
- DELE
+    POE_NO_LOG(tp_mov)
+ IF !EMPTY(ALIAS())
+  DELE
+ ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
- IF op_menu!=INCLUSAO
+  POE_NO_LOG(tp_mov)
+  IF op_menu!=INCLUSAO
   RECA
  ENDI
 ENDI
@@ -524,4 +531,3 @@ ENDI
 RETU
 
 * \\ Final de FNCS.PRG
-

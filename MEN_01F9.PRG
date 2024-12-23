@@ -1,13 +1,15 @@
+
 procedure men_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: MEN_01F9.PRG
  \ Data....: 20-10-99
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Fun‡„o F8 do campo FILTRO, arquivo MENSAG
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:57:58 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -24,4 +26,3 @@ POINTER_DBF(sit_dbf)
 RETU auxiliar       // <- deve retornar um valor qualquer
 
 * \\ Final de MEN_01F9.PRG
-

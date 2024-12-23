@@ -1,3 +1,4 @@
+
 /****
 *  Funcao: GETSYS do Clipper (manipula o GET/READ)
 *  OBS...: Este c¢digo foi modificado pela GAS INFORMèTICA
@@ -885,5 +886,3 @@ ENDI
 RETU
 
 // Final de GETSYS.PRG
-
-

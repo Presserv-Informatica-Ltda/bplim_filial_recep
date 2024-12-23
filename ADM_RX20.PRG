@@ -1,13 +1,15 @@
+
 procedure adm_rx20
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: ADM_RX20.PRG
  \ Data....: 22-09-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Impress„o Aux.Funeral 2
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v3.0 
+ \ Criacao.: GAS-Pro v3.0
+ \ Convert.: v5.0 em 2021081014:57:27 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -154,7 +156,7 @@ BEGIN SEQUENCE
     IMPCTL(drvtenf)
     @ cl,028 SAY TRAN([  ],"!!")                   // Estado Contratante
     IMPCTL(drvpenf)
-    @ cl,037 SAY ALLTRIM(xDECRIPT(GRUPOS->rg))                        // Doc
+    @ cl,037 SAY GRUPOS->rg                        // Doc
     IMPCTL(drvtenf)
     IMPCTL(drvpenf)
     @ cl,059 SAY TRAN(subst(tbestciv,AT(GRUPOS->estcivil,tbestciv),10),"@!")// Est.Civil contratante
@@ -275,7 +277,7 @@ BEGIN SEQUENCE
     IMPCTL(drvtenf)
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,027 SAY "RG:"
-    @ cl,031 SAY TRAN(ALLTRIM(xDECRIPT(GRUPOS->rg)),"@!")             // R.G.
+    @ cl,031 SAY TRAN(GRUPOS->rg,"@!")             // R.G.
     SKIP                                           // pega proximo registro
     cl=999                                         // forca salto de pagina
    ELSE                                            // se nao atende condicao
@@ -315,4 +317,3 @@ ENDI
 RETU
 
 * \\ Final de ADM_RX20.PRG
-

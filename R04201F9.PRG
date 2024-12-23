@@ -1,13 +1,15 @@
+
 procedure r04201f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: R04201F9.PRG
  \ Data....: 22-06-97
  \ Sistema.: Administradora - PLANO
  \ Funcao..: qualif do relat¢rio ADM_R042
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:57:48 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -34,4 +36,3 @@ ENDC
 RETU []    // <- deve retornar um valor qualquer
 
 * \\ Final de R04201F9.PRG
-

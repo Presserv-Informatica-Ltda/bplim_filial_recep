@@ -1,13 +1,15 @@
+
 procedure r00202f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: R00202F9.PRG
  \ Data....: 02-01-97
  \ Sistema.: Administradora - PLANO
  \ Funcao..: hist 1 do relat¢rio ADM_R002
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:57:58 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -59,4 +61,3 @@ RETU []         // <- deve retornar um valor qualquer
 
 
 * \\ Final de R00202F9.PRG
-
