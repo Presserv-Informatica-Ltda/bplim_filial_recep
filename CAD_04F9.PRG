@@ -18,8 +18,8 @@ IF !(op_menu=INCLUSAO)
  retu .t.
 ENDI
 
-IF .f. //!(contraux=ultcodmsg)
- msg:=[  --->   A T E N C A O  <---|| FAVOR CONFIRMAR|| ENDERECO E TELEFONE||]
+IF !(contraux=ultcodmsg)
+ msg:=[  --->   A T E N C A O  <---|| FAVOR CONFIRMAR|| CPF e Data de Nascimento||]
  KEY2seek:=[ABCDEFGHIJKLMNOPQRSTUVYXWZ]
  KEY2seek+=key2seek
  KEY2seek+=key2seek
@@ -32,13 +32,13 @@ IF .f. //!(contraux=ultcodmsg)
  endd
  key2press:=substr(key2seek,val(key2press),1)
 
-// msg+=[     Tecle <]+key2press+[> para sair|]
- msg+=[     Tecle algo para sair|]
+ msg+=[     Tecle <]+key2press+[> para sair|]
+// msg+=[     Tecle algo para sair|]
  pressedkey:=[ ]
  do while !(pressedkey=key2press)
   pressedkey:=DBOX(msg,,,,,"ATEN€ŽO! "+usuario," ","!",,)        // avisa ao usuario
   pressedkey:=UPPER(pressedkey)
-  EXIT
+//  EXIT
  endd
  ultcodmsg:=contraux
 endi

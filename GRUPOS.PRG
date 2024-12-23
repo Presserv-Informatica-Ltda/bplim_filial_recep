@@ -318,8 +318,7 @@ SETCOLOR(drvcortel)
 @ l_s+14,c_s+1 SAY " Funerais:       Circ.Inic:       Ult.:        Emit:      Baix:"
 @ l_s+15,c_s+1 SAY " Atendimento.1:                      2:"
 @ l_s+16,c_s+1 SAY " Participantes: Vivos:    Falecidos:    Dependentes:"
-@ l_s+17,c_s+1 SAY " email:                                             "
-@ l_s+18,c_s+1 SAY " Ult.Altera뇙o:                       Ult.Impress꼘:"
+@ l_s+17,c_s+1 SAY " Ult.Altera뇙o:                       Ult.Impress꼘:"
 RETU
 
 PROC GRU_gets     // mostra variaveis do arquivo GRUPOS
@@ -438,9 +437,6 @@ CRIT("",,"2|3|6|9|10|11|12|13")
 
 @ l_s+15 ,c_s+16 GET  atend1;
                  PICT sistema[op_sis,O_CAMPO,45,O_MASC]
-
-@ l_s+17 ,c_s+16 GET  email;
-                 PICT sistema[op_sis,O_CAMPO,50,O_MASC]
 
 CLEAR GETS
 RETU
@@ -1474,7 +1470,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
-
+ 
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -1603,7 +1599,7 @@ SETCOLOR(drvcortel)
 @ l_s+01,c_s+1 SAY " Inscr:                                            (                   )"
 @ l_s+02,c_s+1 SAY "컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴"
 @ l_s+03,c_s+1 SAY " Nome:                                     Nasc.:"
-@ l_s+04,c_s+1 SAY " Est.Civil.:     Sexo:    T.Car늧cia:             CPF:                 "
+@ l_s+04,c_s+1 SAY " Est.Civil.:     Sexo.....:          T.Car늧cia.:"
 @ l_s+05,c_s+1 SAY " Vivo/Falec:     Falecto..:            Tipo:      N� Processo:"
 RETU
 
@@ -1629,14 +1625,11 @@ IF &(INDEXKEY(0))=IF(EMPT(criterio),"","T")+chv_1
 
  @ l_s+04 ,c_s+14 GET  estcivil
 
- @ l_s+04 ,c_s+24 GET  sexo;
+ @ l_s+04 ,c_s+33 GET  sexo;
                   PICT sistema[op_sis,O_CAMPO,09,O_MASC]
 
- @ l_s+04 ,c_s+39 GET  tcarencia;
+ @ l_s+04 ,c_s+51 GET  tcarencia;
                   PICT sistema[op_sis,O_CAMPO,10,O_MASC]
-
- @ l_s+04 ,c_s+56 GET  cpf;
-                  PICT sistema[op_sis,O_CAMPO,18,O_MASC]
 
  @ l_s+05 ,c_s+14 GET  vivofalec;
                   PICT sistema[op_sis,O_CAMPO,12,O_MASC]
@@ -1680,17 +1673,13 @@ IF tp_mov=INCLUI
   @ l_s+04 ,c_s+14 GET  estcivil
                    DEFINICAO 7
 
-  @ l_s+04 ,c_s+24 GET  sexo;
+  @ l_s+04 ,c_s+33 GET  sexo;
                    PICT sistema[op_sis,O_CAMPO,09,O_MASC]
                    DEFINICAO 9
 
-  @ l_s+04 ,c_s+39 GET  tcarencia;
+  @ l_s+04 ,c_s+51 GET  tcarencia;
                    PICT sistema[op_sis,O_CAMPO,10,O_MASC]
                    DEFINICAO 10
-
-  @ l_s+04 ,c_s+56 GET  cpf;
-                   PICT sistema[op_sis,O_CAMPO,18,O_MASC]
-                   DEFINICAO 18
 
   @ l_s+05 ,c_s+14 GET  vivofalec;
                    PICT sistema[op_sis,O_CAMPO,12,O_MASC]
