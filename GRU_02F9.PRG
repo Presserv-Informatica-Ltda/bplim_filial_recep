@@ -11,7 +11,7 @@ procedure gru_02f9
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
-#include "adRbig.ch"    // inicializa constantes manifestas
+#include "adrbig.ch"    // inicializa constantes manifestas
 
 //LOCAL reg_dbf:=POINTER_DBF()
 DO WHILE .T.

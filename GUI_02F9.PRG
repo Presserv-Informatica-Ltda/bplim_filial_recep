@@ -11,7 +11,7 @@ procedure gui_02f9
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
-#include "ADRbig.ch"    // inicializa constantes manifestas
+#include "adrbig.ch"    // inicializa constantes manifestas
 
  LOCAL reg_dbf:=POINTER_DBF()
  LOCAL circax1:=circax2:=circax3:=circax4:=circax5:=circax6:=SPACE(46)

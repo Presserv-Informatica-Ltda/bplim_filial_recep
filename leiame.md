@@ -747,3 +747,29 @@ Changes not staged for commit:
 	modified:   smt.prg
 
 no changes added to commit (use "git add" and/or "git commit -a")
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   ADM_R023.PRG
+	modified:   ADM_RS18.PRG
+	modified:   ADRBIG.CH
+	modified:   ADRBIG.EXE
+	modified:   ADRBIG.MAP
+	modified:   ADRBIG.PRG
+	modified:   ADRBIG.hbp
+	modified:   ADR_FUN2.PRG
+	modified:   GRU_02F9.PRG
+	modified:   GUI_02F9.PRG
+	modified:   INS_02F9.PRG
+	modified:   chk.md
+	modified:   smt.prg
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	adm_rs18.bem
+	adr_fun2.bem
+
+no changes added to commit (use "git add" and/or "git commit -a")

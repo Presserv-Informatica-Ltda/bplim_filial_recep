@@ -1764,10 +1764,10 @@ IF tp_mov=INCLUI
         pw_nivel WITH ENCRIPT(_nivel),;
         pw_obs WITH ENCRIPT(_obs)
   ELSE                                    // na inclusao
-   M->pw_codigo=ENCRIPT(_codigo)          // encripta variaveis
-   M->pw_nome=ENCRIPT(_nome)              // na memoria
-   M->pw_nivel=ENCRIPT(_nivel)
-   M->pw_obs=ENCRIPT(_obs)
+   M->pw_codigo=EnCRIPT(_codigo)          // encripta variaveis
+   M->pw_nome=EnCRIPT(_nome)              // na memoria
+   M->pw_nivel=EnCRIPT(_nivel)
+   M->pw_obs=EnCRIPT(_obs)
   ENDI
   EXIT
  ENDD
@@ -2068,4 +2068,3 @@ ENDI
 RETU NIL
 
 * \\ Final de ADR_FUN2.PRG
-
