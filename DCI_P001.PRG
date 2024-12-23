@@ -1,15 +1,18 @@
+
 procedure dci_p001
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: DCI_P001.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Documento … Imprimir
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
+ \ Convert.: v5.0 em 2021081014:56:29 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
+*/
+
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 PRIV dele_atu, cur_atual, getlist:={}
@@ -136,4 +139,3 @@ CLOSE ALL                                          // fecha todos os arquivos e
 RETU                                               // volta para o menu anterior
 
 * \\ Final de DCI_P001.PRG
-

@@ -1,13 +1,15 @@
+
 procedure dci03f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: DCI03F9.PRG
  \ Data....: 29-08-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: F¢rmula (Tipo do docto) a mostrar na tela de DCI_P001
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:56:49 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -49,4 +51,3 @@ ENDCASE
 RETU       // <- deve retornar um valor qualquer
 
 * \\ Final de DCI03F9.PRG
-

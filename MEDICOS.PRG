@@ -1,15 +1,18 @@
+
 procedure medicos
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: MEDICOS.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador do subsistema de credenciados
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
+ \ Convert.: v5.0 em 2021081014:57:31 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
+*/
+
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 PARA lin_menu,col_menu
@@ -122,7 +125,7 @@ DO WHIL cabem>0
  SELE MEDICOS
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
- 
+
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -153,7 +156,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
- 
+
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -319,7 +322,7 @@ IF RECC()=0                     // se o dbf foi criado agora
  APPEND BLANK                   // os ultomos cps sequenciais
  SELE MEDICOS
  IF RECC()>0                    // se o DBF nao estiver
-  SET ORDER TO 0                // vazio, entao enche DBF seq
+  DBSETORDER(0)                 // retorna ao indice principal
   GO BOTT                       // com o ultimo reg digitado
   REPL MED_SEQ->ai WITH ai
   REPL MED_SEQ->intlan WITH intlan
@@ -635,7 +638,10 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
   TIRA_LANC("TESPEC","MED-"+intlan)
  ENDI
  IF !EMPTY(ALIAS())
+    POE_NO_LOG(tp_mov)
+ IF !EMPTY(ALIAS())
   DELE
+ ENDI
  ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
  IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
@@ -655,6 +661,7 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
    #endi
 
   ENDI
+  POE_NO_LOG(tp_mov)
   IF op_menu!=INCLUSAO
    RECA
   ENDI
@@ -675,4 +682,3 @@ ENDI
 RETU
 
 * \\ Final de MEDICOS.PRG
-

@@ -1,20 +1,22 @@
+
 procedure cgrupos
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: CGRUPOS.PRG
  \ Data....: 17-05-98
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Gerenciador do subsistema de contratos cancelados
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v3.0 
+ \ Criacao.: GAS-Pro v3.0
+ \ Convert.: v5.0 em 2021081014:58:04 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 PARA lin_menu,col_menu
-PRIV op_sis, tela_fundo:=SAVESCREEN(0,0,MAXROW(),79)
+PRIV op_sis, tela_fundo:=SAVESCREEN(0,0,MAXROW(),79), l_s, c_s, l_i, c_i, l_a
 op_sis=EVAL(qualsis,"CGRUPOS")
 IF nivelop<sistema[op_sis,O_OUTROS,O_NIVEL]        // se usuario nao tem permissao,
  ALERTA()                                          // entao, beep, beep, beep
@@ -48,11 +50,11 @@ DO WHIL op_cad!=0
   SELE A                                           // e abre o arquivo e seus indices
 
   #ifdef COM_REDE
-   IF !USEARQ(sistema[op_sis,O_ARQUI],.f.,20,1)    // se falhou a abertura do
+   IF !USEARQ(sistema[op_sis,O_ARQUI,O_NOME],.f.,20,1)    // se falhou a abertura do
     RETU                                           // arquivo volta ao menu anterior
    ENDI
   #else
-   USEARQ(sistema[op_sis,O_ARQUI])
+   USEARQ(sistema[op_sis,O_ARQUI,O_NOME])
   #endi
 
   SET KEY K_F9 TO veoutros                         // habilita consulta em outros arquivos
@@ -74,7 +76,7 @@ DO WHIL op_cad!=0
 ENDD
 RETU
 
-PROC CGR_incl     // inclusao no arquivo CGRUPOS
+PROC CGR_incl(reg_cop)     // inclusao no arquivo CGRUPOS
 LOCAL getlist:={}, cabem:=1, rep:=ARRAY(FCOU()), ult_reg:=RECN(), cond_incl_,;
       ctl_r, ctl_c, ctl_w, t_f3_, t_f4_, dele_atu:=SET(_SET_DELETED,.f.)
 PRIV op_menu:=INCLUSAO, tem_borda, criterio:="", cpord:=""
@@ -99,24 +101,30 @@ DO WHIL cabem>0
  SELE CGRUPOS
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
- 
+
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
  */
  FOR i=1 TO FCOU()
   msg=FIEL(i)
-  M->&msg.=IF(fgrep.AND.!EMPT(rep[1]),rep[i],&msg.)
+  M->&msg.=IF((fgrep.OR.reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
  NEXT
  DISPBEGIN()                                       // apresenta a tela de uma vez so
  IMPRELA()
  CGR_TELA()
- INFOSIS()                                         // exibe informacao no rodape' da tela
+INFOSIS(.T.)
  DISPEND()
  IF !EVAL(cond_incl_)
   EXIT
  ENDI
- cabem=DISKSPACE(IF(LEN(drvdbf)<2.OR.drvdbf="\",0,ASC(drvdbf)-64))
+  cabem=DISKSPACE(;
+       IF(;
+          LEN(sistema[op_sis,O_ARQUI,O_DIR_DBF])<2.OR.sistema[op_sis,O_ARQUI,O_DIR_DBF]="\",;
+          0,;
+          ASC(sistema[op_sis,O_ARQUI,O_DIR_DBF])-64;
+       );
+    )
  cabem=INT((cabem-2048)/CGRUPOS->(RECSIZE()))
  IF cabem<1                                        // mais nenhum!!!
   ALERTA()
@@ -127,7 +135,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
- 
+
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -153,7 +161,7 @@ DO WHIL cabem>0
   DISPBEGIN()
   IMPRELA()
   CGR_GETS()                                       // mostra conteudo do registro
-  INFOSIS()                                        // exibe informacao no rodape' da tela
+INFOSIS(.f.)
   DISPEND()
   ALERTA()
   msg="Consultar/alterar|Retornar … inclus„o"      // pergunta se deseja
@@ -565,9 +573,13 @@ IF tp_mov=INCLUI
 ENDI
 IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
  INTREF(FORM_INVERSA)
- DELE
+    POE_NO_LOG(tp_mov)
+ IF !EMPTY(ALIAS())
+  DELE
+ ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
- IF op_menu!=INCLUSAO
+  POE_NO_LOG(tp_mov)
+  IF op_menu!=INCLUSAO
   RECA
   INTREF(FORM_DIRETA)
  ENDI
@@ -580,7 +592,7 @@ IF READVAR()="MEMO35"
 ENDI
 RETU
 
-PROC COE_incl     // inclusao no arquivo COECOB
+PROC COE_incl(reg_cop)     // inclusao no arquivo COECOB
 LOCAL getlist:={}, cabem:=1, rep:=ARRAY(FCOU()), ult_reg:=RECN(),;
       ctl_r, ctl_c, ctl_w, t_f3_, t_f4_, dele_atu:=SET(_SET_DELETED,.f.)
 PRIV op_menu:=INCLUSAO, op_sis, l_s, c_s, l_i, c_i, cod_sos, tem_borda, criterio:="", cpord:=""
@@ -603,16 +615,16 @@ DO WHIL cabem>0
  SELE COECOB
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
- 
+
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
  */
  FOR i=1 TO FCOU()
   msg=FIEL(i)
-  M->&msg.=IF(fgrep.AND.!EMPT(rep[1]),rep[i],&msg.)
+  M->&msg.=IF((fgrep.OR.reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
  NEXT
- 
+
  /*
     inicializa campos de relacionamentos do com os campos do arquivo
     superior (pai)
@@ -623,9 +635,15 @@ DO WHIL cabem>0
  NEXT
  DISPBEGIN()                                       // apresenta a tela de uma vez so
  COE_TELA()
- INFOSIS()                                         // exibe informacao no rodape' da tela
+INFOSIS(.T.)
  DISPEND()
- cabem=DISKSPACE(IF(LEN(drvdbf)<2.OR.drvdbf="\",0,ASC(drvdbf)-64))
+  cabem=DISKSPACE(;
+       IF(;
+          LEN(sistema[op_sis,O_ARQUI,O_DIR_DBF])<2.OR.sistema[op_sis,O_ARQUI,O_DIR_DBF]="\",;
+          0,;
+          ASC(sistema[op_sis,O_ARQUI,O_DIR_DBF])-64;
+       );
+    )
  cabem=INT((cabem-2048)/COECOB->(RECSIZE()))
  IF cabem<1                                        // mais nenhum!!!
   ALERTA()
@@ -636,7 +654,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
- 
+
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -662,7 +680,7 @@ DO WHIL cabem>0
   op_menu=ALTERACAO                                // seta flag de ateracao
   DISPBEGIN()
   COE_GETS()                                       // mostra conteudo do registro
-  INFOSIS()                                        // exibe informacao no rodape' da tela
+INFOSIS(.f.)
   DISPEND()
   ALERTA()
   msg="Consultar/alterar|Retornar … inclus„o"      // pergunta se deseja
@@ -861,7 +879,10 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
   ENDI
  #endi
 
- DELE
+    POE_NO_LOG(tp_mov)
+ IF !EMPTY(ALIAS())
+  DELE
+ ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
  IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
   IF tp_mov=RECUPERA .AND. op_menu!=INCLUSAO .AND. (CGRUPOS->(DELE()))
@@ -876,7 +897,8 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
       REPL flag_excl WITH ' '
      ENDI
     ENDI
-   IF op_menu!=INCLUSAO
+  POE_NO_LOG(tp_mov)
+  IF op_menu!=INCLUSAO
     RECA
    ENDI
   ENDI
@@ -884,12 +906,13 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
 ENDI
 RETU
 
-PROC CIN_incl     // inclusao no arquivo CINSCRIT
+PROC CIN_incl(reg_cop)     // inclusao no arquivo CINSCRIT
 LOCAL getlist:={}, cabem:=1, rep:=ARRAY(FCOU()), ult_reg:=RECN(), cond_incl_,;
       ctl_r, ctl_c, ctl_w, t_f3_, t_f4_, dele_atu:=SET(_SET_DELETED,.f.)
 cond_incl_={||1=3}                                 // condicao de inclusao de registros
 IF !EVAL(cond_incl_)                               // se nao pode incluir
- IF op_menu!=INCLUSAO                              // nao inclusao nao tem msg
+  POE_NO_LOG(tp_mov)
+  IF op_menu!=INCLUSAO
   ALERTA(2)                                        // avisa o motivo
   DBOX("Contrato Cancelado!!!",,,4,,"ATEN€ŽO, "+usuario)
  ENDI
@@ -915,16 +938,16 @@ DO WHIL cabem>0
  SELE CINSCRIT
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
- 
+
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
  */
  FOR i=1 TO FCOU()
   msg=FIEL(i)
-  M->&msg.=IF(fgrep.AND.!EMPT(rep[1]),rep[i],&msg.)
+  M->&msg.=IF((fgrep.OR.reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
  NEXT
- 
+
  /*
     inicializa campos de relacionamentos do com os campos do arquivo
     superior (pai)
@@ -935,12 +958,18 @@ DO WHIL cabem>0
  NEXT
  DISPBEGIN()                                       // apresenta a tela de uma vez so
  CIN_TELA()
- INFOSIS()                                         // exibe informacao no rodape' da tela
+INFOSIS(.T.)
  DISPEND()
  IF !EVAL(cond_incl_)
   EXIT
  ENDI
- cabem=DISKSPACE(IF(LEN(drvdbf)<2.OR.drvdbf="\",0,ASC(drvdbf)-64))
+  cabem=DISKSPACE(;
+       IF(;
+          LEN(sistema[op_sis,O_ARQUI,O_DIR_DBF])<2.OR.sistema[op_sis,O_ARQUI,O_DIR_DBF]="\",;
+          0,;
+          ASC(sistema[op_sis,O_ARQUI,O_DIR_DBF])-64;
+       );
+    )
  cabem=INT((cabem-2048)/CINSCRIT->(RECSIZE()))
  IF cabem<1                                        // mais nenhum!!!
   ALERTA()
@@ -951,7 +980,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
- 
+
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -977,7 +1006,7 @@ DO WHIL cabem>0
   op_menu=ALTERACAO                                // seta flag de ateracao
   DISPBEGIN()
   CIN_GETS()                                       // mostra conteudo do registro
-  INFOSIS()                                        // exibe informacao no rodape' da tela
+INFOSIS(.f.)
   DISPEND()
   ALERTA()
   msg="Consultar/alterar|Retornar … inclus„o"      // pergunta se deseja
@@ -1180,7 +1209,10 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
   ENDI
  #endi
 
- DELE
+    POE_NO_LOG(tp_mov)
+ IF !EMPTY(ALIAS())
+  DELE
+ ENDI
  IF op_menu!=PROJECOES
   REIMPTEL()
  ENDI
@@ -1198,7 +1230,8 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
       REPL flag_excl WITH ' '
      ENDI
     ENDI
-   IF op_menu!=INCLUSAO
+  POE_NO_LOG(tp_mov)
+  IF op_menu!=INCLUSAO
     RECA
    ENDI
    IF (tp_mov=INCLUI .OR. tp_mov=RECUPERA) .AND. op_menu!=PROJECOES
@@ -1209,12 +1242,13 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
 ENDI
 RETU
 
-PROC CTA_incl     // inclusao no arquivo CTAXAS
+PROC CTA_incl(reg_cop)     // inclusao no arquivo CTAXAS
 LOCAL getlist:={}, cabem:=1, rep:=ARRAY(FCOU()), ult_reg:=RECN(), cond_incl_,;
       ctl_r, ctl_c, t_f3_, t_f4_, l_max, dele_atu:=SET(_SET_DELETED,.f.)
 cond_incl_={||1=3}                                 // condicao de inclusao de registros
 IF !EVAL(cond_incl_)                               // se nao pode incluir
- IF op_menu!=INCLUSAO                              // nao inclusao nao tem msg
+  POE_NO_LOG(tp_mov)
+  IF op_menu!=INCLUSAO
   ALERTA(2)                                        // avisa o motivo
   DBOX("Contrato Cancelado",,,4,,"ATEN€ŽO, "+usuario)
  ENDI
@@ -1238,7 +1272,7 @@ ctl_r=SETKEY(K_CTRL_R,{||nadafaz()})
 DISPBEGIN()                                        // monta tela na pagina de traz
 IMPRELA()                                          // imp telas do pai
 CTA_TELA()                                         // imp tela para inclusao
-INFOSIS()                                          // exibe informacao no rodape' da tela
+INFOSIS(.T.)
 l_a=Sistema[op_sis,O_TELA,O_SCROLL]
 DISPEND()                                          // apresenta tela de uma vez so
 DO WHIL cabem>0
@@ -1246,16 +1280,16 @@ DO WHIL cabem>0
  SELE CTAXAS
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
- 
+
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
  */
  FOR i=1 TO FCOU()
   msg=FIEL(i)
-  M->&msg.=IF(fgrep.AND.!EMPT(rep[1]),rep[i],&msg.)
+  M->&msg.=IF((fgrep.OR.reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
  NEXT
- 
+
  /*
     inicializa campos de relacionamentos do com os campos do arquivo
     superior (pai)
@@ -1267,7 +1301,13 @@ DO WHIL cabem>0
  IF !EVAL(cond_incl_)
   EXIT
  ENDI
- cabem=DISKSPACE(IF(LEN(drvdbf)<2.OR.drvdbf="\",0,ASC(drvdbf)-64))
+  cabem=DISKSPACE(;
+       IF(;
+          LEN(sistema[op_sis,O_ARQUI,O_DIR_DBF])<2.OR.sistema[op_sis,O_ARQUI,O_DIR_DBF]="\",;
+          0,;
+          ASC(sistema[op_sis,O_ARQUI,O_DIR_DBF])-64;
+       );
+    )
  cabem=INT((cabem-2048)/CTAXAS->(RECSIZE()))
  IF cabem<1                                        // mais nenhum!!!
   ALERTA()
@@ -1278,7 +1318,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
- 
+
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -1308,7 +1348,7 @@ DO WHIL cabem>0
   op_menu=ALTERACAO                                // seta flag de ateracao
   DISPBEGIN()
   CTA_GETS()                                       // mostra conteudo do registro
-  INFOSIS()                                        // exibe informacao no rodape' da tela
+INFOSIS(.f.)
   DISPEND()
   ALERTA()
   msg="Consultar/alterar|Retornar … inclus„o"      // pergunta se deseja
@@ -1319,7 +1359,7 @@ DO WHIL cabem>0
   op_menu=INCLUSAO
   DISPBEGIN()
   CTA_TELA()
-  INFOSIS()                                        // exibe informacao no rodape' da tela
+INFOSIS(.T.)
   DISPEND()
   LOOP                                             // volta para inclusao
  ENDI
@@ -1543,7 +1583,10 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
   ENDI
  #endi
 
- DELE
+    POE_NO_LOG(tp_mov)
+ IF !EMPTY(ALIAS())
+  DELE
+ ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
  IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
   IF tp_mov=RECUPERA .AND. op_menu!=INCLUSAO .AND. (CGRUPOS->(DELE()))
@@ -1558,7 +1601,8 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
       REPL flag_excl WITH ' '
      ENDI
     ENDI
-   IF op_menu!=INCLUSAO
+  POE_NO_LOG(tp_mov)
+  IF op_menu!=INCLUSAO
     RECA
    ENDI
   ENDI
@@ -1576,4 +1620,3 @@ rcodin:=sTRzero(VAL(numero)+1,6,0)
 //POINTER_DBF(reg_dbf)
 
 RETU M->rcodin       // <- deve retornar um valor qualquer
-

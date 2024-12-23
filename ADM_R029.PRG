@@ -1,13 +1,15 @@
+
 procedure adm_r029
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: ADM_R029.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Relat¢rio de Processo
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
+ \ Convert.: v5.0 em 2021081014:57:01 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -223,4 +225,3 @@ ENDI
 RETU
 
 * \\ Final de ADM_R029.PRG
-

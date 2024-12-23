@@ -1,13 +1,15 @@
+
 procedure r07702f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: R07702F9.PRG
  \ Data....: 23-05-98
  \ Sistema.: Administradora -CRD/COBRAN€A
  \ Funcao..: Valor do relat¢rio ADC_R077
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:57:54 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -27,4 +29,3 @@ ENDI
 RETU IIF(EMPT(TAXAS->valorpg),TAXAS->valor+M->vladd,TAXAS->valorpg)
 
 * \\ Final de R07702F9.PRG
-

@@ -1,13 +1,15 @@
+
 procedure r06601f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: R06601F9.PRG
  \ Data....: 22-01-97
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Express„o de filtro do relat¢rio ADP_R066.PRG
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:57:28 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -22,4 +24,3 @@ M->doneimp:=doneimp .AND.(M->rcod2='000000'.OR.codigo<=M->rcod2)
 RETU M->doneimp       // <- deve retornar um valor L¢GICO
 
 * \\ Final de R06601F9.PRG
-

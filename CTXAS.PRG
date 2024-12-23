@@ -1,15 +1,18 @@
+
 procedure ctxas
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: CTXAS.PRG
  \ Data....: 12-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Consulta Taxas
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
+ \ Convert.: v5.0 em 2021081014:58:03 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
+*/
+
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 PRIV t_, i_, col_cp, col_ti, cps_rela
@@ -64,4 +67,3 @@ SET RELA TO                                        // retira os relacionamentos
 RETU                                               // volta para o menu anterior
 
 * \\ Final de CTXAS.PRG
-

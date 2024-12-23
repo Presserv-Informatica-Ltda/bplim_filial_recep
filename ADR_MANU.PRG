@@ -1,13 +1,15 @@
+
 procedure adr_manu
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: ADR_MANU.PRG
  \ Data....: 22-01-08
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Menu geral de auxilio da aplica‡„o
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
+ \ Convert.: v5.0 em 2021081014:58:06 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -105,4 +107,3 @@ para filetxt
  menu02+=repl([0],1920-len(menu02))
 // memowrite([adrbig.inx],menu02)
 retu
-
