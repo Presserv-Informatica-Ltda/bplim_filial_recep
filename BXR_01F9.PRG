@@ -1,13 +1,15 @@
+
 procedure bxr_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Ind£stria de Urnas Bignotto Ltda
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: BXR_01F9.PRG
  \ Data....: 20-11-95
  \ Sistema.: Administradora de Funer rias
  \ Funcao..: F¢rmula (Circ 1 - 4) a mostrar na tela de BXREC
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:58:06 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -88,4 +90,3 @@ SET(_SET_DELETED,dele_atu)                         // os excluidos serao vistos
 RETU []         // <- deve retornar um valor qualquer
 
 * \\ Final de BXR_01F9.PRG
-

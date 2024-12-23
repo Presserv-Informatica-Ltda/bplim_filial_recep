@@ -1,13 +1,15 @@
+
 procedure bxr_018
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Ind£stria de Urnas Bignotto Ltda
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: BXR_018.PRG
  \ Data....: 07-12-95
  \ Sistema.: Administradora de Funer rias
  \ Funcao..: Rotina avulsa (Emiss„o do Recibo)
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:57:27 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -29,4 +31,3 @@ ADM_R018(3,10)
 RETU
 
 * \\ Final de BXR_018.PRG
-

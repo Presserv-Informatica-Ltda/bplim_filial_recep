@@ -1,13 +1,15 @@
+
 procedure about
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: ABOUT.PRG
  \ Data....: 09-09-96
  \ Sistema.: Controle de Convˆnios
  \ Funcao..: Rotina avulsa (Sobre...)
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analistad
+ \ Convert.: v5.0 em 2021081014:57:56 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -43,4 +45,3 @@ INKEY(25)
 RETU
 
 * \\ Final de ABOUT.PRG
-

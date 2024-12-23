@@ -1,3 +1,4 @@
+
 procedure codbar
 
 set devi to prin
@@ -21,4 +22,4 @@ set devi to prin
 ? codbarras({[0053800],5,13,10},10,6)
 @ 22,1 say []
 ? codbarras({[0053800],5,13,10},10,6)
-set devi to screen
+set devi to screen

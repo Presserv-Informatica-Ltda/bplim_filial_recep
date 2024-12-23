@@ -1,13 +1,15 @@
+
 procedure prcessos
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: PRCESSOS.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador do subsistema de processos
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
+ \ Convert.: v5.0 em 2021081014:57:29 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -103,7 +105,7 @@ DO WHIL cabem>0
  SELE PRCESSOS
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
- 
+
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -133,7 +135,7 @@ DO WHIL cabem>0
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
- 
+
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -457,7 +459,10 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
   #endi
 
   IF !EMPTY(ALIAS())
-   DELE
+    POE_NO_LOG(tp_mov)
+ IF !EMPTY(ALIAS())
+  DELE
+ ENDI
   ENDI
  ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
@@ -526,7 +531,8 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
     ENDI
    #endi
 
-   IF op_menu!=INCLUSAO
+  POE_NO_LOG(tp_mov)
+  IF op_menu!=INCLUSAO
     RECA
    ENDI
   ENDI
@@ -535,4 +541,3 @@ ENDI
 RETU
 
 * \\ Final de PRCESSOS.PRG
-

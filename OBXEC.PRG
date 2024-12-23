@@ -1,13 +1,15 @@
+
 procedure obxec
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: OBXEC.PRG
  \ Data....: 29-01-04
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador do subsistema de outros recebimentos
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
+ \ Convert.: v5.0 em 2021081014:58:08 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -130,7 +132,7 @@ DO WHIL cabem>0
  SELE OBXEC
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
- 
+
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -280,7 +282,7 @@ IF RECC()=0                     // se o dbf foi criado agora
  APPEND BLANK                   // os ultomos cps sequenciais
  SELE OBXEC
  IF RECC()>0                    // se o DBF nao estiver
-  SET ORDER TO 0                // vazio, entao enche DBF seq
+  DBSETORDER(0)                 // retorna ao indice principal
   GO BOTT                       // com o ultimo reg digitado
   REPL OBX_SEQ->numero WITH numero
   REPL OBX_SEQ->intlan WITH intlan
@@ -521,7 +523,10 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
   ENDI
  ENDI
  IF !EMPTY(ALIAS())
+    POE_NO_LOG(tp_mov)
+ IF !EMPTY(ALIAS())
   DELE
+ ENDI
  ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
  IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
@@ -648,6 +653,7 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
    ENDI
   #endi
 
+  POE_NO_LOG(tp_mov)
   IF op_menu!=INCLUSAO
    RECA
   ENDI
@@ -656,4 +662,3 @@ ENDI
 RETU
 
 * \\ Final de OBXEC.PRG
-
