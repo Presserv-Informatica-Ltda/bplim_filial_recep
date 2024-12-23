@@ -64,6 +64,7 @@
  IF !EMPT(GRUPOS->telefone)
   @ l_s+10, c_s+1 SAY [Tel.:]+xDECRIPT(GRUPOS->telefone)
  ENDI
+ @ l_s+15, c_s+2 SAY [CPF: ]+TRAN(GRUPOS->cpf,[@R 999.999.999-99])+[  Dt.Nascto:]+DTOC(GRUPOS->nascto_)
  @ l_s+11, c_s+1 SAY SPACE(46)
  @ l_s+12, c_s+1 SAY SPACE(46)
  @ l_s+13, c_s+1 SAY SPACE(46)
