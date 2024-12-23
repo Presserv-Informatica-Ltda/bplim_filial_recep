@@ -37,3 +37,42 @@ Called from USEARQ(0) in adr_func.prg
 Called from PEGA_SENHA(0) in ADRBIG.prg
 Called from MAIN(0) in ADRBIG.prg
 ------------------------------------------------------------------------
+Application Internal Error - X:\bpastor\recrip\161213\ADRBIG.exe
+Terminated at: 2016.12.13 09:04:52
+Unrecoverable error 6005: Exception error:
+
+    Exception Code:C0000005
+    Exception Address:000A0000
+    EAX:00780EB0  EBX:00780EBC  ECX:00000004  EDX:00000000
+    ESI:00000001  EDI:00000000  EBP:00000001
+    CS:EIP:001B:000A0000  SS:ESP:0023:0022F5CC
+    DS:0023  ES:0023  FS:003B  GS:0000
+    Flags:00010246
+    CS:EIP:
+    SS:ESP: 004FBBA6 00780EBC 0022F8F0 00000000 0077D7CC 00000000 75B6ABCD C6E413F0 0022F6AC 00000050 00000050 00000502 0022F71C 003D4C3C 00000036 0022F614
+
+    C stack:
+    EIP:     EBP:       Frame: OldEBP, RetAddr, Params...
+
+Modules:
+0x00400000 0x0024A000 X:\bpastor\recrip\161213\ADRBIG.exe
+0x77990000 0x0013C000 C:\Windows\SYSTEM32\ntdll.dll
+0x76860000 0x000D4000 C:\Windows\system32\kernel32.dll
+0x75B60000 0x0004A000 C:\Windows\system32\KERNELBASE.dll
+0x76940000 0x000A0000 C:\Windows\system32\ADVAPI32.DLL
+0x76160000 0x000AC000 C:\Windows\system32\msvcrt.dll
+0x763B0000 0x00019000 C:\Windows\SYSTEM32\sechost.dll
+0x764E0000 0x000A1000 C:\Windows\system32\RPCRT4.dll
+0x762A0000 0x000C9000 C:\Windows\system32\USER32.dll
+0x77AE0000 0x0004E000 C:\Windows\system32\GDI32.dll
+0x77AD0000 0x0000A000 C:\Windows\system32\LPK.dll
+0x760B0000 0x0009D000 C:\Windows\system32\USP10.dll
+0x77B40000 0x0001F000 C:\Windows\system32\IMM32.DLL
+0x75DE0000 0x000CC000 C:\Windows\system32\MSCTF.dll
+
+Called from DBUSEAREA(0)
+Called from USEARQ(0) in adr_func.prg
+Called from GRUPOS(0) in grupos.prg
+Called from ADR_MENU(0) in adr_menu.prg
+Called from MAIN(0) in ADRBIG.prg
+------------------------------------------------------------------------
