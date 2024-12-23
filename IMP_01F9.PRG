@@ -26,7 +26,7 @@ IF base=[BXR]
 ENDIF
 IF base=[OBX]
  IF PTAB(LEFT(docto,8),[OBXEC],1)
-  RETU OBXEC->codigo+[ ]+OBXEC->ref+[ ]+;
+  RETU OBXEC->codigo+[ ]+OBXEC->cobranca+[ ]+;
        TRAN(OBXEC->valorpg,"@E 999,999.99")
  ENDIF
 ENDIF
