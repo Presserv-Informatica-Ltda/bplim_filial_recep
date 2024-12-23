@@ -748,7 +748,7 @@ Function IN_KEY(xArg1)
 Function INKY(xArg1)
    Local xVar1:= 0,xVar2,xVar3:= Seconds(),x
    Do While (.T.)
-      xVar1:= InKey()
+      xVar1:= InKey(10)
       x:= "POEHORA"
       &x()
       If (xArg1 = Nil .OR. xVar1 # 0)
