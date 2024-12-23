@@ -1883,9 +1883,9 @@ DO WHILE LEN(sistema[op_sy_,O_CPRELA])>0    // se existir um pai...
  db_=LEFT(sistema[op_sy_,O_CPRELA,1],p_-3)  // pega o nome do pai e a
  dbf_pais="|"+db_+dbf_pais                  // todos os pais
  FOR i=1 TO LEN(sistema[op_sy_,O_CPRELA])   // chave de ligacao
-  chv_rela+=TRANSCAMPO(.t.,SUBS(sistema[op_sy_,O_CPRELA,i],p_),i)
+  chv_rela+="+"+TRANSCAMPO(.t.,SUBS(sistema[op_sy_,O_CPRELA,i],p_),i)
  NEXT
- PTAB(chv_rela,db_,1)                       // abre/relaciona o pai
+ PTAB(SUBS(chv_rela,2),db_,1)               // abre/relaciona o pai
  op_sy_=EVAL(qualsis,db_)                   // sera que tem avo?...
 ENDD
 dbf_pais=SUBS(dbf_pais,2)                   // ajusta var com nome dos pais
@@ -2686,7 +2686,7 @@ DO WHIL cabem>0
   REPL pw_grupo WITH M->pw_grupo,;       // enche com o codigo do grupo
        pw_dbf WITH sistema[i,O_MENU]     // titulo do dbf
   REPL pw_dbf WITH ENCRIPT(pw_dbf),;
-       pw_permis WITH ENCRIPT("EGRX"+pw_permis) // e as permissoes (todas)
+       pw_permis WITH ENCRIPT("GX"+pw_permis) // e as permissoes (todas)
  NEXT
 
  #ifdef COM_REDE

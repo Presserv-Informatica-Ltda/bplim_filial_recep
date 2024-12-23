@@ -102,7 +102,7 @@ IF EMPTY(SELECT(db_))                      // o arquivo nao esta' em uso, vamos 
  SELE 0                                    // seleciona proxima area livre
 
  #ifdef COM_REDE
-  msgt="OUTRO USURIO ACESSANDO|O ARQUIVO"
+  msgt="OUTRO USURIO ACESSANDO|O ARQUIVO|"+db_
   DO WHIL n_tent>=0 .OR. p_sempre          // tenta abrir o aruivo n vezes ou p/ sempre
    IF use_ex                               // tenta abrir com exclusividade
     USE (db_f) EXCLUSIVE
@@ -146,7 +146,7 @@ IF EMPTY(SELECT(db_))                      // o arquivo nao esta' em uso, vamos 
    ENDI
   ELSEIF LEN(sistema[op_sis,O_INDIC])>0    // senao, abre indices segundo vetor sistema
    qt_ind=LEN(sistema[op_sis,O_INDIC])
-   ind01=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,1]
+//   ind01=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,1]
    ind01:=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_ARQUI,O_NOME]//drv_ntx+ALIAS()
    IF .t. //qt_ind=1
     SET INDE TO (ind01)
@@ -551,7 +551,7 @@ IF TYPE("br_outro")="O"                       // tem outra janela aberta?
   SELE (outro_db)                             // seleciona dbf da janela
   op_sis=EVAL(qualsis,ALIAS())                // sua subscricao no vetor sistema
   PEGACHV2()                                  // acha o inicio/fim da relacao
-  IF chv_1 != &chv_rela .OR. !br_outro:stable // precisa remonta-la?
+  IF chv_1 != &chv_rela .OR. br_outro:stable // precisa remonta-la?
    INI_ARQ()                                  // acha o inicio da relacao
    br_reg_out = RECNO()                       // salva reg atual
    br_outro:rowpos := 1                       // cursor na 1a. lin do browse
@@ -850,7 +850,7 @@ DO WHILE volta_db
      db_&pas.expo=id_carg[2]                    // ordem
      db_&pas.arqf=id_carg[1]                    // filtro
      db_&pas.chvr=id_carg[3]                    // relacionamento, outra janela
-     db_&pas.ind_or=id_carg[4]                 // indice atual
+     db_&pas.ind_ord=id_carg[4]                 // indice atual
      db_&pas.cmr=id_carg[5]                     // marcacao de registros
      db_&pas.freeze=br_w:freeze                 // coluna congelada
      IF pas = "1" .AND. br_outro != NIL         // tem outra janela aberta?
