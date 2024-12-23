@@ -1,4 +1,3 @@
-
 procedure processa
 #include "SIXNSX.CH"
 #define RDDNAME "SIXNSX"
@@ -41,3 +40,5 @@ zap
 appe from c:\vip4\arquivos\inscrits
 repl codigo with [010]+codigo all
 
+
+

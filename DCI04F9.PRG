@@ -1,15 +1,13 @@
-
 procedure dci04f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: DCI04F9.PRG
  \ Data....: 29-08-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: F¢rmula (Descr.Documento) a mostrar na tela de DCI_P001
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:58:08 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -57,3 +55,4 @@ ENDCASE
 RETU M->donex     // <- deve retornar um valor qualquer
 
 * \\ Final de DCI04F9.PRG
+

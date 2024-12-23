@@ -1,15 +1,13 @@
-
 procedure adp_p007
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: ADP_P007.PRG
  \ Data....: 11-01-98
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Lan‡amento de acertos
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v3.0
- \ Convert.: v5.0 em 2021081014:56:41 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -183,14 +181,13 @@ RETU                                               // volta para o menu anterior
 
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: P00801F9.PRG
  \ Data....: 11-01-98
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Lan‡amento em TAXAS->emissao_, gerado por ADP_P008
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:56:47 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 FUNCT P00801F9
@@ -208,3 +205,4 @@ PRIV dataux, diaaux
 RETU M->dataux      // <- deve retornar um valor DATA
 
 * \\ Final de P00801F9.PRG
+

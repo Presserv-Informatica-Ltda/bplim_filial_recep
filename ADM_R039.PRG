@@ -1,15 +1,13 @@
-
 procedure adm_r039
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: ADM_R039.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Fechamento Caixa
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
- \ Convert.: v5.0 em 2021081014:57:46 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -147,7 +145,7 @@ BEGIN SEQUENCE
      BREAK                                         // confirmou...
     ENDI
    ENDI
-   IF numconta==M->nrconta.AND.;
+   IF numconta=M->nrconta.AND.;
       (EMPT(fechto_).and.ehsegvia#[S]).or.;
       (ehsegvia=[S].AND.fechto_=emisini_) // se atender a condicao...
     REL_CAB(1)                                     // soma cl/imprime cabecalho
@@ -161,7 +159,7 @@ BEGIN SEQUENCE
     @ cl,044 SAY TRAN(LEFT(complement,20),"@!")             // Complemento de Hist¢rico
     @ cl,065 SAY DTOC(ORDPGRC->fechto_)
     chv026=numop
-    IF numconta==M->nrconta.AND.EMPT(fechto_)         // se atender a condicao...
+    IF EMPT(fechto_)         // se atender a condicao...
       do while !rlock()
       endd
       REPL fechto_ with DATE(), fechpor with M->usuario
@@ -271,21 +269,21 @@ BEGIN SEQUENCE
  EJEC                                              // salta pagina
 END SEQUENCE
 SETCURSOR(cur_atual)
-SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
+SET PRINTER TO //(drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)
 ENDI          // mostra o arquivo gravado
 GRELA(12)                                          // grava variacao do relatorio
 
-IF .F. 
  msgp="PROCESSAMENTOS DO RELAT¢RIO|FECHAMENTO CAIXA"
+IF .F. 
  POE_GAUGE("Processando registros","AGUARDE!","Feitos:")
  SET(_SET_DELETED,.t.)                              // os excluidos nao servem...
  SELE ORDPGRC                                       // processamentos apos emissao
  INI_ARQ()                                          // acha 1o. reg valido do arquivo
  DO WHIL !EOF().AND.POE_GAUGE().AND.!(ehsegvia=[S])
-  IF numconta==M->nrconta.AND.EMPT(fechto_)         // se atender a condicao...   
+  IF numconta=M->nrconta.AND.EMPT(fechto_)         // se atender a condicao...   
 
     IF EMPT(fechto_)
      do while !rlock() 
@@ -330,3 +328,4 @@ ENDI
 RETU
 
 * \\ Final de ADM_R039.PRG
+

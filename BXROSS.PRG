@@ -1,22 +1,20 @@
-
 procedure bxross
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica -Limeira (019)452.6623
  \ Programa: BXREC.PRG
  \ Data....: 12-04-98
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador do subsistema de recebimento de taxas
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v3.0
- \ Convert.: v5.0 em 2021081014:57:37 Fase_01
+ \ Criacao.: GAS-Pro v3.0 
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 PARA lin_menu,col_menu
-PRIV op_sis, tela_fundo:=SAVESCREEN(0,0,MAXROW(),79), l_s, c_s, l_i, c_i, l_a
+PRIV op_sis, tela_fundo:=SAVESCREEN(0,0,MAXROW(),79)
 op_sis=EVAL(qualsis,"BXREC")
 IF nivelop<sistema[op_sis,O_OUTROS,O_NIVEL]        // se usuario nao tem permissao,
  ALERTA()                                          // entao, beep, beep, beep
@@ -51,11 +49,11 @@ DO WHIL op_cad!=0
   SELE A                                           // e abre o arquivo e seus indices
 
   #ifdef COM_REDE
-   IF !USEARQ(sistema[op_sis,O_ARQUI,O_NOME],.f.,20,1)    // se falhou a abertura do
+   IF !USEARQ(sistema[op_sis,O_ARQUI],.f.,20,1)    // se falhou a abertura do
     RETU                                           // arquivo volta ao menu anterior
    ENDI
   #else
-   USEARQ(sistema[op_sis,O_ARQUI,O_NOME])
+   USEARQ(sistema[op_sis,O_ARQUI])
   #endi
 
   SET KEY K_F9 TO veoutros                         // habilita consulta em outros arquivos
@@ -86,7 +84,7 @@ DO WHIL op_cad!=0
 ENDD
 RETU
 
-PROC BXR_incl(reg_cop)     // inclusao no arquivo BXREC
+PROC BXR_incl     // inclusao no arquivo BXREC
 LOCAL getlist:={},cabem:=1,rep:=ARRAY(FCOU()),ult_reg:=RECN(),dbfseq_,;
       ctl_r, ctl_c, ctl_w, t_f3_, t_f4_, dele_atu:=SET(_SET_DELETED,.f.)
 PRIV op_menu:=INCLUSAO, sq_atual_, tem_borda, criterio:="", cpord:=""
@@ -115,27 +113,21 @@ DO WHIL cabem>0
  SELE BXREC
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
-
+ 
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
  */
  FOR i=1 TO FCOU()
   msg=FIEL(i)
-  M->&msg.=IF((fgrep.OR.reg_cop!=NIL).AND.!EMPT(rep[1]),rep[i],&msg.)
+  M->&msg.=IF(fgrep.AND.!EMPT(rep[1]),rep[i],&msg.)
  NEXT
  DISPBEGIN()                                       // apresenta a tela de uma vez so
  BXR_TELA()
-INFOSIS(.T.)
+ INFOSIS()                                         // exibe informacao no rodape' da tela
  DISPEND()
  BXR_GERA_SEQ()
-  cabem=DISKSPACE(;
-       IF(;
-          LEN(sistema[op_sis,O_ARQUI,O_DIR_DBF])<2.OR.sistema[op_sis,O_ARQUI,O_DIR_DBF]="\",;
-          0,;
-          ASC(sistema[op_sis,O_ARQUI,O_DIR_DBF])-64;
-       );
-    )
+ cabem=DISKSPACE(IF(LEN(drvdbf)<2.OR.drvdbf="\",0,ASC(drvdbf)-64))
  cabem=INT((cabem-2048)/BXREC->(RECSIZE()))
  IF cabem<1                                        // mais nenhum!!!
   ALERTA()
@@ -268,7 +260,7 @@ ELSEIF op_ = 1
  //    @ cl,053 SAY M->usuario              // N§ O.P.
 
      IMPCTL(drvtcom)                                    // retira comprimido
-SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
+     SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
      SET DEVI TO SCRE                                   // direciona saida p/ video
     endi
    ENDI
@@ -284,7 +276,7 @@ SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se h
     SET DEVI TO PRIN                                   // inicia a impressao
     cl+=1
     @ cl,000 SAY []
-SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
+    SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
     SET DEVI TO SCRE                                   // direciona saida p/ video
    endi
   EXIT
@@ -310,7 +302,7 @@ RETU
 
 
 PROC BXR_CRIA_SEQ   // cria dbf de controle de campos sequenciais
-LOCAL dbfseq_:=sistema[op_sis,O_ARQUI,O_DIR_DBF]+"BXR_seq" // arq temporario
+LOCAL dbfseq_:=drvdbf+"BXR_seq" // arq temporario
 SELE 0                          // seleciona area vazia
 IF !FILE(dbfseq_+".dbf")        // se o dbf nao existe
  DBCREATE(dbfseq_,{;            // vamos criar a sua estrutura
@@ -325,11 +317,11 @@ IF RECC()=0                     // se o dbf foi criado agora
  APPEND BLANK                   // os ultomos cps sequenciais
  SELE BXREC
  IF RECC()>0                    // se o DBF nao estiver
-  DBSETORDER(0)                 // retorna ao indice principal
+  SET ORDER TO 0                // vazio, entao enche DBF seq
   GO BOTT                       // com o ultimo reg digitado
   REPL BXR_SEQ->numero WITH numero
   REPL BXR_SEQ->intlan WITH intlan
-  DBSETORDER(1)                 // retorna ao indice principal
+  SET ORDER TO 1                // retorna ao indice principal
  ENDI
  SELE BXR_SEQ                   // seleciona arq de sequencias
  UNLOCK                         // libera DBF para outros usuarios
@@ -352,7 +344,7 @@ PROC BXR_GERA_SEQ()
  sq_numero=BXR_SEQ->numero
  sq_intlan=BXR_SEQ->intlan
 #else
-  DBSETORDER(0)                 // retorna ao indice principal
+ SET ORDER TO 0
  GO BOTT
 #endi
 
@@ -540,10 +532,7 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
    TIRA_LANC("IMPPAR",LEFT(IMPPAR->codlan,16))
   ENDI
  ENDI
-    POE_NO_LOG(tp_mov)
- IF !EMPTY(ALIAS())
-  DELE
- ENDI
+ DELE
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
  IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
   IF !PTAB(IIF(EMPT(M->usuario),PADR(M->contarec+ide_maq,10,' '),PADR(M->usuario,10,' '))+M->histrcrec+[       ],'ORDPGRC',2)
@@ -669,7 +658,6 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
    ENDI
   #endi
 
-  POE_NO_LOG(tp_mov)
   IF op_menu!=INCLUSAO
    RECA
   ENDI
@@ -678,3 +666,4 @@ ENDI
 RETU
 
 * \\ Final de BXREC.PRG
+

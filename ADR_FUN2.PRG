@@ -1,19 +1,17 @@
-
-// <ADRBIG> - <ADR_>
-procedure ADR_FUN2
+procedure adr_fun2
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: ADR_FUN2.PRG
- \ Data....: 25-06-21
- \ Sistema.: Controle de Processos da Funer ria
+ \ Data....: 29-01-04
+ \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Fun‡”es auxiliares II
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
-#include "ADRBIG.ch"    // inicializa constantes manifestas
+#include "adrbig.ch"    // inicializa constantes manifestas
 
 /*
    Sintaxe: CANC()
@@ -224,138 +222,6 @@ DO WHIL op_x>0
 ENDD                           // restaura a tela
 RESTSCREEN(0,0,MAXROW(),79,t_opc)
 RETU(op_x=1)                   // retorna .t. se quiser prosseguir
-
-/*
-   Sintaxe: OPCOES_ETQ( <N1> <,N2> <,N3> <,N4> <,N5> <,C1> )
-   Funcao.: Abre diversas op‡”es para emiss„o de etiqueta
-              N1,N2 = coordenada linha/coluna superior do menu de opcoes
-                 N3 = numero minimo de linhas configuraveis na etiqueta
-                 N4 = numero minimo de colunas configuraveis na etiqueta
-                 N5 = codigo do bloco de ajuda (cod_sos)
-                 C1 = filtro inicial da etiqueta
-   Retorna: .t. se vai prosseguir
-*/
-FUNC OPCOES_ETQ(l_m,c_m,linmin_,colmin_,sos_cod,fil_ini)
-LOCAL li_, tpx, i_, op_x:=1, ant_, cr_i, or_i, t_opc:=SAVESCREEN(0,0,MAXROW(),79)
-nucop=1
-or_i=cpord                     // salva ordenacao inicial
-fil_ini=IF(fil_ini=NIL,"",fil_ini)
-ant_=STR(qtlin_)+STR(qtcol_)+; // salva situacao atual da etiqueta
-     STR(qtcse_)+STR(qtcar_)+qtreg_
-DO WHIL op_x>0
- cod_sos=sos_cod
- msg="Prosseguir|Sa¡da: "        // monta menu de opcoes
- IF tps=1 .AND. !EMPTY(drvporta) // se a saida e para prn
-  msg+=drvmarca+" em "+drvporta  // pega conf atual
- ELSE                            // caso contrario
-  msg+="Arquivo"                 // coloca a palavra "Arquivo"
- ENDI
- msg+="|Filtrar|Ordenar"+;
-      "|C¢pia(s). ("+TRAN(nucop ,"999")+")"+;
-      "|Altura... ("+TRAN(qtlin_,"99")+")"+;
-      "|Largura.. ("+TRAN(qtcol_,"999")+")"+;
-      "|Separa‡„o ("+TRAN(qtcse_,"99")+")"+;
-      "|Carreiras ("+TRAN(qtcar_,"99")+")"+;
-      "|Qtde/Reg. ("
- msg+=IF(LEN(qtreg_)>30,LEFT(qtreg_,20)+"...",qtreg_)+" )"
- msgt="OP€”ES DA ETIQUETA"    // recebe opcao desejada
- RESTSCREEN(0,0,MAXROW(),79,t_opc)
- op_x=DBOX(msg,l_m,c_m,E_MENU,NAO_APAGA,msgt,,,op_x)
- DO CASE
-  CASE op_x=1                 // prossegue...
-   IF tps=1                   // vai para impressora.....
-    IF !PREPIMP()             // pede confirmacao da impressora
-     LOOP                     // nao quis mais, volta para menu de opcoes
-    ENDI
-   ENDI
-   IF LEN(fil_ini)>0          // se tem filtro inicial
-    IF LEN(criterio)>0        // vamos concatenar com filtro feito pelo usuario
-     criterio=fil_ini+".AND. ("+criterio+")"
-    ELSE
-     criterio=fil_ini         // usuario nao fez filtro. Pega o inicial...
-    ENDI
-   ENDI
-   INDTMP()                   // verifica/indexa o arquivo se for necessario
-   EXIT
-
-  CASE op_x=2                 // tipo de saida
-   tps=TP_SAIDA(IF(l_m=NIL,NIL,l_m+2),IF(c_m=NIL,NIL,c_m+8),.t.)
-
-  CASE op_x=3                 // pega criterio de selecao dos registro
-   FILTRA(.f.)                // parametro .f. = nao indexa ao final da selecao
-
-  CASE op_x=4                 // escolhe uma nova ordem
-   cpord=or_i                 // inicializa ordenacao
-   CLASS(.f.)
-
-  CASE op_x=5                 // numero de copias
-   nucop=DBOX("(de 1 a 999)",IF(l_m=NIL,NIL,l_m+2),IF(c_m=NIL,NIL,c_m+8),,,"QUANTIDADE DE C¢PIAS",nucop,"999")
-   nucop=IF(nucop<1.OR.LASTKEY()=K_ESC,1,nucop)
-
-  CASE op_x=6                 // modifica numero de linhas
-   i_=DBOX("(de"+TRAN(linmin_,"99")+" a 66 linhas)",IF(l_m=NIL,NIL,l_m+2),IF(c_m=NIL,NIL,c_m+8),,,"ALTURA DA ETIQUETA",qtlin_,"99")
-   IF i_>=linmin_.AND.i_<=66.AND.LASTKEY()!=K_ESC
-    qtlin_=i_
-   ENDI
-
-  CASE op_x=7                 // modifica largura da etiqueta
-   i_=DBOX("(de"+TRAN(colmin_,"999")+" a 254 caracteres)",IF(l_m=NIL,NIL,l_m+2),IF(c_m=NIL,NIL,c_m+8),,,"LARGURA DA ETIQUETA",qtcol_,"999")
-   IF i_>=colmin_.AND.i_<=254.AND.LASTKEY()!=K_ESC
-    qtcol_=i_
-   ENDI
-
-  CASE op_x=8                 // separacao entre carreiras
-   i_=DBOX("(de 1 a 99 caracteres)",IF(l_m=NIL,NIL,l_m+2),IF(c_m=NIL,NIL,c_m+8),,,"SEPARA€ŽO ENTRE AS CARREIRAS",qtcse_,"99")
-   IF i_>=1.AND.LASTKEY()!=K_ESC
-    qtcse_=i_
-   ENDI
-
-  CASE op_x=9                 // num de carreiras do formulario
-   i_=DBOX("(de 1 a 30)",IF(l_m=NIL,NIL,l_m+2),IF(c_m=NIL,NIL,c_m+8),,,"CARREIRAS DO FORMULRIO",qtcar_,"99")
-   IF i_>=1.AND.i_<=30.AND.LASTKEY()!=K_ESC
-    qtcar_=i_
-   ENDI
-
-  CASE op_x=10                // numero de qtde por registro
-   tpx=qtreg_
-   DO WHILE .t.
-    cod_sos=59
-    SET KEY K_F10 TO ve_campos// F10 monta menu de campos
-    tpx=DBOX("F10=Campos do arquivo",IF(l_m=NIL,NIL,l_m+2),IF(c_m=NIL,NIL,c_m+8),,,"QTDE POR REGISTRO",PADR(tpx,100),"@S40")
-    SET KEY K_F10 TO
-    IF LASTKEY()=K_ESC         // cancelou
-     EXIT
-    ENDI
-    tpx=ALLTRIM(tpx)           // retira brancos do expressao
-    i_=TYPE(tpx)               // se a expressao=indeterminada
-    IF i_="UI"                 // existe funcao fora da clipper.lib na
-     i_=VALTYPE(&tpx.)         // expressao, logo avalia o seu
-    ENDI                       // conteudo
-    IF i_="N"                  // se o tipo da expressao for
-     qtreg_=tpx                // numerico, entao segue em frente
-     EXIT
-    ENDI                       // expressao e' ilegal avisa
-    ALERTA(3)                  // e recebe outra expressao
-    DBOX("EXPRESSŽO ILEGAL",15)
-   ENDD
-
- ENDC
-ENDD
-IF ant_!=STR(qtlin_)+;        // se alterou parametros da etiqueta
-   STR(qtcol_)+STR(qtcse_)+;  // entao grava na variavel de memoria
-   STR(qtcar_)+qtreg_         // monta nome da variavel a publicar
- vr_memo="drv"+;              // com "drv" + as ultima 7 letras do
-         RIGHT(PROCNAME(1),7) // nome do prg da etiqueta
- i_=TRAN(qtlin_,"999")+;      // prepara parametros da etiqueta
-    TRAN(qtcol_,"999")+;      // para serem gravados
-    TRAN(qtcse_,"999")+;
-    TRAN(qtcar_,"999")+qtreg_
- PUBL &vr_memo.:=i_           // publica/inicializa variavel
- SAVE TO (arqconf) ALL LIKE drv*
- REST FROM (arqconf) ADDI     // grava/restaura variaveis
-ENDI                          // restaura a tela
-RESTSCREEN(0,0,MAXROW(),79,t_opc)
-RETU(op_x=1)                  // retorna .t. se quiser prosseguir
 
 /*
    Sintaxe: TP_SAIDA( <N1> <,N2> <,L> )
@@ -691,9 +557,6 @@ ELSE
  ADR_ATRI()                                      // vamos reenche-lo
  ADR_ATR1()
  ADR_ATR2()
-// ADR_ATR3()
-// ADR_ATR4()
-// ADR_ATR5()
  IF cria_dbf .AND. !pri_vez                      // mudou diretorios?
   cn=!CRIADBF()                                  // cria dbf's e ntx's
  ENDI
@@ -740,318 +603,6 @@ ELSE                                           // ok diretorio existe
 ENDI
 RETU .t.
 
-PROC GBAK     // executa c¢pia backup
-LOCAL t, i, pri_vez, espaco, vb, arqdbf, qt_lido, msg, msgt, testdb_, origem, destino
-PRIV  dr_v, cn
-ALERTA()                                  // emite um beep e solicita o
-cod_sos=34                                // drive para fazer o backup
-dr_v=DBOX("A|B|Outro...",,,E_MENU,,"DRIVE PARA O BACKUP")
-pri_vez=.t.
-IF dr_v>0                                 // escolheu um...
- IF dr_v=3                                // escolheu um diretorio
-  dr_v=PADR("C:\",60)                     // pede diretorio
-  SET KEY K_F10 TO CAPTURADIR()           // f10 pega diretorio
-  dr_v=DBOX("Informe:",,,,NAO_APAGA,"DIRET¢RIOS PARA BACKUP|F10=captura diret¢rio",dr_v,"@!")
-  SET KEY K_F10 TO
-  dr_v=TRATADIR(ALLTRIM(dr_v))            // coloca "\" ao final se necessario
-  IF EMPTY(dr_v) .OR. LASTKEY()=K_ESC     // se nao informou...
-   RETU                                   // cai fora
-  ENDI
-  IF (UPPER(dr_v)==UPPER(TRATADIR(ALLTRIM(drvdbf))))
-   ALERTA()                               // avisa ao usuario
-   msg="Diret¢rio inv lido!"              // se o diretorio do
-   DBOX(msg,,,,,"ATENCAO!")               // backup e o mesmo dos dbf's
-   RETU                                   // cai fora
-  ENDI
- ELSE
-  dr_v=CHR(64+dr_v)+":\"                  // transforma opcao em letra (A:\)
- ENDI
- cn=.f.; disco_qtd=1                      // inicializa variaveis de controle
- testdb_=1
- disco_num:=espaco := 0                   // do backup
- vb=SAVESCREEN(0,0,MAXROW(),79)           // salva situacao da tela atual
- FOR t=1 TO nss                           // faz backup de todos os arquivos
-  arqdbf=sistema[t,O_ARQUI,O_NOME]
-  IF testdb_=1
-   arqdbf+=".dbf"
-  ELSEIF testdb_=2
-   arqdbf+=EXTENSAO(.f.)
-
-   #ifdef COM_REDE
-    ELSE
-     arqdbf=LEFT(arqdbf,3)+"_SEQ.dbf"
-   #endi
-
-  ENDI
-  origem=ABRE(sistema[t,O_ARQUI,O_DIR_DBF]+arqdbf,.f.) // abre arquivo de origem
-  IF FERROR() !=0                         // se ocorreu algum erro de abertura
-   EXIT                                   // cancela o backup
-  ENDI
-  IF !pri_vez                             // se nao for o 1o. arquivo
-   destino=ABRE(dr_v+arqdbf,.t.)          // cria-o no drive escolhido
-   IF FERROR() !=0                        // se deu erro, entao
-    EXIT                                  // cancela o backup
-   ENDI
-  ENDI
-  buffer=SPAC(10000)                      // vamos ler 10k de cada vez
-  qt_lido=FREAD(origem,@buffer,10000)     // le um pedaco do arq de origem
-  DO WHIL !cn
-   IF espaco>qt_lido .AND. !pri_vez       // se qde bytes lidos cabe no disquete
-    FWRITE(destino,buffer,qt_lido)        // grava no destino
-    espaco=DISKSPACE(ASC(dr_v)-64)-1024   // recalcula o espaco livre do disquete
-    IF qt_lido!=10000                     // leu todo arquivo de origem
-     EXIT                                 // passa para o proximo arquivo
-    ENDI
-    qt_lido=FREAD(origem,@buffer,10000)   // le mais um pedaco do arq de origem
-   ELSE
-    IF espaco>0 .AND. !pri_vez            // o disco encheu...
-     FWRITE(destino,buffer,espaco)        // grava o que der
-     FCLOSE(destino)                      // fecha arquivo destino
-     buffer=SUBS(buffer,espaco+1)         // retira do buffer os bytes ja gravados
-     disco_dat = DATE()                   // salva no disquete a data do backup
-     disco_arq = t                        // qde de arq que ja foram salvos
-     disco_qtd++                          // qde de disquetes necessarios
-     SAVE ALL LIKE disco_* TO &dr_v.CONTROLE.BKP
-    ENDI
-    RESTSCREEN(0,0,MAXROW(),79,vb)        // restaura tela
-    disco_num++                           // numero do disquete atual
-    IF ASC(dr_v)<67                       // backup de disquete
-     cod_sos=33
-     msgt="BACKUP!|COLOQUE O DISCO N§ "+; // monta mensagens
-          LTRIM(STR(disco_num))+" NO DRIVE "+dr_v
-     msg ="Prosseguir|Cancelar opera‡„o"
-     ALERTA()
-     cn=(DBOX(msg,,,E_MENU,,msgt)!=1)     // solicita um disquete
-    ENDI
-    IF cn                                 // cancelou
-     t=nss+2                              // o backup
-    ELSE
-     DBOX("AGUARDE!",,,,NAO_APAGA)        // mensagem ao usuario
-     destino=ABRE(dr_v+arqdbf,.t.)        // abre arq no disquete
-     IF FERROR() !=0                      // se deu erro, entao
-      t=nss+2                             // cancela o backup
-     ELSE
-      FOR i=1 TO nss                      // mata do disquete todos os
-       db=dr_v+sistema[i,O_ARQUI,O_NOME]+".dbf"  // arquivos envolvidos no backup
-       IF FILE(db) .AND. db!=dr_v+arqdbf  // menos o arquivo atual
-        ERASE (db)
-       ENDI
-       db=dr_v+sistema[i,O_ARQUI,O_NOME]+EXTENSAO(.f.) // idem para o .dbt
-       IF FILE(db) .AND. db!=dr_v+arqdbf
-        ERASE (db)
-       ENDI
-
-       #ifdef COM_REDE
-        db=dr_v+LEFT(sistema[i,O_ARQUI,O_NOME],3)+"_SEQ.dbf" // idem para o sequenciais
-        IF FILE(db) .AND. db!=dr_v+arqdbf
-         ERASE (db)
-        ENDI
-       #endi
-
-      NEXT
-      IF !pri_vez                         // se nao for o 1o. disquete
-       FWRITE(destino,buffer,LEN(buffer)) // grava restante dos bytes lidos,
-       buffer=SPAC(10000)                 // restaura o tamanho do buffer e
-       qt_lido=FREAD(origem,@buffer,10000)// le mais um pedaco do arq de origem
-      ENDI
-      disco_dat = DATE()                  // salva no disquete a data do backup
-      disco_arq = nss                     // e a provavel qde de arq salvos
-      SAVE ALL LIKE disco_* TO &dr_v.CONTROLE.BKP
-      espaco=DISKSPACE(ASC(dr_v)-64)-1024 // apura o espaco disponivel no disquete
-      pri_vez=.f.
-     ENDI
-    ENDI
-   ENDI
-  ENDD                                    // fim da copia do arquivo
-  FCLOSE(origem)                          // fecha arquivo de origem
-  IF !cn                                  // se o backup nao foi cancelado,
-   FCLOSE(destino)                        // fecha arquivo de destino
-   IF testdb_<2.AND.FILE(drvdbf+sistema[t,O_ARQUI,O_NOME]+EXTENSAO(.f.))
-    testdb_=2
-    t--
-   ELSE
-
-    #ifdef COM_REDE
-     IF testdb_<3.AND.FILE(drvdbf+LEFT(sistema[t,O_ARQUI,O_NOME],3)+"_SEQ.dbf")
-      testdb_=3
-      t--
-     ELSE
-      testdb_=1
-     ENDI
-    #else
-     testdb_=1
-    #endi
-
-   ENDI
-  ENDI
- NEXT
- IF !cn                                   // se o backup nao foi cancelado,
-  ALERTA()                                // avisa ao usuario
-  msg="BACKUP EXECUTADO COM SUCESSO!"
-  DBOX(msg,,,,,"ATENCAO!")
- ENDI
-ENDI
-RETU
-
-PROC RBAK     // recupera backup
-LOCAL t, pri_vez, disco, espaco, vb, arqdbf, qt_lido, msg, msgt, testdb_, origem, destino
-PRIV  dr_v, cn
-ALERTA()
-cod_sos=34                                   // solicita o drive onde
-dr_v=DBOX("A|B|Outro...",,,E_MENU,,"DRIVE DO BACKUP") // esta' o disquete do backup
-pri_vez=.t.
-IF dr_v>0                                    // informou A ou B
- IF dr_v=3                                   // escolheu um diretorio
-  dr_v=PADR("C:\",60)                        // pede diretorio
-  SET KEY K_F10 TO CAPTURADIR()              // f10 pega diretorio
-  dr_v=DBOX("Informe:",,,,NAO_APAGA,"DIRET¢RIOS DO BACKUP|F10=captura diret¢rio",dr_v,"@!")
-  SET KEY K_F10 TO
-  dr_v=TRATADIR(ALLTRIM(dr_v))               // coloca "\" ao final se necessario
-  IF EMPTY(dr_v) .OR. LASTKEY()=K_ESC        // se nao informou...
-   RETU                                      // cai fora
-  ENDI
-  IF (UPPER(dr_v)==UPPER(TRATADIR(ALLTRIM(drvdbf))))
-   ALERTA()                               // avisa ao usuario
-   msg="Diret¢rio inv lido!"              // se o diretorio do restaura
-   DBOX(msg,,,,,"ATENCAO!")               // backup e o mesmo dos dbf's
-   RETU                                   // cai fora
-  ENDI
- ELSE
-  dr_v=CHR(64+dr_v)+":\"                     // transforma opcao em letra (A:\)
- ENDI
- testdb_=1
- cn=.f.; disco:=espaco := 0                  // inicializa variaveis
- disco_qtd=1
- vb=SAVESCREEN(0,0,MAXROW(),79)              // salva tela
- FOR t=1 TO nss                              // restaura backup de todos arquivos
-  arqdbf=sistema[t,O_ARQUI,O_NOME]
-  IF testdb_=1
-   arqdbf+=".dbf"
-  ELSEIF testdb_=2
-   arqdbf+=EXTENSAO(.f.)
-
-   #ifdef COM_REDE
-    ELSE
-     arqdbf=LEFT(arqdbf,3)+"_SEQ.dbf"
-   #endi
-
-  ENDI
-  IF !pri_vez                                // se nao for o 1o. arquivo
-   origem=ABRE(dr_v+arqdbf,.f.)              // abre arquivo de origem (no disquete)
-   IF FERROR() !=0                           // se deu erro, entao
-    EXIT                                     // cancela a operacao
-   ENDI
-   destino=ABRE(sistema[t,O_ARQUI,O_DIR_DBF]+arqdbf,.t.) // cria o arquivo no disco de destino
-   IF FERROR() !=0                           // se deu erro, entao
-    EXIT                                     // cancela a operacao
-   ENDI
-  ENDI
-  buffer=SPAC(10000)                         // vamos ler 64k de cada vez
-  DO WHIL !cn
-   IF !pri_vez                               // nao for o 1o. arquivo?
-    qt_lido=FREAD(origem,@buffer,10000)      // le um pedacao do arquivo no disquete
-    FWRITE(destino,buffer,qt_lido)           // grava no seu destino
-    IF qt_lido!=10000                        // se chegou ao final do arquivo,
-     EXIT                                    // pula para o proximo arquivo
-    ENDI
-   ELSE
-    disco++
-    msgt="RESTAURA BACKUP!|COLOQUE O DISCO N§ "+;
-          LTRIM(STR(disco))+" NO DRIVE "+dr_v
-    RESTSCREEN(0,0,MAXROW(),79,vb)
-    DO WHIL !cn
-     IF ASC(dr_v)<67                          // backup de disquete
-      cod_sos=33                              // solicita a colocacao de um
-      ALERTA(2)                               // disquete no drive escolhido
-      cn=(DBOX("Prosseguir|Cancelar opera‡„o",,,E_MENU,,msgt)!=1)
-     ENDI
-     IF cn
-      t=nss+2                                // cancelou a operacao
-     ELSE
-      controle=ABRE(dr_v+"CONTROLE.BKP",.f.) // abre arquivo de controle
-      IF FERROR() !=0                        // se deu erro
-       cn=.t.; t=nss+2                       // cai fora
-      ELSE
-       FCLOSE(controle)                      // fecha arquivo de controle e
-       RESTORE FROM &dr_v.CONTROLE.BKP ADDI  // le suas variveis de controle
-       IF disco != disco_num                 // o disco nao e' este...
-        ALERTA()
-        cod_sos=1
-        msg="Disco fora da seqˆncia.|(n§ "+LTRIM(STR(disco_num))+")"
-        DBOX(msg,,,3,,"ATEN€ŽO!")
-        LOOP
-       ENDI
-       DBOX("AGUARDE!",,,,NAO_APAGA)
-       origem=ABRE(dr_v+arqdbf,.f.)          // abre o arquivo do disquete
-       IF FERROR() !=0
-        cn=.t.; t=nss+2                      // cancela se deu erro
-       ELSE
-        IF VALTYPE(destino)="U"              // se for o 1o. arquivo
-         destino=ABRE(sistema[t,O_ARQUI,O_DIR_DBF]+arqdbf,.t.)     // cria...
-         IF FERROR() !=0                     // deu erro?...
-          cn=.t.; t=nss+2
-         ENDI
-        ENDI
-        pri_vez=.f.
-        EXIT
-       ENDI
-      ENDI
-     ENDI
-    ENDD
-   ENDI
-  ENDD                                       // fim da copia do arquivo
-  IF !cn                                     // se operacao nao foi cancelada
-   FCLOSE(origem)                            // fecha arquivo do disquete
-   IF t!=disco_arq .OR. disco_qtd=disco      // foi o ultimo arq copiado pelo backup?
-    FCLOSE(destino)                          // fecha arquivo destino
-    IF testdb_<2.AND.FILE(dr_v+sistema[t,O_ARQUI,O_NOME]+EXTENSAO(.f.))
-     testdb_=2
-     t--
-    ELSE
-
-     #ifdef COM_REDE
-      IF testdb_<3.AND.FILE(dr_v+LEFT(sistema[t,O_ARQUI,O_NOME],3)+"_SEQ.dbf")
-       testdb_=3
-       t--
-      ELSE
-       testdb_=1
-      ENDI
-     #else
-      testdb_=1
-     #endi
-
-    ENDI
-   ELSEIF t=disco_arq .AND. disco_qtd!=disco // e' o ultimo arq copiado pelo backup?
-    IF testdb_<2.AND.FILE(dr_v+sistema[t,O_ARQUI,O_NOME]+EXTENSAO(.f.))
-     testdb_=2
-     FCLOSE(destino)
-    ELSE
-
-     #ifdef COM_REDE
-      IF testdb_<3.AND.FILE(dr_v+LEFT(sistema[t,O_ARQUI,O_NOME],3)+"_SEQ.dbf")
-       testdb_=3
-       FCLOSE(destino)
-      ELSE
-       pri_vez=.t.
-      ENDI
-     #else
-      pri_vez=.t.
-     #endi
-
-    ENDI
-    t--
-   ENDI
-  ENDI
- NEXT
- IF !cn                                      // se deu tudo certo
-  ALERTA()                                   // avisa ao usuario
-  msgt="BACKUP RESTAURADO COM SUCESSO!"
-  msg ="Fazer a reconstru‡„o dos ¡ndices"
-  DBOX(msg,,,,,msgt)
- ENDI
-ENDI
-RETU
-
 PROC RCLA     // reconstroi indices
 LOCAL msg, op_a:=1, db, ii, rcla_t, cur_atual:=SETCURSOR(0)
 msg:=db := ""                                   // monta menu de dbf
@@ -1066,7 +617,7 @@ rcla_t=SAVESCREEN(0,0,MAXROW(),79)              // sava tela
 DO WHIL op_a>0
  op_sis=1
  RESTSCREEN(0,0,MAXROW(),79,rcla_t)             // escolhe um dbf para indexacao
- op_a=DBOX(SUBS(msg,2),03,60,E_MENU,NAO_APAGA,"BASE DE DADOS",,,op_a)
+ op_a=DBOX(SUBS(msg,2),03,55,E_MENU,NAO_APAGA,"BASE DE DADOS",,,op_a)
  IF op_a>0                                      // escolheu um...
   op_sis=op_a
   ii=VAL(SUBS(db,op_sis*3-2,3))                 // acha sua subscricao
@@ -1084,13 +635,11 @@ DO WHIL op_a>0
     USEARQ(dbf,,,,.f.)                          // abre o arquivo
    #endi
 
-   ntxtag:=drvntx+dbf   //sistema[op_sis,O_ARQUI]
    FOR t=1 TO LEN(sistema[op_sis,O_INDIC])      // recria todos os ntx do arquivo
     ntx=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,t]+EXTENSAO() // nome do indice
     POE_GAUGE("Classificando o arquivo|"+ntx,"AGUARDE!")
     chvind=sistema[op_sis,O_CHAVE,t]            // chave de indexacao
- //   INDE ON &chvind. TO (ntx) EVAL POE_GAUGE() EVERY (LASTREC()/20)
-        INDE ON &chvind. TAG (sistema[op_sis,O_INDIC,t]) TO (ntxtag) EVAL odometer() EVERY 50  // indexando...
+    INDE ON &chvind. TO (ntx) EVAL POE_GAUGE() EVERY (LASTREC()/20)
    NEXT
    CLOS ALL
   NEXT
@@ -1115,7 +664,7 @@ pack_t=SAVESCREEN(0,0,MAXROW(),79)     // salva tela
 DO WHIL op_a>0
  op_sis=1
  RESTSCREEN(0,0,MAXROW(),79,pack_t)    // escolhe um arquivo para o pack
- op_a=DBOX(SUBS(msg,2),03,60,E_MENU,NAO_APAGA,"BASE DE DADOS",,,op_a)
+ op_a=DBOX(SUBS(msg,2),03,55,E_MENU,NAO_APAGA,"BASE DE DADOS",,,op_a)
  IF op_a>0                             // escolheu um...
   op_sis=op_a                          // subscricao do dbf escolhido
   ii=VAL(SUBS(db,op_sis*3-2,3))
@@ -1158,14 +707,12 @@ DO WHIL op_a>0
    #else
     USEARQ(dbf,,,,.f.)                          // abre o arquivo sem indice
    #endi
-   ntxtag:=drvntx+dbf //sistema[op_sis,O_ARQUI]
+
    FOR t=1 TO LEN(sistema[op_sis,O_INDIC])   // recria todos os ntx do arquivo
     ntx=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,t]+EXTENSAO() // nome do indice
     POE_GAUGE("Classificando o arquivo|"+ntx,"AGUARDE!")
     chvind=sistema[op_sis,O_CHAVE,t]                                // chave de indexacao
-//    INDE ON &chvind. TO (ntxtag) TAG (ntx) EVAL POE_GAUGE() EVERY 50 // indexa colocando gauge
-    INDE ON &chvind. TAG (sistema[op_sis,O_INDIC,t]) TO (ntxtag) EVAL odometer() EVERY 50  // indexando...
-
+    INDE ON &chvind. TO (ntx) EVAL POE_GAUGE() EVERY (LASTREC()/20) // indexa colocando gauge
    NEXT
    CLOS ALL
   NEXT
@@ -1286,7 +833,7 @@ DO WHILE .t.
    ENDI
   #else
 
-   tecl=INKEY(0)
+   tecl=IN_KEY(0)
 
   #endi
 
@@ -1388,7 +935,7 @@ DO WHIL .t.
  volta_ac=.f.                        // flag p/ dizer que o DEL foi
  rel_imp="* NOVA *"+rel_imp          // pressionado denotr da DBOX()
  cod_sos=42
- op_imp=DBOX(rel_imp,05,68,E_MENU,NAO_APAGA,"IMPRESSORAS|(DEL=APAGA)",,,op_imp)
+ op_imp=DBOX(rel_imp,05,63,E_MENU,NAO_APAGA,"IMPRESSORAS|(DEL=APAGA)",,,op_imp)
  IF volta_ac                         // quer apagar a configuracao?
   IF LASTREC()>1
    GO op_imp-1                        // posiciona nela e
@@ -1927,10 +1474,10 @@ RETU ret_val
     ENDI
     IF tecl_p>2                         // tecla de funcao clicada
      KEYB CHR(tecl_p)                   // forca tecla no buffer do teclado
-     INKEY(0)
+     IN_KEY(0)
     ENDI
    ELSE
-    INKEY(0)                           // recebe tecla digitada
+    IN_KEY(0)                           // recebe tecla digitada
    ENDI
   ENDD
   MOUSECUR(.f.)                         // deliga cursor do mouse
@@ -1941,9 +1488,9 @@ RETU ret_val
  ELSE                                   // mouse esta' desligado...
 
   #ifdef COM_REDE
-   tecl_p=INKEY(drvtempo)              // faz "refresh" a cada drvtempo seg
+   tecl_p=IN_KEY(drvtempo)              // faz "refresh" a cada drvtempo seg
   #else
-   tecl_p=INKEY(0)                     // aguarda usuario teclar algo
+   tecl_p=IN_KEY(0)                     // aguarda usuario teclar algo
   #endi
 
  ENDI
@@ -2020,7 +1567,7 @@ DO WHIL cabem>0
   ENDI
   SKIP
  ENDD
-
+ 
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -2029,7 +1576,7 @@ DO WHIL cabem>0
   msg=FIEL(i)
   M->&msg.=IF((fgrep .OR. reg_cop!=NIL).AND.!EMPT(rep[1]),DECRIPT(rep[i]),&msg.)
  NEXT
-
+ 
  /*
     inicializa campos de relacionamentos do com os campos do arquivo
     superior (grupo)
@@ -2358,35 +1905,6 @@ REST SCREEN
 RETU
 
 /*
-   Sintaxe: ABRE( <ExpC> <,ExpL> )
-   Funcao.: Abre/cria arquivo binario para backup
-              ExpC = nome do arquivo a ser criado/aberto
-              ExpL = .t. cria, .f. abre
-   Retorna: "Handle" do arquivo
-*/
-FUNC ABRE(arq_,cria_)
-LOCAL i, handle:=1
-DO WHIL .t.
- IF cria_                // se quer criar arquivo
-  handle=FCREATE(arq_)   // vamos cria-lo
- ELSE                    // senao,
-  handle=FOPEN(arq_)     // abriremos para leitura
- END IF
- IF FERROR() !=0         // deu erro na aberura do arquivo
-  ALERTA()               // manda aviso sonoro
-  cod_sos=1              // e deixa tentar novamente
-  i=DBOX("Tentar novamente|Cancelar opera‡„o",,,E_MENU,,"ERRO!|IMPOSS¡VEL ABRIR O ARQUIVO|"+arq_)
-  IF i!=1                // nao quer tentar mais...
-   cn=.t.                // retorna
-   EXIT
-  ENDI
- ELSE                    // tudo certo
-  EXIT                   // abriu corretamente
- ENDI
-ENDD
-RETU handle              // retorna o "handle" do arquivo
-
-/*
    Sintaxe: CRIADBF()
    Funcao.: Verifica e cria os arquivos DBF e NTX, quando nao existirem.
    Retorna: .t. se teve sucesso
@@ -2412,32 +1930,24 @@ FOR i=1 TO nss                              // para cada subsistema,
   &stru.()                                  // e cria a estrutura
   RESTSCREEN(0,0,MAXROW(),79,tel_a)         // restaura a tela
  ENDI
+ FOR t=1 TO LEN(sistema[i,O_INDIC])         // para cada indice do subsistema
+  ntx=sistema[i,O_ARQUI,O_DIR_NTX]+sistema[i,O_INDIC,t] // obtem nome do indice
+  IF !FILE(ntx+EXTENSAO()).OR.harq          // se nao existir ou criou estrutura
+   POE_GAUGE(ntx+EXTENSAO(),"CRIANDO")      // vamos criar...
 
- ntxtag:=drvntx+sistema[i,O_ARQUI,O_NOME]
- IF !FILE(ntxtag+EXTENSAO()).OR.harq          // se nao existir ou criou estrutura
+   #ifdef COM_REDE
+    IF !USEARQ(dbf,.t.,20,1,.f.)            // tenta abrir arquivo modo exclusivo
+     SETPOS(23,1)
+     RETU (.f.)                             // retorna .f., pois nao conseguiu
+    ENDI
+   #else
+    USEARQ(dbf,,,,.f.)                      // abre arquivo e indexa
+   #endi
 
-  FOR t=1 TO LEN(sistema[i,O_INDIC])         // para cada indice do subsistema
-   ntx=sistema[i,O_ARQUI,O_DIR_NTX]+sistema[i,O_INDIC,t] // obtem nome do indice
-   IF .T. //!FILE(ntx+EXTENSAO()).OR.harq          // se nao existir ou criou estrutura
-    POE_GAUGE(ntx+EXTENSAO(),"CRIANDO")      // vamos criar...
-
-    #ifdef COM_REDE
-     IF !USEARQ(dbf,.t.,20,1,.f.)            // tenta abrir arquivo modo exclusivo
-      SETPOS(23,1)
-      RETU (.f.)                             // retorna .f., pois nao conseguiu
-     ENDI
-    #else
-     USEARQ(dbf,,,,.f.)                      // abre arquivo e indexa
-    #endi
- tagname:=sistema[i,O_INDIC,t]
-
-//   INDE ON &(sistema[i,O_CHAVE,t]) TO (ntx) EVAL POE_GAUGE() EVERY (LASTREC()/20)
-     INDE ON &(sistema[i,O_CHAVE,t]) TAG (tagname) TO (ntxtag) EVAL odometer() EVERY 50// e indexa
-
-    RESTSCREEN(0,0,MAXROW(),79,tel_a)        // restaura tela
-   ENDI
-  NEXT
- ENDIF
+   INDE ON &(sistema[i,O_CHAVE,t]) TO (ntx) EVAL POE_GAUGE() EVERY (LASTREC()/20)
+   RESTSCREEN(0,0,MAXROW(),79,tel_a)        // restaura tela
+  ENDI
+ NEXT
  CLOS ALL                                   // fecha tudo
 NEXT
 dbfparam="PAR_ADM"
@@ -2455,7 +1965,16 @@ SELE A
 */
 IF EOF() .OR. BOF()
  APPE BLAN
- REPL setup1 WITH [Presserv Informatica]
+ REPL nrcanc WITH 000000
+ REPL contarec WITH [RECEP]
+ REPL contapag WITH [RECEP]
+ REPL histrccar WITH LPAD([004],03,[0])
+ REPL histrcfcc WITH LPAD([001],03,[0])
+ REPL histrcrec WITH LPAD([002],03,[0])
+ REPL histpg WITH LPAD([003],03,[0])
+ REPL p_cidade WITH [LIMEIRA]
+ REPL p_recp WITH [S]
+ REPL setup1 WITH [Ind£stria de Urnas Bignotto Ltda]
 ENDI
 
 /*
@@ -2548,7 +2067,5 @@ IF PTAB(ch_,db_,or_)                          // acha o reg referenciado
 ENDI
 RETU NIL
 
-FUNC M6_ISFILTER
-RETU .T.
 * \\ Final de ADR_FUN2.PRG
-// troca_nome
+

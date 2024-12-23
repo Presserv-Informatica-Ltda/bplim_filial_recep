@@ -1,15 +1,13 @@
-
 procedure adm_r033
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: ADM_R033.PRG
  \ Data....: 11-12-96
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Uma a uma Convencional
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v3.0
- \ Convert.: v5.0 em 2021081014:57:53 Fase_01
+ \ Criacao.: GAS-Pro v3.0 
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -201,7 +199,7 @@ BEGIN SEQUENCE
 END SEQUENCE
 SET MARG TO                                        // coloca margem esquerda = 0
 IMPCTL(lpp_066)                                    // seta pagina com 66 linhas
-SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
+SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)
@@ -251,7 +249,7 @@ IF volta_reg
  GO reg_atual                                      // retorna reg a posicao original
 ENDI
 SELE (ar_)
-RETU
+RETU 
 
 STATIC PROC REL_CAB(qt, volta_reg)                 // cabecalho do relatorio
 LOCAL ar_:=ALIAS()
@@ -274,3 +272,4 @@ ENDI
 RETU
 
 * \\ Final de ADM_R033.PRG
+

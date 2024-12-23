@@ -1,22 +1,19 @@
-
 procedure grcompl
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: GRCOMPL.PRG
  \ Data....: 13-09-96
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Tela complementar do subsistema de consulta contrato
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v2.0d
- \ Convert.: v5.0 em 2021081014:56:30 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
-
+*/
 #include "admbig.ch"    // inicializa constantes manifestas
 
 PARA lin_menu,col_menu
-PRIV op_sis, tela_fundo:=SAVESCREEN(0,0,MAXROW(),79), l_s, c_s, l_i, c_i, l_a
+PRIV op_sis, tela_fundo:=SAVESCREEN(0,0,MAXROW(),79)
 op_sis=EVAL(qualsis,"GRUPOS")
 IF nivelop<1                                       // se usuario nao tem permissao,
  ALERTA()                                          // entao, beep, beep, beep
@@ -28,11 +25,11 @@ criterio=""
 SELE A                                             // e abre o arquivo e seus indices
 
 #ifdef COM_REDE
- IF !USEARQ(sistema[op_sis,O_ARQUI,O_NOME],.f.,20,1)      // se falhou a abertura do
+ IF !USEARQ(sistema[op_sis,O_ARQUI],.f.,20,1)      // se falhou a abertura do
   RETU                                             // arquivo volta ao menu anterior
  ENDI
 #else
- USEARQ(sistema[op_sis,O_ARQUI,O_NOME])
+ USEARQ(sistema[op_sis,O_ARQUI])
 #endi
 
 SET KEY K_F9 TO veoutros                           // habilita consulta em outros arquivos
@@ -46,7 +43,7 @@ SET KEY K_F9 TO                                    // F9 nao mais consultara out
 CLOS ALL                                           // fecha todos arquivos abertos
 RETU
 
-PROC GRC_incl(reg_cop)     // inclusao no arquivo GRUPOS
+PROC GRC_incl     // inclusao no arquivo GRUPOS
 LOCAL getlist:={}, cabem:=1, ult_reg:=RECN(),;
       ctl_r, ctl_c, ctl_w, t_f4_, dele_atu:=SET(_SET_DELETED,.f.)
 PRIV op_menu:=TEL_EXTRA, blk_grupos:=.t., tem_borda, criterio:="", cpord:=""
@@ -60,7 +57,7 @@ DO WHIL cabem>0
  SELE GRUPOS
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
-
+ 
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -71,12 +68,12 @@ DO WHIL cabem>0
  NEXT
  DISPBEGIN()                                       // apresenta a tela de uma vez so
  GRC_TELA()
-INFOSIS(.T.)
+ INFOSIS()                                         // exibe informacao no rodape' da tela
  DISPEND()
  SELE 0                                            // torna visiveis variaveis de memoria
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
  SET KEY K_ALT_F8 TO ROLATELA
-
+ 
  /*
     recebe chaves do arquivo de indice basico
  */
@@ -209,3 +206,4 @@ ENDI
 RETU
 
 * \\ Final de GRCOMPL.PRG
+

@@ -1,15 +1,13 @@
-
 procedure adr_atr3
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: Ind£stria de Urnas Bignotto Ltda
  \ Programa: ADR_ATR3.PRG
  \ Data....: 01-05-98
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Define atributos dos arquivos (sistema[])
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v3.0
- \ Convert.: v5.0 em 2021081014:58:00 Fase_01
+ \ Criacao.: GAS-Pro v3.0 
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -22,12 +20,12 @@ sistema[33]={;
             {"seq","codigo"},;                              // chaves do arquivo
             {"Sequencia","Contrato"},;                      // titulo dos indices para consulta
             {"01","02"},;                                   // ordem campos chaves
-            {"MENSAG",drvdbf,drvntx},;                      // nome do DBF
+            "MENSAG",;                                      // nome do DBF
             {"MENSAG1","MENSAG2"},;                         // nomes dos NTX
             {},;                                            // nome dos dbf's relacionados
             {},;                                            // campos de relacionamento
             {1,1,9,13,14,67},;                              // num telas/tela atual/coordenadas
-            {1,.t.,.f.},;                                   // nivel acesso/tp chave/pede dir
+            {0,.t.},;                                       // nivel acesso/tp chave
             {},;                                            // campos do arquivo
             {},;                                            // formula mostradas
             {"",""},;                                       // condicao de exclusao de registros
@@ -111,12 +109,12 @@ sistema[34]={;
             {"numop","numconta+historico+DTOS(fechto_)","codlan"},;// chaves do arquivo
             {"p/N£mero","p/Conta","Cod.Lanc"},;             // titulo dos indices para consulta
             {"01","050613","19"},;                          // ordem campos chaves
-            {"ORDPGRC",drvdbf,drvntx},;                      // nome do DBF
+            "ORDPGRC",;                                     // nome do DBF
             {"ORDPGRC1","ORDPGRC2","ORDPGRC3"},;            // nomes dos NTX
             {},;                                            // nome dos dbf's relacionados
             {},;                                            // campos de relacionamento
             {1,1,7,12,20,71},;                              // num telas/tela atual/coordenadas
-            {1,.t.,.f.},;                                   // nivel acesso/tp chave/pede dir
+            {3,.t.},;                                       // nivel acesso/tp chave
             {},;                                            // campos do arquivo
             {},;                                            // formula mostradas
             {"",""},;                                       // condicao de exclusao de registros
@@ -328,12 +326,12 @@ sistema[35]={;
             {},;                                            // chaves do arquivo
             {},;                                            // titulo dos indices para consulta
             {},;                                            // ordem campos chaves
-            {"PAR_ADM",drvdbf,drvntx},;                      // nome do DBF
+            "PAR_ADM",;                                     // nome do DBF
             {},;                                            // nomes dos NTX
             {},;                                            // nome dos dbf's relacionados
             {},;                                            // campos de relacionamento
             {1,1,2,8,23,71},;                               // num telas/tela atual/coordenadas
-            {1,.t.,.f.},;                                   // nivel acesso/tp chave/pede dir
+            {2,.f.},;                                       // nivel acesso/tp chave
             {},;                                            // campos do arquivo
             {},;                                            // formula mostradas
             {"",""},;                                       // condicao de exclusao de registros
@@ -763,12 +761,12 @@ sistema[36]={;
             {"pass"},;                                      // chaves do arquivo
             {""},;                                          // titulo dos indices para consulta
             {"02"},;                                        // ordem dos campos chvs
-            {"ADRPW",drvdbf,drvntx},;                      // nome do DBF
+            "ADRPW",;                                       // nome do DBF
             {ntxpw},;                                       // nome do NTX
             {},;                                            // nome dos DBF relacionados
             {},;                                            // campos de relacionamento
             {1,1,11,19,17,51},;                             // qde telas, tela atual, coordenadas
-            {1,.t.,.f.},;                                   // nivel acesso/tp chave/pede dir
+            {3,.t.},;                                       // nivel acesso/tp chave
             {},; // campos  { mascara, titulo, when, critica }
             {},;// fromula { mascara, titulo, formula, linha, coluna }
             {"",""},;      // condicao de exclusao de registros
@@ -1166,3 +1164,4 @@ AADD(sistema[36,O_CAMPO],{;            // SENHAS
 )
 
 * \\ Final de ADR_ATR3.PRG
+

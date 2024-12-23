@@ -1,15 +1,13 @@
-
 procedure r01801f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: R01801F9.PRG
  \ Data....: 16-07-96
  \ Sistema.: Administradora de Funer rias
  \ Funcao..: codigo de barras do relat¢rio ADM_R018
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analistad
- \ Convert.: v5.0 em 2021081014:57:23 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -19,7 +17,7 @@ procedure r01801f9
  SETPRC(cl,1)               // retorna cabeca impressora
 SET MARG TO                                        // coloca margem esquerda = 0
 IMPCTL(lpp_066)                                    // seta pagina com 66 linhas
-SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
+SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 set printer to 'LPT1'
 set devi to prin
@@ -886,3 +884,4 @@ return
 RETU       // <- deve retornar um valor qualquer
 
 * \\ Final de R01801F9.PRG
+
