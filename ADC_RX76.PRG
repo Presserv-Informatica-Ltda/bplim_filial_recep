@@ -1,15 +1,13 @@
-
 procedure adc_rx76
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: ADC_RX76.PRG
  \ Data....: 14-09-98
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Ficha de Acerto
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v3.0
- \ Convert.: v5.0 em 2021081014:56:16 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -441,7 +439,7 @@ BEGIN SEQUENCE
  ENDD ccop
  EJEC                                              // salta pagina
 END SEQUENCE
-SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
+SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)
@@ -551,3 +549,4 @@ ENDI
 RETU IIF(EMPT(TAXAS->valorpg),TAXAS->valor+M->vladd,TAXAS->valorpg)
 
 * \\ Final de R07702F9.PRG
+

@@ -1,15 +1,13 @@
-
 procedure dci01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: DCI01F9.PRG
  \ Data....: 29-08-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Fun‡„o F8 da variavel DOCTO, relatorio DCI_P001
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:56:19 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -60,3 +58,4 @@ ELSEIF doneaux=[RCO]
 ENDI
 RETU []
 * \\ Final de DCI01F9.PRG
+

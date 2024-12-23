@@ -1,15 +1,13 @@
-
 procedure rx2002f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: R02002F9.PRG
  \ Data....: 22-09-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: DECLARACAO do relat¢rio ADM_R020
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:57:23 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -31,3 +29,4 @@ li_aux+=[previstas no artigo 171 do C¢digo Penal.]
 RETU M->li_aux      // <- deve retornar um valor qualquer
 
 * \\ Final de R02002F9.PRG
+

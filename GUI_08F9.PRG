@@ -1,15 +1,13 @@
-
 procedure gui_08f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: GUI_08F9.PRG
  \ Data....: 23-05-98
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Fun‡„o de preenchimento do campo m‚dico, arquivo GUIAS
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:56:48 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -44,3 +42,4 @@ respx:=medico
 retu PTAB(respx,[MEDICOS],1)  // <- deve retornar um valor qualquer
 
 * \\ Final de GUI_02F9.PRG
+

@@ -1,15 +1,13 @@
-
 procedure adr_rx68
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: ADR_R068.PRG
  \ Data....: 21-01-99
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Resumo de Recebimento
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v3.0
- \ Convert.: v5.0 em 2021081014:56:15 Fase_01
+ \ Criacao.: GAS-Pro v3.0 
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -226,7 +224,7 @@ BEGIN SEQUENCE
  ENDD ccop
  EJEC                                              // salta pagina
 END SEQUENCE
-SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
+SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)
@@ -269,3 +267,4 @@ POINTER_DBF(sit_dbf)
 RETU auxiliar       // <- deve retornar um valor qualquer
 
 * \\ Final de MEN_01F9.PRG
+

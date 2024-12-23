@@ -1,9 +1,9 @@
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda
- \ Programa: FUNBIG.CH
- \ Data....: 25-06-21
- \ Sistema.: Controle de Processos da Funer ria
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Programa: ADRBIG.CH
+ \ Data....: 29-01-04
+ \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Inicializa constantes do sistema
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
@@ -11,7 +11,7 @@
 */
 
 #include "inkey.ch"          // constantes de codigos das teclas
-#include "Fileio.ch"         // funcoes de leitura/gravacao de arquivo
+#include "fileio.ch"         // funcoes de leitura/gravacao de arquivo
 #include "set.ch"            // constantes da funcao SETKEY()
 
 #define NIV_CRI_LIVRE 2      // define quem podera acessar o criterio livre
@@ -30,6 +30,7 @@
 #define COM_CALE
 #define COM_MAQCALC
 #define COM_REDE
+ 
 
 /*
    Define variaveis a serem usadas na integridade referencial de
@@ -62,8 +63,8 @@
 /*
    Ativa atributo do esquema de cor corrente
 */
-#define COR_PADRAO 0          // cor padrao (drvcorpad)
-#define COR_GET    1          // cor do campo/menu (drvcorget)
+#define COR_PADRAO 0         // cor padrao (drvcorpad)
+#define COR_GET    1         // cor do campo/menu (drvcorget)
 
 /*
    tipos de video para funcao cardtype()
@@ -152,4 +153,4 @@
                            ; end
 #endi
 
-* \\ Final de FUNBIG.ch
+* \\ Final de ADRBIG.ch

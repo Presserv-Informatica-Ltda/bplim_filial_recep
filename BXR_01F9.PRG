@@ -1,15 +1,13 @@
-
 procedure bxr_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: Ind£stria de Urnas Bignotto Ltda
  \ Programa: BXR_01F9.PRG
  \ Data....: 20-11-95
  \ Sistema.: Administradora de Funer rias
  \ Funcao..: F¢rmula (Circ 1 - 4) a mostrar na tela de BXREC
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:58:06 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -67,7 +65,7 @@ procedure bxr_01f9
    @ l_s+10,c_s+40 say [NS:]+GRUPOS->nrsorteio
  ENDIF
  IF !EMPT(GRUPOS->telefone)
-  @ l_s+10, c_s+1 SAY [ Tel.:]+LEFT(alltrim(xDECRIPT(GRUPOS->telefone))+"/"+alltrim(xDECRIPT(GRUPOS->contato)),30)
+  @ l_s+10, c_s+1 SAY [ Tel.:]+LEFT(alltrim(xDECRIPT(GRUPOS->telefone))+"/"+alltrim(xDECRIPT(GRUPOS->contato)),40)
  ENDI
  @ l_s+11, c_s+1 SAY [ e-mail:]+LEFT(alltrim(xDECRIPT(GRUPOS->email)),40)
  @ l_s+16, c_s+2 SAY [CPF: ]+TRAN(GRUPOS->cpf,[@R 999.999.999-99])+[  Dt.Nascto:]+DTOC(GRUPOS->nascto_)
@@ -90,3 +88,4 @@ SET(_SET_DELETED,dele_atu)                         // os excluidos serao vistos
 RETU []         // <- deve retornar um valor qualquer
 
 * \\ Final de BXR_01F9.PRG
+

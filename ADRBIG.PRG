@@ -1,6 +1,4 @@
 
-// <ADRBIG> - <ADR_>
-
 // *Acertos do arquivo principal
 function main()
 #include "hbgtinfo.ch"
@@ -14,9 +12,6 @@ setmode(25,80)
 REQUEST HB_LANG_PT
 REQUEST HB_CODEPAGE_ES850C
 REQUEST DESCEND, MTAB, VUF, VDV2, VCGC, NMES, VHORA, EXT
-REQUEST DBFCDX
-RDDSETDEFAULT("DBFCDX")
-
 *--
 // Variáveis estáticas utilizadas pela lib
 Static11:= ""
@@ -42,26 +37,32 @@ Static24:= {"11331","31113","13113","33111","11313","31311","13311","11133","311
 *--
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda
+ \ Empresa.: PresServ Inform tica - Limeira (19)3452.3712
  \ Programa: ADRBIG.PRG
- \ Data....: 25-06-21
- \ Sistema.: Controle de Processos da Funer ria
+ \ Data....: 29-01-04
+ \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador geral
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
-#include "ADRBIG.ch"    // inicializa constantes manifestas
+#include "adrbig.ch"    // inicializa constantes manifestas
+/*
+#include "SIXNSX.CH"
+#define RDDNAME "SIXNSX"
+*/
+#define MEMOEXT ".SMT"
 
 /*
    Funcoes chamadas dentro de macros
 */
 
-REQUEST DESCEND, MTAB, VUF, VDV2, DLAPSO, NMES, EXT, MMAA, VCGC, LTOC
+REQUEST DESCEND, MTAB, VUF, VDV2, MMAA, DLAPSO, VHORA, NMES, EXT, VCGC, LTOC
 
-
-#include "ADR_PUBL.ch"  // contem variaveis publicas
+#include "adr_publ.ch"  // contem variaveis publicas
+// campo utilizado em cad_04f9 pra controlar a solicitacao de letra teclada
+PUBL ultcodmsg:=[//\\/\/\]
 
 ******
 PUBLIC aGauge
@@ -170,26 +171,26 @@ SETKEY(K_INS,{||;            // muda tamanho do cursor quando inserindo
 */
 msg:=cpord:=criterio:=chv_rela:=chv_1:=chv_2:=vr_memo := ""
 op_sis:=cod_sos:=nucop:=op_posi:=op_menu :=1
-nss=032
+nss=031
+aux:=[]
 exrot:=AFILL(ARRAY(nss),""); usuario:=obs_usuario:=senha:=senhatu:=msg_auto:=pw_grupo:=pw_codigo := ""
 quer_sair:=.f.
 datac=DATE()
 nao_mostra:=l_s:=c_s:=c_i:=l_i := 0
 tem_borda:=drvpvdbf:=drvexcl:=drvvisivel := .t.
-lin_h:={}; col_h:={}; for_h:={}; tim_h:={}
 v_out:=gr_rela:=ve_outros:=cn:=fgrep:=drvmouse:=drvpesq :=.f.
 tem_t:=fgconf:=drvconf:=brw:=drvincl :=.f.
 gcr=CHR(17)+CHR(217); nivelop=3
 drvdbf:=drvntx:=drverr:=drvpw := TRATADIR(QUALDIR())
 drvcara=CHR(178); mold="ÚÄ¿³ÙÄÀ³ÃÄ´"
-drvmenucen=.t.; drvfonte=1
+drvmenucen=.f.; drvfonte=1
 drvporta="LPT1"
 drvcortna="GR/N"; drvtittna="W/N"
-nemp="Presserv Informatica-(19)99886.3225"
-nsis="Controle de Processos da Funer ria"
+nemp="PresServ Inform tica - Limeira (19)99886.3225"
+nsis="Administradora - RECEP€„O"
 
 #ifdef COM_MOUSE
- drvmouse=(MOUSE()>0)                   // verifica e inicializa mouse
+ drvmouse=.t. //(MOUSE()>0)                   // verifica e inicializa mouse
 
  #ifdef COM_TUTOR
   IF acao_mac!="D"
@@ -202,7 +203,7 @@ nsis="Controle de Processos da Funer ria"
 #endi
 
 #ifdef COM_LOCK
- pr_ok=__PPRJ(arq_sos,"ùÿãóæçüüâôççúøåýâæýû")
+ pr_ok=__PPRJ(arq_sos,"ùÿäòäâûüäõáæñòë÷àêþú")
  IF LEN(pr_ok)>0
   CLEAR
   ? pr_ok
@@ -214,7 +215,7 @@ nsis="Controle de Processos da Funer ria"
  ms_uso="Arquivo sendo acessado|COM EXCLUSIVIDADE"
 #endi
 
-arqgeral="ADR"  // corrigido???
+arqgeral="ADR"
 
 #ifdef COM_REDE
 
@@ -259,9 +260,6 @@ AFILL(sistema:=ARRAY(nss),{})      // enche sistema[] com vetores nulos
 ADR_ATRI()                         // enche sistema[] com atributos dos arquivos
 ADR_ATR1()
 ADR_ATR2()
-//ADR_ATR3()
-//ADR_ATR4()
-//ADR_ATR5()
 arqconf=direxe+arqgeral+;          // nome do arquivo de configuracoes
         ide_maq+".sys"
 IF FILE(arqconf)
@@ -377,7 +375,7 @@ ELSE
     NEXT
    ELSEIF i=nss                             // vamos criar o 1o. usuario
     APPEND BLANK                            // com o nome de supervisor
-    REPL pw_grupo WITH ENCRIPT("0001"),;    // se senha FUN
+    REPL pw_grupo WITH ENCRIPT("0001"),;    // se senha ADR
          pw_codigo  WITH ENCRIPT("0001"),;
          pw_nome  WITH ENCRIPT(PADR("SUPERVISOR",15)),;
          pw_nivel WITH ENCRIPT("3"),;
@@ -388,14 +386,12 @@ ELSE
   ENDI
  NEXT
 ENDI
+drvmouse=.f.            // verifica e inicializa mouse
+//MOUSERAT(drvratH,drvratV)       // ajusta sensibilidade do mouse
 
-arq_log=drvpw+"ADRBIG.LOG"   // nome do arquivo de log
 ADR_ATRI()                                  // enche sistema[] com atributos dos arquivos
 ADR_ATR1()
 ADR_ATR2()
-//ADR_ATR3()
-//ADR_ATR4()
-//ADR_ATR5()
 
 #ifdef COM_TUTOR
  IF acao_mac!="D"
@@ -450,10 +446,8 @@ FOR i=nss-2 TO nss                     // corre os 3 arq de senhas
      #endi
 
     ENDI
-    ntxtag:=dbf
-    tagname:=sistema[i,O_INDIC,t]
     chvind=sistema[i,O_CHAVE,t]         // chave de indexacao
-    INDE ON &chvind. TAG (tagname) TO (ntxtag)
+    INDE ON &chvind. TO (ntx)
    ENDI
   NEXT
   CLOS ALL
@@ -579,9 +573,66 @@ FOR i=1 TO FCOU()
  M->&msg.=&msg.
 NEXT
 USE
-SET KEY K_CTRL_INS TO VE_LOG()                     // ctrl+ins ve arquivo de log
-_ag_data:=_ag_hora := ""
+****************************************
+nemp:=IIF(EMPT(setup1),nemp,setup1)
+***************************************
+// Bloqueio DTOS, em substituicao ao hprot
+//#include "bloqueio.ch"
+****************************************
+/*
+dbfsys=LEFT(drvdbf,3)+"PAR_SYS.DBF"
+IF !FILE(dbfsys)
+ dbfsys=drvntx+"PAR_SYS.DBF"
+ IF !FILE(dbfsys)
+  dbfsys=drverr+"PAR_SYS.DBF"
+  IF !FILE(dbfsys)
+   dbfsys=[]
+  ENDI
+ ENDI
+ENDI
+IF !EMPT(dbfsys)
+ SELE 0
+ USE (dbfsys)
+ DO WHILE !EOF()
+  cond=ALLTRIM(filtro)               // condicao de validacao
+  IF (&cond.)                                 // se condicao nao satisfeita,
+   IF date()>filtro_+1
+    REPL filtro_ WITH DATE()-1000
+    MSG:="ATENCAO "+M->usuario+[|]+;
+      "Erro cr¡tico de sistema.|"+;
+      "Entre em contato com a PresServ Inform tica Ltda.-ME|"+;
+      "pelos telefones (19)3452.3712."
+    DBOX(msg,,,25)
+    RETU 1
+   ENDI
+  ENDI
+  SKIP
+ ENDD
+ USE
+ENDI
+OVERDAYS = 45 //HLDIAS()
+IF OVERDAYS < 30 .AND. OVERDAYS > 10
+ MSG:="Vocˆ tˆm ainda "+STR(OVERDAYS-10,2)+" dias para|"+;
+			"entrar em contato com a PresServ Inform tica (19)3452.3712|"+;
+			"e solicitar sua nova Autoriza‡„o de Utiliza‡„o|"+;
+			"dos sistemas VIP5."
+ DBOX(msg,,,15)
+ELSEIF OVERDAYS < 11
+ MSG:="Seu PRAZO de utiliza‡„o est  se ESGOTANDO!!!|"+;
+			"Vocˆ tˆm apenas "+STR(OVERDAYS,2)+" dias|"+;
+			"Entre em contato com a PresServ Inform tica o mais breve poss¡vel|"+;
+			"para a Renova‡„o de sua Autoriza‡„o pelo fone (19)3452.3712."
+ DBOX(msg,,,15)
+ENDIF
+****************************************
+*/
+atend1:=atend2:=space(15)
 CBC1()
+DBOX("Usu rio: "+M->usuario,22,53,,NAO_APAGA)   // Identifica‡Æo do usuario
+//
+CBC1()
+DBOX("Usu rio: "+M->usuario,22,53,,NAO_APAGA)   // Identifica‡Æo do usuario
+
 
 ADR_MENU()                                        // menu geral da aplicacao
 

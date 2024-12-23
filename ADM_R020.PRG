@@ -1,15 +1,13 @@
-
 procedure adm_r020
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: ADM_R020.PRG
  \ Data....: 22-09-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Impress„o Aux.Funeral 1
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v3.0
- \ Convert.: v5.0 em 2021081014:57:54 Fase_01
+ \ Criacao.: GAS-Pro v3.0 
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -330,3 +328,4 @@ FUNC R02BP1F9()
  ENDD
  cl:=56
 RETU [ ]       // <- deve retornar um valor qualquer
+

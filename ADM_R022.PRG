@@ -1,15 +1,13 @@
-
 procedure adm_r022
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: ADM_R022.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Endere‡os Alterados
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
- \ Convert.: v5.0 em 2021081014:56:31 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -157,7 +155,7 @@ BEGIN SEQUENCE
  ENDD ccop
 END SEQUENCE
 SETCURSOR(cur_atual)
-SET PRINTER TO //(drvporta)                        // fecha arquivo gerado (se houver)
+SET PRINTER TO (drvporta)                          // fecha arquivo gerado (se houver)
 SET DEVI TO SCRE                                   // direciona saida p/ video
 IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)
@@ -227,3 +225,4 @@ ENDI
 RETU
 
 * \\ Final de ADM_R022.PRG
+
