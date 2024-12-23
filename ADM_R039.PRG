@@ -140,7 +140,7 @@ BEGIN SEQUENCE
   ccop++                                           // incrementa contador de copias
   tot025005 := 0                                   // inicializa variaves de totais
   DO WHIL !EOF().AND.POE_GAUGE()
-   IF IN_KEY()=K_ESC                               // se quer cancelar
+   IF INKEY()=K_ESC                               // se quer cancelar
     IF canc()                                      // pede confirmacao
      BREAK                                         // confirmou...
     ENDI
@@ -171,7 +171,7 @@ BEGIN SEQUENCE
      cl+=1                                         // soma contador de linha
      @ cl,000 SAY "========= ================== =========="
      DO WHIL ! EOF() .AND. chv026=numop //LEFT(&(INDEXKEY(0)),LEN(chv026)).AND.POE_GAUGE()
-      IF IN_KEY()=K_ESC                            // se quer cancelar
+      IF INKEY()=K_ESC                            // se quer cancelar
        IF canc()                                   // pede confirmacao
 	BREAK                                      // confirmou...
        ENDI
@@ -212,7 +212,7 @@ BEGIN SEQUENCE
      IMPCTL(drvpcom)                               // retira comprimido
      DO WHIL ! EOF() .AND. chv020=numop //LEFT(&(INDEXKEY(0)),LEN(chv020))
       #ifdef COM_TUTOR
-       IF IN_KEY()=K_ESC                           // se quer cancelar
+       IF INKEY()=K_ESC                           // se quer cancelar
       #else
        IF INKEY()=K_ESC                            // se quer cancelar
       #endi
@@ -277,21 +277,11 @@ INI_ARQ()                                          // acha 1o. reg valido do arq
 DO WHIL !EOF().AND.POE_GAUGE().AND.!(ehsegvia=[S])
  IF numconta==M->nrconta.AND.EMPT(fechto_)         // se atender a condicao...
 
-  #ifdef COM_REDE
    IF EMPT(fechto_)
-    REPBLO('ORDPGRC->fechto_',{||DATE()})
+    do while !rlock()
+	endd
+    REPL fechto_ with DATE(), fechpor with M->usuario
    ENDI
-   IF EMPT(fechpor)
-    REPBLO('ORDPGRC->fechpor',{||M->usuario})
-   ENDI
-  #else
-   IF EMPT(fechto_)
-    REPL ORDPGRC->fechto_ WITH DATE()
-   ENDI
-   IF EMPT(fechpor)
-    REPL ORDPGRC->fechpor WITH M->usuario
-   ENDI
-  #endi
 
   SELE ORDPGRC                                     // volta ao arquivo pai
   SKIP                                             // pega proximo registro
@@ -314,16 +304,16 @@ IF qt>0                                            // se parametro maior que 0
 ENDI
 IF cl>maxli .OR. qt=0                              // quebra de pagina
  IMPAC(nemp,0,000)                                 // nome da empresa
- @ 0,071 SAY "PAG"
- @ 0,075 SAY TRAN(pg_,'9999')                      // n£mero da p gina
+ @ 0,070 SAY "PAG"
+ @ 0,074 SAY TRAN(pg_,'9999')                      // n£mero da p gina
  IMPAC(nsis,1,000)                                 // t¡tulo aplica‡„o
- @ 1,071 SAY "ADM_R039"                            // c¢digo relat¢rio
+ @ 1,070 SAY "ADM_R039"                            // c¢digo relat¢rio
  @ 2,000 SAY "TRANSF.FINANCEIRO"
- @ 2,063 SAY NSEM(DATE())                          // dia da semana
- @ 2,071 SAY DTOC(DATE())                          // data do sistema
+ @ 2,061 SAY NSEM(DATE())                          // dia da semana
+ @ 2,069 SAY DTOC(DATE())                          // data do sistema
  @ 3,000 SAY ALLtrim(titrel)+[ Conta:]+M->nrconta   // t¡tulo a definir
  IMPAC("N§ OP. Ori Hist DC  Val Lan‡to Documento    Complemento Hist¢rico Fechto.",4,000)
- @ 5,000 SAY REPL("-",79)
+ @ 5,000 SAY REPL("-",78)
  cl=qt+5 ; pg_++
 ENDI
 RETU

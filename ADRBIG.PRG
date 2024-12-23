@@ -577,8 +577,9 @@ USE
 nemp:=IIF(EMPT(setup1),nemp,setup1)
 ***************************************
 // Bloqueio DTOS, em substituicao ao hprot
-#include "bloqueio.ch"
+//#include "bloqueio.ch"
 ****************************************
+/*
 dbfsys=LEFT(drvdbf,3)+"PAR_SYS.DBF"
 IF !FILE(dbfsys)
  dbfsys=drvntx+"PAR_SYS.DBF"
@@ -624,6 +625,7 @@ ELSEIF OVERDAYS < 11
  DBOX(msg,,,15)
 ENDIF
 ****************************************
+*/
 atend1:=atend2:=space(15)
 CBC1()
 DBOX("Usu rio: "+M->usuario,22,53,,NAO_APAGA)   // Identifica‡Æo do usuario

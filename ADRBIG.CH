@@ -28,6 +28,7 @@
 #define COM_CALE
 #define COM_MAQCALC
 #define COM_REDE
+ 
 
 /*
    Define variaveis a serem usadas na integridade referencial de
