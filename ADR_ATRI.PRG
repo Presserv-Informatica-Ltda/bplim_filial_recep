@@ -1195,6 +1195,36 @@ AADD(sistema[004,O_CAMPO],{;            // GRUPOS
      /* help do campo */    "Segunda opcao";
                          };
 )
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "",;
+     /* titulo        */    "Ult.Emitida",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "I",;
+     /* help do campo */    "";
+                         };
+)
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "@D",;
+     /* titulo        */    "Ult.Data",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "I",;
+     /* help do campo */    "";
+                         };
+)
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "@R 999,999.99",;
+     /* titulo        */    "Ult.Valor",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "I",;
+     /* help do campo */    "";
+                         };
+)
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Situacao
      /* form mostrar  */    "LEFT(TRAN(IIF(situacao=[2],[CANCELADO],[         ]),[]),09)",;
      /* lin da formula*/    1,;
