@@ -1,0 +1,446 @@
+GAS-Pro v4.0
+002003024079001006012001008001176001
+                                                                      PAG
+
+                                ALTERA€ŽO DE ENDERE€OS
+------------------------------------------------------------------------------
+                                          ³
+Alterar                     DE:           ³ PARA:        (                   )
+Ender..                                   ³
+Bairro.                                   ³
+Cidade.                                   ³
+[Ÿ]
+ 11 
+ALENDER
+Endere‡os Alterados
+
+
+EMPT(emitido_).AND.(EMPT(M->musuario).OR.por=M->musuario).AND.data_>=M->emisini_.AND.data_<=M->emisfim_
+011
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 2 
+ 0 
+ 66 
+ 0 
+ 4 
+ 2 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+Codigo
+dgrupo+'-'+codigo
+
+ 9 
+C
+ 6 
+ 9 
+
+
+ûû        
+
+
+
+
+
+
+
+
+
+
+Endere‡o
+endereco
+
+ 35 
+C
+ 7 
+ 45 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Bairro
+bairro
+
+ 25 
+C
+ 8 
+ 45 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Cidade
+cidade
+
+ 25 
+C
+ 9 
+ 45 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+CEP
+cep
+@R 99999-999
+ 9 
+C
+ 9 
+ 71 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Data_
+data_
+@D
+ 8 
+D
+ 6 
+ 70 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Por
+por
+ 
+ 10 
+C
+ 6 
+ 59 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Endere‡o
+dendereco
+
+ 35 
+C
+ 7 
+ 8 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Bairro
+dbairro
+
+ 25 
+C
+ 8 
+ 8 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Cidade
+dcidade
+
+ 25 
+C
+ 9 
+ 8 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+CEP
+dcep
+@R 99999-999
+ 9 
+C
+ 9 
+ 34 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+ 9 
+Nome da empresa
+nemp
+
+ 1 
+ 1 
+ 32 
+
+T¡tulo aplica‡„o
+nsis
+
+ 2 
+ 1 
+ 25 
+
+Data do sistema
+DTOC(DATE())
+
+ 3 
+ 71 
+ 8 
+
+Nome do mˆs
+NMES(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Dia da semana
+NSEM(DATE())
+
+ 3 
+ 63 
+ 7 
+
+N£mero da p gina
+TRAN(pg_,'9999')
+
+ 1 
+ 75 
+ 4 
+
+C¢digo relat¢rio
+"ADM_R022"
+
+ 2 
+ 71 
+ 8 
+
+T¡tulo a definir
+titrel
+
+ 3 
+ 1 
+ 30 
+
+Hora da emiss„o
+hora_rel_
+
+ 0 
+ 0 
+ 5 
+
+ 8 
+GRUPOS
+endereco
+endereco
+
+PTAB(codigo,'GRUPOS',1)
+
+
+GRUPOS
+bairro
+bairro
+
+
+
+
+GRUPOS
+cidade
+cidade
+
+
+
+
+GRUPOS
+cep
+cep
+
+
+
+
+GRUPOS
+cobrador
+cobrador
+
+
+
+
+GRUPOS
+ender_
+DATE()
+
+
+
+
+GRUPOS
+ultend
+M->usuario
+
+
+
+
+ALENDER
+emitido_
+DATE()
+
+
+
+
+ 0 
+ 0 
+ 1 
+GRUPOS
+ 1 
+codigo
+
+
+

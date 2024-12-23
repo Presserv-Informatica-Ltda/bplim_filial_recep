@@ -1,0 +1,67 @@
+GAS-Pro v3.0
+
+[Ÿ]
+ 0 
+TXPROC
+Limpa Taxas processadas
+
+
+TAXAS->stat=[9]
+001
+
+
+
+
+
+
+
+
+
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 1 
+TXPROC
+stat
+[9]
+
+
+
+
+ 0 
+ 0 
+ 1 
+TAXAS
+ 1 
+codigo+tipo+circ
+
+
+

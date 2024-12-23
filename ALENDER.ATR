@@ -1,0 +1,616 @@
+GAS-Pro v4.0
+009003018078001001023001010000176001
+ Contrato:
+ Alterar de:                          para:
+
+
+
+             Tel:                                Tel:
+ Cobrador:                            Cobrador:
+                      p/               Listado em:
+[Ÿ]
+Inclus„o~~26006
+Manuten‡„o~~27007
+Consulta~~28008
+[Ÿ]
+ 21 
+ 1 
+Contrato
+
+ 1 
+[Ÿ]
+Endere‡os
+Endere‡os
+
+nivelop>1
+Permitido apenas a usu rios cadastrados|com n¡vel de Manuten‡„o ou Maior
+nivelop>1
+Permitido apenas a usu rios cadastrados|com n¡vel de Manuten‡„o ou Maior
+nivelop>1
+Permitido apenas a usu rios cadastrados|com n¡vel de Manuten‡„o ou Maior
+005
+
+
+nivelop>1
+Permitido apenas a usu rios cadastrados|com n¡vel de Manuten‡„o ou Maior
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+-1 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+codigo
+C
+E
+@!
+ 9 
+ 9 
+ 1 
+ 12 
+ 0 
+Codigo
+
+PTAB(codigo,'GRUPOS',1).AND.ALE_01F9().AND.CAD_04F9(op_menu)
+CODIGO n„o aceit vel|Tecle F8 para consulta
+
+Entre com o n£mero do contrato|Tecle F8 para consulta
+VDBF(6,31,20,77,'GRUPOS',{'codigo','nome'},4,'codigo')
+ 0 
+ 0 
+
+
+numero
+C
+V
+99999999
+ 8 
+ 8 
+ 0 
+ 0 
+ 0 
+Numero
+
+
+
+RIGHT(DTOC(DATE()),2)+[000001]
+
+
+ 0 
+ 1 
+
+
+endereco
+C
+E
+ 
+ 35 
+ 35 
+ 3 
+ 39 
+ 0 
+Endere‡o
+
+!EMPT(endereco)
+Necess rio informar ENDERE€O do Titular
+GRUPOS->endereco
+Informe o Endere‡o para correspondˆncias.|Rua,n£mero,apto, blocl, etc...
+
+ 0 
+ 0 
+
+
+bairro
+C
+E
+ 
+ 25 
+ 25 
+ 4 
+ 39 
+ 0 
+Bairro
+
+!EMPT(bairro)
+Necess rio informar BAIRRO do Titular
+GRUPOS->bairro
+
+
+ 0 
+ 0 
+
+
+cidade
+C
+E
+ 
+ 25 
+ 25 
+ 5 
+ 39 
+ 0 
+Cidade
+
+!EMPT(cidade)
+Necess rio informar MUNICIPIO para cobran‡a do Titular.
+GRUPOS->cidade
+
+
+ 0 
+ 0 
+
+
+uf
+C
+E
+!!
+ 2 
+ 2 
+ 5 
+ 67 
+ 0 
+UF
+
+VUF(uf).OR.EMPT(UF)
+UNIDADE DA FEDERA€ŽO inv lida
+
+Qual ‚ o estado da federa‡„o
+
+ 0 
+ 0 
+
+
+cep
+C
+E
+@R 99999-999
+ 8 
+ 9 
+ 6 
+ 39 
+ 0 
+CEP
+
+!EMPT(cep)
+Necess rio informar CEP do Titular |com 08 digitos
+GRUPOS->cep
+
+
+ 0 
+ 0 
+
+
+telefone
+C
+E
+@!
+ 14 
+ 14 
+ 6 
+ 55 
+ 0 
+Telefone
+
+ 
+
+
+Informe o n£mero de telefone para|Contato com o contratante
+
+ 0 
+ 0 
+
+
+cobrador
+C
+E
+!!!
+ 3 
+ 3 
+ 7 
+ 49 
+ 0 
+Cobrador
+
+PTAB(cobrador,'COBRADOR',1).OR.EMPT(cobrador)
+COBRADOR n„o existe na tabela
+
+Digite o c¢digo do COBRADOR que|receber  as Taxas deste contrato,|Tecle F8 para consultar os cobradores.
+VDBF(6,39,20,77,'REGIAO',{'regiao','cobrador'},2,'cobrador',[!EMPT(cobrador)])
+ 0 
+ 0 
+
+
+data_
+D
+V
+@D
+ 8 
+ 10 
+ 8 
+ 10 
+ 0 
+Data_
+
+
+
+DATE()
+
+
+ 0 
+ 0 
+
+
+por
+C
+V
+ 
+ 10 
+ 10 
+ 8 
+ 26 
+ 0 
+Por
+
+
+
+M->usuario
+
+
+ 0 
+ 0 
+
+
+dendereco
+C
+V
+ 
+ 35 
+ 35 
+ 3 
+ 2 
+ 0 
+Endere‡o
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+dbairro
+C
+V
+ 
+ 25 
+ 25 
+ 4 
+ 2 
+ 0 
+Bairro
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+dcidade
+C
+V
+ 
+ 25 
+ 25 
+ 5 
+ 2 
+ 0 
+Cidade
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+duf
+C
+V
+!!
+ 2 
+ 2 
+ 5 
+ 30 
+ 0 
+UF
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+dcep
+C
+V
+@R 99999-999
+ 8 
+ 9 
+ 6 
+ 2 
+ 0 
+CEP
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+dtelefone
+C
+V
+@!
+ 14 
+ 14 
+ 6 
+ 19 
+ 0 
+Telefone
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+dcobrador
+C
+V
+!!!
+ 3 
+ 3 
+ 7 
+ 12 
+ 0 
+Cobrador
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+dgrupo
+C
+V
+ 
+ 2 
+ 2 
+ 0 
+ 0 
+ 0 
+Dgrupo
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+emitido_
+D
+E
+@D
+ 8 
+ 10 
+ 8 
+ 52 
+ 0 
+Emitido
+nivelop=3
+ 
+
+
+Data da emiss„o de solicita‡„o do endere‡o
+
+ 0 
+ 0 
+
+
+filial
+C
+I
+@!
+ 2 
+ 2 
+ 0 
+ 0 
+ 0 
+Filial
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+ 2 
+Nome
+GRUPOS->nome
+
+ 1 
+ 28 
+ 35 
+
+Filial
+filial
+@!
+ 1 
+ 24 
+ 2 
+
+ 10 
+ALENDER
+data_
+DATE()
+
+EMPT(data_)
+
+
+ALENDER
+por
+M->usuario
+
+EMPT(por)
+
+
+ALENDER
+filial
+M->p_filial
+
+
+
+
+GRUPOS
+endereco
+endereco
+
+
+
+
+GRUPOS
+bairro
+bairro
+
+
+
+
+GRUPOS
+cidade
+cidade
+
+
+
+
+GRUPOS
+uf
+uf
+
+
+
+
+GRUPOS
+telefone
+telefone
+
+
+
+
+GRUPOS
+cep
+cep
+
+
+
+
+GRUPOS
+cobrador
+cobrador
+
+
+
+
+ 0 
+ 0 
+ 0 

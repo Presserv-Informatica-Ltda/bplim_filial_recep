@@ -1,0 +1,101 @@
+GAS-Pro v2.0
+001004004078001001001001002000176001
+                                                              ,
+[Ÿ]
+[Ÿ]
+ 0 
+ 0 
+
+
+
+
+
+
+
+
+
+054
+
+
+
+
+
+
+
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 6 
+Nome da empresa
+nemp
+
+ 1 
+ 2 
+ 32 
+
+T¡tulo aplica‡„o
+nsis
+
+ 2 
+ 2 
+ 25 
+
+Data do sistema
+DATE()
+
+ 1 
+ 65 
+ 8 
+
+Nome do mˆs
+NMES(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Dia da semana
+NSEM(DATE())
+
+ 1 
+ 56 
+ 7 
+
+Diret¢rio atual
+drvdbf
+
+ 2 
+ 50 
+ 23 
+
+ 0 
+ 0 
+ 0 
+ 0 

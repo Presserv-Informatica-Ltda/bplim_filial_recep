@@ -1,0 +1,121 @@
+GAS-Pro v3.0
+011027015057001001028001012000176001
+ Usu rio........:
+ Lan‡to. inicial:
+ Lan‡to. final..:
+[Ÿ]
+[Ÿ]
+ 3 
+ 0 
+Endere‡os Alterados
+Endere‡os Alterados
+
+
+
+
+
+
+
+056
+
+
+
+
+
+
+
+ 0 
+ 0 
+-1 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+musuario
+C
+E
+@!
+ 10 
+ 10 
+ 1 
+ 19 
+ 0 
+Usuario
+
+ 
+
+M->usuario
+Informe o usu rio a listar|ou deixe sem preencher para listar todos.
+M->usuario
+ 0 
+ 0 
+
+
+emisini_
+D
+E
+@D
+ 8 
+ 8 
+ 2 
+ 19 
+ 0 
+Lan‡to. inicial
+
+!EMPT(emisini_).and. emisini_<=DATE()
+Necess rio informar Lan‡to. inicial correta
+DATE() - DAY(DATE()) + 1
+Informe a data inicial
+
+ 0 
+ 0 
+
+
+emisfim_
+D
+E
+@D
+ 8 
+ 8 
+ 3 
+ 19 
+ 0 
+Lan‡to. final
+
+!EMPT(emisfim_).and.emisfim_>=emisini_.and.emisfim_<=DATE()
+Necess rio informar Lan‡to. final correta
+DATE()
+Informe a data final
+
+ 0 
+ 0 
+
+
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 

@@ -1,0 +1,85 @@
+Branch 14/09/2010 - pedro:
+-Alterado layout da cartinha, eliminado o " grupo ", informacao anexada
+ao campo circular.
+
+Branch 01/06/2010 - pedro:
+-Corrigido o tamanho da tela de mensagens apresentadas para cada contrato,
+alterado de 50 para 60 caracteres.
+-Alterado o processo do campo GRUPOS->obs no lancamento e manutencao do
+arquivo MFILIAL.
+
+Branch 18/05/2010 - pedro:
+-Incluida rotina de impressao da ficha de acerto (adm_rx76) com as mensagens
+de obs apresentadas pela rotina CAD_04F9.
+
+Branch 13/05/2010 - pedro:
+-Incluida rotina de impressao de cartinha (adm_r101)
+
+Branch 28/04/2009 - pedro:
+-Incluida a mensagem "Favor verificar endereco e telefone" em cad_04f9.
+
+Branch 19/02/2008 - pedro:
+-Refeita a rotina de apresentacao de mensagens em tela (cad_04f9) para
+apresentar mais conteudos e aumentar o tamanho da linha
+-Refeita a rotina de controle de inclusao/exclusao do arquivo Mfilial
+para melhorar o controle dos registros lancados.
+
+
+Branch 03/01/2008 - pedro:
+-Alterada a impressao de todos os documentos de auxilio, incluido o campo
+filial na indentificacao do processo. programas adm_r029, adm_r026,
+adm_r021, adm_rx20, adr_r029, adr_rx29.
+
+Branch 27/04/2007 - pedro:
+-Incluida data de vencimento (TAXAS->emissao_) na impressao do recibo.
+
+Alteracoes manuais:
+adrbig
+incluir os includes:
+#include "SIXNSX.CH"
+#define RDDNAME "SIXNSX"
+#define MEMOEXT ".SMT"
+
+adr_atri
+Refazer as definicoes:
+
+sistema[005]={;
+	    "Taxas",;                                       // opcao do menu
+	    "Cadastro de Taxas",;                           // titulo do sistema
+	    {"codigo","codlan"},;                 // chaves do arquivo
+	    {"Contrato","Cod.Lanc"},;                       // titulo dos indices para consulta
+	    {"01","15"},;                               // ordem campos chaves
+	    {"TAXAS",drvdbf,drvntx},;                       // nome do DBF
+	    {"TAXAS1","TAXAS2"},;                           // nomes dos NTX
+
+sistema[007]={;
+	    "Inscritos",;                                   // opcao do menu
+	    "Inscritos",;                                   // titulo do sistema
+	    {"codigo","nome"},;                        // chaves do arquivo
+	    {"Codigo","Nome"},;                             // titulo dos indices para consulta
+	    {"01","05"},;                                 // ordem campos chaves
+	    {"INSCRITS",drvdbf,drvntx},;                    // nome do DBF
+	    {"INSCRIT1","INSCRIT2"},;                       // nomes dos NTX
+
+adr_estr
+PROC TAX_estr     // estrutura do arquivo TAXAS
+DBCREATE(dbf,{;
+               {"codigo"    ,"C", 18, 0},; // @S10@!
+PROC INS_estr     // estrutura do arquivo INSCRITS
+DBCREATE(dbf,{;
+               {"codigo"    ,"C", 18, 0},; // @S10@!
+PROC ECO_estr     // estrutura do arquivo ECOB
+DBCREATE(dbf,{;
+	       {"codigo"    ,"C", 18, 0},; // @S10@!
+
+Alterar as definicoes:
+adrbig.lnk = adrlnk.ok
+adrbig.rmk -> alterar de rtlink para blinker
+adr_adap.lnk = adr_lnk.ok
+adr_adap.rmk ->alterar de rtlink para blinker
+
+Incluir a linha de busca aos inscritos nos arquivos OBXEC e BXREC
+  SET KEY K_F9 TO veoutros                         // habilita consulta em outros arquivos
+  SET KEY K_F2 TO veinscrits()                         // habilita consulta em outros arquivos
+
+

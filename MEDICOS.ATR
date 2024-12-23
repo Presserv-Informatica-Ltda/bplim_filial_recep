@@ -1,0 +1,789 @@
+GAS-Pro v4.0
+001009025074001002013001003000176001
+        CodBenefic:
+ Oldescrito:                Oldclasse.:
+ Prioridade:                Situa‡„o..:
+ Oldespec..:
+ Detalhes..:                Vantagens.:
+ Condicoes.:                Informutil:
+ Nome......:
+ Endere‡o..:
+ Bairro....:
+ Cidade....:                                    CEP:
+ Contato...:
+ FoneCom1..:                 FoneCom2.:
+ Fonecel...:                 Foneres1.:
+ Email.....:
+ Fax.......:                 Bip......:
+ Fonesdiv..:
+ DataInc...:                 DataAlt..:
+ Codcidade.:                 Contrato.:
+ Flagetq...:                 Codclasse:
+[Ÿ]
+Inclus„o~~26006
+Manuten‡„o~~27007
+Consulta~~28008
+[Ÿ]
+ 32 
+ 2 
+M‚dico
+
+ 12 
+[Ÿ]
+Especialidade
+
+ 15 
+ 12 
+[Ÿ]
+Cadastro de Credenciados
+Credenciados
+
+
+
+
+
+
+
+005
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+-1 
+-1 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ai
+C
+E
+ 
+ 5 
+ 5 
+ 1 
+ 2 
+ 0 
+Ai
+
+!EMPT(ai)
+Necess rio informar AI
+
+
+
+ 0 
+ 1 
+
+
+codbenefic
+C
+E
+ 
+ 10 
+ 10 
+ 1 
+ 21 
+ 0 
+Codbenefic
+
+!EMPT(codbenefic)
+Necess rio informar CODBENEFIC
+
+
+
+ 0 
+ 0 
+
+
+oldescrito
+C
+E
+ 
+ 5 
+ 5 
+ 2 
+ 14 
+ 0 
+Oldescrito
+
+!EMPT(oldescrito)
+Necess rio informar OLDESCRITO
+
+
+
+ 0 
+ 0 
+
+
+oldclasse
+C
+E
+ 
+ 3 
+ 3 
+ 2 
+ 41 
+ 0 
+Oldclasse
+
+!EMPT(oldclasse)
+Necess rio informar OLDCLASSE
+
+
+
+ 0 
+ 0 
+
+
+prioridade
+C
+E
+ 
+ 2 
+ 2 
+ 3 
+ 14 
+ 0 
+Prioridade
+
+!EMPT(prioridade)
+Necess rio informar PRIORIDADE
+
+
+
+ 0 
+ 0 
+
+
+status
+C
+E
+!!
+ 2 
+ 2 
+ 3 
+ 41 
+ 0 
+Situa‡„o
+
+!EMPT(status)
+Necess rio informar SITUA€ŽO
+
+
+
+ 0 
+ 0 
+
+
+oldespec
+C
+E
+@!
+ 50 
+ 50 
+ 4 
+ 14 
+ 0 
+Oldespec
+
+!EMPT(oldespec)
+Necess rio informar OLDESPEC
+
+
+
+ 0 
+ 0 
+
+
+detalhes
+M
+E
+
+ 10 
+ 35 
+ 5 
+ 14 
+ 0 
+Detalhes
+
+!EMPT(detalhes)
+Necess rio informar DETALHES
+
+
+
+ 0 
+ 0 
+
+
+vantagens
+M
+E
+
+ 10 
+ 35 
+ 5 
+ 41 
+ 0 
+Vantagens
+
+!EMPT(vantagens)
+Necess rio informar VANTAGENS
+
+
+
+ 0 
+ 0 
+
+
+condicoes
+M
+E
+
+ 10 
+ 35 
+ 6 
+ 14 
+ 0 
+Condicoes
+
+!EMPT(condicoes)
+Necess rio informar CONDICOES
+
+
+
+ 0 
+ 0 
+
+
+informutil
+M
+E
+
+ 10 
+ 35 
+ 6 
+ 41 
+ 0 
+Informutil
+
+!EMPT(informutil)
+Necess rio informar INFORMUTIL
+
+
+
+ 0 
+ 0 
+
+
+nome
+C
+E
+ 
+ 50 
+ 50 
+ 7 
+ 14 
+ 0 
+Nome
+
+!EMPT(nome)
+Necess rio informar NOME
+
+Informe o nome do M‚dico
+
+ 0 
+ 0 
+
+
+endereco
+C
+E
+ 
+ 50 
+ 50 
+ 8 
+ 14 
+ 0 
+Endere‡o
+
+ 
+
+
+
+
+ 0 
+ 0 
+
+
+bairro
+C
+E
+@!
+ 30 
+ 30 
+ 9 
+ 14 
+ 0 
+Bairro
+
+!EMPT(bairro)
+Necess rio informar BAIRRO
+
+
+
+ 0 
+ 0 
+
+
+cidade
+C
+E
+@!
+ 30 
+ 30 
+ 10 
+ 14 
+ 0 
+Cidade
+
+ 
+
+
+
+
+ 0 
+ 0 
+
+
+uf
+C
+E
+!!
+ 2 
+ 2 
+ 10 
+ 45 
+ 0 
+UF
+
+VUF(uf)
+UNIDADE DA FEDERA€ŽO inv lida
+
+
+
+ 0 
+ 0 
+
+
+cep
+C
+E
+@R 99999-999
+ 8 
+ 9 
+ 10 
+ 54 
+ 0 
+CEP
+
+!EMPT(cep)
+Necess rio informar CEP
+
+
+
+ 0 
+ 0 
+
+
+contato
+C
+E
+@!
+ 50 
+ 50 
+ 11 
+ 14 
+ 0 
+Contato
+
+!EMPT(contato)
+Necess rio informar CONTATO
+
+
+
+ 0 
+ 0 
+
+
+fonecom1
+C
+E
+ 
+ 15 
+ 15 
+ 12 
+ 14 
+ 0 
+Telefone
+
+!EMPT(fonecom1)
+Necess rio informar TELEFONE
+
+
+
+ 0 
+ 0 
+
+
+fonecom2
+C
+E
+@!
+ 15 
+ 15 
+ 12 
+ 41 
+ 0 
+Fonecom2
+
+!EMPT(fonecom2)
+Necess rio informar FONECOM2
+
+
+
+ 0 
+ 0 
+
+
+fonecel
+C
+E
+@!
+ 15 
+ 15 
+ 13 
+ 14 
+ 0 
+Fonecel
+
+!EMPT(fonecel)
+Necess rio informar FONECEL
+
+
+
+ 0 
+ 0 
+
+
+foneres1
+C
+E
+@!
+ 15 
+ 15 
+ 13 
+ 41 
+ 0 
+Foneres1
+
+!EMPT(foneres1)
+Necess rio informar FONERES1
+
+
+
+ 0 
+ 0 
+
+
+email
+C
+E
+@!
+ 50 
+ 50 
+ 14 
+ 14 
+ 0 
+Email
+
+!EMPT(email)
+Necess rio informar EMAIL
+
+
+
+ 0 
+ 0 
+
+
+fax
+C
+E
+@!
+ 15 
+ 15 
+ 15 
+ 14 
+ 0 
+Fax
+
+!EMPT(fax)
+Necess rio informar FAX
+
+
+
+ 0 
+ 0 
+
+
+bip
+C
+E
+@!
+ 15 
+ 15 
+ 15 
+ 41 
+ 0 
+Bip
+
+!EMPT(bip)
+Necess rio informar BIP
+
+
+
+ 0 
+ 0 
+
+
+fonesdiv
+C
+E
+@!
+ 30 
+ 30 
+ 16 
+ 14 
+ 0 
+Fonesdiv
+
+!EMPT(fonesdiv)
+Necess rio informar FONESDIV
+
+
+
+ 0 
+ 0 
+
+
+datainc
+D
+E
+@D
+ 8 
+ 10 
+ 17 
+ 14 
+ 0 
+Datainc
+
+!EMPT(datainc)
+Necess rio informar DATAINC
+
+
+
+ 0 
+ 0 
+
+
+dataalt
+D
+E
+@D
+ 8 
+ 10 
+ 17 
+ 41 
+ 0 
+Dataalt
+
+!EMPT(dataalt)
+Necess rio informar DATAALT
+
+
+
+ 0 
+ 0 
+
+
+codcidade
+C
+E
+ 
+ 4 
+ 4 
+ 18 
+ 14 
+ 0 
+Codcidade
+
+!EMPT(codcidade)
+Necess rio informar CODCIDADE
+
+
+
+ 0 
+ 0 
+
+
+contrato
+C
+E
+ 
+ 10 
+ 10 
+ 18 
+ 41 
+ 0 
+Contrato
+
+!EMPT(contrato)
+Necess rio informar CONTRATO
+
+
+
+ 0 
+ 0 
+
+
+flagetq
+C
+E
+ 
+ 10 
+ 10 
+ 19 
+ 14 
+ 0 
+Flagetq
+
+!EMPT(flagetq)
+Necess rio informar FLAGETQ
+
+
+
+ 0 
+ 0 
+
+
+codclasse
+C
+E
+ 
+ 6 
+ 6 
+ 19 
+ 41 
+ 0 
+Codclasse
+
+!EMPT(codclasse)
+Necess rio informar CODCLASSE
+
+
+
+ 0 
+ 0 
+
+
+ 1 
+porc.desconto
+STR(ultvalor/valorpart*100,6,2)
+
+ 0 
+ 0 
+ 6 
+
+ 0 
+ 0 
+ 1 
+TESPEC
+1
+ 1 
+!PTAB(especialid,'TESPEC',1)
+1=3
+ 0 
+
+
+
+especialid
+C
+especialid
+
+
+ 0 

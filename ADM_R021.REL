@@ -1,0 +1,301 @@
+GAS-Pro v4.0
+002003024079001008075001010001176001
+                                                                 PAG
+
+
+Processo Proc.Pgto em  Valor Auxilio  Nome do falecido
+           Nome do Declarante                       Contrato   Pago em
+-------------------------------------------------------------------------
+[Ÿ]
+ 7 
+AFUNER
+Processar Pgto em
+
+DTOS(procpagto_)
+procpagto_>=M->data1_.AND.procpagto_<=M->data2_
+011
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+ 0 
+ 66 
+ 0 
+ 6 
+ 3 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+-1 
+ 0 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+Processo
+processo+proc2
+99999/99
+ 8 
+C
+ 7 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Proc.Pgto em
+procpagto_
+@D
+ 8 
+C
+ 7 
+ 12 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Valor Auxilio
+vlauxilio
+99999999999.99
+ 14 
+N
+ 7 
+ 23 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Nome do falecido
+falecido
+@!
+ 35 
+C
+ 7 
+ 39 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Nome
+nomedec
+@!
+ 35 
+C
+ 8 
+ 12 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Contrato
+contrato
+999999
+ 6 
+C
+ 8 
+ 54 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Pago em
+pagtoem_
+@D
+ 8 
+D
+ 8 
+ 65 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+ 9 
+Nome da empresa
+nemp
+
+ 1 
+ 1 
+ 32 
+
+T¡tulo aplica‡„o
+nsis
+
+ 2 
+ 1 
+ 25 
+
+Data do sistema
+DTOC(DATE())
+
+ 3 
+ 59 
+ 8 
+
+Nome do mˆs
+NMES(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Dia da semana
+NSEM(DATE())
+
+ 0 
+ 0 
+ 7 
+
+N£mero da p gina
+TRAN(pg_,'9999')
+
+ 1 
+ 70 
+ 4 
+
+C¢digo relat¢rio
+"ADM_R021"
+
+ 2 
+ 66 
+ 8 
+
+T¡tulo a definir
+titrel
+
+ 3 
+ 1 
+ 30 
+
+Hora da emiss„o
+hora_rel_
+
+ 3 
+ 69 
+ 5 
+
+ 0 
+ 0 
+ 0 
+ 0 

@@ -1,0 +1,744 @@
+GAS-Pro v4.0
+006003022079001016001016007001176001
+
+
+-----------------------------------------------------------------------
+                                                  Valor.:
+Referˆnte.:
+Contrato..:                                       Data..:
+Nome......:
+Endere‡o..:
+Bairro....:
+Cid./Cobr.:                                         ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                                                    Op:
+Valor:
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+
+-----------------------------------------------------------------------
+                                                  Valor.:
+Referˆnte.:
+Contrato..:                                       Data..:
+Nome......:
+Endere‡o..:
+Bairro....:                                         ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Cid./Cobr.:                                         Op:
+Valor:
+[Ÿ]
+ 27 
+OBXEC
+Outros recibos (2¦Via)
+
+
+PTAB(PADR(SUBSTR(M->ide_maq,2),4)+[OBX],[IMPPAR],1).AND.ano+numero=LEFT(IMPPAR->docto,8)
+011
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 2 
+ 0 
+ 33 
+ 1 
+ 3 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+-1 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+N§ Recibo
+M->nrauxrec
+@R 99-999999
+ 9 
+C
+ 4 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Ident1
+LEFT(M->setup1,35)
+
+ 35 
+C
+ 1 
+ 1 
+
+
+ û        
+
+
+
+
+
+
+
+
+
+
+Ident2
+M->setup2
+
+ 50 
+C
+ 2 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Valor
+valorpg
+@E 999,999.99
+ 10 
+N
+ 4 
+ 59 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Ref
+ref
+
+ 25 
+C
+ 5 
+ 15 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Grupo 1
+GRUPOS->grupo +[  ]+codigo
+
+ 10 
+C
+ 6 
+ 15 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Nome
+GRUPOS->nome
+
+ 35 
+C
+ 7 
+ 15 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Endere‡o
+GRUPOS->endereco
+ 
+ 35 
+C
+ 8 
+ 15 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Bairro
+GRUPOS->bairro
+ 
+ 25 
+C
+ 9 
+ 15 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Cidade
+GRUPOS->cidade+[ ] +GRUPOS->cobrador
+
+ 35 
+C
+ 10 
+ 15 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Valor Ext
+chr(15)+'('+SUBSTR(EXT(valorpg),1,AT('/',EXT(valorpg))-1)+')'+chr(18)
+
+ 70 
+C
+ 12 
+ 8 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+data 1
+emitido_
+@D
+ 10 
+C
+ 6 
+ 59 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+operador
+LEFT(por,1)+LOWER(SUBSTR(por,2))
+
+ 15 
+C
+ 11 
+ 57 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+2 Ident1
+LEFT(M->setup1,35)
+
+ 35 
+C
+ 15 
+ 1 
+
+
+ û        
+
+
+
+
+
+
+
+
+
+
+2 Ident 2
+M->setup2
+
+ 50 
+C
+ 16 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+2 N§ Recibo
+M->nrauxrec
+@R 99-999999
+ 9 
+C
+ 18 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Valor pago
+valorpg
+@E 999,999.99
+ 10 
+N
+ 18 
+ 59 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Ref
+ref
+
+ 25 
+C
+ 19 
+ 13 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Grupo
+GRUPOS->grupo +[  ]+codigo
+
+ 10 
+C
+ 20 
+ 13 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Nome
+GRUPOS->nome
+
+ 35 
+C
+ 21 
+ 13 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Endere‡o
+GRUPOS->endereco
+
+ 35 
+C
+ 22 
+ 13 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Bairro
+GRUPOS->bairro
+
+ 25 
+C
+ 23 
+ 13 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Cidade
+GRUPOS->cidade+[ ] +GRUPOS->cobrador
+
+ 35 
+C
+ 24 
+ 13 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Valor Ext
+chr(15)+'('+SUBSTR(EXT(valorpg),1,AT('/',EXT(valorpg))-1)+')'+chr(18)
+
+ 70 
+C
+ 25 
+ 8 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Emitido em
+emitido_
+@D
+ 10 
+D
+ 20 
+ 59 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Operador
+LEFT(por,1)+LOWER(SUBSTR(por,2))
+
+ 15 
+C
+ 24 
+ 57 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Altera‡„o de Endere‡o
+[Endere‡o alterado em ] +DTOC(ALENDER->data_)
+
+ 40 
+C
+ 26 
+ 8 
+PTAB(codigo,'ALENDER',1)
+
+          
+
+
+
+
+
+
+
+
+
+
+ 9 
+Nome da empresa
+nemp
+
+ 0 
+ 0 
+ 32 
+
+T¡tulo aplica‡„o
+nsis
+
+ 0 
+ 0 
+ 25 
+
+Data do sistema
+DTOC(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Nome do mˆs
+NMES(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Dia da semana
+NSEM(DATE())
+
+ 0 
+ 0 
+ 7 
+
+N£mero da p gina
+TRAN(pg_,'9999')
+
+ 0 
+ 0 
+ 4 
+
+C¢digo relat¢rio
+"ADM_R023"
+
+ 0 
+ 0 
+ 8 
+
+T¡tulo a definir
+titrel
+
+ 0 
+ 0 
+ 30 
+
+Hora da emiss„o
+hora_rel_
+
+ 0 
+ 0 
+ 5 
+
+ 0 
+ 0 
+ 0 
+ 4 
+GRUPOS
+ 1 
+codigo
+
+
+
+ARQGRUP
+ 1 
+GRUPOS->grupo
+
+
+
+COBRADOR
+ 1 
+GRUPOS->cobrador
+
+
+
+REGIAO
+ 1 
+GRUPOS->regiao
+
+
+

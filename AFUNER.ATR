@@ -1,0 +1,925 @@
+GAS-Pro v4.0
+004002023079001017030001021001176001
+ Processo..:      /  /    de             Categoria:
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ   Dados do Contratante  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Contrato...:
+ Grau.......:
+ Respons vel:                                     (Declarante)
+ Endere‡o...:                                      Fone:
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ   Dados do Falecido   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Inscrito..:
+ Rua...:                                 Bairro:
+ Cidade:                           UF:     Dt.Nasc.:
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ   Dados do Falecimento   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Data:            hora:        Endere‡o:
+               Cidade:                           UF:
+ Seu sepultamento ser  ..:            hora:
+                Cemit‚rio:
+ Funcion rio respons vel.:
+
+ Proc. Pgto em:              Vl.Auxilio:                Pago em
+[Ÿ]
+Inclus„o~~26006            
+Manuten‡„o~~27007
+Consulta~~28008
+[Ÿ]
+ 29 
+ 3 
+Processo
+
+ 1 
+ 2 
+[Ÿ]
+Nome Falecido
+
+ 12 
+ 1 
+[Ÿ]
+Data e Local Fal.
+
+ 20 
+[Ÿ]
+Aux¡lio Funeral
+Lan‡amento Aux.Funeral
+
+nivelop>1
+Permitido apenas a usu rios cadastrados|com n¡vel de Manuten‡„o ou Maior
+nivelop>1
+Permitido apenas a usu rios cadastrados|com n¡vel de Manuten‡„o ou Maior
+nivelop>1
+Permitido apenas a usu rios cadastrados|com n¡vel de Manuten‡„o ou Maior
+005
+
+
+nivelop>1
+Permitido apenas a usu rios cadastrados|com n¡vel de Manuten‡„o ou Maior
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+-1 
+-1 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+processo
+C
+E
+99999
+ 5 
+ 5 
+ 1 
+ 14 
+ 0 
+Processo
+
+!EMPT(PROCESSO)
+Este ‚ um campo obrigat¢rio!|Ele ‚ usado como chave principal|para localiza‡„o dos documentos.
+
+Digite neste campo o n£mero de|identifica‡„o do processo
+
+ 0 
+ 1 
+
+
+proc2
+C
+E
+99
+ 2 
+ 2 
+ 1 
+ 20 
+ 0 
+Ano
+
+!EMPT(proc2)
+Necess rio informar ANO
+RIGHT(DTOC(DATE()),2)
+Informe o ano correspondente ao processo.
+
+ 0 
+ 0 
+
+
+filial
+C
+I
+@!
+ 2 
+ 2 
+ 0 
+ 0 
+ 0 
+Filial
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+ocorr_
+D
+E
+@D
+ 8 
+ 10 
+ 1 
+ 30 
+ 0 
+Data ocorrˆncia
+
+!EMPTY(ocorr_)
+DATA OCORRENCIA n„o pode estar vazia
+DATE()
+Entre com a Data de Ocorrˆncia
+
+ 0 
+ 0 
+
+
+categ
+C
+E
+!!
+ 2 
+ 2 
+ 1 
+ 53 
+ 0 
+Categoria
+
+categ $ [PL|PD|AF]
+CATEGORIA n„o aceit vel
+[AF]
+Preencha com:|PL para Plano,| PD p/Diferen‡a ou |AX para Aux.Funeral
+MTAB([PL=Plano|PD=Plano c/Diferen‡a|AF=Auxilio],[CATEGORIA])
+ 0 
+ 0 
+
+
+contrato
+C
+E
+@!
+ 9 
+ 9 
+ 3 
+ 15 
+ 0 
+Contrato
+
+PTAB(contrato,'GRUPOS',1).AND.CAD_04F9(op_menu).AND.(PTAB(contrato,'TAXAS',1).OR.PTAB(GRUPOS->grupo,'ARQGRUP',1).OR.1=1)
+CONTRATO n„o existe em arquivo de tabela
+
+Informe o n£mero do contrato
+VDBF(6,3,20,77,'GRUPOS',{'codigo','grupo','nome','endereco'},1,'codigo',[])
+ 0 
+ 0 
+
+
+grauparcon
+C
+E
+ 
+ 10 
+ 10 
+ 4 
+ 15 
+ 0 
+Parentesco
+
+ 
+
+
+Informe o grau de parentesco deste com o falecido.
+
+ 0 
+ 0 
+
+
+nomedec
+C
+E
+@!
+ 35 
+ 35 
+ 5 
+ 15 
+ 0 
+Nome
+
+!EMPT(nomedec)
+Necess rio informar NOME
+GRUPOS->nome
+Entre com o nome do declarante
+
+ 0 
+ 0 
+
+
+ruadec
+C
+E
+@!
+ 35 
+ 35 
+ 6 
+ 15 
+ 0 
+Rua Declarante
+
+ 
+
+
+Entre com o endere‡o do respons vel
+
+ 0 
+ 0 
+
+
+fonedec
+C
+E
+@!
+ 14 
+ 14 
+ 6 
+ 58 
+ 0 
+Fone
+
+ 
+
+
+Informe o n£mero do Telefone para contato|com o respons vel pela solicita‡„o do A.F.
+
+ 0 
+ 0 
+
+
+codigofal
+C
+E
+ 
+ 18 
+ 18 
+ 8 
+ 14 
+ 0 
+Falecido
+
+PTAB(codigofal,'INSCRITS',1).OR.EMPT(codigofal)
+Necess rio informar C¢digo do FALECIDO ou|Tecle F8 para consulta.
+ALLTRIM(contrato)
+Entre com o c¢digo do falecido
+VDBF(6,3,20,77,'INSCRITS',{'codigo','nome','nascto_'},1,'kinscf9()',[])
+ 0 
+ 0 
+
+
+falecido
+C
+E
+ 
+ 35 
+ 35 
+ 8 
+ 33 
+ 0 
+Nome do falecido
+
+!EMPT(falecido)
+Necess rio informar NOME DO FALECIDO
+IIF(PTAB(codigofal,'INSCRITS',1),INSCRITS->nome,[])
+Entre com o nome do falecido
+
+ 0 
+ 0 
+
+
+ruares
+C
+E
+ 
+ 30 
+ 30 
+ 9 
+ 10 
+ 0 
+Rua Residˆncia
+
+ 
+
+
+Entre com o endere‡o de residˆncia do Falecido
+
+ 0 
+ 0 
+
+
+baires
+C
+E
+ 
+ 25 
+ 25 
+ 9 
+ 50 
+ 0 
+Bairro Residˆncia
+
+ 
+
+
+Entre com o bairro de residˆncia
+
+ 0 
+ 0 
+
+
+munres
+C
+E
+ 
+ 25 
+ 25 
+ 10 
+ 10 
+ 0 
+Munic¡pio de residˆncia
+
+ 
+
+
+Entre com o nome do Munic¡pio de residˆncia
+
+ 0 
+ 0 
+
+
+estres
+C
+E
+!!
+ 2 
+ 2 
+ 10 
+ 40 
+ 0 
+UF Residˆncia
+
+EMPTY(ESTRES).OR.VUF(ESTRES)
+ESTADO RESIDENCIA N„o aceit vel
+
+Entre com o estado de Residˆncia
+
+ 0 
+ 0 
+
+
+nascto_
+D
+E
+@D
+ 8 
+ 10 
+ 10 
+ 54 
+ 0 
+Nascimento
+
+ 
+
+IIF(PTAB(codigofal,'INSCRITS',1),INSCRITS->nascto_,CTOD([  /  /  ]))
+Informe a data de nascimento do falecido.
+
+ 0 
+ 0 
+
+
+falecto_
+D
+E
+@D
+ 8 
+ 10 
+ 12 
+ 8 
+ 0 
+Data falcto.
+
+falecto_<=DATE()
+Informe uma data v lida para falecimento|Verifique a data do sistema.
+
+Entre com a data de falecimento
+
+ 0 
+ 0 
+
+
+horafal
+C
+E
+99:99
+ 5 
+ 5 
+ 12 
+ 25 
+ 0 
+Hora Falcto.
+!EMPTY(falecto_)
+VHORA(horafal+':00')
+HORA FALCTO. n„o aceit vel|Digite uma hora correta
+
+
+
+ 0 
+ 0 
+
+
+ruafal
+C
+E
+ 
+ 30 
+ 30 
+ 12 
+ 42 
+ 0 
+Rua Falecimento
+
+ 
+
+
+Entre com o endere‡o (Rua) onde|ocorreu o falecimento
+
+ 0 
+ 0 
+
+
+municfal
+C
+E
+ 
+ 25 
+ 25 
+ 13 
+ 24 
+ 0 
+Munic¡pio de falecimento
+
+ 
+
+
+Entre com o nome do munic¡pio
+
+ 0 
+ 0 
+
+
+estfal
+C
+E
+!!
+ 2 
+ 2 
+ 13 
+ 54 
+ 0 
+UF falecto
+
+EMPTY(ESTFAL) .OR.VUF(ESTFAL)
+ESTADO FALECIMENTO N„o aceit vel
+
+Entre com o Estado onde ocorreu o falecimento
+
+ 0 
+ 0 
+
+
+sepult_
+D
+E
+@D
+ 8 
+ 10 
+ 14 
+ 28 
+ 0 
+Data Sepultamento
+
+ 
+
+DATE()
+Informe a data do sepultamento
+
+ 0 
+ 0 
+
+
+horasepult
+C
+E
+99:99
+ 5 
+ 5 
+ 14 
+ 45 
+ 0 
+Hora sepult.
+
+VHORA(horasepult+':00')
+HORA SEPULT. n„o aceit vel|digite uma hora correta
+
+Informe a hora do sepultamento
+
+ 0 
+ 0 
+
+
+cemitsep
+C
+E
+ 
+ 30 
+ 30 
+ 15 
+ 28 
+ 0 
+Cemit‚rio Sepultamento
+
+ 
+
+
+Entre com o n£mero do cemit‚rio de sepultamento
+
+ 0 
+ 0 
+
+
+funcresp
+C
+E
+999
+ 3 
+ 3 
+ 16 
+ 28 
+ 0 
+Func.Respons vel
+
+PTAB(funcresp,'FNCS',1).OR.EMPTY(funcresp)
+Funcion rio n„o existe na tabela
+
+Informe o funcion rio far |o registro ou F8 para consulta em tabela
+VDBF(6,15,20,77,'FNCS',{'codigo','nome','profiss'},1,'codigo',[])
+ 0 
+ 0 
+
+
+procpagto_
+D
+E
+@D
+ 8 
+ 10 
+ 18 
+ 17 
+ 0 
+Proc.pagto em
+
+ 
+
+
+Processar pagamento em...
+
+ 0 
+ 0 
+
+
+vlauxilio
+N
+E
+99999999999.99
+ 14 
+ 14 
+ 18 
+ 42 
+ 2 
+Valor Auxilio
+
+ 
+
+
+Informe o valor do Auxilio Funeral
+
+ 0 
+ 0 
+
+
+pagtoem_
+D
+E
+@D
+ 8 
+ 10 
+ 18 
+ 65 
+ 0 
+Pago em
+
+ 
+
+
+
+
+ 0 
+ 0 
+
+
+ 6 
+Contratante
+IIF(PTAB(contrato,'GRUPOS',1),GRUPOS->nome,[])
+
+ 3 
+ 28 
+ 30 
+
+Endere‡o Contr.
+IIF(PTAB(contrato,'GRUPOS',1),GRUPOS->endereco,[])
+
+ 4 
+ 28 
+ 35 
+
+Func.Resp.
+IIF(PTAB(funcresp,[FNCS]),FNCS->nome,[ ])
+
+ 16 
+ 32 
+ 30 
+
+Categoria
+IIF(categ=[PD],[Plano c/Difer. ],IIF(categ=[PL],[Atend.Plano],[Auxilio Funeral  ]))
+
+ 1 
+ 56 
+ 18 
+
+Filial
+filial
+@!
+ 1 
+ 23 
+ 2 
+
+Seguro?
+IIF(PTAB(contrato,[GRSEGUR],2),[SEGURO],[])
+
+ 3 
+ 61 
+ 6 
+
+ 7 
+PAR_ADM
+procimp
+processo+proc2+filial
+processo+proc2+filial
+
+
+
+PRCESSOS
+categ
+categ
+
+PTAB(processo+proc2+M->p_filial+categ,[PRCESSOS],1).AND.(EMPT(PRCESSOS->saiu).OR.PRCESSOS->saiu=ARQGRUP->ultcirc)
+
+
+PRCESSOS
+ends
+ruares
+
+PTAB(processo+proc2+M->p_filial+categ,[PRCESSOS],1).AND.(EMPT(PRCESSOS->saiu).OR.PRCESSOS->saiu=ARQGRUP->ultcirc)
+
+
+PRCESSOS
+cids
+munres
+
+PTAB(processo+proc2+M->p_filial+categ,[PRCESSOS],1).AND.(EMPT(PRCESSOS->saiu).OR.PRCESSOS->saiu=ARQGRUP->ultcirc)
+
+
+PRCESSOS
+fal
+falecido
+
+PTAB(processo+proc2+M->p_filial+categ,[PRCESSOS],1).AND.(EMPT(PRCESSOS->saiu).OR.PRCESSOS->saiu=ARQGRUP->ultcirc)
+
+
+PRCESSOS
+dfal
+falecto_
+
+PTAB(processo+proc2+M->p_filial+categ,[PRCESSOS],1).AND.(EMPT(PRCESSOS->saiu).OR.PRCESSOS->saiu=ARQGRUP->ultcirc)
+
+
+IMPPAR
+docto
+processo+proc2+filial+categ
+
+PTAB(PADR(M->ide_maq,4)+[AFU],[IMPPAR],1)
+
+
+ 0 
+ 2 
+PRCESSOS
+1
+ 13 
+!PTAB(processo+proc2+M->p_filial+categ,[PRCESSOS],1)
+1=3
+-1 
+
+
+
+processo
+C
+processo+proc2+M->p_filial
+
+
+categ
+C
+categ
+
+
+saiu
+C
+
+
+
+grup
+C
+GRUPOS->grupo
+
+
+num
+C
+contrato
+
+
+grau
+C
+SUBSTR(codigofal,7,1)
+
+
+seq
+N
+VAL(SUBSTR(codigofal,8,2))
+
+
+seg
+C
+nomedec
+
+
+ends
+C
+ruares
+
+
+cids
+C
+munres
+
+
+fal
+C
+falecido
+
+
+sep
+C
+cemitsep
+
+
+dfal
+D
+falecto_
+
+
+IMPPAR
+1
+ 3 
+!PTAB(PADR(SUBSTR(M->ide_maq,2),4)+[AFU],[IMPPAR],1)
+1=3
+ 0 
+
+
+
+idmaq
+C
+PADR(SUBSTR(M->ide_maq,2),4)
+
+
+base
+C
+[AFU]
+
+
+docto
+C
+
+
+
+ 4 
+ADM_R020
+ 0 
+Impress„o Aux.Funeral
+categ=[AF]
+
+
+ADR_R029
+ 0 
+Impress„o Aux.Funeral
+categ=[AF]
+
+
+ADM_RX20
+ 0 
+Impress„o Aux.Funeral
+!(categ=[AF])
+
+
+ADR_RX29
+ 0 
+Impress„o Aux.Funeral
+!(categ=[AF])
+
+

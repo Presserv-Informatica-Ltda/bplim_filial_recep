@@ -1,0 +1,270 @@
+GAS-Pro v4.0
+010010019073001001001001011000176001
+ N£mero..:                              (                   )
+ Condi‡„o:
+ Mensagem:
+[Ÿ]
+Inclus„o~~26006
+Manuten‡„o~~27007
+Consulta~~28008
+[Ÿ]
+ 5 
+ 1 
+Sequencia
+
+ 1 
+[Ÿ]
+Mensagem p/Contrato
+Mensagem p/Contrato
+
+
+
+
+
+
+
+005
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+-1 
+-1 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+seq
+C
+E
+999999
+ 6 
+ 6 
+ 1 
+ 12 
+ 0 
+Sequˆncia
+
+!EMPT(seq)
+Necess rio informar SEQUENCIA
+
+Informe o n£mero sequencial|os menores ser„o apresentados antes
+
+ 0 
+ 1 
+
+
+filtro
+C
+E
+ 
+ 210 
+ 50 
+ 2 
+ 12 
+ 0 
+Crit‚rio
+
+TYPE(filtro)#[UI] .OR. VALTYPE(&filtro)=[L]
+Informe uma express„o v lida
+MEN_01F9()
+Informe o crit‚rio de filtragem|para exibi‡„o da mensagem.
+MEN_01F9()
+ 0 
+ 0 
+
+
+mens1
+M
+E
+
+ 10 
+ 50 
+ 3 
+ 12 
+ 0 
+Menssagem
+
+!EMPT(mens1)
+Informe a mensagem a apresentar,|tecle F7 para entrar e sair do campo
+
+Informe a mensagem que ser  apresentada |na tela quando for satisfeita a condi‡„o informada
+
+ 0 
+ 0 
+
+
+lancto_
+D
+I
+@D
+ 8 
+ 10 
+ 0 
+ 0 
+ 0 
+Lan‡amento
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+por
+C
+I
+ 
+ 10 
+ 10 
+ 0 
+ 0 
+ 0 
+Por
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+ 7 
+Lan‡amento
+lancto_
+@D
+ 1 
+ 42 
+ 8 
+
+mensagem1
+MEMOLINE(MENSAG->mens1,50,1)
+
+ 4 
+ 12 
+ 50 
+
+MENSAGEM 2
+MEMOLINE(MENSAG->mens1,50,2)
+
+ 5 
+ 12 
+ 50 
+
+MENSAGEM 3
+MEMOLINE(MENSAG->mens1,50,3)
+
+ 6 
+ 12 
+ 50 
+
+MENSAGEM 4
+MEMOLINE(MENSAG->mens1,50,4)
+
+ 7 
+ 12 
+ 50 
+
+MENSAGEM 5
+MEMOLINE(MENSAG->mens1,50,5)
+
+ 8 
+ 12 
+ 50 
+
+Por
+por
+
+ 1 
+ 51 
+ 10 
+
+ 2 
+MENSAG
+por
+M->usuario
+
+EMPT(lancto_)
+
+
+MENSAG
+lancto_
+DATE()
+
+EMPT(lancto_)
+
+
+ 0 
+ 0 
+ 0 

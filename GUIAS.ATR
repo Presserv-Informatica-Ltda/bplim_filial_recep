@@ -1,0 +1,451 @@
+GAS-Pro v4.0
+002011024076001001001001003001176001
+ N£mero:            Emiss„o:
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ N§ Contrato:
+ Admiss„o...:
+ Sai Taxas..:                                       Cobr:
+
+
+
+
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Pessoa a Atend:
+
+ M‚dico...:
+[Ÿ]
+Inclus„o~~26006
+Manuten‡„o~~27007
+Consulta~~28008
+[Ÿ]
+ 10 
+ 2 
+p/N£mero
+
+ 1 
+[Ÿ]
+p/N§Transf.
+
+ 1 
+[Ÿ]
+Emiss„o de Guias
+Emiss„o de Guias
+
+
+
+
+
+
+
+005
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+-1 
+-1 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+numero
+C
+V
+99999999
+ 8 
+ 8 
+ 1 
+ 10 
+ 0 
+N£mero
+
+
+
+RIGHT(DTOC(DATE()),2)+[000001]
+
+
+ 0 
+ 1 
+
+
+data
+D
+I
+@D
+ 8 
+ 10 
+ 1 
+ 30 
+ 0 
+Emiss„o
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+hora
+C
+I
+99:99
+ 5 
+ 5 
+ 0 
+ 0 
+ 0 
+Hora
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+filial
+C
+I
+ 
+ 2 
+ 2 
+ 0 
+ 0 
+ 0 
+Filial
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+login
+C
+I
+ 
+ 10 
+ 10 
+ 0 
+ 0 
+ 0 
+Login
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+contrato
+C
+E
+@!
+ 9 
+ 9 
+ 3 
+ 15 
+ 0 
+N§ Contrato
+
+GUI_07F9().AND.CAD_04F9(op_menu).AND.((PTAB(contrato,'INSCRITS',1).and.PTAB(contrato,'TAXAS',1)).OR.1=1)
+N£mero do contrato inv lido,|ou |Titular n„o cadastrado|Tecle F8 para consulta.
+
+Entre com o c¢digo do contrato
+VDBF(6,3,20,77,'GRUPOS',{'grupo','codigo','nome','endereco'},1,'codigo')
+ 0 
+ 0 
+
+
+nome
+C
+E
+@!
+ 35 
+ 35 
+ 12 
+ 18 
+ 0 
+Nome
+
+!EMPT(nome).AND.(PTAB([],'MEDICOS',1).OR.1=1) // Associa Medicos(doc)
+Informar NOME
+GRUPOS->nome
+Informe o nome do benefici rio.
+GUI_06F9()
+ 0 
+ 0 
+
+
+inscrito
+C
+I
+@!
+ 18 
+ 18 
+ 0 
+ 0 
+ 0 
+Inscrito
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+medico
+C
+E
+@!
+ 10 
+ 10 
+ 14 
+ 13 
+ 0 
+M‚dico
+
+PTAB(medico,'MEDICOS',1).OR.GUI_08F9()
+MDICO n„o existe na tabela
+
+Informe o m‚dico
+VDBF(6,3,20,77,'MEDICOS',{'codbenefic','nome','endereco','cidade','fonecom1','fonecom2'},2,'codbenefic',[])
+ 0 
+ 0 
+
+
+por
+C
+I
+ 
+ 10 
+ 10 
+ 0 
+ 0 
+ 0 
+Por
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+ 14 
+circ 1-4
+GUI_02F9()
+
+ 6 
+ 15 
+ 45 
+
+Nome do titular
+GRUPOS->nome
+
+ 3 
+ 26 
+ 35 
+
+Admiss„o
+GRUPOS->admissao
+@D
+ 4 
+ 15 
+ 10 
+
+Saitxa
+GRUPOS->saitxa
+@R 99/99
+ 5 
+ 15 
+ 5 
+
+Cobrador
+GRUPOS->cobrador
+!!
+ 5 
+ 59 
+ 2 
+
+Endere‡o contr
+GRUPOS->endereco
+
+ 4 
+ 26 
+ 35 
+
+Bairro contr
+GRUPOS->bairro
+
+ 5 
+ 26 
+ 25 
+
+Endere‡o
+IIF(!EMPT(medico).AND.PTAB(medico,'MEDICOS',1),MEDICOS->endereco,SPACE(40))
+
+ 15 
+ 24 
+ 40 
+
+Munic¡pio
+IIF(PTAB(medico,'MEDICOS',1),MEDICOS->cidade,[])
+
+ 16 
+ 32 
+ 30 
+
+Fone
+IIF(!EMPT(medico),MEDICOS->fonecom1,SPACE(14))
+
+ 15 
+ 9 
+ 14 
+
+Nome m‚dico
+IIF(!EMPT(medico),MEDICOS->nome,SPACE(40))
+
+ 14 
+ 24 
+ 40 
+
+Especialidade
+IIF(!EMPT(medico),MEDICOS->oldespec,SPACE(30))
+
+ 16 
+ 2 
+ 30 
+
+Emiss„o
+IIF(EMPT(data),DATE(),data)
+@D
+ 1 
+ 43 
+ 10 
+
+Por
+IIF(EMPT(por),M->usuario,por)
+
+ 1 
+ 54 
+ 10 
+
+ 1 
+IMPPAR
+docto
+numero
+
+PTAB(PADR(SUBSTR(M->ide_maq,2),4)+[GUI],[IMPPAR],1)
+
+
+ 0 
+ 1 
+IMPPAR
+1
+ 3 
+!PTAB(PADR(SUBSTR(M->ide_maq,2),4)+[GUI],[IMPPAR],1)
+1=3
+ 0 
+
+
+
+idmaq
+C
+PADR(SUBSTR(M->ide_maq,2),4)
+
+
+base
+C
+[GUI]
+
+
+docto
+C
+
+
+
+ 0 

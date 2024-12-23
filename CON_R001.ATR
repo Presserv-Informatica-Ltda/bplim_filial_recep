@@ -1,0 +1,125 @@
+GAS-Pro v4.0
+012021015062001001011001013000176001
+ N£mero:
+[Ÿ]
+[Ÿ]
+ 1 
+ 0 
+Emiss„o de Guias
+Emiss„o de Guias
+
+
+
+
+
+
+
+056
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 0 
+-1 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+gnumero
+C
+E
+@R 99-99999
+ 7 
+ 8 
+ 1 
+ 10 
+ 0 
+N£mero
+
+PTAB(gnumero,'GUIAS',1).AND.V00101F9()
+N£MERO n„o existe na tabela
+IF(PTAB(PADR(SUBSTR(M->ide_maq,2),4)+[GUI],[IMPPAR],1),IMPPAR->docto,[])
+Emitir a guia de n£mero?
+VDBF(6,8,20,77,'GUIAS',{'numero','grupo','codigo','grau','seq','nome'},1,'numero')
+ 0 
+ 0 
+
+
+ 1 
+Nome
+GUIAS->nome
+@!
+ 2 
+ 5 
+ 35 
+
+ 0 
+ 0 
+ 0 
+ 0 

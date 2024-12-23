@@ -1,0 +1,325 @@
+GAS-Pro v4.0
+002003024079001010001001012000176001
+                                                                      PAG
+
+Relacao dos funerais efetuados (cartinha)
+------------------------------------------------------------------------------
+Grupo:        Circular:        Emissao:
+[Ÿ]
+ 8 
+CIRCULAR
+Cartinha
+
+grupo
+grupo=M->rgrupo.AND.circ=M->rcirc
+011
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+
+
+
+
+
+
+
+
+
+
+-1 
+ 1 
+ 0 
+ 66 
+ 1 
+ 4 
+ 2 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+-1 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+Grupo
+M->rgrupo
+!!
+ 2 
+C
+ 5 
+ 8 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Circular
+M->rcirc
+999
+ 3 
+C
+ 5 
+ 25 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Emiss„o
+emissao_
+@D
+ 10 
+D
+ 5 
+ 41 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Mens1
+M->rmens1
+@!
+ 70 
+C
+ 6 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Mens2
+M->rmens2
+@!
+ 70 
+C
+ 7 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Mens3
+M->rmens3
+@!
+ 70 
+C
+ 8 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Mens4
+M->rmens4
+@!
+ 70 
+C
+ 9 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Mens5
+M->rmens5
+@!
+ 70 
+C
+ 10 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+ 9 
+Nome da empresa
+nemp
+
+ 1 
+ 1 
+ 44 
+
+T¡tulo aplica‡„o
+nsis
+
+ 2 
+ 1 
+ 25 
+
+Data do sistema
+DTOC(DATE())
+
+ 3 
+ 69 
+ 10 
+
+Nome do mˆs
+NMES(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Dia da semana
+NSEM(DATE())
+
+ 3 
+ 61 
+ 7 
+
+N£mero da p gina
+TRAN(pg_,'9999')
+
+ 1 
+ 75 
+ 4 
+
+C¢digo relat¢rio
+"ADP_R101"
+
+ 2 
+ 71 
+ 8 
+
+T¡tulo a definir
+titrel
+
+ 2 
+ 28 
+ 30 
+
+Hora da emiss„o
+hora_rel_
+
+ 0 
+ 0 
+ 5 
+
+ 0 
+ 1 
+M->rdata+[ Grupo: ]+grup+[ Circ: ]+saiu
+  û ûû    
+grup+saiu
+
+
+ 0 
+ 0 

@@ -1,0 +1,315 @@
+GAS-Pro v4.0
+002003024079001007001001009000176001
+                                                                       PAG
+
+TRANSF.FINANCEIRO
+
+N§ OP. Ori Hist DC  Val Lan‡to Documento    Complemento de Hist¢rico
+-------------------------------------------------------------------------------
+[Ÿ]
+ 7 
+ORDPGRC
+Fechamento Caixa
+
+
+numconta==M->nrconta.AND.EMPT(fechto_)
+011
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 2 
+ 0 
+ 66 
+ 0 
+ 6 
+ 3 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+N§ OP.
+numop+R03001F9()
+999999
+ 6 
+C
+ 7 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Ori
+origem
+!!!
+ 3 
+C
+ 7 
+ 8 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Hist
+historico
+999
+ 3 
+C
+ 7 
+ 12 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+D/C
+debcred
+!
+ 1 
+C
+ 7 
+ 17 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Val Lan‡to
+valortotal * IIF(debcred='C',1,-1)
+99999999.99
+ 11 
+N
+ 7 
+ 20 
+
+
+   û      
+
+
+
+
+
+
+
+
+
+
+Documento
+documento
+@!
+ 12 
+C
+ 7 
+ 32 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Complemento de Hist¢rico
+complement
+@!
+ 35 
+C
+ 7 
+ 45 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+ 9 
+Nome da empresa
+nemp
+
+ 1 
+ 1 
+ 32 
+
+T¡tulo aplica‡„o
+nsis
+
+ 2 
+ 1 
+ 25 
+
+Data do sistema
+DTOC(DATE())
+
+ 3 
+ 72 
+ 8 
+
+Nome do mˆs
+NMES(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Dia da semana
+NSEM(DATE())
+
+ 3 
+ 64 
+ 7 
+
+N£mero da p gina
+TRAN(pg_,'9999')
+
+ 1 
+ 76 
+ 4 
+
+C¢digo relat¢rio
+"ADM_R039"
+
+ 2 
+ 72 
+ 8 
+
+T¡tulo a definir
+titrel
+
+ 4 
+ 1 
+ 30 
+
+Hora da emiss„o
+hora_rel_
+
+ 0 
+ 0 
+ 5 
+
+ 2 
+ORDPGRC
+fechto_
+DATE()
+
+EMPT(fechto_)
+
+
+ORDPGRC
+fechpor
+M->usuario
+
+EMPT(fechpor)
+
+
+ 0 
+ 0 
+ 0 

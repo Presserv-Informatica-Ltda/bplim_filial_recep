@@ -1,0 +1,146 @@
+GAS-Pro v1.1
+003008019074001001031001004000176001
+ Grupo.....:      Codigo....:
+ Nome:
+ CPF:                  RG:
+ Endereco:                                 Numero:
+ Bairro:
+ Cidade:                           CEP:            UF:
+ Fone..:                Profissao:
+ Nascido em:                           UF:     Data:
+ Est. civil:         em:
+       Casado na cidade:                            UF:
+ Local Trabalho:
+ Setor:                               Fone:
+ Rua:                                 N£m.:
+ Bairro:
+ Cidade:                           CEP:            UF:
+[Ÿ]
+Consulta~~28
+Manuten‡„o~~27            
+[Ÿ]
+ 5 
+ 1 
+Por codigo
+
+ 1 
+ 2 
+[Ÿ]
+Contratos
+Contratos
+
+
+
+-1 
+ 1 
+-1 
+-1 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+grupo
+C
+E
+!9
+ 2 
+ 2 
+ 1 
+ 14 
+ 0 
+Grupo
+
+PTAB(grupo,'ARQGRUP',1)
+GRUPO n„o existe na tabela
+
+Entre com o grupo ou |tecle F8 para consulta em tabela
+VDBF(6,56,20,77,'ARQGRUP',{'grup','inicio','final'},1,'grup')
+ 0 
+ 0 
+
+
+codigo
+C
+E
+99999
+ 5 
+ 5 
+ 1 
+ 31 
+ 0 
+Codigo
+
+codigo >=ARQGRUP->inicio .and. codigo <=ARQGRUP->final
+CODIGO n„o aceit vel
+
+Entre com o n£mero do contrato
+
+ 0 
+ 0 
+
+
+situacao
+C
+E
+9
+ 1 
+ 1 
+ 0 
+ 0 
+ 0 
+Situa‡Æo
+
+situacao $ [12]
+SITUA€ÆO n„o aceit vel
+[1]
+Este campo identifica a situa‡Æo atual do contrato|
+MTAB([1=Ativo|2=Cancelado],[SITUA€ÆO])
+ 0 
+ 0 
+
+
+abertura_
+D
+E
+@D
+ 8 
+ 8 
+ 0 
+ 0 
+ 0 
+Dat.Abertura
+
+ 
+
+DATE()
+Entre com a data da Abertura do contrato
+DATE()
+ 0 
+ 0 
+
+
+circular
+C
+E
+999
+ 3 
+ 3 
+ 0 
+ 0 
+ 0 
+Circular
+
+ 
+
+
+N£mero da £ltima circular para este contrato
+
+ 0 
+ 0 
+
+
+ 0 
+ 0 
+ 0 

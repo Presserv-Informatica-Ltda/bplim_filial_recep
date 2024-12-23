@@ -1,0 +1,751 @@
+GAS-Pro v4.0
+002003024079001019003001021000142001
+
+
+
+
+
+
+                     REQUERIMENTO DE PAGAMENTO/ATENDIMENTO
+                      FUNERAL E TERMO DE RESPONSABILIDADE
+
+                                                      Processo
+
+   Nome do Contratante:
+   Endere‡o:
+     Cidade               Estado  Documento de Identidade Estado Civil
+
+
+     Contrato    Grupo            Admiss„o                 Processo
+
+
+
+    Nome do falecido....:
+    Endere‡o do falecido:
+    Inscrito neste contrato na qualidade de
+    Data do Falecimento.:           Hor rio do Falecimento:
+
+    Cidade do Falecimento Estado   Local do falecimento
+
+
+    Cemit‚rio onde foi sepultado        Hora do sepultamento
+
+
+                               DECLARA€ŽO
+
+
+
+
+
+
+
+
+
+                     ------------------------------------------
+                     Ass.:
+                           RG:
+[Ÿ]
+ 27 
+AFUNER
+Impress„o Modelo 2
+
+
+PTAB(PADR(SUBSTR(M->ide_maq,2),4)+[AFU],[IMPPAR],1).and.processo+proc2+filial+categ=ALLTRIM(IMPPAR->docto)
+011
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+ 0 
+ 66 
+ 0 
+ 9 
+ 3 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+Nome do contratante
+IIF(PTAB(contrato+GRUPOS->titular,'INSCRITS',1),INSCRITS->nome,GRUPOS->nome)
+@!
+ 35 
+C
+ 12 
+ 25 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Nr.Processo
+processo+proc2
+@R 99999/99
+ 8 
+C
+ 10 
+ 64 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Endereco contratante
+GRUPOS->endereco
+@!
+ 40 
+C
+ 13 
+ 14 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+cidade contratante
+GRUPOS->cidade
+@!
+ 20 
+C
+ 15 
+ 6 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Estado Contratante
+[  ]
+!!
+ 2 
+C
+ 15 
+ 29 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Doc
+GRUPOS->rg
+
+ 14 
+C
+ 15 
+ 38 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Est.Civil contratante
+subst(tbestciv,AT(GRUPOS->estcivil,tbestciv),10)
+@!
+ 11 
+C
+ 15 
+ 60 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+contrato numero
+contrato
+
+ 6 
+C
+ 18 
+ 7 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+grupo
+GRUPOS->grupo
+
+ 2 
+C
+ 18 
+ 19 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+data admissao
+GRUPOS->admissao
+
+ 8 
+C
+ 18 
+ 35 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+pedido
+Rx2001F9()
+
+ 70 
+M
+ 19 
+ 2 
+
+
+    û     
+
+
+
+
+
+
+
+
+
+
+nome do falecido
+falecido
+@!
+ 35 
+C
+ 21 
+ 27 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Endereco falecido
+ALLTRIM(ruares)+[, ]+ALLTRIM(baires)
+@!
+ 40 
+C
+ 22 
+ 27 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Cidade Falecimento
+municfal
+
+ 20 
+C
+ 27 
+ 5 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+UF falecimento
+estfal
+!!
+ 2 
+C
+ 27 
+ 29 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+local falecimento
+ALLTRIM(ruafal)
+
+ 35 
+C
+ 27 
+ 36 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Cemit‚rio sepultamento
+cemitsep
+
+ 30 
+C
+ 30 
+ 5 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Hora sepultamento
+horasepult
+99:99
+ 5 
+C
+ 30 
+ 47 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Inscrito na qualidade de
+grauparcon
+
+ 15 
+C
+ 23 
+ 45 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+Data falcto.
+falecto_
+@D
+ 8 
+D
+ 24 
+ 27 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Hora Falcto.
+horafal
+99:99
+ 5 
+C
+ 24 
+ 61 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+DECLARACAO
+Rx2002F9()
+
+ 70 
+M
+ 33 
+ 3 
+
+
+    û     
+
+
+
+
+
+
+
+
+
+
+Ident1
+M->setup1
+
+ 40 
+C
+ 6 
+ 22 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Categoria
+IIF(categ=[PD],[Plano c/Difer. ],IIF(categ=[PL],[Atend.Plano],[Rest.Desp.Funerais]))
+
+ 18 
+C
+ 1 
+ 2 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Nome
+GRUPOS->nome
+
+ 35 
+C
+ 43 
+ 28 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+R.G.
+GRUPOS->rg
+@!
+ 20 
+C
+ 44 
+ 32 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+DATA
+IMPAC(RTRIM(M->p_cidade)+[, ]+LEFT(DTOC(DATE()),2)+[ de ]+NMES(MONTH(DATE()))+ [ de ]+LEFT(DTOS(DATE()),4))
+
+ 50 
+C
+ 35 
+ 26 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+ 9 
+Nome da empresa
+nemp
+
+ 0 
+ 0 
+ 32 
+
+T¡tulo aplica‡„o
+nsis
+
+ 0 
+ 0 
+ 25 
+
+Data do sistema
+DTOC(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Nome do mˆs
+NMES(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Dia da semana
+NSEM(DATE())
+
+ 0 
+ 0 
+ 7 
+
+N£mero da p gina
+TRAN(pg_,'9999')
+
+ 0 
+ 0 
+ 4 
+
+C¢digo relat¢rio
+"ADM_RX20"
+
+ 0 
+ 0 
+ 8 
+
+T¡tulo a definir
+titrel
+
+ 0 
+ 0 
+ 30 
+
+Hora da emiss„o
+hora_rel_
+
+ 0 
+ 0 
+ 5 
+
+ 0 
+ 0 
+ 0 
+ 2 
+GRUPOS
+ 1 
+contrato
+
+
+
+INSCRITS
+ 1 
+contrato
+
+
+

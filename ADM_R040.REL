@@ -1,0 +1,220 @@
+GAS-Pro v3.0
+011003022079001002023001013000176001
+  Numero  Codigo Circ. Valor pago
+========= ====== ===== ==========
+  -
+[Ÿ]
+ 5 
+BXREC
+Taxas p/Transferir
+numop
+numop+ano+numero
+
+011
+
+
+
+
+
+
+
+
+
+ 0 
+ 0 
+-1 
+ 66 
+ 0 
+ 2 
+ 3 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+Ano
+ano
+99
+ 2 
+C
+ 3 
+ 1 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Numero
+numero
+999999
+ 6 
+C
+ 3 
+ 4 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Codigo
+codigo
+999999
+ 6 
+C
+ 3 
+ 11 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Circular
+tipo+'-'+circ
+
+ 5 
+C
+ 3 
+ 18 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Valor pago
+valorpg
+@E 999,999.99
+ 10 
+N
+ 3 
+ 24 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+ 9 
+Nome da empresa
+nemp
+
+ 0 
+ 0 
+ 32 
+
+T¡tulo aplica‡„o
+nsis
+
+ 0 
+ 0 
+ 25 
+
+Data do sistema
+DTOC(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Nome do mˆs
+NMES(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Dia da semana
+NSEM(DATE())
+
+ 0 
+ 0 
+ 7 
+
+N£mero da p gina
+TRAN(pg_,'9999')
+
+ 0 
+ 0 
+ 4 
+
+C¢digo relat¢rio
+"ADM_R040"
+
+ 0 
+ 0 
+ 8 
+
+T¡tulo a definir
+titrel
+
+ 0 
+ 0 
+ 30 
+
+Hora da emiss„o
+hora_rel_
+
+ 0 
+ 0 
+ 5 
+
+ 0 
+ 0 
+ 0 
+ 0 

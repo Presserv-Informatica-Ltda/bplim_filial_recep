@@ -1,0 +1,12 @@
+#!/bin/sh
+
+    umount /dados/dominios/sistemas/dbf2sql/smb
+
+    smbmount //192.168.0.201/sql /dados/dominios/sistemas/dbf2sql/smb -o username=samuel,password=senha
+
+    php /dados/dominios/sistemas/dbf2sql/convert
+
+    umount /dados/dominios/sistemas/dbf2sql/smb
+
+    echo "Conversao Dados do Plano Antigo efetuada" | mail -s "Conversao" samuel@grupobompastor.com.br
+    

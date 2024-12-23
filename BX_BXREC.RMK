@@ -1,0 +1,6 @@
+.PRG.OBJ:
+     CLIPPER $** /m
+BX_BXREC.OBJ  : BX_BXREC.PRG
+
+BX_BXREC.EXE:
+     bLINKer @BX_BXREC.LNK

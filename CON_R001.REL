@@ -1,0 +1,495 @@
+GAS-Pro v4.0
+002003024079001033001013023001022001
+
+
+
+
+            GUIA DE ENCAMINHAMENTO
+
+    Para:
+
+    Credenciado:
+
+    Endereco...:
+
+
+
+    Beneficiario Principal:
+
+
+    Pessoa a ser atendida.:
+    Emitida em           , valida ate           .
+
+    IMPORTANTE: Esta guia tem a finalidade principal de encaminhamento em consultas e exames
+
+
+
+
+
+
+ALLTRIM(MEDICOS->nome)+[ Tel:]+ALLTRIM(MEDICOS->fonesdiv)
+[Ÿ]
+ 15 
+GUIAS
+Emiss„o Guias
+
+
+PTAB(PADR(SUBSTR(M->ide_maq,2),4)+[GUI],[IMPPAR],1).and.LEFT(IMPPAR->docto,7)=ano+numero
+011
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+
+
+
+
+
+
+
+
+
+
+-1 
+ 1 
+ 0 
+ 33 
+ 1 
+ 3 
+ 1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+-1 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+Credenciado
+ALLTRIM(MEDICOS->nome)+[ Tel:]+ALLTRIM(MEDICOS->fonesdiv)
+
+ 60 
+C
+ 9 
+ 18 
+
+
+û         
+
+
+
+
+
+
+
+
+
+
+N£mero
+numero
+99999999
+ 8 
+C
+ 5 
+ 40 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Emiss„o
+data
+@D
+ 10 
+D
+ 19 
+ 16 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+validade
+data+30
+@D
+ 10 
+D
+ 19 
+ 39 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Codigo
+medico
+@!
+ 10 
+C
+ 10 
+ 18 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Endere‡o
+MEDICOS->endereco
+
+ 50 
+C
+ 11 
+ 18 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Bairro
+MEDICOS->bairro
+@!
+ 30 
+C
+ 12 
+ 18 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Cidade
+ALLTRIM(MEDICOS->cidade)+[, ]+MEDICOS->uf+[ CEP ]+MEDICOS->cep
+@!
+ 50 
+C
+ 13 
+ 18 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Titular
+GRUPOS->nome
+@!
+ 35 
+C
+ 15 
+ 29 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+N§ Contrato
+contrato
+@!
+ 10 
+C
+ 16 
+ 29 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Nome
+nome
+@!
+ 35 
+C
+ 18 
+ 29 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Oldespec
+MEDICOS->oldespec
+@!
+ 50 
+C
+ 7 
+ 12 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Ident1
+M->setup1
+
+ 40 
+C
+ 1 
+ 7 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Ident2
+M->setup2
+
+ 50 
+C
+ 2 
+ 7 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Setup3
+M->setup3
+
+ 50 
+C
+ 3 
+ 7 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+ 9 
+Nome da empresa
+nemp
+
+ 0 
+ 0 
+ 44 
+
+T¡tulo aplica‡„o
+nsis
+
+ 0 
+ 0 
+ 25 
+
+Data do sistema
+DTOC(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Nome do mˆs
+NMES(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Dia da semana
+NSEM(DATE())
+
+ 0 
+ 0 
+ 7 
+
+N£mero da p gina
+TRAN(pg_,'9999')
+
+ 0 
+ 0 
+ 4 
+
+C¢digo relat¢rio
+"CON_R001"
+
+ 0 
+ 0 
+ 8 
+
+T¡tulo a definir
+titrel
+
+ 0 
+ 0 
+ 30 
+
+Hora da emiss„o
+hora_rel_
+
+ 0 
+ 0 
+ 5 
+
+ 0 
+ 0 
+ 0 
+ 2 
+MEDICOS
+ 1 
+medico
+
+
+
+GRUPOS
+ 1 
+contrato
+
+
+

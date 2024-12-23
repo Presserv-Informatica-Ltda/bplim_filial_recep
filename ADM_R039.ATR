@@ -1,0 +1,100 @@
+GAS-Pro v3.0
+011027015057001003001001014000176001
+ Nr.Conta...:
+ Fechamento.:
+[Ÿ]
+[Ÿ]
+ 2 
+ 0 
+Transf.Financeiro
+Transf.Financeiro
+
+
+
+
+
+
+
+056
+
+
+
+
+
+
+
+ 0 
+ 0 
+-1 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+nrconta
+C
+E
+ 
+ 10 
+ 10 
+ 1 
+ 15 
+ 0 
+Nr.Conta
+
+!EMPT(nrconta)
+Necess rio informar NR.CONTA
+M->usuario
+Informe a conta a fechar.|Tecle F8 para conta atual
+IIF(EMPT(M->usuario),PADR(M->contarec+M->ide_maq,10,' '),PADR(M->usuario,10,' '))
+ 0 
+ 0 
+
+
+emisini_
+D
+E
+@D
+ 8 
+ 8 
+ 2 
+ 15 
+ 0 
+Lan‡to. inicial
+
+emisini_=DATE()
+Deve ser exatamente a data de hoje |Data do sistema
+DATE()
+Informe a data inicial
+
+ 0 
+ 0 
+
+
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 

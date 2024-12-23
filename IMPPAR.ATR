@@ -1,0 +1,172 @@
+GAS-Pro v4.0
+009009020073001003026001012001176001
+ Esta‡„o Base   Documento
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+[Ÿ]
+Manuten‡„o~~27007
+[Ÿ]
+ 3 
+ 1 
+Esta‡„o
+
+ 1 
+ 2 
+[Ÿ]
+Documento … Imprimir
+Documento … Imprimir
+
+
+
+
+
+
+
+005
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+-1 
+-1 
+-1 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+idmaq
+C
+E
+@!
+ 4 
+ 4 
+ 3 
+ 3 
+ 0 
+Esta‡„o
+
+!EMPT(idmaq)
+Necess rio informar Esta‡„o|Tecle F8
+PADR(SUBSTR(M->ide_maq,2),4)
+Informe o nome da esta‡„o|tecle F8 para preencher autom tico
+M->ide_maq
+ 0 
+ 0 
+
+
+base
+C
+E
+@!
+ 3 
+ 3 
+ 3 
+ 10 
+ 0 
+Base
+
+base $ [AFU|BXR|OBX]
+BASE n„o aceit vel,tecle F8
+[BXR]
+Informe a Base de Dados|tecle F8 para busca em tabela
+MTAB([AFU-Aux.funeral|BXR-Baixa Recep‡„o|OBX-Outros Receb.],[BASE])
+ 0 
+ 0 
+
+
+docto
+C
+E
+ 
+ 12 
+ 12 
+ 3 
+ 15 
+ 0 
+Documento
+
+ 
+
+
+Digite neste campo o n£mero de|identifica‡„o do documento|(N„o utilize barras nem tra‡os)
+
+ 0 
+ 0 
+
+
+ 1 
+processo falec.
+IMP_01F9()
+
+ 3 
+ 28 
+ 35 
+
+ 0 
+ 0 
+ 0 
+ 0 

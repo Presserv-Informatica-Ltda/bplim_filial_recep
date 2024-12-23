@@ -1,0 +1,114 @@
+GAS-Pro v3.0
+009013013066001001012001010000176001
+ Tipo..:
+ N£mero:
+[Ÿ]
+[Ÿ]
+ 2 
+ 0 
+Documento … Imprimir
+Documento … Imprimir
+
+
+
+
+
+
+
+056
+
+
+
+
+
+
+
+ 0 
+ 0 
+-1 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+tipdoc
+C
+E
+!!!
+ 3 
+ 3 
+ 1 
+ 10 
+ 0 
+Tipo
+MTAB([BXR-Recebimentos|OBX-Outros recebimentos|AFU-Aux¡lio Funeral],[TIPO])
+ 
+
+[BXR]
+Informe o tipo do documento a imprimir|Tecle F8 para tabela auxiliar.
+MTAB([BXR-Recebimentos|OBX-Outros recebimentos|AFU-Aux¡lio Funeral],[TIPO])
+ 0 
+ 0 
+
+
+docto
+C
+E
+ 
+ 12 
+ 12 
+ 2 
+ 10 
+ 0 
+Documento
+DCI01F9()
+ 
+
+IIF(PTAB(PADR(SUBSTR(M->ide_maq,2),4)+tipdoc,[IMPPAR],1),IMPPAR->docto,[ ])
+Digite neste campo o n£mero de|identifica‡„o do documento|(N„o utilize barras nem tra‡os)
+DCI01F9()
+ 0 
+ 0 
+
+
+ 2 
+Tipo do docto
+DCI03F9(M->tipdoc)
+
+ 1 
+ 14 
+ 35 
+
+Descr.Documento
+DCI04F9(M->tipdoc)
+
+ 3 
+ 2 
+ 50 
+
+ 0 
+ 0 
+ 0 
+ 0 

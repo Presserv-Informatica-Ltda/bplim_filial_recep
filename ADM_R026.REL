@@ -1,0 +1,513 @@
+GAS-Pro v4.0
+002003024079001045013043005000176001
+[Ÿ]
+ 17 
+AFUNER
+Capa de Processo
+
+
+PTAB(PADR(SUBSTR(M->ide_maq,2),4)+[AFU],[IMPPAR],1).and.processo+proc2+filial+categ=ALLTRIM(IMPPAR->docto)
+011
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 1 
+ 0 
+ 66 
+ 0 
+ 6 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+-1 
+-1 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+N£mero Processo
+processo+proc2
+@R 99999/99
+ 8 
+C
+ 9 
+ 61 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Declarante
+nomedec
+@!
+ 35 
+C
+ 31 
+ 13 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+endereco (declarante)
+ALLTRIM(ruadec)
+
+ 35 
+C
+ 33 
+ 13 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+fone declarante
+fonedec
+
+ 14 
+C
+ 33 
+ 57 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Nome do falecido
+falecido
+@!
+ 35 
+C
+ 21 
+ 12 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+endereco (falecido)
+ALLTRIM(ruares)+[ ]+ALLTRIM(baires)+'-'+ALLTRIM(munres)
+
+ 55 
+C
+ 23 
+ 12 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Data falcto.
+falecto_
+@D
+ 8 
+D
+ 25 
+ 20 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Hora Falcto.
+horafal
+99:99
+ 5 
+C
+ 25 
+ 57 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Rua Falecimento
+ALLTRIM(ruafal)
+@!
+ 30 
+C
+ 27 
+ 20 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Motorista respons vel
+FNCS->nome
+
+ 35 
+C
+ 48 
+ 17 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+CONTRATO
+contrato
+999999
+ 6 
+C
+ 48 
+ 55 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+GRUPO
+IIF(CLASSES->prior=[S],M->mgrupvip,GRUPOS->grupo)
+
+ 2 
+C
+ 48 
+ 67 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Cemit‚rio Sepultamento
+cemitsep
+@!
+ 30 
+C
+ 61 
+ 16 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+hora sepultamento
+horasepult
+
+ 5 
+C
+ 63 
+ 22 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+data sepultamento
+DTOC(sepult_)
+
+ 8 
+C
+ 63 
+ 59 
+!EMPT(sepult_)
+
+          
+
+
+
+
+
+
+
+
+
+
+tipo de plano
+CLASSES->descricao
+
+ 35 
+C
+ 44 
+ 13 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+Categoria
+IIF(categ=[PD],[Plano c/Difer. ],IIF(categ=[PL],[Atend.Plano],[Auxilio Funeral  ]))
+
+ 18 
+C
+ 45 
+ 26 
+
+
+          
+
+
+
+
+
+
+
+
+
+
+ 9 
+Nome da empresa
+nemp
+
+ 0 
+ 0 
+ 32 
+
+T¡tulo aplica‡„o
+nsis
+
+ 0 
+ 0 
+ 25 
+
+Data do sistema
+DTOC(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Nome do mˆs
+NMES(DATE())
+
+ 0 
+ 0 
+ 8 
+
+Dia da semana
+NSEM(DATE())
+
+ 0 
+ 0 
+ 7 
+
+N£mero da p gina
+TRAN(pg_,'9999')
+
+ 0 
+ 0 
+ 4 
+
+C¢digo relat¢rio
+"ADM_R026"
+
+ 0 
+ 0 
+ 8 
+
+T¡tulo a definir
+titrel
+
+ 0 
+ 0 
+ 30 
+
+Hora da emiss„o
+hora_rel_
+
+ 0 
+ 0 
+ 5 
+
+ 0 
+ 0 
+ 0 
+ 3 
+GRUPOS
+ 1 
+contrato
+
+
+
+FNCS
+ 1 
+funcresp
+
+
+
+CLASSES
+ 1 
+GRUPOS->tipcont
+
+
+

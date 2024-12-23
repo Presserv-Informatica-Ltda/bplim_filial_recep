@@ -1,0 +1,497 @@
+GAS-Pro v4.0
+008013021072001011039001019001176001
+ N£mero de O.P. :
+ Origem:        Lanáado em           por
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+ Conta:
+ Hist¢rico:
+ Tipo.....:     Valor:              Vencto:
+ Documento..:                    Nß Doctos:
+ Complemento:
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+ Fechamento.:
+ Transferido:
+[ü]
+InclusÑo~~26006
+ManutenáÑo~~27007
+Consulta~~28008
+[ü]
+ 17 
+ 2 
+p/N£mero
+
+ 1 
+[ü]
+p/Conta
+
+ 5 
+ 6 
+ 13 
+[ü]
+Caixas
+Caixas
+
+
+
+
+
+
+
+005
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+
+
+
+
+
+
+
+
+
+
+
+ 0 
+ 3 
+-1 
+-1 
+ 0 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+numop
+C
+E
+999999
+ 6 
+ 6 
+ 1 
+ 19 
+ 0 
+Nß O.P.
+
+!EMPT(numop)
+Necess†rio informar Nß O.P.
+
+
+
+ 0 
+ 1 
+
+
+origem
+C
+E
+!!!
+ 3 
+ 3 
+ 2 
+ 10 
+ 0 
+Origem
+
+origem $ [ADM|FUN|CON|EST|FIN|VIA]
+ORIGEM nÑo aceit†vel
+
+Informe o prefixo do sistema que|gerou o lanáamento
+MTAB([ADMinistradora|FUNer†ria|CONvenio|ESToque|FINanceiro|VIAtura],[ORIGEM])
+ 0 
+ 0 
+
+
+lancto_
+D
+V
+@D
+ 8 
+ 10 
+ 2 
+ 28 
+ 0 
+Lancto_
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+por
+C
+V
+ 
+ 10 
+ 10 
+ 2 
+ 42 
+ 0 
+Por
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+numconta
+C
+E
+@!
+ 10 
+ 10 
+ 4 
+ 9 
+ 0 
+Conta
+
+!EMPT(numconta)
+Campo obrigat¢rio!|Identifique a Conta/Cadastro com um n£mero | ou nome qualquer.
+
+Informe a conta que receber† este lanáamento.
+
+ 0 
+ 0 
+
+
+historico
+C
+E
+999
+ 3 
+ 3 
+ 5 
+ 13 
+ 0 
+Hist¢rico
+
+EMPT(historico).OR.PTAB(historico,'HISTORIC',1)
+HIST¢RICO nÑo existe na tabela
+
+Informe o hist¢rico do lanáamento.
+VDBF(6,24,20,77,'HISTORIC',{'historico','descricao','tipo'},1,'historico',[HISTORIC->origem$']+origem+[   '])
+ 0 
+ 0 
+
+
+debcred
+C
+E
+!
+ 1 
+ 1 
+ 6 
+ 13 
+ 0 
+DÇb/CrÇd
+
+debcred$[CD]
+Necess†rio informar DêB/CRêD
+HISTORIC->tipo
+Se for um documento a pagar ser† D, senÑo C
+MTAB([DÇbito|CrÇdito],[DêB/CRêD])
+ 0 
+ 0 
+
+
+valortotal
+N
+E
+99999999.99
+ 11 
+ 11 
+ 6 
+ 24 
+ 2 
+Valor Lanáamento
+
+!(VALORtotal<0.00)
+VALOR TOTAL DO LANÄAMENTO| deve ser positivo ou zeros
+
+Entre com o valor total do documento,|se valor = zero, ser† apenas agendado.
+
+ 0 
+ 0 
+
+
+vencto_
+D
+E
+@D
+ 8 
+ 10 
+ 6 
+ 45 
+ 0 
+Vencto
+
+!EMPT(vencto_)
+Necess†rio informar VENCTO
+
+Entre com a data do vencimento deste.
+
+ 0 
+ 0 
+
+
+documento
+C
+E
+@!
+ 12 
+ 12 
+ 7 
+ 15 
+ 0 
+Documento
+
+!EMPTY(documento)
+Digite algo para identificar o documento
+
+Entre com o n£mero do documento
+
+ 0 
+ 0 
+
+
+nrdoctos
+N
+E
+99999
+ 5 
+ 5 
+ 7 
+ 45 
+ 0 
+NßDoctos
+
+!(nrdoctos<0)
+NßDOCTOS nÑo aceit†vel
+
+
+
+ 0 
+ 0 
+
+
+complement
+C
+E
+@!
+ 35 
+ 35 
+ 8 
+ 15 
+ 0 
+Complemento de Hist¢rico
+
+!EMPT(complement)
+Entre com uma informaáÑo que diferencie este|lanáamento de outros com mesmo hist¢rico.
+
+
+
+ 0 
+ 0 
+
+
+fechto_
+D
+V
+@D
+ 8 
+ 10 
+ 10 
+ 15 
+ 0 
+Fechto
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+fechpor
+C
+V
+ 
+ 10 
+ 10 
+ 10 
+ 24 
+ 0 
+Fechpor
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+autoriz_
+D
+V
+@D
+ 8 
+ 10 
+ 11 
+ 15 
+ 0 
+Autorizado em
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+autorpor
+C
+V
+ 
+ 10 
+ 10 
+ 11 
+ 24 
+ 0 
+Autorizado
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+numos
+C
+V
+9999999
+ 7 
+ 7 
+ 11 
+ 35 
+ 0 
+Lanáamento Nß
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+ 1 
+DescriáÑo de Hi
+HISTORIC->descricao
+
+ 5 
+ 17 
+ 40 
+
+ 0 
+ 0 
+ 1 
+HISTORIC
+1
+ 4 
+1=3 // Foráa INTLAN
+
+ 0 
+
+
+
+historico
+C
+
+
+
+descricao
+C
+
+
+
+tipo
+C
+
+
+
+origem
+C
+
+
+
+ 0 

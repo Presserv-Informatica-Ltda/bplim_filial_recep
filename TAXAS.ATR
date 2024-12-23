@@ -1,0 +1,432 @@
+GAS-Pro v4.0
+014001024080001003051001017001165001
+N§                            Emissao       Valor  ³ Pagto    Valor Pago Stat
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                                                   ³
+                                                   ³
+                                                   ³
+                                                   ³
+                                                   ³
+                                                   ³
+                                                   ³
+[Ÿ]
+Manuten‡„o~~27007
+Consulta~~28008
+[Ÿ]
+ 14 
+ 2 
+Contrato
+
+ 1 
+ 2 
+[Ÿ]
+Cobranca
+
+ 2 
+[Ÿ]
+Cadastro de Taxas
+Taxas
+
+
+
+
+
+
+
+005
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-1 
+ 0 
+-1 
+-1 
+-1 
+-1 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+ 0 
+codigo
+C
+I
+@!
+ 9 
+ 9 
+ 0 
+ 0 
+ 0 
+Codigo
+
+
+
+
+
+
+-1 
+ 0 
+
+
+cobranca
+C
+E
+@!
+ 18 
+ 18 
+ 3 
+ 11 
+ 0 
+Cobranca
+
+ 
+
+
+
+
+ 0 
+ 0 
+
+
+tipo
+C
+I
+!
+ 1 
+ 1 
+ 0 
+ 0 
+ 0 
+Tipo
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+circ
+C
+I
+999
+ 3 
+ 3 
+ 0 
+ 0 
+ 0 
+Circular
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+emissao_
+D
+E
+@D
+ 8 
+ 10 
+ 3 
+ 30 
+ 0 
+Emissao
+
+!EMPT(emissao_)
+Necess rio informar EMISSAO v lida
+
+Data da Emiss„o da Circular|Mantido pela emissao do recibo
+
+ 0 
+ 0 
+
+
+valor
+N
+E
+@E 999,999.99
+ 9 
+ 10 
+ 3 
+ 41 
+ 2 
+Valor
+
+valor>0
+VALOR n„o aceit vel
+
+
+
+ 0 
+ 0 
+
+
+pgto_
+D
+E
+@D
+ 8 
+ 10 
+ 3 
+ 53 
+ 0 
+Pagamento
+nivelop=3
+ 
+
+
+Informe a data de pagamento/Baixa
+
+ 0 
+ 0 
+
+
+valorpg
+N
+E
+@E 999,999.99
+ 9 
+ 10 
+ 3 
+ 64 
+ 2 
+Valor pago
+nivelop=3
+!(valorpg<0)
+VALOR PAGO n„o aceit vel
+
+Informe o valor pago/baixado
+
+ 0 
+ 0 
+
+
+cobrador
+C
+E
+!!!
+ 3 
+ 3 
+ 0 
+ 0 
+ 0 
+Cobrador
+
+PTAB(cobrador,'COBRADOR',1).AND.(PTAB(cobrador+M->mmesref,'FCCOB',1).OR.1=1)
+Problemas encontrados no arquivo Cobrador ou |Circular do grupo n„o cadastrada para|este cobrador.
+GRUPOS->cobrador
+Informe o Cobrador que recebeu este.
+VDBF(6,3,20,77,'COBRADOR',{'cobrador','funcao','nome','cidade','telefone'},1,'cobrador',[])
+ 0 
+ 0 
+
+
+forma
+C
+E
+!
+ 1 
+ 1 
+ 0 
+ 0 
+ 0 
+Forma
+
+forma$[PR ]
+FORMA n„o aceit vel
+
+Esta lan‡amento foi Pago ou Cancelado|Deixe sem preencher se ainda em aberto
+
+ 0 
+ 0 
+
+
+baixa_
+D
+I
+@D
+ 8 
+ 10 
+ 0 
+ 0 
+ 0 
+Baixa_
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+por
+C
+I
+ 
+ 10 
+ 10 
+ 0 
+ 0 
+ 0 
+Por
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+stat
+C
+E
+9
+ 1 
+ 1 
+ 0 
+ 0 
+ 0 
+Status
+
+stat $ [12679]
+STATUS n„o aceit vel
+
+Informe a situa‡„o deste recibo|Tecle F8 para busca em tabela
+MTAB([1=Gerada|2=Impressa|6=Pg Recep‡„o|7=Bx.p/FCC|9=Bx.Plano],[STATUS])
+ 0 
+ 0 
+
+
+filial
+C
+I
+@!
+ 2 
+ 2 
+ 0 
+ 0 
+ 0 
+Filial
+
+
+
+
+
+
+ 0 
+ 0 
+
+
+ 2 
+Status
+LEFT(TAX_02F9(),3)
+
+ 3 
+ 75 
+ 3 
+
+numero
+substr(codigo,11)
+
+ 3 
+ 1 
+ 8 
+
+ 3 
+GRUPOS
+qtcircs
+GRUPOS->qtcircs + 1
+GRUPOS->qtcircs - 1
+!tipo='1'
+
+
+GRUPOS
+qtcircpg
+GRUPOS->qtcircpg + 1
+GRUPOS->qtcircpg - 1
+!tipo='1'.AND.valorpg>0
+
+
+GRUPOS
+ultcirc
+circ
+
+!tipo='1'.AND.circ>GRUPOS->ultcirc
+
+
+ 0 
+ 0 
+ 0 
