@@ -1,15 +1,13 @@
-
 procedure r08702f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: R08701F9.PRG
  \ Data....: 17-09-97
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Valor Total do relat¢rio ADP_R087
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:57:59 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -77,3 +75,4 @@ procedure r08702f9
 RETU M->recvalor          // <- deve retornar um valor qualquer
 
 * \\ Final de R08701F9.PRG
+

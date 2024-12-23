@@ -1,4 +1,3 @@
-
 procedure final
 #include "SIXNSX.CH"
 #define RDDNAME "SIXNSX"
@@ -50,3 +49,4 @@ repl codigo with left(codigo,9)+grau+str(seq,3) all
 inde on codigo to ..\indices\inscrit1
 ? [Organizando por nome]
 inde on nome to ..\indices\inscrit2
+

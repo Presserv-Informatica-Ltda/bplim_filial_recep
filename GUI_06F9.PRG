@@ -1,15 +1,13 @@
-
 procedure gui_06f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: GUI_02F9.PRG
  \ Data....: 23-05-98
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Fun‡„o F8 do campo NOME, arquivo GUIAS
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:57:55 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -47,3 +45,4 @@ RETU respx
 // <- deve retornar um valor qualquer
 
 * \\ Final de GUI_02F9.PRG
+

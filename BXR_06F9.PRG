@@ -1,15 +1,13 @@
-
 procedure bxr_06f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: BXR_06F9.PRG
  \ Data....: 15-10-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Fun‡„o F8 do campo COBRANCA, arquivo BXREC
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:57:55 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -99,4 +97,4 @@ quando (data/hora)
 pedido:
 motivo da solicitacao/problema ocorrido:
 Nr.Protocolo:
-*/
+*/

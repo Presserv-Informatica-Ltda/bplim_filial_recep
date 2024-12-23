@@ -1,10 +1,9 @@
 
-
 -L\instalados\tools\clipper\lib
 -lxhb
--lhbwin
+#-lhbwin
 -lhbct
-
+-oadrbig
 -prgflag=/l
 -compr=yes
 -inc

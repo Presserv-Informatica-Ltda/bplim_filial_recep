@@ -1,15 +1,13 @@
-
 procedure ben_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: BEN_01F9.PRG
  \ Data....: 22-05-01
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: F¢rmula (meno1) a mostrar na tela de BENEFIC
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:57:58 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -36,3 +34,4 @@ RETU memoline(linhas,60,qual)
        // <- deve retornar um valor qualquer
 
 * \\ Final de BEN_01F9.PRG
+
