@@ -1,7 +1,7 @@
 procedure bxrec
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: PresServ Inform tica - Limeira (19)3452.3712
  \ Programa: BXREC.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
@@ -354,22 +354,19 @@ CAIXA(mold,l_s,c_s,l_i,c_i)               // monta caixa da tela
 i=LEN(sistema[op_sis,O_MENS])/2
 @ l_s,c_s-1+(c_i-c_s+1)/2-i SAY " "+MAIUSC(sistema[op_sis,O_MENS])+" "
 SETCOLOR(drvcortel)
-@ l_s+01,c_s+1 SAY " Numero:"
-@ l_s+02,c_s+1 SAY " Contrato:"
-@ l_s+03,c_s+1 SAY "ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄ"
-@ l_s+04,c_s+1 SAY "                                      ³Circulares"
-@ l_s+05,c_s+1 SAY "                                      ³ Ini"
-@ l_s+06,c_s+1 SAY "                            Reg.:     ³  £lt"
-@ l_s+07,c_s+1 SAY "                                      ³"
-@ l_s+08,c_s+1 SAY " Admiss„o:            Sai Taxa:       ³"
-@ l_s+09,c_s+1 SAY " Funerais:     Cobrador: "
-@ l_s+10,c_s+1 SAY " Tel:"
-@ l_s+11,c_s+1 SAY " e-mail:"
-//@ l_s+10,c_s+1 SAY "ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
-//@ l_s+15,c_s+1 SAY "ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
+@ l_s+01,c_s+1 SAY "              Contrato:"
+@ l_s+02,c_s+1 SAY "ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
+@ l_s+03,c_s+1 SAY "                                        ³ Circulares"
+@ l_s+04,c_s+1 SAY "                                        ³  Inicial"
+@ l_s+05,c_s+1 SAY "                            Reg.:       ³  £ltima"
+@ l_s+06,c_s+1 SAY "                                        ³ Admissao"
+@ l_s+07,c_s+1 SAY " Telef.:                                ³ Funerais"
+@ l_s+08,c_s+1 SAY " e-mail:                                ³ Cobrador"
+@ l_s+09,c_s+1 SAY " CPF/RG:                                ³ Nr.Sorte"
+@ l_s+10,c_s+1 SAY "ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
 @ l_s+17,c_s+1 SAY " Ref.:                       Vl.Pago:"
 @ l_s+18,c_s+1 SAY " Pago com..:             Troco:"
-@ l_s+20,c_s+1 SAY "  emitida em             por"
+@ l_s+20,c_s+1 SAY "  emitida em             por               Caixa:"
 RETU
 
 PROC BXR_gets     // mostra variaveis do arquivo BXREC
@@ -379,13 +376,13 @@ SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
 PTAB(CODIGO,[GRUPOS])
 PTAB(IIF(EMPT(M->USUARIO),PADR(M->CONTAREC+IDE_MAQ,10,' '),PADR(M->USUARIO,10,' '))+M->HISTRCFCC+[       ],'ORDPGRC',2)
 PTAB(PADR(SUBSTR(M->IDE_MAQ,2),4)+[BXR],[IMPPAR],1)
-CRIT("",,"16")
-@ l_s+01 ,c_s+12 GET  numero;
-		 PICT sistema[op_sis,O_CAMPO,01,O_MASC]
+CRIT("",,"2|18")
+@ l_s+01 ,c_s+02 GET  numero;
+                 PICT sistema[op_sis,O_CAMPO,01,O_MASC]
 
-@ l_s+02 ,c_s+12 GET  codigo;
+@ l_s+01 ,c_s+25 GET  codigo;
                  PICT sistema[op_sis,O_CAMPO,02,O_MASC]
-                 CRIT(sistema[op_sis,O_CAMPO,02,O_CRIT],,"1|2|3|4|5|6|7|8|9|10|11|12|13|14")
+                 CRIT(sistema[op_sis,O_CAMPO,02,O_CRIT],,"1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|19")
 
 @ l_s+17 ,c_s+08 GET  cobranca;
                  PICT sistema[op_sis,O_CAMPO,03,O_MASC]
@@ -395,17 +392,17 @@ CRIT("",,"16")
 
 @ l_s+18 ,c_s+14 GET  valoraux;
                  PICT sistema[op_sis,O_CAMPO,05,O_MASC]
-                 CRIT(sistema[op_sis,O_CAMPO,05,O_CRIT],,"15")
+                 CRIT(sistema[op_sis,O_CAMPO,05,O_CRIT],,"17")
 
 @ l_s+20 ,c_s+14 GET  emitido_;
                  PICT sistema[op_sis,O_CAMPO,06,O_MASC]
 
 @ l_s+20 ,c_s+30 GET  por
 
-@ l_s+20 ,c_s+44 GET  numop;
+@ l_s+20 ,c_s+51 GET  numop;
                  PICT sistema[op_sis,O_CAMPO,08,O_MASC]
 
-CRIT("",,"1|3|4|5|6|7|8|9|10|11|12|13|14")
+CRIT("",,"1|3|4|5|6|7|8|9|10|11|12|13|14|15|16|19")
 CLEAR GETS
 RETU
 
@@ -418,16 +415,16 @@ IF tp_mov=INCLUI
   rola_t=.f.
   SET KEY K_ALT_F8 TO ROLATELA
   SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
-  @ l_s+01 ,c_s+12 GET numero;
+  @ l_s+01 ,c_s+02 GET numero;
                    PICT sistema[op_sis,O_CAMPO,01,O_MASC]
   @ l_s+20 ,c_s+14 GET emitido_;
-		   PICT sistema[op_sis,O_CAMPO,06,O_MASC]
+                   PICT sistema[op_sis,O_CAMPO,06,O_MASC]
   @ l_s+20 ,c_s+30 GET por
-  @ l_s+20 ,c_s+44 GET numop;
+  @ l_s+20 ,c_s+51 GET numop;
                    PICT sistema[op_sis,O_CAMPO,08,O_MASC]
   CLEA GETS
-  CRIT("",,"16")
-  @ l_s+02 ,c_s+12 GET  codigo;
+  CRIT("",,"2|18")
+  @ l_s+01 ,c_s+25 GET  codigo;
                    PICT sistema[op_sis,O_CAMPO,02,O_MASC]
                    DEFINICAO 2
                    MOSTRA sistema[op_sis,O_FORMULA,1]
@@ -444,6 +441,9 @@ IF tp_mov=INCLUI
 		   MOSTRA sistema[op_sis,O_FORMULA,12]
                    MOSTRA sistema[op_sis,O_FORMULA,13]
                    MOSTRA sistema[op_sis,O_FORMULA,14]
+                   MOSTRA sistema[op_sis,O_FORMULA,15]
+                   MOSTRA sistema[op_sis,O_FORMULA,16]
+                   MOSTRA sistema[op_sis,O_FORMULA,19]
 
   @ l_s+17 ,c_s+08 GET  cobranca;
                    PICT sistema[op_sis,O_CAMPO,03,O_MASC]
@@ -456,7 +456,7 @@ IF tp_mov=INCLUI
   @ l_s+18 ,c_s+14 GET  valoraux;
                    PICT sistema[op_sis,O_CAMPO,05,O_MASC]
                    DEFINICAO 5
-                   MOSTRA sistema[op_sis,O_FORMULA,15]
+                   MOSTRA sistema[op_sis,O_FORMULA,17]
 
   READ
   SET KEY K_ALT_F8 TO
@@ -603,20 +603,10 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
    ENDI
    IF !EMPT(valorpg)
     REPBLO('TAXAS->pgto_',{||DATE()})
-   ENDI
-   IF !EMPT(valorpg)
     REPBLO('TAXAS->forma',{||[P]})
-   ENDI
-   IF !EMPT(valorpg)
     REPBLO('TAXAS->baixa_',{||DATE()})
-   ENDI
-   IF !EMPT(valorpg)
     REPBLO('TAXAS->por',{||M->usuario})
-   ENDI
-   IF !EMPT(valorpg)
     REPBLO('TAXAS->stat',{||[6]})
-   ENDI
-   IF !EMPT(valorpg)
     REPBLO('TAXAS->valorpg',{||valorpg})
    ENDI
    IF op_menu=INCLUSAO
@@ -656,20 +646,10 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
    ENDI
    IF !EMPT(valorpg)
     REPL TAXAS->pgto_ WITH DATE()
-   ENDI
-   IF !EMPT(valorpg)
     REPL TAXAS->forma WITH [P]
-   ENDI
-   IF !EMPT(valorpg)
     REPL TAXAS->baixa_ WITH DATE()
-   ENDI
-   IF !EMPT(valorpg)
     REPL TAXAS->por WITH M->usuario
-   ENDI
-   IF !EMPT(valorpg)
     REPL TAXAS->stat WITH [6]
-   ENDI
-   IF !EMPT(valorpg)
     REPL TAXAS->valorpg WITH valorpg
    ENDI
    IF op_menu=INCLUSAO
@@ -706,4 +686,3 @@ ENDI
 RETU
 
 * \\ Final de BXREC.PRG
-

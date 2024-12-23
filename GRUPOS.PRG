@@ -306,7 +306,7 @@ SETCOLOR(drvcortel)
 @ l_s+01,c_s+1 SAY " Codigo:                                         Situa뇙o:"
 @ l_s+02,c_s+1 SAY "  컴컴컴컴컴컴컴컴컴컴컴컴컴컴 Dados Pessoais 컴컴컴컴컴컴컴컴컴컴컴컴�"
 @ l_s+03,c_s+1 SAY " Nome..:                                     Nasc.:"
-@ l_s+04,c_s+1 SAY " ECivil:                  CIC:               RG...:"
+@ l_s+04,c_s+1 SAY " ECivil:                  CPF:               RG...:"
 @ l_s+05,c_s+1 SAY " Ender.:                                     Bairr:"
 @ l_s+06,c_s+1 SAY " Cidade:                           UF.:      CEP..:"
 @ l_s+07,c_s+1 SAY " Natur.:                           Relig:"

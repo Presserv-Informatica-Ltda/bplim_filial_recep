@@ -59,24 +59,14 @@ procedure bxr_01f9
   ENDI
   SKIP
  ENDDO
- @ l_s+07, c_s+46 SAY [   ]
- @ l_s+07, c_s+46 SAY TRAN(GRUPOS->qtcircs,[999])
- IF !EMPT(GRUPOS->nrsorteio)
-   @ l_s+10,c_s+40 say [NS:]+GRUPOS->nrsorteio
- ENDIF
- IF !EMPT(GRUPOS->telefone)
-  @ l_s+10, c_s+1 SAY [ Tel.:]+LEFT(alltrim(xDECRIPT(GRUPOS->telefone))+"/"+alltrim(xDECRIPT(GRUPOS->contato)),40)
- ENDI
- @ l_s+11, c_s+1 SAY [ e-mail:]+LEFT(alltrim(xDECRIPT(GRUPOS->email)),40)
- @ l_s+16, c_s+2 SAY [CPF: ]+TRAN(GRUPOS->cpf,[@R 999.999.999-99])+[  Dt.Nascto:]+DTOC(GRUPOS->nascto_)
- @ l_s+12, c_s+1 SAY SPACE(46)
  @ l_s+13, c_s+1 SAY SPACE(46)
  @ l_s+14, c_s+1 SAY SPACE(46)
  @ l_s+15, c_s+1 SAY SPACE(46)
- @ l_s+12, c_s+1 SAY circax1
- @ l_s+13, c_s+1 SAY circax2
- @ l_s+14, c_s+1 SAY circax3
- @ l_s+15, c_s+1 SAY circax4
+ @ l_s+16, c_s+1 SAY SPACE(46)
+ @ l_s+13, c_s+1 SAY circax1
+ @ l_s+14, c_s+1 SAY circax2
+ @ l_s+15, c_s+1 SAY circax3
+ @ l_s+16, c_s+1 SAY circax4
  IF .t. //ciatrz > 4
   IF .t. // BXREC->tipo=' '
    DBOX(STRZERO(ciatrz,2)+" Circulares Pendentes Vencidas!",,,,,"ATEN€ŽO, "+usuario)
@@ -88,4 +78,3 @@ SET(_SET_DELETED,dele_atu)                         // os excluidos serao vistos
 RETU []         // <- deve retornar um valor qualquer
 
 * \\ Final de BXR_01F9.PRG
-

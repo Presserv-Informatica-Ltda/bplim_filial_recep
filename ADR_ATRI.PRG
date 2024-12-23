@@ -31,7 +31,7 @@ sistema[001]={;
             {"BXREC1","BXREC2","BXREC3"},;                  // nomes dos NTX
             {},;                                            // nome dos dbf's relacionados
             {},;                                            // campos de relacionamento
-            {1,1,2,11,23,62},;                              // num telas/tela atual/coordenadas
+            {1,1,3,7,24,70},;                               // num telas/tela atual/coordenadas
             {1,.t.,.f.},;                                   // nivel acesso/tp chave/pede dir
             {},;                                            // campos do arquivo
             {},;                                            // formula mostradas
@@ -151,86 +151,98 @@ AADD(sistema[001,O_CAMPO],{;            // BXREC
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Nome
-     /* form mostrar  */    "LEFT(TRAN((GRUPOS->nome),[]),35)",;
-     /* lin da formula*/    4,;
+     /* form mostrar  */    "LEFT(TRAN(GRUPOS->nome,[]),35)",;
+     /* lin da formula*/    3,;
      /* col da formula*/    2;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Circ 1 - 4
      /* form mostrar  */    "LEFT(TRAN(BXR_01F9(),[]),48)",;
-     /* lin da formula*/    11,;
+     /* lin da formula*/    07,;
      /* col da formula*/    2;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Ult.Circular
      /* form mostrar  */    "LEFT(TRAN(GRUPOS->ultcirc,[999]),03)",;
-     /* lin da formula*/    6,;
-     /* col da formula*/    47;
+     /* lin da formula*/    5,;
+     /* col da formula*/    52;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Situa‡„o
-     /* form mostrar  */    "LEFT(TRAN(IIF(GRUPOS->situacao='2',[CANCELADO],[         ])+IF(codigo<[020],[ - Grupo ]+GRUPOS->grupo,[]),[]),22)",;
-     /* lin da formula*/    2,;
-     /* col da formula*/    23;
+     /* form mostrar  */    "LEFT(TRAN(IIF(GRUPOS->situacao='2',[CANCELADO],[         ])+[ - Grupo ]+GRUPOS->grupo,[]),22)",;
+     /* lin da formula*/    1,;
+     /* col da formula*/    36;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Admiss„o
      /* form mostrar  */    "LEFT(TRAN(GRUPOS->admissao,[@D]),10)",;
-     /* lin da formula*/    8,;
-     /* col da formula*/    12;
-                         };
-)
-AADD(sistema[001,O_FORMULA],{;          // BXREC - Saitxa
-     /* form mostrar  */    "LEFT(TRAN(GRUPOS->saitxa,[@R 99/99]),05)",;
-     /* lin da formula*/    8,;
-     /* col da formula*/    33;
+     /* lin da formula*/    6,;
+     /* col da formula*/    52;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Cobrador
-     /* form mostrar  */    "LEFT(TRAN(GRUPOS->cobrador+IIF(PTAB(LEFT(GRUPOS->cobrador,3),[COBRADOR],1),cobrador->nome,[...]),[@!]),25)",;
-     /* lin da formula*/    9,;
-     /* col da formula*/    25;
+     /* form mostrar  */    "LEFT(TRAN(GRUPOS->cobrador,[!!]),02)",;
+     /* lin da formula*/    8,;
+     /* col da formula*/    52;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Funerais
      /* form mostrar  */    "LEFT(TRAN(GRUPOS->funerais,[99]),02)",;
-     /* lin da formula*/    9,;
-     /* col da formula*/    12;
+     /* lin da formula*/    7,;
+     /* col da formula*/    52;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Circ.Inicial
      /* form mostrar  */    "LEFT(TRAN(GRUPOS->circinic,[999]),03)",;
-     /* lin da formula*/    5,;
-     /* col da formula*/    46;
+     /* lin da formula*/    4,;
+     /* col da formula*/    52;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Endere‡o
      /* form mostrar  */    "LEFT(TRAN(xDECRIPT(GRUPOS->endereco),[]),35)",;
-     /* lin da formula*/    5,;
+     /* lin da formula*/    4,;
      /* col da formula*/    2;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Bairro
      /* form mostrar  */    "LEFT(TRAN(xDECRIPT(GRUPOS->bairro),[]),25)",;
-     /* lin da formula*/    6,;
+     /* lin da formula*/    5,;
      /* col da formula*/    2;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Cidade
      /* form mostrar  */    "LEFT(TRAN(xDECRIPT(GRUPOS->cidade),[]),25)",;
-     /* lin da formula*/    7,;
+     /* lin da formula*/    6,;
      /* col da formula*/    2;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - CEP
      /* form mostrar  */    "LEFT(TRAN(xDECRIPT(GRUPOS->cep),[@R 99999-999]),09)",;
-     /* lin da formula*/    7,;
+     /* lin da formula*/    6,;
      /* col da formula*/    29;
+                         };
+)
+AADD(sistema[001,O_FORMULA],{;          // BXREC - cpf
+     /* form mostrar  */    "LEFT(tran(grupos->cpf,[@R 999.999.999-99])+[/]+alltrim(xDECRIPT(grupos->rg)),30)",;
+     /* lin da formula*/    9,;
+     /* col da formula*/    10;
+                         };
+)
+AADD(sistema[001,O_FORMULA],{;          // BXREC - telefone
+     /* form mostrar  */    "LEFT(alltrim(xDECRIPT(grupos->telefone))+[/]+alltrim(xDECRIPT(grupos->contato)),30)",;
+     /* lin da formula*/    7,;
+     /* col da formula*/    10;
+                         };
+)
+AADD(sistema[001,O_FORMULA],{;          // BXREC - email
+     /* form mostrar  */    "LEFT(xDECRIPT(grupos->email),30)",;
+     /* lin da formula*/    8,;
+     /* col da formula*/    10;
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Regi„o
      /* form mostrar  */    "LEFT(TRAN(GRUPOS->regiao,[999]),03)",;
-     /* lin da formula*/    6,;
+     /* lin da formula*/    5,;
      /* col da formula*/    35;
                          };
 )
@@ -243,7 +255,13 @@ AADD(sistema[001,O_FORMULA],{;          // BXREC - troco
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Filial
      /* form mostrar  */    "LEFT(TRAN(filial,[@!]),02)",;
      /* lin da formula*/    1,;
-     /* col da formula*/    23;
+     /* col da formula*/    11;
+                         };
+)
+AADD(sistema[001,O_FORMULA],{;          // BXREC - NrSorte
+     /* form mostrar  */    "LEFT(TRAN(GRUPOS->nrsorteio,[999999]),06)",;
+     /* lin da formula*/    9,;
+     /* col da formula*/    52;
                          };
 )
 
