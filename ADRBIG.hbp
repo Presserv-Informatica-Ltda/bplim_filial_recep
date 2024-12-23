@@ -3,10 +3,11 @@
 -lxhb
 #-lhbwin
 -lhbct
--oadrbig.exe
+-oadrbig
 -prgflag=/l
 -compr=yes
--rebuild
+-inc
+-b
 
 adrbig.prg
 libg2.prg

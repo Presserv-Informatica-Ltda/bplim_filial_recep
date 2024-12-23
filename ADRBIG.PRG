@@ -386,8 +386,8 @@ ELSE
   ENDI
  NEXT
 ENDI
-drvmouse=.t.            // verifica e inicializa mouse
-MOUSERAT(drvratH,drvratV)       // ajusta sensibilidade do mouse
+drvmouse=.f.            // verifica e inicializa mouse
+//MOUSERAT(drvratH,drvratV)       // ajusta sensibilidade do mouse
 
 ADR_ATRI()                                  // enche sistema[] com atributos dos arquivos
 ADR_ATR1()

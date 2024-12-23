@@ -8,8 +8,7 @@
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
-#include "inkey.ch"          // constantes de codigos das teclas
+*/#include "inkey.ch"          // constantes de codigos das teclas
 #include "fileio.ch"         // funcoes de leitura/gravacao de arquivo
 #include "set.ch"            // constantes da funcao SETKEY()
 
@@ -29,8 +28,6 @@
 #define COM_CALE
 #define COM_MAQCALC
 #define COM_REDE
-#define COM_MOUSE
-#define COM_TUTOR
 
 /*
    Define variaveis a serem usadas na integridade referencial de
