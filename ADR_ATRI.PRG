@@ -981,7 +981,7 @@ AADD(sistema[004,O_CAMPO],{;            // GRUPOS
                          };
 )
 AADD(sistema[004,O_CAMPO],{;            // GRUPOS
-     /* mascara       */    "@!",;
+     /* mascara       */    "@!S20",;
      /* titulo        */    "Relig",;
      /* cmd especial  */    "__KEYBOARD([CATOLICO])",;
      /* default       */    "",;
