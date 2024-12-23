@@ -1,18 +1,15 @@
-
 procedure adm_estr
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: ADM_ESTR.PRG
  \ Data....: 29-09-96
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Cria estrutura dos arquivos
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v2.0d
- \ Convert.: v5.0 em 2021081014:58:23 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
-
+*/
 #include "admbig.ch"    // inicializa constantes manifestas
 
 PROC BXR_estr     // estrutura do arquivo BXREC
@@ -25,7 +22,7 @@ DBCREATE(dbf,{;
                {"valorpg"   ,"N",  9, 2},; // @E 999,999.99
                {"valoraux"  ,"N",  9, 2},; // @E 999,999.99
                {"emitido_"  ,"D",  8, 0},; // @D
-               {"por"       ,"C", 10, 0},; //
+               {"por"       ,"C", 10, 0},; // 
                {"numop"     ,"C",  6, 0},; // 999999
                {"grupo"     ,"C",  2, 0},; // !9
                {"intlan"    ,"C",  8, 0};  // 99999999
@@ -52,7 +49,7 @@ DBCREATE(dbf,{;
                {"cobrador"  ,"C",  2, 0},; // !!
                {"forma"     ,"C",  1, 0},; // !
                {"baixa_"    ,"D",  8, 0},; // @D
-               {"por"       ,"C", 10, 0},; //
+               {"por"       ,"C", 10, 0},; // 
                {"stat"      ,"C",  1, 0},; // 9
                {"flag_excl" ,"C",  1, 0},; // !
                {"codlan"    ,"C", 20, 0};  // !!!-99999999-999-999
@@ -68,12 +65,12 @@ DBCREATE(dbf,{;
                {"cidade"    ,"C", 25, 0},; // @!
                {"cep"       ,"C",  8, 0},; // @R 99999-999
                {"data_"     ,"D",  8, 0},; // @D
-               {"por"       ,"C", 10, 0},; //
+               {"por"       ,"C", 10, 0},; // 
                {"dendereco" ,"C", 35, 0},; // @!
                {"dbairro"   ,"C", 25, 0},; // @!
                {"dcidade"   ,"C", 25, 0},; // @!
                {"dcep"      ,"C",  8, 0},; // @R 99999-999
-               {"dgrupo"    ,"C",  2, 0},; //
+               {"dgrupo"    ,"C",  2, 0},; // 
                {"emitido_"  ,"D",  8, 0};  // @D
              };
 )
@@ -88,7 +85,7 @@ DBCREATE(dbf,{;
                {"valorpg"   ,"N",  9, 2},; // @E 999,999.99
                {"valoraux"  ,"N",  9, 2},; // @E 999,999.99
                {"emitido_"  ,"D",  8, 0},; // @D
-               {"por"       ,"C", 10, 0},; //
+               {"por"       ,"C", 10, 0},; // 
                {"numop"     ,"C",  6, 0},; // 999999
                {"grupo"     ,"C",  2, 0},; // !9
                {"intlan"    ,"C",  8, 0};  // 99999999
@@ -102,25 +99,25 @@ DBCREATE(dbf,{;
                {"proc2"     ,"C",  2, 0},; // 99
                {"ocorr_"    ,"D",  8, 0},; // @D
                {"contrato"  ,"C",  6, 0},; // 999999
-               {"grauparcon","C", 10, 0},; //
+               {"grauparcon","C", 10, 0},; // 
                {"nomedec"   ,"C", 35, 0},; // @!
                {"ruadec"    ,"C", 35, 0},; // @!
                {"fonedec"   ,"C", 14, 0},; // @!
-               {"codigofal" ,"C", 11, 0},; //
-               {"falecido"  ,"C", 35, 0},; //
-               {"ruares"    ,"C", 30, 0},; //
-               {"baires"    ,"C", 25, 0},; //
-               {"munres"    ,"C", 25, 0},; //
+               {"codigofal" ,"C", 11, 0},; // 
+               {"falecido"  ,"C", 35, 0},; // 
+               {"ruares"    ,"C", 30, 0},; // 
+               {"baires"    ,"C", 25, 0},; // 
+               {"munres"    ,"C", 25, 0},; // 
                {"estres"    ,"C",  2, 0},; // !!
                {"nascto_"   ,"D",  8, 0},; // @D
                {"falecto_"  ,"D",  8, 0},; // @D
                {"horafal"   ,"C",  5, 0},; // 99:99
-               {"ruafal"    ,"C", 30, 0},; //
-               {"municfal"  ,"C", 25, 0},; //
+               {"ruafal"    ,"C", 30, 0},; // 
+               {"municfal"  ,"C", 25, 0},; // 
                {"estfal"    ,"C",  2, 0},; // !!
                {"sepult_"   ,"D",  8, 0},; // @D
                {"horasepult","C",  5, 0},; // 99:99
-               {"cemitsep"  ,"C", 30, 0},; //
+               {"cemitsep"  ,"C", 30, 0},; // 
                {"funcresp"  ,"C",  3, 0},; // 999
                {"procpagto_","D",  8, 0},; // @D
                {"vlauxilio" ,"N", 14, 2},; // 99999999999.99
@@ -173,7 +170,7 @@ DBCREATE(dbf,{;
                {"codigo"    ,"C",  4, 0},; // 9999
                {"qtdade"    ,"N",  4, 0},; // 9999
                {"data"      ,"D",  8, 0},; // @D
-               {"por"       ,"C", 10, 0},; //
+               {"por"       ,"C", 10, 0},; // 
                {"flag_excl" ,"C",  1, 0};  // !
              };
 )
@@ -182,7 +179,7 @@ RETU
 PROC REG_estr     // estrutura do arquivo REGIAO
 DBCREATE(dbf,{;
                {"codigo"    ,"C",  3, 0},; // 999
-               {"regiao"    ,"C", 30, 0},; //
+               {"regiao"    ,"C", 30, 0},; // 
                {"cobrador"  ,"C",  2, 0};  // !!
              };
 )
@@ -201,7 +198,7 @@ DBCREATE(dbf,{;
                {"pagos"     ,"N",  6, 0},; // 999999
                {"cancelados","N",  6, 0},; // 999999
                {"lancto_"   ,"D",  8, 0},; // @D
-               {"funcionar" ,"C", 10, 0},; //
+               {"funcionar" ,"C", 10, 0},; // 
                {"impress_"  ,"D",  8, 0};  // @D
              };
 )
@@ -227,11 +224,11 @@ PROC COB_estr     // estrutura do arquivo COBRADOR
 DBCREATE(dbf,{;
                {"cobrador"  ,"C",  2, 0},; // !!
                {"funcao"    ,"C",  1, 0},; // !
-               {"nome"      ,"C", 30, 0},; //
-               {"endereco"  ,"C", 30, 0},; //
-               {"bairro"    ,"C", 20, 0},; //
-               {"cidade"    ,"C", 25, 0},; //
-               {"telefone"  ,"C", 14, 0},; //
+               {"nome"      ,"C", 30, 0},; // 
+               {"endereco"  ,"C", 30, 0},; // 
+               {"bairro"    ,"C", 20, 0},; // 
+               {"cidade"    ,"C", 25, 0},; // 
+               {"telefone"  ,"C", 14, 0},; // 
                {"cpf"       ,"C", 11, 0},; // @R 999.999.999-99
                {"obs"       ,"M", 10, 0},; // @S35
                {"percent"   ,"N",  5, 1};  // 999.9
@@ -258,7 +255,7 @@ PROC PRC_estr     // estrutura do arquivo PRCESSOS
 DBCREATE(dbf,{;
                {"processo"  ,"C",  9, 0},; // @R 99999/99/!!
                {"categ"     ,"C",  2, 0},; // !!
-               {"saiu"      ,"C",  3, 0},; //
+               {"saiu"      ,"C",  3, 0},; // 
                {"grup"      ,"C",  2, 0},; // !9
                {"num"       ,"C",  5, 0},; // 99999
                {"grau"      ,"C",  1, 0},; // 9
@@ -279,20 +276,20 @@ DBCREATE(dbf,{;
                {"codigo"    ,"C",  6, 0},; // 999999
                {"grupo"     ,"C",  2, 0},; // !9
                {"situacao"  ,"C",  1, 0},; // 9
-               {"nome"      ,"C", 35, 0},; //
+               {"nome"      ,"C", 35, 0},; // 
                {"nascto_"   ,"D",  8, 0},; // @D
                {"estcivil"  ,"C",  2, 0},; // !!
                {"cpf"       ,"C", 11, 0},; // @R 999.999.999-99
                {"rg"        ,"C", 20, 0},; // @!
-               {"endereco"  ,"C", 35, 0},; //
-               {"bairro"    ,"C", 20, 0},; //
-               {"cidade"    ,"C", 25, 0},; //
+               {"endereco"  ,"C", 35, 0},; // 
+               {"bairro"    ,"C", 20, 0},; // 
+               {"cidade"    ,"C", 25, 0},; // 
                {"cep"       ,"C",  8, 0},; // @R 99999-999
                {"contato"   ,"C", 25, 0},; // @!
                {"tipcont"   ,"C",  2, 0},; // 99
-               {"vlcarne"   ,"C",  3, 0},; //
+               {"vlcarne"   ,"C",  3, 0},; // 
                {"formapgto" ,"C",  2, 0},; // 99
-               {"seguro"    ,"N",  2, 0},; //
+               {"seguro"    ,"N",  2, 0},; // 
                {"admissao"  ,"D",  8, 0},; // @D
                {"tcarencia" ,"D",  8, 0},; // @D
                {"saitxa"    ,"C",  4, 0},; // @R 99/99
@@ -306,13 +303,13 @@ DBCREATE(dbf,{;
                {"ultcirc"   ,"C",  3, 0},; // 999
                {"qtcircs"   ,"N",  3, 0},; // 999
                {"qtcircpg"  ,"N",  3, 0},; // 999
-               {"titular"   ,"C",  3, 0},; //
+               {"titular"   ,"C",  3, 0},; // 
                {"particv"   ,"N",  2, 0},; // 99
                {"particf"   ,"N",  2, 0},; // 99
                {"nrdepend"  ,"N",  2, 0},; // 99
                {"ultimp_"   ,"D",  8, 0},; // @D
                {"ender_"    ,"D",  8, 0},; // @D
-               {"ultend"    ,"C", 10, 0};  //
+               {"ultend"    ,"C", 10, 0};  // 
              };
 )
 RETU
@@ -323,9 +320,9 @@ DBCREATE(dbf,{;
                {"grau"      ,"C",  1, 0},; // 9
                {"seq"       ,"N",  2, 0},; // 99
                {"ehtitular" ,"C",  1, 0},; // !
-               {"nome"      ,"C", 35, 0},; //
+               {"nome"      ,"C", 35, 0},; // 
                {"nascto_"   ,"D",  8, 0},; // @D
-               {"estcivil"  ,"C",  2, 0},; //
+               {"estcivil"  ,"C",  2, 0},; // 
                {"interdito" ,"C",  1, 0},; // !
                {"sexo"      ,"C",  1, 0},; // !
                {"tcarencia" ,"D",  8, 0},; // @D
@@ -334,7 +331,7 @@ DBCREATE(dbf,{;
                {"falecto_"  ,"D",  8, 0},; // @D
                {"tipo"      ,"C",  3, 0},; // !!!
                {"procnr"    ,"C",  7, 0},; // @R 99999/99
-               {"por"       ,"C", 10, 0},; //
+               {"por"       ,"C", 10, 0},; // 
                {"flag_excl" ,"C",  1, 0};  // !
              };
 )
@@ -342,7 +339,7 @@ RETU
 
 PROC FNC_estr     // estrutura do arquivo FNCS
 DBCREATE(dbf,{;
-               {"codigo"    ,"C",  3, 0},; //
+               {"codigo"    ,"C",  3, 0},; // 
                {"nome"      ,"C", 35, 0},; // @!
                {"profiss"   ,"C", 15, 0},; // @!
                {"nacional"  ,"C", 15, 0},; // @!
@@ -352,7 +349,7 @@ DBCREATE(dbf,{;
                {"bairro"    ,"C", 25, 0},; // @!
                {"cidade"    ,"C", 25, 0},; // @!
                {"cpf"       ,"C", 11, 0},; // @R 999.999.999-99
-               {"telefone"  ,"C", 14, 0},; //
+               {"telefone"  ,"C", 14, 0},; // 
                {"percent"   ,"N",  5, 1},; // 999.9
                {"obs"       ,"M", 10, 0};  // @S35
              };
@@ -362,7 +359,7 @@ RETU
 PROC HIS_estr     // estrutura do arquivo HISTORIC
 DBCREATE(dbf,{;
                {"historico" ,"C",  3, 0},; // 999
-               {"descricao" ,"C", 40, 0},; //
+               {"descricao" ,"C", 40, 0},; // 
                {"tipo"      ,"C",  1, 0},; // !
                {"origem"    ,"C",  3, 0},; // !!!
                {"intlan"    ,"C",  8, 0},; // 99999999
@@ -376,7 +373,7 @@ DBCREATE(dbf,{;
                {"numop"     ,"C",  6, 0},; // 999999
                {"origem"    ,"C",  3, 0},; // !!!
                {"lancto_"   ,"D",  8, 0},; // @D
-               {"por"       ,"C", 10, 0},; //
+               {"por"       ,"C", 10, 0},; // 
                {"numconta"  ,"C", 10, 0},; // @!
                {"historico" ,"C",  3, 0},; // 999
                {"debcred"   ,"C",  1, 0},; // !
@@ -386,9 +383,9 @@ DBCREATE(dbf,{;
                {"nrdoctos"  ,"N",  5, 0},; // 99999
                {"complement","C", 35, 0},; // @!
                {"fechto_"   ,"D",  8, 0},; // @D
-               {"fechpor"   ,"C", 10, 0},; //
+               {"fechpor"   ,"C", 10, 0},; // 
                {"autoriz_"  ,"D",  8, 0},; // @D
-               {"autorpor"  ,"C", 10, 0},; //
+               {"autorpor"  ,"C", 10, 0},; // 
                {"numos"     ,"C",  7, 0},; // 9999999
                {"intlan"    ,"C",  8, 0},; // 99999999
                {"codlan"    ,"C", 20, 0};  // !!!-99999999-999-999
@@ -423,11 +420,12 @@ DBCREATE(dbf,{;
                {"impnrrec"  ,"C",  5, 0},; // 99999
                {"procimp"   ,"C",  7, 0},; // @R 99999/99
                {"pvalor"    ,"N",  9, 2},; // @E 999,999.99
-               {"setup1"    ,"C", 40, 0},; //
-               {"setup2"    ,"C", 50, 0},; //
-               {"setup3"    ,"C", 50, 0};  //
+               {"setup1"    ,"C", 40, 0},; // 
+               {"setup2"    ,"C", 50, 0},; // 
+               {"setup3"    ,"C", 50, 0};  // 
              };
 )
 RETU
 
 * \\ Final de ADM_ESTR.PRG
+

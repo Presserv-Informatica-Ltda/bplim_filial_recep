@@ -1,15 +1,13 @@
-
 procedure gru_02f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: GRU_02F9.PRG
  \ Data....: 22-02-98
  \ Sistema.: Administradora - PLANO
  \ Funcao..: Fun‡„o F8 do campo CODIGO, arquivo GRUPOS
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:57:23 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -51,3 +49,4 @@ ENDD
 RETU M->rcodin       // <- deve retornar um valor qualquer
 
 * \\ Final de GRU_02F9.PRG
+

@@ -1,18 +1,15 @@
-
 procedure adr_adap
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: ADR_ADAP.PRG
  \ Data....: 29-01-04
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Adapta arquivos do sistema
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
- \ Convert.: v5.0 em 2021081014:56:17 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
-
+*/
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 REQUEST IN_KEY
@@ -84,11 +81,11 @@ arqgeral="ADR"
 drvcorpad="W+/RB"  ; drvcorbox="W+/B"         // cores default
 drvcormsg="W+/W"   ; drvcorenf="W+/R"
 drvcorget="W+/BG"  ; drvcortel="W+/B"
-drvcorhlp="GR+/GR"
+drvcorhlp="GR+/GR" 
 drvtitpad="GR+/RB" ; drvtitbox="GR+/B"        // cores dos titulos default
 drvtitmsg="GR+/W"  ; drvtitenf="GR+/R"
 drvtitget="GR+/BG" ; drvtittel="GR+/B"
-drvtithlp="W+/GR"
+drvtithlp="W+/GR"  
 IF EMPTY(exe)                      // CA-Clipper nao pegou diretorio do exe
  cod_sos=1
  msgt="DIRET¢RIO DO EXECUTVEL"    // entao, vamos solicitar ao usuario
@@ -297,7 +294,7 @@ FOR op_sis=1 TO nss-3                            // vamos verificar quais DBF
    ENDI
   ENDI
   FOR t=1 TO LEN(sistema[op_sis,O_INDIC])        // para eliminar os arquivos
-   ntx=sistema[op_sis,O_ARQUI,O_NOME,O_DIR_NTX]+sistema[op_sis,O_INDIC,t]+EXTENSAO()
+   ntx=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,t]+EXTENSAO()
    IF FILE(ntx)                                  // de indices caso existam
     ERASE (ntx)
    ENDI
@@ -370,7 +367,7 @@ IF FILE(dbf) .AND. FILE(dbfg)                    // se exite os aquivos de senha
  ERASE &drvpw.temp.ntx                           // mata indice temp
  FOR op_sis=nss-2 TO nss                         // corre os arq de senhas
   FOR t=1 TO LEN(sistema[op_sis,O_INDIC])        // para eliminar os arquivos
-   ntx=sistema[op_sis,O_ARQUI,O_NOME,O_DIR_NTX]+sistema[op_sis,O_INDIC,t]+EXTENSAO()
+   ntx=sistema[op_sis,O_ARQUI,O_DIR_NTX]+sistema[op_sis,O_INDIC,t]+EXTENSAO()
    IF FILE(ntx)                                  // de indices caso existam
     ERASE (ntx)
    ENDI
@@ -488,10 +485,7 @@ DO WHIL op_a!=0
      ENDI
     NEXT
     IF VELHO->(DELE())                           // se o reg esta macado para
-    POE_NO_LOG(tp_mov)
- IF !EMPTY(ALIAS())
-  DELE
- ENDI
+     DELE                                        // exclusao vamos marcar no
     ENDI                                         // novo tambem
     SELE VELHO                                   // proximo...
     SKIP
@@ -680,3 +674,4 @@ SETKEY(K_F10,t_f10)
 RETU
 
 * \\ Final de ADR_ADAP.PRG
+

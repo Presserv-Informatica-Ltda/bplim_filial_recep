@@ -1,4 +1,3 @@
-
 procedure accaixa
 
 sele b
@@ -77,3 +76,4 @@ do while .not. eof()
    ENDI
    IF !EMPT(numop).AND.PTAB(numop,'ORDPGRC',1)
     REPBLO('ORDPGRC->valortotal',{||ORDPGRC->valortotal +valorpg})
+

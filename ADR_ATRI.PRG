@@ -1,15 +1,13 @@
-
 procedure adr_atri
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: ADR_ATRI.PRG
  \ Data....: 29-01-04
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Define atributos dos arquivos (sistema[])
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0o
- \ Convert.: v5.0 em 2021081014:58:19 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -58,7 +56,7 @@ AADD(sistema[001,O_CAMPO],{;            // BXREC
      /* cmd especial  */    "VDBF(6,3,20,77,'GRUPOS',{'codigo','grupo','nome','endereco'},1,'codigo',[])",;
      /* default       */    "",;
      /* pre-validacao */    "",;
-     /* validacao     */    "(BXR_07F9().AND.PTAB(ALLTRIM(codigo),[GRUPOS])).AND.(PTAB(codigo,'TAXAS',1).OR.(1=1)).AND.CAD_04F9(op_menu)~Contrato inv lido |ou inexistente",;
+     /* validacao     */    "(BXR_07F9().AND.PTAB(ALLTRIM(codigo),[GRUPOS])).AND.!EMPT(LTOC(PTAB(codigo,'TAXAS',1))).AND.CAD_04F9(op_menu)~Contrato inv lido |ou inexistente",;
      /* help do campo */    "Informe o n£mero do contrato";
                          };
 )
@@ -165,8 +163,8 @@ AADD(sistema[001,O_FORMULA],{;          // BXREC - Circ 1 - 4
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Ult.Circular
-     /* form mostrar  */    "LEFT(TRAN(GRUPOS->ultcirc,[999]),03)",;
-     /* lin da formula*/    5,;
+     /* form mostrar  */    "GRUPOS->circinic+[ - ]+GRUPOS->ultcirc",;
+     /* lin da formula*/    4,;
      /* col da formula*/    52;
                          };
 )
@@ -195,8 +193,8 @@ AADD(sistema[001,O_FORMULA],{;          // BXREC - Funerais
                          };
 )
 AADD(sistema[001,O_FORMULA],{;          // BXREC - Circ.Inicial
-     /* form mostrar  */    "LEFT(TRAN(GRUPOS->circinic,[999]),03)",;
-     /* lin da formula*/    4,;
+     /* form mostrar  */    "LEFT(TRAN(GRUPOS->qtcircs,[999]),03)",;
+     /* lin da formula*/    5,;
      /* col da formula*/    52;
                          };
 )
@@ -263,6 +261,12 @@ AADD(sistema[001,O_FORMULA],{;          // BXREC - Filial
 AADD(sistema[001,O_FORMULA],{;          // BXREC - NrSorte
      /* form mostrar  */    "LEFT(TRAN(GRUPOS->nrsorteio,[999999]),06)",;
      /* lin da formula*/    9,;
+     /* col da formula*/    52;
+                         };
+)
+AADD(sistema[001,O_FORMULA],{;          // BXREC - Admiss„o
+     /* form mostrar  */    "LEFT(TRAN(GRUPOS->nascto_,[@D]),10)",;
+     /* lin da formula*/    3,;
      /* col da formula*/    52;
                          };
 )
@@ -740,14 +744,14 @@ AADD(sistema[003,O_FORMULA],{;          // OBXEC - Filial
 sistema[004]={;
             "Consulta Contratos",;                          // opcao do menu
             "Consulta contratos",;                          // titulo do sistema
-            {"codigo","situacao+codigo","grupo+cobrador+codigo","cobrador+grupo+codigo","nome","cpf"},;// chaves do arquivo
-            {"Contrato","Ativos/Cancelados","Grupo/Cobrador","p/Cobrador","p/Nome","CPF"},;// titulo dos indices para consulta
-            {"01","0301","022801","280201","04","07"},;          // ordem campos chaves
+            {"codigo","nome"},;                             // chaves do arquivo
+            {"Contrato","p/Nome"},;                         // titulo dos indices para consulta
+            {"01","04"},;                                   // ordem campos chaves
             {"GRUPOS",drvdbf,drvntx},;                      // nome do DBF
-            {"GRUPOS1","GRUPOS2","GRUPOS3","GRUPOS4","GRUPOS5","GRUPOS6"},;// nomes dos NTX
-            {"ECOB","INSCRITS","TAXAS","ADENDOS"},;         // nome dos dbf's relacionados
+            {"GRUPOS1","GRUPOS2"},;                         // nomes dos NTX
+            {"TAXAS","ECOB","INSCRITS"},;                   // nome dos dbf's relacionados
             {},;                                            // campos de relacionamento
-            {1,1,1,3,23,77},;                               // num telas/tela atual/coordenadas
+            {1,1,1,3,22,77},;                               // num telas/tela atual/coordenadas
             {1,.t.,.f.},;                                   // nivel acesso/tp chave/pede dir
             {},;                                            // campos do arquivo
             {},;                                            // formula mostradas
@@ -779,11 +783,11 @@ AADD(sistema[004,O_CAMPO],{;            // GRUPOS
 AADD(sistema[004,O_CAMPO],{;            // GRUPOS
      /* mascara       */    "9",;
      /* titulo        */    "Situa‡„o",;
-     /* cmd especial  */    "MTAB([1=Ativo|2=Cancelado|3=Suspenso|4=Suspenso|7=Promocao],[SITUA€ŽO])",;
+     /* cmd especial  */    "MTAB([1=Ativo|2=Cancelado],[SITUA€ŽO])",;
      /* default       */    "[1]",;
      /* pre-validacao */    "",;
-     /* validacao     */    "situacao $ [123456789]~SITUA€ŽO n„o aceit vel",;
-     /* help do campo */    "Digite 1 para ativo,|2 para cancelado|ou|3/4 para suspenso";
+     /* validacao     */    "situacao $ [12]~SITUA€ŽO n„o aceit vel",;
+     /* help do campo */    "Digite 1 para ativo ou 2 para cancelado";
                          };
 )
 AADD(sistema[004,O_CAMPO],{;            // GRUPOS
@@ -837,7 +841,7 @@ AADD(sistema[004,O_CAMPO],{;            // GRUPOS
                          };
 )
 AADD(sistema[004,O_CAMPO],{;            // GRUPOS
-     /* mascara       */    "@!S40",;
+     /* mascara       */    "@!",;
      /* titulo        */    "Endere‡o",;
      /* cmd especial  */    "",;
      /* default       */    "",;
@@ -847,7 +851,7 @@ AADD(sistema[004,O_CAMPO],{;            // GRUPOS
                          };
 )
 AADD(sistema[004,O_CAMPO],{;            // GRUPOS
-     /* mascara       */    "@!S25",;
+     /* mascara       */    "@!",;
      /* titulo        */    "Bairro",;
      /* cmd especial  */    "",;
      /* default       */    "",;
@@ -857,7 +861,7 @@ AADD(sistema[004,O_CAMPO],{;            // GRUPOS
                          };
 )
 AADD(sistema[004,O_CAMPO],{;            // GRUPOS
-     /* mascara       */    "@!S25",;
+     /* mascara       */    "@!",;
      /* titulo        */    "Cidade",;
      /* cmd especial  */    "",;
      /* default       */    "M->p_cidade",;
@@ -1296,16 +1300,6 @@ AADD(sistema[04,O_CAMPO],{;            // GRUPOS
      /* help do campo */    "Entre com o Numero Sorteio.";
                          };
 )
-AADD(sistema[004,O_CAMPO],{;            // GRUPOS
-     /* mascara       */    "@!S25",;
-     /* titulo        */    "Complemento",;
-     /* cmd especial  */    "",;
-     /* default       */    "",;
-     /* pre-validacao */    "",;
-     /* validacao     */    "",;
-     /* help do campo */    "";
-                         };
-)
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Situacao
      /* form mostrar  */    "LEFT(TRAN(IIF(situacao=[2],[CANCELADO],[         ]),[]),09)",;
      /* lin da formula*/    1,;
@@ -1326,25 +1320,25 @@ AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Part.Falecidos
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Nome do Cobrado
      /* form mostrar  */    "LEFT(TRAN(IIF(PTAB(cobrador,'COBRADOR',1),COBRADOR->nome,[ ]),[]),30)",;
-     /* lin da formula*/    14,;
+     /* lin da formula*/    13,;
      /* col da formula*/    16;
                          };
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Nome do Vendedr
      /* form mostrar  */    "LEFT(TRAN(IIF(PTAB(vendedor,'COBRADOR',1),COBRADOR->nome,[ ]),[]),30)",;
-     /* lin da formula*/    12,;
+     /* lin da formula*/    11,;
      /* col da formula*/    16;
                          };
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - grupo
      /* form mostrar  */    "LEFT(TRAN(IIF(!EMPT(grupo),grupo,[  ]),[]),02)",;
      /* lin da formula*/    1,;
-     /* col da formula*/    18;
+     /* col da formula*/    22;
                          };
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Descri‡„o Reg
      /* form mostrar  */    "LEFT(TRAN(REGIAO->regiao,[]),30)",;
-     /* lin da formula*/    13,;
+     /* lin da formula*/    12,;
      /* col da formula*/    16;
                          };
 )
@@ -1362,26 +1356,26 @@ AADD(sistema[004,O_FORMULA],{;          // GRUPOS - N§ Depend.
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Ult.Impress.
      /* form mostrar  */    "LEFT(TRAN(ultimp_,[@D]),10)",;
-     /* lin da formula*/    19,;
+     /* lin da formula*/    16,;
      /* col da formula*/    54;
                          };
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - élt.alter.ender
      /* form mostrar  */    "LEFT(TRAN(ender_,[@D]),10)",;
-     /* lin da formula*/    20,;
+     /* lin da formula*/    18,;
      /* col da formula*/    17;
                          };
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - UltEnd
      /* form mostrar  */    "LEFT(TRAN(ultend,[]),10)",;
-     /* lin da formula*/    20,;
+     /* lin da formula*/    18,;
      /* col da formula*/    28;
                          };
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Seguro
      /* form mostrar  */    "LEFT(TRAN(IIF(seguro>0,'SEGURO ('+str(seguro,2)+')',[   ]),[]),12)",;
      /* lin da formula*/    1,;
-     /* col da formula*/    29;
+     /* col da formula*/    28;
                          };
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Qt.Circulares
@@ -1392,7 +1386,7 @@ AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Qt.Circulares
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - periodicidade
      /* form mostrar  */    "LEFT(TRAN(IIF(PTAB(tipcont,'CLASSES',1),ALLTRIM(CLASSES->descricao),[])+[ ]+IIF(formapgto$'01020304',SUBSTR(tbfpgto,(VAL(formapgto)-1)*13+1,13),[]),[]),35)",;
-     /* lin da formula*/    10,;
+     /* lin da formula*/    9,;
      /* col da formula*/    39;
                          };
 )
@@ -1773,9 +1767,9 @@ AADD(sistema[007,O_CAMPO],{;            // INSCRITS
      /* mascara       */    "9",;
      /* titulo        */    "Inscr.",;
      /* cmd especial  */    "MTAB(M->TBTIPGRAU,[INSCR.])",;
-     /* default       */    "IIF(M->pgrau<[7],SUBSTR([123456789],VAL(M->pgrau),1),M->pgrau)",;
+     /* default       */    "IIF(M->pgrau<[7],SUBSTR([234567],VAL(M->pgrau),1),M->pgrau)",;
      /* pre-validacao */    "MTAB(M->TBTIPGRAU,[INSCR.])",;
-     /* validacao     */    "grau $ [123456789]~INSCR. n„o aceit vel",;
+     /* validacao     */    "grau $ [12345678]~INSCR. n„o aceit vel",;
      /* help do campo */    "Informe o grau de liga‡„o deste com o|titular do contrato|ou|tecle F8 para consulta em tabela";
                          };
 )
@@ -2004,94 +1998,8 @@ AADD(sistema[007,O_FORMULA],{;          // INSCRITS - Idade
                          };
 )
 
+
 sistema[008]={;
-            "Adendos",;                                     // opcao do menu
-            "Adendos",;                                     // titulo do sistema
-            {"codigo+codproduto"},;                         // chaves do arquivo
-            {"Contrato"},;                                  // titulo dos indices para consulta
-            {"0102"},;                                      // ordem campos chaves
-            {"ADENDOS",drvdbf,drvntx},;                     // nome do DBF
-            {"ADENDOS1"},;                                  // nomes dos NTX
-            {},;                                            // nome dos dbf's relacionados
-            {"GRUPOS->codigo"},;                            // campos de relacionamento
-            {1,1,8,7,18,75,3,7},;                           // num telas/tela atual/coordenadas/inicio scroll/qtde scroll
-            {1,.t.,.f.},;                                   // nivel acesso/tp chave/pede dir
-            {},;                                            // campos do arquivo
-            {},;                                            // formula mostradas
-            {"",""},;                                       // condicao de exclusao de registros
-            {"",""},;                                       // condicao de alteracao de registros
-            {"",""};                                        // condicao de recupercao de registros
-           }
-
-AADD(sistema[008,O_CAMPO],{;            // ADENDOS
-     /* mascara       */    "999999",;
-     /* titulo        */    "Codigo",;
-     /* cmd especial  */    "",;
-     /* default       */    "",;
-     /* pre-validacao */    "",;
-     /* validacao     */    "I",;
-     /* help do campo */    "";
-                         };
-)
-AADD(sistema[008,O_CAMPO],{;            // ADENDOS
-     /* mascara       */    "9999",;
-     /* titulo        */    "C¢digo",;
-     /* cmd especial  */    "",;
-     /* default       */    "",;
-     /* pre-validacao */    "",;
-     /* validacao     */    "PTAB(codproduto,'PRODUTOS',1)~Necess rio informar C¢DIGO",;
-     /* help do campo */    "Informe o c¢digo do produto";
-                         };
-)
-AADD(sistema[008,O_CAMPO],{;            // ADENDOS
-     /* mascara       */    "@D",;
-     /* titulo        */    "Incluido",;
-     /* cmd especial  */    "date()",;
-     /* default       */    "date()",;
-     /* pre-validacao */    "",;
-     /* validacao     */    "!EMPT(incluido_)~Necess rio informar INCLUIDO",;
-     /* help do campo */    "Data da Inclusao deste adendo ao contrato";
-                         };
-)
-AADD(sistema[008,O_CAMPO],{;            // ADENDOS
-     /* mascara       */    "@!",;
-     /* titulo        */    "Idxd",;
-     /* cmd especial  */    "",;
-     /* default       */    "calc_idx()",;
-     /* pre-validacao */    "",;
-     /* validacao     */    "V",;
-     /* help do campo */    "";
-                         };
-)
-AADD(sistema[008,O_CAMPO],{;            // ADENDOS
-     /* mascara       */    "@!",;
-     /* titulo        */    "Idxm",;
-     /* cmd especial  */    "",;
-     /* default       */    "calc_idx()",;
-     /* pre-validacao */    "",;
-     /* validacao     */    "V",;
-     /* help do campo */    "";
-                         };
-)
-AADD(sistema[008,O_CAMPO],{;            // ADENDOS
-     /* mascara       */    "!",;
-     /* titulo        */    "Flag",;
-     /* cmd especial  */    "",;
-     /* default       */    "",;
-     /* pre-validacao */    "",;
-     /* validacao     */    "I",;
-     /* help do campo */    "";
-                         };
-)
-AADD(sistema[008,O_FORMULA],{;          // ADENDOS - Descri‡Æo do pr
-     /* form mostrar  */    "LEFT(TRAN(PRODUTOS->produto,[@!]),30)",;
-     /* lin da formula*/    {||l_a},;
-     /* col da formula*/    24;
-                         };
-)
-
-
-sistema[009]={;
             "Emiss„o de Guias",;                            // opcao do menu
             "Emiss„o de Guias",;                            // titulo do sistema
             {"numero","numero"},;                           // chaves do arquivo
@@ -2110,7 +2018,7 @@ sistema[009]={;
             {"",""};                                        // condicao de recupercao de registros
            }
 
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "99999999",;
      /* titulo        */    "N£mero",;
      /* cmd especial  */    "",;
@@ -2120,7 +2028,7 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "";
                          };
 )
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "@D",;
      /* titulo        */    "Emiss„o",;
      /* cmd especial  */    "",;
@@ -2130,7 +2038,7 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "";
                          };
 )
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "99:99",;
      /* titulo        */    "Hora",;
      /* cmd especial  */    "",;
@@ -2140,7 +2048,7 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "";
                          };
 )
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "",;
      /* titulo        */    "Filial",;
      /* cmd especial  */    "",;
@@ -2150,7 +2058,7 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "";
                          };
 )
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "",;
      /* titulo        */    "Login",;
      /* cmd especial  */    "",;
@@ -2160,7 +2068,7 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "";
                          };
 )
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "@!",;
      /* titulo        */    "N§ Contrato",;
      /* cmd especial  */    "VDBF(6,3,20,77,'GRUPOS',{'grupo','codigo','nome','endereco'},1,'codigo')",;
@@ -2170,7 +2078,7 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "Entre com o c¢digo do contrato";
                          };
 )
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "@!",;
      /* titulo        */    "Nome",;
      /* cmd especial  */    "GUI_06F9()",;
@@ -2180,7 +2088,7 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "Informe o nome do benefici rio.";
                          };
 )
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "@!",;
      /* titulo        */    "Inscrito",;
      /* cmd especial  */    "",;
@@ -2190,7 +2098,7 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "";
                          };
 )
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "@!",;
      /* titulo        */    "M‚dico",;
      /* cmd especial  */    "VDBF(6,3,20,77,'MEDICOS',{'LEFT(oldespec,20)','nome','endereco','cidade','codbenefic','fonesdiv','fonecom1'},3,'codbenefic',[])",;
@@ -2200,7 +2108,7 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "Informe o m‚dico";
                          };
 )
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "",;
      /* titulo        */    "Por",;
      /* cmd especial  */    "",;
@@ -2210,7 +2118,7 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "";
                          };
 )
-AADD(sistema[009,O_CAMPO],{;            // GUIAS
+AADD(sistema[008,O_CAMPO],{;            // GUIAS
      /* mascara       */    "99999999",;
      /* titulo        */    "Num.Lan‡amento",;
      /* cmd especial  */    "",;
@@ -2220,85 +2128,85 @@ AADD(sistema[009,O_CAMPO],{;            // GUIAS
      /* help do campo */    "";
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - circ 1-4
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - circ 1-4
      /* form mostrar  */    "LEFT(TRAN(GUI_02F9(),[]),45)",;
      /* lin da formula*/    6,;
      /* col da formula*/    15;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Nome do titular
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Nome do titular
      /* form mostrar  */    "LEFT(TRAN(GRUPOS->nome,[]),35)",;
      /* lin da formula*/    3,;
      /* col da formula*/    26;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Admiss„o
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Admiss„o
      /* form mostrar  */    "LEFT(TRAN(GRUPOS->admissao,[@D]),10)",;
      /* lin da formula*/    4,;
      /* col da formula*/    15;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Saitxa
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Saitxa
      /* form mostrar  */    "LEFT(TRAN(GRUPOS->saitxa,[@R 99/99]),05)",;
      /* lin da formula*/    5,;
      /* col da formula*/    15;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Cobrador
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Cobrador
      /* form mostrar  */    "LEFT(TRAN(GRUPOS->cobrador,[!!]),02)",;
      /* lin da formula*/    5,;
      /* col da formula*/    59;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Endere‡o contr
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Endere‡o contr
      /* form mostrar  */    "LEFT(TRAN(xDECRIPT(GRUPOS->endereco),[]),35)",;
      /* lin da formula*/    4,;
      /* col da formula*/    26;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Bairro contr
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Bairro contr
      /* form mostrar  */    "LEFT(TRAN(xDECRIPT(GRUPOS->bairro),[]),25)",;
      /* lin da formula*/    5,;
      /* col da formula*/    26;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Endere‡o
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Endere‡o
      /* form mostrar  */    "LEFT(TRAN(IIF(!EMPT(medico).AND.PTAB(medico,'MEDICOS',1),MEDICOS->endereco,SPACE(40)),[]),40)",;
      /* lin da formula*/    15,;
      /* col da formula*/    24;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Munic¡pio
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Munic¡pio
      /* form mostrar  */    "LEFT(TRAN(IIF(PTAB(medico,'MEDICOS',1),MEDICOS->cidade,[]),[]),30)",;
      /* lin da formula*/    16,;
      /* col da formula*/    32;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Fone
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Fone
      /* form mostrar  */    "LEFT(TRAN(IIF(!EMPT(medico),MEDICOS->fonecom1,SPACE(14)),[]),14)",;
      /* lin da formula*/    15,;
      /* col da formula*/    9;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Nome m‚dico
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Nome m‚dico
      /* form mostrar  */    "LEFT(TRAN(IIF(!EMPT(medico),MEDICOS->nome,SPACE(40)),[]),40)",;
      /* lin da formula*/    14,;
      /* col da formula*/    24;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Especialidade
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Especialidade
      /* form mostrar  */    "LEFT(TRAN(IIF(!EMPT(medico),MEDICOS->oldespec,SPACE(30)),[]),30)",;
      /* lin da formula*/    16,;
      /* col da formula*/    2;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Emiss„o
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Emiss„o
      /* form mostrar  */    "LEFT(TRAN(IIF(EMPT(data),DATE(),data),[@D]),10)",;
      /* lin da formula*/    1,;
      /* col da formula*/    43;
                          };
 )
-AADD(sistema[009,O_FORMULA],{;          // GUIAS - Por
+AADD(sistema[008,O_FORMULA],{;          // GUIAS - Por
      /* form mostrar  */    "LEFT(TRAN(IIF(EMPT(por),M->usuario,por),[]),10)",;
      /* lin da formula*/    1,;
      /* col da formula*/    54;
@@ -2306,3 +2214,4 @@ AADD(sistema[009,O_FORMULA],{;          // GUIAS - Por
 )
 
 * \\ Final de ADR_ATRI.PRG
+

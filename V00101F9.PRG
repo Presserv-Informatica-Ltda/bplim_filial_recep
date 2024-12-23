@@ -1,15 +1,13 @@
-
 procedure v00101f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623.
  \ Programa: V00101F9.PRG
  \ Data....: 03-10-95
  \ Sistema.: Controle de Convˆnios
  \ Funcao..: Valida‡„o da variavel GNUMERO, relatorio CON_R001
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:56:19 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -34,3 +32,4 @@ procedure v00101f9
 RETU .T.      // <- deve retornar um valor L¢GICO
 
 * \\ Final de V00101F9.PRG
+

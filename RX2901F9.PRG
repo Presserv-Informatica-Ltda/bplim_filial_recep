@@ -1,15 +1,13 @@
-
 procedure rx2901f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
  \ Programa: R02901F9.PRG
  \ Data....: 22-09-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: pedido do relat¢rio ADR_R029
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
- \ Convert.: v5.0 em 2021081014:57:51 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -32,3 +30,4 @@ procedure rx2901f9
 RETU M->li_aux       // <- deve retornar um valor qualquer
 
 * \\ Final de R02901F9.PRG
+

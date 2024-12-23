@@ -1,15 +1,13 @@
-
 procedure bxrec
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (19)3452.3712
  \ Programa: BXREC.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador do subsistema de recebimentos
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
- \ Convert.: v5.0 em 2021081014:57:26 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -139,7 +137,7 @@ DO WHIL cabem>0
  SELE BXREC
  GO BOTT                                           // forca o
  SKIP                                              // final do arquivo
-
+ 
  /*
     cria variaveis de memoria identicas as de arquivo, para inclusao
     de registros
@@ -289,7 +287,7 @@ IF RECC()=0                     // se o dbf foi criado agora
  APPEND BLANK                   // os ultomos cps sequenciais
  SELE BXREC
  IF RECC()>0                    // se o DBF nao estiver
-  DBSETORDER(0)                 // retorna ao indice principal
+  SET ORDER TO 0                // vazio, entao enche DBF seq
   GO BOTT                       // com o ultimo reg digitado
   REPL BXR_SEQ->numero WITH numero
   REPL BXR_SEQ->intlan WITH intlan
@@ -358,9 +356,9 @@ i=LEN(sistema[op_sis,O_MENS])/2
 SETCOLOR(drvcortel)
 @ l_s+01,c_s+1 SAY "              Contrato:"
 @ l_s+02,c_s+1 SAY "ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
-@ l_s+03,c_s+1 SAY "                                        ³ Circulares"
-@ l_s+04,c_s+1 SAY "                                        ³  Inicial"
-@ l_s+05,c_s+1 SAY "                            Reg.:       ³  £ltima"
+@ l_s+03,c_s+1 SAY "                                        ³ Dt.Nasc."
+@ l_s+04,c_s+1 SAY "                                        ³ Circular"
+@ l_s+05,c_s+1 SAY "                            Reg.:       ³  Qtdade."
 @ l_s+06,c_s+1 SAY "                                        ³ Admissao"
 @ l_s+07,c_s+1 SAY " Telef.:                                ³ Funerais"
 @ l_s+08,c_s+1 SAY " e-mail:                                ³ Cobrador"
@@ -404,7 +402,7 @@ CRIT("",,"2|18")
 @ l_s+20 ,c_s+51 GET  numop;
                  PICT sistema[op_sis,O_CAMPO,08,O_MASC]
 
-CRIT("",,"1|3|4|5|6|7|8|9|10|11|12|13|14|15|16|19")
+CRIT("",,"1|3|4|5|6|7|8|9|10|11|12|13|14|15|16|19|20")
 CLEAR GETS
 RETU
 
@@ -446,6 +444,7 @@ IF tp_mov=INCLUI
                    MOSTRA sistema[op_sis,O_FORMULA,15]
                    MOSTRA sistema[op_sis,O_FORMULA,16]
                    MOSTRA sistema[op_sis,O_FORMULA,19]
+                   MOSTRA sistema[op_sis,O_FORMULA,20]
 
   @ l_s+17 ,c_s+08 GET  cobranca;
                    PICT sistema[op_sis,O_CAMPO,03,O_MASC]
@@ -537,10 +536,7 @@ IF tp_mov=EXCLUI .OR. tp_mov=FORM_INVERSA
   ENDI
  ENDI
  IF !EMPTY(ALIAS())
-    POE_NO_LOG(tp_mov)
- IF !EMPTY(ALIAS())
   DELE
- ENDI
  ENDI
 ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
  IF (op_menu=INCLUSAO .AND. LASTKEY()!=K_ESC) .OR. op_menu!=INCLUSAO
@@ -683,7 +679,6 @@ ELSEIF tp_mov=INCLUI .OR. tp_mov=RECUPERA .OR. tp_mov=FORM_DIRETA
    ENDI
   #endi
 
-  POE_NO_LOG(tp_mov)
   IF op_menu!=INCLUSAO
    RECA
   ENDI

@@ -1,15 +1,13 @@
-
 procedure adm_rs18
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Presserv Informatica Ltda (19)99886.3225
+ \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
  \ Programa: ADM_RS18.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Recibos (2¦via)
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
- \ Convert.: v5.0 em 2021081014:57:48 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -118,7 +116,7 @@ DO WHILE .t.
     tps:=3                                          // se vai para arquivo/video
  ENDIF
 
- //  Impressora termica de transferencia
+ //  Impressora termica de transferencia  
  ehtermica:=.F.
  IF "BEMA"$UPPER(drvmarca) // Autenticadora Bematech
    ehtermica:=.T.
@@ -181,7 +179,7 @@ BEGIN SEQUENCE
     REL_CAB(1)                                     // soma cl/imprime cabecalho
     @ cl,000 SAY TRAN(numero,"@R 99-999999")       // N§ Recibo
     IMPAC("Cobran‡a:",cl,014)
-    IF !(ehtermica)
+    IF !(ehtermica)    
      IMPCTL(drvpenf)
     ENDIF
     @ cl,026 SAY TRAN(cobranca,[@R 999.999999-9-99999])   // Ref.:
@@ -393,3 +391,4 @@ ENDI
 RETU
 
 * \\ Final de ADM_RS18.PRG
+
