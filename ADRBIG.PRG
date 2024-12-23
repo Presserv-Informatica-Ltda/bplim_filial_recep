@@ -186,7 +186,7 @@ drvcara=CHR(178); mold="ÚÄ¿³ÙÄÀ³ÃÄ´"
 drvmenucen=.f.; drvfonte=1
 drvporta="LPT1"
 drvcortna="GR/N"; drvtittna="W/N"
-nemp="PresServ Inform tica - Limeira (19)3452.3712"
+nemp="PresServ Inform tica - Limeira (19)99886.3225"
 nsis="Administradora - RECEP€„O"
 
 #ifdef COM_MOUSE

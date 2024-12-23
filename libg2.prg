@@ -1745,7 +1745,7 @@ Function Q_TEC(xArg1)
 
    Local xVar1
    poehora()
-   If (Type("acao_mac") = "C")
+   If .F. //(Type("acao_mac") = "C")
       x:= "IN_KEY"
       xVar1:= &x(xArg1)
    Else
