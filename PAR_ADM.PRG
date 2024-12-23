@@ -1,15 +1,18 @@
+
 procedure par_adm
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: PAR_ADM.PRG
  \ Data....: 04-11-03
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Gerenciador do subsistema de parƒmetros
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
+ \ Convert.: v5.0 em 2021081014:58:07 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
+*/
+
 #include "adrbig.ch"    // inicializa constantes manifestas
 
 PARA lin_menu,col_menu
@@ -294,4 +297,3 @@ ENDI
 RETU
 
 * \\ Final de PAR_ADM.PRG
-

@@ -1,13 +1,15 @@
+
 procedure v02002f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: V02002F9.PRG
  \ Data....: 26-05-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Valida‡„o da variavel CONFIRME, relatorio ADM_R020
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:57:51 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -30,4 +32,3 @@ procedure v02002f9
 RETU .t.       // <- deve retornar um valor L¢GICO
 
 * \\ Final de V02002F9.PRG
-

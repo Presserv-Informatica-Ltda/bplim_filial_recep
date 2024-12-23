@@ -1,13 +1,15 @@
+
 procedure adm_rx20
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: ADM_RX20.PRG
  \ Data....: 22-09-97
  \ Sistema.: Administradora - RECEP€„O
  \ Funcao..: Impress„o Aux.Funeral 2
  \ Analista: Ademilson Pedro Bom
- \ Criacao.: GAS-Pro v3.0 
+ \ Criacao.: GAS-Pro v3.0
+ \ Convert.: v5.0 em 2021081014:57:27 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -315,4 +317,3 @@ ENDI
 RETU
 
 * \\ Final de ADM_RX20.PRG
-

@@ -1,13 +1,15 @@
+
 procedure obx_02f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- \ Empresa.: Ind£stria de Urnas Bignotto Ltda
+ \ Empresa.: Presserv Informatica Ltda (19)99886.3225
  \ Programa: BXR_02F9.PRG
  \ Data....: 28-11-95
  \ Sistema.: Administradora de Funer rias
  \ Funcao..: Valor inicial do campo VALORPG, arquivo BXREC
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: Programado manualmente pelo analista
+ \ Convert.: v5.0 em 2021081014:58:28 Fase_01
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 */
 
@@ -23,5 +25,3 @@ RETU 0
 
 
 * \\ Final de BXR_02F9.PRG
-
-
