@@ -54,3 +54,11 @@
 16/04/2013  16:56           985.404 ADRBIG.EXE
                1 arquivo(s)        985.404 bytes
                0 pasta(s)    7.013.384.192 bytes dispon¡veis
+ O volume na unidade F ‚ OS
+ O N£mero de S‚rie do Volume ‚ CEB3-9FB5
+
+ Pasta de F:\pers\bplim_filial_recep
+
+03/09/2013  11:04           986.428 ADRBIG.EXE
+               1 arquivo(s)        986.428 bytes
+               0 pasta(s)    7.012.814.848 bytes dispon¡veis

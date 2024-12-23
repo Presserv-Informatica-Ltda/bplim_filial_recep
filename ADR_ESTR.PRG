@@ -123,7 +123,11 @@ DBCREATE(dbf,{;
                {"atend2"    ,"C", 15, 0},; // @!    ****
                {"ultnraux"  ,"C",  3, 0},; // @!    ****
                {"ultdtaux"  ,"D",  8, 0},; // @!    ****
-               {"ultvlaux"  ,"N", 11, 2};  //
+               {"ultvlaux"  ,"N", 11, 2},; // @!    ****
+               {"email"     ,"C", 50, 0},; //
+               {"segmesref" ,"D",  8, 0},; // @!    ****
+               {"segcodcob" ,"C",  3, 0},; // @!    ****
+               {"segservcod","C",  3, 0};  //       ****
              };
 )
 RETU
@@ -185,7 +189,12 @@ DBCREATE(dbf,{;
                {"tipo"      ,"C",  3, 0},; // !!!
                {"procnr"    ,"C",  7, 0},; // @R 99999/99
                {"por"       ,"C", 10, 0},; // 
-               {"flag_excl" ,"C",  1, 0};  // !
+               {"flag_excl" ,"C",  1, 0},; //
+               {"cpf"       ,"C", 15, 0},; //
+               {"segmesref" ,"D",  8, 0},; // @!    ****
+               {"segpercen" ,"N",  6, 2},; // @!    ****
+               {"segcodcob" ,"C",  3, 0},; // @!    ****
+               {"segservcod","C",  3, 0};  // !
              };
 )
 RETU
