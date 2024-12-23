@@ -61,6 +61,9 @@
  ENDDO
  @ l_s+07, c_s+46 SAY [   ]
  @ l_s+07, c_s+46 SAY TRAN(GRUPOS->qtcircs,[999])
+ IF !EMPT(nrsorteio)
+   @ l_s+10,c_s+20 say [NS:]+nrsorteio
+ ENDIF
  IF !EMPT(GRUPOS->telefone)
   @ l_s+10, c_s+1 SAY [Tel.:]+xDECRIPT(GRUPOS->telefone)
  ENDI

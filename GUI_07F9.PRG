@@ -26,7 +26,7 @@ IF EMPT(VAL(contrato)) //=[000000]
 
  IF PTAB(alltrim(nomx),[GRUPOS],2,.t.)
 	codigo:=contrato:=GRUPOS->codigo
-	codigo:=VDBF(6,3,20,77,'GRUPOS',{'nome','codigo','endereco','tcarencia'},2,'codigo')
+	codigo:=VDBF(6,3,20,77,'GRUPOS',{'nome','codigo','xDECRIPT(endereco)','tcarencia'},2,'codigo')
 	nome:=GRUPOS->nome
   contrato:=M->codigo
 

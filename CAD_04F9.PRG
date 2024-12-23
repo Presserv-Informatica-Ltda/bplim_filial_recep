@@ -32,13 +32,13 @@ IF !(contraux=ultcodmsg)
  endd
  key2press:=substr(key2seek,val(key2press),1)
 
- msg+=[     Tecle <]+key2press+[> para sair|]
-// msg+=[     Tecle algo para sair|]
+// msg+=[     Tecle <]+key2press+[> para sair|]
+ msg+=[     Tecle algo para sair|]
  pressedkey:=[ ]
  do while !(pressedkey=key2press)
   pressedkey:=DBOX(msg,,,,,"ATEN€ŽO! "+usuario," ","!",,)        // avisa ao usuario
   pressedkey:=UPPER(pressedkey)
-//  EXIT
+  EXIT
  endd
  ultcodmsg:=contraux
 endi
