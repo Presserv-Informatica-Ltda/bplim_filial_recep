@@ -1,0 +1,624 @@
+\001 - PARCELAMENTO ------------------------------------
+PARCELAMENTO
+===================================================
+
+*** Plano MA, MB n∆o parcelam
+*** Plano IND, INDFB, ME nao parcelam
+
+Plano Antigo (com Cartinha, Convencional e Vips)
+Parcelamento CJ e CJF
+---------------------
+
+-A recepcionista s¢ poder† fazer parcelamento mediante
+instruá‰es e autorizaá∆o do Depto Respons†vel.
+(c†lculo diferenciado de valores, nro de parcelas,
+carància, se Ç para continuar ou cancelar, etc.). Na
+hip¢tese final, deve ser preenchido um Requerimento
+Especial.
+
+Parcelamento para C4, C5 com 3 ou mais taxas e atraso
+
+-Primeiramente analisar o nro de taxas em aberto e se 
+existe algum outro parcelamento em aberto.
+
+-Verificar a possibilidade do cliente pagar Ö vista
+Caso isso ocorra carància de 30 dias (assinar o termo)
+
+-Verificar a possibilidade do cliente pagar por taxa, 
+ou seja, 2 este màs e o màs que vem deixar em dia.
+Caso isso ocorra dever† avisar da possibilidade do n∆o 
+atendimento em quanto estiver em atraso.
+-N∆o tendo jeito, oferecer o parcelamento.
+
+-O parcelamento s¢ poder† ser feito pelo Titular,Esposa 
+ou um inscrito respons†vel.
+
+-Para clientes que tem parcelamento anterior em aberto
+e por algum motivo est† em atraso, s¢ ser† permitido o 
+re-parcelamento com aprovaá∆o do Depto Respons†vel.
+
+-A parcela emitida no màs do parcelamento dever† ser 
+incluida no acordo, mesmo que n∆o esteja vencida.
+
+-Usar valores das taxas da tabela.
+
+-Todo parcelamento deve ser feito com entrada e a mesma 
+ser anotada como 1a. parcela.
+
+-Todo parcelamento e C8 (durante o periodo do acordo n∆o
+sair† taxa, avisar cliente).
+
+-O parcelamento dever† ser feito em menos parcelas 
+poss°veis, observar tabela abaixo (Para exceá‰es dever† 
+ser autorizado pelo depto respons†vel. 
+
+Nro de taxas vencidas    Limite de parcelas
+	03                          02
+	04                          02
+	05                          03
+	06 ou mais                  04
+    Exceá‰es                    Ligar/MSN
+
+
+-Confirmar a data de vencimento e o endereáo para envio 
+do carnà, bem como o telefone.
+
+-Avisar o cliente sobre a carància de 90 dias,preencher 
+Ficha de Parcelamento da D°vida e Termo de Ciància e 
+Carància, se preferir, fazer c¢pia e deixar uma via na 
+Empresa no setor do Atendimento.
+
+-Enviar fax ou email do acordo o mais r†pido poss°vel, 
+para o envio do carnà.
+
+
+
+Plano IV (020), FBF, FA, FAE, PA, MC, MD
+Parcelamento CJF, CJS, ADV e ADS
+--------------------------------
+
+-A recepcionista s¢ poder† fazer parcelamento mediante
+instruá‰es e autorizaá∆o do Depto Respons†vel.
+(c†lculo diferenciado de valores, nro de parcelas,
+carància, se Ç para continuar ou cancelar, etc.). Na
+hip¢tese final, deve ser preenchido um Requerimento
+Especial.
+
+
+
+Parcelamento para C4, C5 com 3 ou mais taxas e atraso
+
+-Primeiramente analisar o nro de taxas em aberto e se
+existe algum outro parcelamento em aberto.
+
+-Verificar a possibilidade do cliente pagar a vista
+sem juros.
+
+-Caso isso ocorra carància de 60 dias (assinar o termo)
+
+-Verificar a possibilidade do cliente pagar por taxa,
+ou seja, 3 este màs e o màs que vem deixar em dia,
+OBS: fazer ficha da data combinada para liquidaá∆o.
+
+-Caso isso ocorra dever† avisar da possibilidade do n∆o
+atendimento em quanto estiver em atraso.
+
+-Na‰ tendo jeito, oferecer o parcelamento.
+
+-O parcelamento s¢ poder† ser feito pelo Titular,Esposa
+ou um inscrito respons†vel.
+
+-Para clientes que tem um parcelamento anterior em
+aberto e por algum motivo est† em atraso, s¢ ser†
+permitido o re-parcelamento com aprovaá∆o do Depto
+Respons†vel.
+
+-A parcela emitida no màs do parcelamento dever† ser
+inclu°da no acordo, mesmo que n∆o esteja vencida.
+
+-Calcular juros e multa das taxas em aberto. (multa
+de 2% e juros de 1% ao màs sobre as taxas vencidas).
+
+-Todo parcelamento deve ser feito com entrada e a mesma
+ser anotada como 1a. parcela.
+
+-Todo parcelamento Ç C8 (durante o per°odo do acordo
+n∆o sair† taxa, avisar cliente)
+
+-O parcelamento dever† ser feito em menos parcelas
+possiveis, observar tabela abaixo (Para exceá‰es dever†
+ser autorizado pelo depto respons†vel.
+
+
+Nro de taxas vencidas       Limite de parcelas
+        03                          02
+        04                          02
+        05                          03
+        06 ou mais                  04
+     Exceá‰es                    Ligar/MSN
+
+-Confirmar a data de vencimento e o endereáo para envio
+do carnà, bem como o telefone.
+
+-Avisar o cliente sobre a carància de 60 dias, preencher
+Ficha de Parcelamento da D°vida e Termo de Ciància e
+Carància, se preferir, fazer c¢pia e deixar uma via na
+Empresa no setor do Atendimento.
+
+-Enviar fax ou email do acordo o mais r†pido poss°vel,
+para o envio do carnà.
+
+
+
+\002 - 2a.VIA DE CONTRATO ------------------------------
+2a. VIA DE CONTRATO
+=====================================================
+
+-O contrato deve estar rigorosamente em dia; 
+
+-O valor da C¢pia ou 2a. via Ç de R$ 5,00;
+
+-Somente titular ou esposa pode solicitar;
+
+-Identificar a finalidade que ser† usado o contrato;
+Caso seja para o INSS, dever† necessariamente ser c¢pia 
+(xÇrox), ligar/MSN com o respons†vel do setor (Plano 
+Antigo com Silvana, Plano IV com Sabrina) para:
+
+1.Verificar se o contrato est† no arquivo corretamente; 
+2.Verificar prazo de entrega;
+3.Para onde vai a c¢pia: retirar na empresa, entregador 
+  ou correio;
+4.Confirmar endereáo, telefone, etc;
+
+-A recepcionista deve preencher um Requerimento Especial 
+com o pedido de C¢pia ou 2a. via Contrato, anotar o 
+motivo e demais detalhes combinado com o Depto Respon-
+s†vel e passar fax/e-mail do Requerimento para que 
+possa ser providenciado;
+
+-Caso seja para outra finalidade, dever† seguir os
+mesmos procedimentos.
+
+-Para contratos em condiá∆o de ADS temos disponivel
+somente a c¢pia do Contrato
+
+\003 - 2a.VIA DE CARNE IV, MC, MD, ME ------------------
+
+2a.VIA DE CARN“ IV, MC, MD, ME
+======================================================
+
+-Sempre entrar em contato com o Depto Respons†vel para 
+que seja verificado o protocolo de entrega;
+
+-Caso conste assinatura no protocolo, ser† cobrado o
+valor de R$ 3,00 (receber em outros recebimentos);
+
+-Para solicitar a 2a. via, o plano deve estar rigorosa-
+mente em dia, incluindo a taxa do màs corrente;
+
+-Dever† ser preenchida a Ficha de Atualizaá∆o Cadastral,
+conforme regras (parte de cima, parte de baixo) e na 
+observaá∆o, especificar quais taxas foram pagas na 
+recepá∆o e a partir de qual Ç para enviar a 2a. via 
+(dever† estar bem claro);
+
+-Anotar onde deve ser entregue o carnà (no endereáo,
+
+retirar na empresa, etc.);
+
+-Imediatamente finalizado o processo, enviar fax/e-mail
+para o Depto Respons†vel o mais r†pido poss°vel.
+
+
+\004 - ABERTURA DE AUXILIO / RESTITUICAO ---------------
+ABERTURA DE AUXILIO / RESTIRUIÄ«O
+====================================================
+
+-Muita atená∆o nas tarjas iniciais, pois Ç a £nica
+maneira de diferenciar TIPOS de contratos e regras.
+
+-Contrato com tarja de Suspens∆o N∆o tem direito a
+Aux/Restituiá∆o.
+OBS:Verifique na tarja se o tipo de contrato d† Direito 
+a Aux°lio/Restituiá∆o. Caso n∆o de Direito, explicar ao 
+cliente a cl†usula, direito somente ao atendimento;
+
+Planos IV-Plano Azul, FFA, FFAE, FFB, Inde Ind FB,
+N∆o da direito Ö Restituiá∆o.
+
+-Somente o titular ou esposa pode dar entrada no
+Aux°lio/Restituiá∆o, no dia do recebimento somente o 
+titular poder† receber,quando o titular for falecido(a),
+tem que apresentar a Certid∆o de ‡bito,esposa(o) assina
+o Termo de Responsabilidade e da sequància ao 
+procedimento;
+
+-O falecido tem que estar inscrito no contrato, fora da 
+carància na data do falecimento e dentro do prazo do 
+contrato (Ver abaixo, documentos necess†rios);
+
+-O contrato tem que estar em dia;
+
+-Caso esteja em atraso, n∆o receber na recepá∆o, dever†
+ligar para o departamento para ver o contrato e ver a 
+possibilidade de liberar a abertura do aux°lio/resti-
+tuiá∆o (Ver se a documentaá∆o da fam°lia est† correta);
+
+OBS: Quando o cliente tem um contrato e deve um parcela-
+mento(mesmo em dia),Ç OBRIGAT‡RIO, a quitaá∆o, desse 
+parcelamento, para abertura Aux°lio/Restituiá∆o 
+(verificar tarja e tipo de contrato);
+
+-Caso ocorra algum problema de entendimento do cliente,
+dever† pedir informaá‰es do Departamento, ou preencher 
+Requerimento Especial.
+ 
+
+
+PLANO CONVENCIONAL: Documentos Necess†rios:
+-----------------------------------------------------
+
+-Certid∆o de ‡bito (OBRIGAT‡RIO);
+
+-Documento do falecido,Certid∆o de Nascimento/Casamento,
+RG, CPF (OBRIGAT‡RIO);
+
+-Nota Fiscal, "N«O" precisa estar em nome do TITULAR,
+mesmo quando a empresa do grupo atender, tem que ser
+solicitado;
+
+-Prazo, atÇ 60 dias para dar entrada a contar da data
+do falecimento;
+
+-Somente o titular ou esposa pode dar entrada, mas, na
+data do recebimento tem que ser o titular;
+
+OBS: 60 dias Ç um tempo mÇdio, caso necessite, veremos
+o contrato.
+
+-Os aux°lios s¢ ser∆o pagos sobre o valor do funeral
+(Urna, vÇu, velas), n∆o de complementaá∆o (Coroa, 
+tanatopraxia, Km...);
+
+-Valor a ser pago consultar tabela ou tarja.
+
+-SEMPRE XEROX, lembre-se esses documentos ficar∆o na
+empresa, por tempo INDETERMINADO, original pertence 
+Ö fam°lia:
+
+
+
+PLANO VIPs: Documentos Necess†rios:
+-----------------------------------------------------
+
+
+-Certid∆o de ‡bito (OBRIGAT‡RIO);
+
+-Documento do falecido,Certid∆o de Nascimento/Casamento,
+RG, CPF (OBRIGAT‡RIO);
+
+-Nota Fiscal, "N«O" precisa estar em nome do TITULAR,
+
+-Prazo, atÇ 30 dias para dar entrada a contar da data
+do falecimento;
+
+-Somente o titular ou esposa pode dar entrada, mas, na
+data do recebimento tem que ser o titular;
+
+-Os aux°lios s¢ ser∆o pagos sobre o valor do funeral
+(Urna, vÇu, velas), n∆o de complementaá∆o (Coroa, 
+tanatopraxia, Km...);
+
+-Valor a ser pago consultar tabela ou tarja.
+-SEMPRE XEROX, lembre-se esses documentos ficar∆o na 
+empresa, por tempo INDETERMINADO, original pertence 
+Ö fam°lia:
+
+
+
+
+PLANO MA, MB, MC, MD, ME, IV: Documentos Necess†rios:
+-----------------------------------------------------
+
+-Certid∆o de ‡bito (OBRIGAT‡RIO);
+
+-Documento do falecido,Certid∆o de Nascimento/Casamento,
+RG, CPF (OBRIGAT‡RIO);
+
+-Nota Fiscal da empresa que atendeu o funeral sendo
+OBRIGAT‡RIO em nome do titular ou esposa;
+
+OBS:
+S¢ pagaremos Restituiá∆o quando o atendimento for feito
+por OUTRA EMPRESA (N∆o do nosso Grupo) e em cidade onde 
+n∆O podemos atender, por proibiá∆o ou por ser muito 
+DISTANTE.
+
+-Prazo de atÇ 30 dias para dar entrada a contar da data
+do falecimento;
+
+-Somente o titular ou esposa pode dar entrada, mas, na
+data do recebimento tem que ser o titular;
+
+-A Restituiá∆o s¢ ser† paga sobre o valor do funeral
+(Urna, vÇu, velas), N«O de complementaá∆o (Coroa, 
+tanatopraxia, Km...);
+
+-Valor a ser pago consultar tabela ou tarja.
+
+-SEMPRE XEROX, lembre-se esses documentos ficar∆o na
+empresa, por tempo INDETERMINADO, original pertence 
+† fam°lia:
+
+\005 - CANCELAMENTO DE CONTRATO ------------------------
+CANCELAMENTO DE CONTRATO 
+=======================================================
+
+Para qualquer tipo de Plano
+
+
+-S¢ tem autoridade para cancelamento o titular ou esposa
+(se precisar de exceá‰es, ligar para o departamento).
+
+-Perguntar o motivo, dificultar o cancelamento, tentar
+reverter a situaá∆o (transferir, parcelar, vender um 
+novo, etc)
+
+-Caso n∆o consiga reverter, analisar se o contrato tem
+ou n∆o utilizaá∆o aux./funeral.
+
+a) se n∆o tem utilizaá∆o e est† em dia (necessariamente)
+a recepcionista poder† cancelar tranquilamente apenas 
+colhendo a assinatura do titular ou esposa, 
+(obrigatoriamente), no termo de cancelamento e recolher
+o material da empresa.
+
+b) Caso tenha utilizaá∆o ligar para o departamento 
+para c†lculo e autorizaá∆o.
+
+Obs.: ê importante a recepcionista saber se o cliente 
+conhece as regras de cancelamento.
+
+       
+\006 - ATUALIZACAO DE ENDERECO -------------------------
+ATUALIZAÄ«O DE ENDEREÄO 
+======================================================
+
+Para qualquer tipo de Plano 
+
+
+-Preenchimento da ficha de atualizaá∆o;  parte de cima 
+(Obrigat¢rio): Data , Quem anotou, Empresa, Titular 
+(nome completo), Tipo/Grupo, Nro de Contrato 
+
+-Para alteraá∆o de endereáo fazer os demais preenchi-
+mentos endereáo correto, nro, bairro, cidade, etc,
+completamente.
+
+-Jamais esquecer de anotar a Opá∆o de Cobranáa, colocar
+tambÇm na Obs se o cliente, no momento que alterou o 
+endereáo pagou algo, que circ/parc foram pagas e tambÇm 
+n∆o esquecer de colher a assinatura do cliente. 
+
+-Jamais colher endereáo faltando dados, Ex: sem o nro da
+casa, bairro, etc.,O endereáo tem quer ser confi†vel.
+
+
+-Preenchimento da Ficha de Atualizaá∆o; Parte de baixo 
+(Obrigat¢rio): Dados obtidos atravÇs de, Quem passou 
+os dados, Parentesco e Visto Func.
+
+-Dependendo da situaá∆o a alteraá∆o de Endereáo pode ser 
+feita por um filho ou qualquer outra pessoa.
+
+                   
+\007 - INCLUSAO, TROCA DEP E FILHOS -------------------
+INCLUS«O, EXCLUS«O OU TROCA DE INSCRITOS
+=======================================================
+
+-S¢ Ç permitido ao Titular ou Esposa as alteraá‰es de
+Inscritos.
+                                        
+
+Dependentes:
+------------
+
+A- Planos MA,MB,MC,ME
+N∆o existe cl†usula sobre dependentes, N«O Ç permitido
+colocar.
+
+B- Planos FA,FFB,FFAE,IV-PL AZUL
+Seguir as instruá‰es da tarja, caso haja d£vidas ligar
+para depto e ver diretamente o contrato.
+
+C- Planos Conv ou VIP:
+Autoriza colocar atÇ (no m†ximo) 2 dependentes (exceá‰es
+autorizaá∆o do Depto).
+
+* Para troca ou inclus∆o dever† analisar a idade do novo
+dependente, n∆o poder† ter mais de 50 anos (exceá‰es
+autorizaá∆o do Depto).
+
+* Caso troca ou inclus∆o feita, aplicar a carància para
+o novo dependente (Plano Convencional/Vip de 30 dias)
+
+D- Planos IV,IVE 
+Autoriza colocar atÇ (no m†ximo) 2 dependentes (exceá‰es
+autorizaá∆o do Depto).
+
+* Para troca ou inclus∆o dever† analisar a idade do novo
+dependente, n∆o poder† ter mais de 50 anos (exceá∆es
+autorizaáao do Depto).
+
+* Caso troca ou inclus∆o feita, aplicar a carància para
+o novo dependente (plano IV/IVE de 90 dias).
+
+E- Planos MD
+ê autorizado colocar atÇ 2 deps (atÇ 60 anos) pagando um
+adicional por cada dependente.
+
+* Ligar para o depto para instruá‰es sobre valor
+adicional, novo carnà e carància (90 dias) Ver tabela.
+
+
+
+Filhos:
+---------
+
+-S¢ Ç permitido ao Titular ou Esposa a inclus∆o de filho
+no contrato. (Toda inclus∆o dever† ser apresentado a
+c¢pia da certid∆o de nascimento)
+
+A- Planos MA,MB,MC,MD,ME
+Autoriza a inclus∆o de filhos solteiros com idade
+inferior Ö 35 anos.
+Obs: no plano MD a inclus∆o do filho deve ser feita atÇ
+60 dias do nascimento,ap¢s sofrer† carància de 90 dias
+
+B- Plano IV 
+Autoriza a inclus∆o de filhos leg°timos ou legalmente
+reconhecidos independente do estado civil ou idade.
+
+C- Planos Conv ou Vip
+Autoriza a inclus∆o de filhos leg°timos ou legalmente
+reconhecidos independente do estado civil ou idade.
+
+
+\008 - VENDA DE CONTRATO NA RECEPCAO -------------------
+VENDA DE CONTRATO NA RECEPÄ«O
+=====================================================
+
+Passos necess†rios:
+
+Iniciando:
+-------------
+
+-Qualquer indicaá∆o de vendas dever† ser passada para o
+Depto de Vendas e nunca diretamente para algum Vendedor.
+
+-Antes de efetuar a venda, ver no sistema se j† n∆o
+possui um contrato em CJ, ZZ, etc.
+
+-Caso isso aconteáa, analisar o contrato existente,
+caso tenha utilizado e em atraso ou outro problema que
+impeáa o cancelamento, ligar para o Depto de Cobranáa
+para saber quais os procedimentos a serem tomados e n∆o
+efetuar nova venda.
+
+-Jamais vender para pessoas que moram em outros estados
+ou cidades que n∆o sejam vizinhas e que podemos atender.
+
+-Jamais vender contrato para Titular que n∆o tenha CPF,
+Ç obrigat¢rio apresentar o documento.
+
+
+Venda e explicaá∆o do Contrato:
+-------------------------------
+
+-Inicia a venda informando sobre os Tipos de Contratos,
+analisando aquele que melhor enquadraria para aquele
+cliente, em nro de inscritos, nro de dependentes,idades
+permitidas, valores, com ou sem seguro de vida, etc.
+
+-Explicar sobre o Atendimento Funer†rio, direitos do
+cliente; tipo de urna, ornamentaá∆o, montagem da cÉmara
+ardente, kit copa cozinha, documentaá∆o, necrologia,
+quilometragem e a disponibilidade durante o per°odo de
+vel¢rio.
+
+-Explicar sobre itens n∆o inclusos no Contrato, como:
+coroa de flores, jazigos e a abertura deles, ìnibus,
+sepultamento de membros amputados e diferenáa de urnas
+mortu†ria (padr∆o superior), etc. e que esse itens
+correr∆o por conta do cliente.
+
+-Com intuito de direcionar Ö algum Tipo de Plano,
+dever† explicar sobre as pessoas inscritas, idades e
+carància (90 dias ou 24hs), inclusive quando troca,
+n∆o deixando nenhuma d£vida ao cliente.
+
+-Limite de idade para Titular ou conjuge:
+   IV e MD  - 65 anos
+   ME       - 60 anos
+
+-Muito importante explicar que, caso ocorra a morte de
+algum inscrito, mesmo o contrato estando na carància,
+dever† procurar sempre alguma empresa Bom Pastor.
+
+-Explicar sobre os valores, mensais, bimestrais e os
+devidos reajustes anuais pelo IGPM ou INPC.
+
+-Explicar, caso esteja em atraso, cumprir† nova carància
+(automaticamente) e o ideal Ç sempre pagar antecipado.
+
+-Explicar que, ap¢s o falecimento do titular do plano,
+a esposa, filhos ou dependentes dever∆o dar continuidade
+ao mesmo.
+
+-Conforme perguntado dever† fazer explicaá‰es sobre;
+rescis∆o contratual, tempo do contrato, forma de paga-
+mento, endereáo atualizado, etc.
+
+-Explicar sobre a restituiá∆o,quando n∆o podemos atender
+(seja impedido legalmente ou muito distante), as regras
+sobre os documentos necess†rios, Nota Fiscal em nome do
+Tit ou Esposa, etc.
+
+-Escolhido o Tipo de Plano, atravÇs dos folders da
+Empresa, informar dos benef°cios em vida, materiais
+convalescenáia, descontos em seguros pela nossa
+seguradora (Proteá∆o Geral), etc. e para utiliz†-los
+dever† estar rigorosamente em dia com o contrato.
+
+-Informar sobre o p¢s vendas.
+
+
+
+Preenchimento do contrato:
+--------------------------
+
+-N∆o Ç permitido contrato rasurado e nem o uso de
+corretivos.
+
+-Jamais preencher inscritos sem sobrenome.
+
+-Para inclus∆o de filho adotivo, Ç necess†rio o termo
+de guarda.
+
+-Contrato sem carància por algum motivo, dever† ligar
+para o Depto de Vendas e se informar de como fazer as
+devidas observaá‰es.
+
+-Contrato com exceá‰es; idade, nro de dependentes, etc.
+dever† ligar para o Depto de Vendas para pedir
+autorizaá∆o e se informar de como fazer as devidas
+observaá‰es.
+
+-Atentar-se para o preenchimento total do formul†rio
+de P¢s Vendas.
+
+-Preencher sempre com letra leg°vel e nunca esquecer
+de colher as devidas assinaturas
+
+
+
+\009 - PAGAMENTO EM DUPLICIDADE -----------------------
+PAGAMENTO DE TAXA OU PARC EM DUPLICIDADE PELO CLIENTE
+======================================================
+
+-Caso o Cliente compareáa h† uma Recepá∆o dizendo que 
+pagou duas vezes a mesma taxa, fazer o seguinte:
+
+1. O cliente dever† ter em m∆os os dois recibos pagos,
+sendo eles da mesma parcela ou circular.
+
+2. Confirmado, a recepcionista dever† recolher o 
+recibo recebido pelo cobrador ou banco, assinalar no
+mesmo "DEVOLUÄ«O" e devolver o valor para o cliente.
+
+3. Colocar o recibo recolhido no caixa no lugar do
+dinheiro.
+
+
+\000

@@ -1749,7 +1749,7 @@ Function Q_TEC(xArg1)
       x:= "IN_KEY"
       xVar1:= &x(xArg1)
    Else
-      xVar1:= inky(xArg1)
+      xVar1:= inkey(xArg1)
    EndIf
    Return xVar1
 
