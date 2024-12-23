@@ -159,12 +159,6 @@ BEGIN SEQUENCE
     @ cl,044 SAY TRAN(LEFT(complement,20),"@!")             // Complemento de Hist¢rico
     @ cl,065 SAY DTOC(ORDPGRC->fechto_)
     chv026=numop
-    IF EMPT(fechto_)         // se atender a condicao...
-      do while !rlock()
-      endd
-      REPL fechto_ with DATE(), fechpor with M->usuario
-    ENDIF
-
     SELE BXREC
     SEEK chv026
     IF FOUND()
@@ -275,29 +269,26 @@ IF tps=2                                           // se vai para arquivo/video
  BROWSE_REL(arq_,2,3,MAXROW()-2,78)
 ENDI          // mostra o arquivo gravado
 GRELA(12)                                          // grava variacao do relatorio
+msgp="PROCESSAMENTOS DO RELAT¢RIO|FECHAMENTO CAIXA"
+POE_GAUGE("Processando registros","AGUARDE!","Feitos:")
+SET(_SET_DELETED,.t.)                              // os excluidos nao servem...
+SELE ORDPGRC                                       // processamentos apos emissao
+INI_ARQ()                                          // acha 1o. reg valido do arquivo
+DO WHIL !EOF().AND.POE_GAUGE().AND.!(ehsegvia=[S])
+ IF numconta==M->nrconta.AND.EMPT(fechto_)         // se atender a condicao...
 
- msgp="PROCESSAMENTOS DO RELAT¢RIO|FECHAMENTO CAIXA"
-IF .F. 
- POE_GAUGE("Processando registros","AGUARDE!","Feitos:")
- SET(_SET_DELETED,.t.)                              // os excluidos nao servem...
- SELE ORDPGRC                                       // processamentos apos emissao
- INI_ARQ()                                          // acha 1o. reg valido do arquivo
- DO WHIL !EOF().AND.POE_GAUGE().AND.!(ehsegvia=[S])
-  IF numconta=M->nrconta.AND.EMPT(fechto_)         // se atender a condicao...   
-
-    IF EMPT(fechto_)
-     do while !rlock() 
+   IF EMPT(fechto_)
+    do while !rlock()
 	endd
-     REPL fechto_ with DATE(), fechpor with M->usuario
-    ENDI
+    REPL fechto_ with DATE(), fechpor with M->usuario
+   ENDI
 
-   SELE ORDPGRC                                     // volta ao arquivo pai
-   SKIP                                             // pega proximo registro
-  ELSE                                              // se nao atende condicao
-   SKIP                                             // pega proximo registro
-  ENDI
- ENDD
-ENDIF
+  SELE ORDPGRC                                     // volta ao arquivo pai
+  SKIP                                             // pega proximo registro
+ ELSE                                              // se nao atende condicao
+  SKIP                                             // pega proximo registro
+ ENDI
+ENDD
 SET(_SET_DELETED,.f.)                              // os excluidos serao vistos
 SELE BXREC                                         // arquivo origem do processamento
 

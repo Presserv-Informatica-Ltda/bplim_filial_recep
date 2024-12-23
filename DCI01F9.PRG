@@ -14,9 +14,9 @@ procedure dci01f9
 #include "adrbig.ch"    // inicializa constantes manifestas
 priva donedci:=[]
 IF tipdoc=[BXR]
- donedci:=VDBF(6,20,20,77,'BXREC',{'ano','numero','codigo','tipo','circ','valorpg','emitido_'},1,'DCI02F9([BXR])',[])
+ donedci:=VDBF(6,20,20,77,'BXREC',{'numero','cobranca','valorpg','emitido_'},1,'DCI02F9([BXR])',[])
 ELSEIF tipdoc=[OBX]
- donedci:=VDBF(6,4,20,77,'OBXEC',{'ano','numero','codigo','ref','valorpg','emitido_'},1,'DCI02F9([OBX])',[])
+ donedci:=VDBF(6,4,20,77,'OBXEC',{'numero','ref','valorpg','emitido_'},1,'DCI02F9([OBX])',[])
 ELSEIF tipdoc=[AFU]
  donedci:=VDBF(6,3,20,77,'AFUNER',{'processo','proc2','filial','ocorr_','categ','contrato','falecido'},1,'DCI02F9([AFU])',[])
 ELSEIF tipdoc=[BXF]
@@ -37,9 +37,9 @@ RETU M->donedci       // <- deve retornar um valor qualquer
 FUNCTION dci02f9
 PARA doneaux
 IF doneaux=[BXR]
- RETU BXREC->ano+BXREC->numero
+ RETU BXREC->numero
 ELSEIF doneaux=[OBX]
- RETU OBXEC->ano+OBXEC->numero
+ RETU OBXEC->numero
 ELSEIF doneaux=[AFU]
  RETU AFUNER->processo+AFUNER->proc2+AFUNER->filial
 ELSEIF doneaux=[BXF]

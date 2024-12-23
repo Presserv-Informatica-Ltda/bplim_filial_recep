@@ -9,8 +9,7 @@ procedure dci_p001
  \ Analista: Ademilson Pedro Bom
  \ Criacao.: GAS-Pro v4.0n
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-*/
-#include "adrbig.ch"    // inicializa constantes manifestas
+*/#include "adrbig.ch"    // inicializa constantes manifestas
 
 PRIV dele_atu, cur_atual, getlist:={}
 PARA lin_menu, col_menu
@@ -30,8 +29,8 @@ DO WHILE .t.
  cod_sos=56
  SET KEY K_ALT_F8 TO ROLATELA
  SETCOLOR(drvcortel+","+drvcorget+",,,"+corcampo)
- IMP_FORM({"LEFT(TRAN(DCI03F9(M->tipdoc),[]),35)", 1 , 14 })
- IMP_FORM({"LEFT(TRAN(DCI04F9(M->tipdoc),[]),50)", 3 , 2 })
+// IMP_FORM({"LEFT(TRAN(DCI03F9(M->tipdoc),[]),35)", 1 , 14 })
+// IMP_FORM({"LEFT(TRAN(DCI04F9(M->tipdoc),[]),50)", 3 , 2 })
  @ l_s+01 ,c_s+10 GET  tipdoc;
                   PICT "!!!";
                   WHEN "MTAB([BXR-Recebimentos|OBX-Outros recebimentos|AFU-Aux¡lio Funeral],[TIPO])"
