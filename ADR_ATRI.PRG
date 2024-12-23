@@ -726,7 +726,7 @@ sistema[004]={;
             {"GRUPOS1","GRUPOS2"},;                         // nomes dos NTX
             {"TAXAS","ECOB","INSCRITS"},;                   // nome dos dbf's relacionados
             {},;                                            // campos de relacionamento
-            {1,1,2,3,20,77},;                               // num telas/tela atual/coordenadas
+            {1,1,1,3,22,77},;                               // num telas/tela atual/coordenadas
             {1,.t.,.f.},;                                   // nivel acesso/tp chave/pede dir
             {},;                                            // campos do arquivo
             {},;                                            // formula mostradas
@@ -1195,6 +1195,86 @@ AADD(sistema[004,O_CAMPO],{;            // GRUPOS
      /* help do campo */    "Segunda opcao";
                          };
 )
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "",;
+     /* titulo        */    "Ult.Emitida",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "I",;
+     /* help do campo */    "";
+                         };
+)
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "@D",;
+     /* titulo        */    "Ult.Data",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "I",;
+     /* help do campo */    "";
+                         };
+)
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "@R 999,999.99",;
+     /* titulo        */    "Ult.Valor",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "I",;
+     /* help do campo */    "";
+                         };
+)
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "",;
+     /* titulo        */    "eMail",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "",;
+     /* help do campo */    "Entre com o endereco de email.";
+                         };
+)
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "",;
+     /* titulo        */    "SeguroData",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "",;
+     /* help do campo */    "Entre com a data da admissao do seguro.";
+                         };
+)
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "",;
+     /* titulo        */    "SeguroCod",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "",;
+     /* help do campo */    "Entre com o Cod.Seguro.";
+                         };
+)
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "",;
+     /* titulo        */    "SeguroServ",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "",;
+     /* help do campo */    "Entre com o Serv.Seguro.";
+                         };
+)
+AADD(sistema[04,O_CAMPO],{;            // GRUPOS
+     /* mascara       */    "",;
+     /* titulo        */    "NrSorteio",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "",;
+     /* help do campo */    "Entre com o Numero Sorteio.";
+                         };
+)
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Situacao
      /* form mostrar  */    "LEFT(TRAN(IIF(situacao=[2],[CANCELADO],[         ]),[]),09)",;
      /* lin da formula*/    1,;
@@ -1257,13 +1337,13 @@ AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Ult.Impress.
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - Èlt.alter.ender
      /* form mostrar  */    "LEFT(TRAN(ender_,[@D]),10)",;
-     /* lin da formula*/    17,;
+     /* lin da formula*/    18,;
      /* col da formula*/    17;
                          };
 )
 AADD(sistema[004,O_FORMULA],{;          // GRUPOS - UltEnd
      /* form mostrar  */    "LEFT(TRAN(ultend,[]),10)",;
-     /* lin da formula*/    17,;
+     /* lin da formula*/    18,;
      /* col da formula*/    28;
                          };
 )
@@ -1816,6 +1896,56 @@ AADD(sistema[007,O_CAMPO],{;            // INSCRITS
      /* pre-validacao */    "",;
      /* validacao     */    "I",;
      /* help do campo */    "";
+                         };
+)
+AADD(sistema[07,O_CAMPO],{;            // INSCRITS
+     /* mascara       */    "@R 999.999.999-99",;
+     /* titulo        */    "CPF",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "VDV2(cpf).OR.EMPT(cpf)~CPF n∆o aceit†vel",;
+     /* help do campo */    "Informe o CIC (CPF) do titular";
+                         };
+)
+AADD(sistema[07,O_CAMPO],{;            // INSCRITS
+     /* mascara       */    "",;
+     /* titulo        */    "SeguroData",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "",;
+     /* help do campo */    "Entre com a data da admissao do seguro.";
+                         };
+)
+AADD(sistema[07,O_CAMPO],{;            // INSCRITS
+     /* mascara       */    "",;
+     /* titulo        */    "Seg.Porcentagem",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "",;
+     /* help do campo */    "Entre com o Cod.Seguro.";
+                         };
+)
+AADD(sistema[07,O_CAMPO],{;            // INSCRITS
+     /* mascara       */    "",;
+     /* titulo        */    "SeguroCod",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "",;
+     /* help do campo */    "Entre com o Cod.Seguro.";
+                         };
+)
+AADD(sistema[07,O_CAMPO],{;            // INSCRITS
+     /* mascara       */    "",;
+     /* titulo        */    "SeguroServ",;
+     /* cmd especial  */    "",;
+     /* default       */    "",;
+     /* pre-validacao */    "",;
+     /* validacao     */    "",;
+     /* help do campo */    "Entre com o Serv.Seguro.";
                          };
 )
 AADD(sistema[007,O_FORMULA],{;          // INSCRITS - graupart
