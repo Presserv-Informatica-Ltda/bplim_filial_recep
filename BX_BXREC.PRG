@@ -1,3 +1,4 @@
+procedure bx_bxrec
 para nrdays
 if pcount()<1
  nrdays:=[20]
@@ -46,3 +47,4 @@ do while .not. eof()
  skip
 enddo
 
+

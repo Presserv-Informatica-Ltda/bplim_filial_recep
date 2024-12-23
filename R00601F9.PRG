@@ -1,3 +1,4 @@
+procedure r00601f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -60,3 +61,4 @@
 RETU 0   // <- deve retornar um valor CARACTER
 
 * \\ Final de R00601F9.PRG
+

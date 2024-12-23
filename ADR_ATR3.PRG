@@ -1,3 +1,4 @@
+procedure adr_atr3
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Ind£stria de Urnas Bignotto Ltda
@@ -1163,3 +1164,4 @@ AADD(sistema[36,O_CAMPO],{;            // SENHAS
 )
 
 * \\ Final de ADR_ATR3.PRG
+

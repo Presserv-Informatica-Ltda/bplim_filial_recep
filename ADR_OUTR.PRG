@@ -1,3 +1,4 @@
+procedure adr_outr
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -368,3 +369,4 @@ return xCRIPTOGRAFA(caracteres, 'bompastor', .t.)
 function xdecript(caracteres)
 return xCRIPTOGRAFA(caracteres, 'bompastor', .f.)
 
+

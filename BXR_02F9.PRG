@@ -1,3 +1,4 @@
+procedure bxr_02f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Ind£stria de Urnas Bignotto Ltda
@@ -35,3 +36,4 @@ RETU IIF(EMPT(TAXAS->valorpg),TAXAS->valor+M->vladd,0)
 * \\ Final de BXR_02F9.PRG
 
 
+

@@ -1,3 +1,4 @@
+procedure adp_p007
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -204,3 +205,4 @@ PRIV dataux, diaaux
 RETU M->dataux      // <- deve retornar um valor DATA
 
 * \\ Final de P00801F9.PRG
+

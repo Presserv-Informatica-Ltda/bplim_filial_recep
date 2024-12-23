@@ -1,3 +1,4 @@
+procedure tax_02f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -27,3 +28,4 @@ ENDC
 RETU [        ]       // <- deve retornar um valor qualquer
 
 * \\ Final de TAX_02F9.PRG
+

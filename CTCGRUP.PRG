@@ -1,3 +1,4 @@
+procedure ctcgrup
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -116,3 +117,4 @@ CLOSE ALL                                          // fecha todos os arquivos e
 RETU                                               // volta para o menu anterior
 
 * \\ Final de CTCGRUP.PRG
+

@@ -1,3 +1,4 @@
+procedure adr_atri
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -55,7 +56,7 @@ AADD(sistema[001,O_CAMPO],{;            // BXREC
      /* cmd especial  */    "VDBF(6,3,20,77,'GRUPOS',{'codigo','grupo','nome','endereco'},1,'codigo',[])",;
      /* default       */    "",;
      /* pre-validacao */    "",;
-     /* validacao     */    "(BXR_07F9().AND.PTAB(ALLTRIM(codigo),[GRUPOS])).AND.(PTAB(codigo,'TAXAS',1).OR.1=1).AND.CAD_04F9(op_menu)~Contrato inv lido |ou inexistente",;
+     /* validacao     */    "(BXR_07F9().AND.PTAB(ALLTRIM(codigo),[GRUPOS])).AND.(PTAB(codigo,'TAXAS',1).OR.(1=1)).AND.CAD_04F9(op_menu)~Contrato inv lido |ou inexistente",;
      /* help do campo */    "Informe o n£mero do contrato";
                          };
 )
@@ -2189,3 +2190,4 @@ AADD(sistema[008,O_FORMULA],{;          // GUIAS - Por
 )
 
 * \\ Final de ADR_ATRI.PRG
+

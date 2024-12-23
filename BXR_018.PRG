@@ -1,3 +1,4 @@
+procedure bxr_018
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Ind£stria de Urnas Bignotto Ltda
@@ -28,3 +29,4 @@ ADM_R018(3,10)
 RETU
 
 * \\ Final de BXR_018.PRG
+

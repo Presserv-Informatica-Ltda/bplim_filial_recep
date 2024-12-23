@@ -1,3 +1,4 @@
+procedure gui_08f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -41,3 +42,4 @@ respx:=medico
 retu PTAB(respx,[MEDICOS],1)  // <- deve retornar um valor qualquer
 
 * \\ Final de GUI_02F9.PRG
+

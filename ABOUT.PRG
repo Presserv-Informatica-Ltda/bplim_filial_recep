@@ -1,3 +1,4 @@
+procedure about
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -42,3 +43,4 @@ INKEY(25)
 RETU
 
 * \\ Final de ABOUT.PRG
+

@@ -1,3 +1,4 @@
+procedure gui_03f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -24,3 +25,4 @@
 RETU       // <- deve retornar um valor qualquer
 
 * \\ Final de GUI_03F9.PRG
+

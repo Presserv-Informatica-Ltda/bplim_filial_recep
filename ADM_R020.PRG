@@ -1,3 +1,4 @@
+procedure adm_r020
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -327,3 +328,4 @@ FUNC R02BP1F9()
  ENDD
  cl:=56
 RETU [ ]       // <- deve retornar um valor qualquer
+

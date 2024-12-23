@@ -1,3 +1,4 @@
+procedure r06601f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -21,3 +22,4 @@ M->doneimp:=doneimp .AND.(M->rcod2='000000'.OR.codigo<=M->rcod2)
 RETU M->doneimp       // <- deve retornar um valor L¢GICO
 
 * \\ Final de R06601F9.PRG
+

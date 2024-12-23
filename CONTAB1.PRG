@@ -1,3 +1,4 @@
+procedure contab1
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -586,3 +587,4 @@ SETPOS(MAXROW()-1,1)                               // e cursor na penultima linh
 RETU                                               // volta ao DOS
 
 * \\ Final de ADRBIG.PRG
+

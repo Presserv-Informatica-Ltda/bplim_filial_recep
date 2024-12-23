@@ -1,3 +1,4 @@
+procedure adr_func
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -3020,3 +3021,4 @@ ENDI
 RETU (p_m>0 .AND. p_b>0)           // retorna .t. se relacionou
 
 * \\ Final de ADR_FUNC.PRG
+

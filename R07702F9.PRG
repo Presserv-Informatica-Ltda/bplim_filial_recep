@@ -1,3 +1,4 @@
+procedure r07702f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -26,3 +27,4 @@ ENDI
 RETU IIF(EMPT(TAXAS->valorpg),TAXAS->valor+M->vladd,TAXAS->valorpg)
 
 * \\ Final de R07702F9.PRG
+

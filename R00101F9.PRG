@@ -1,3 +1,4 @@
+procedure r00101f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -27,3 +28,4 @@ msgaux+=[Nao dando o direito a cirurgias, internacoes, entre outros]
 RETU       // <- deve retornar um valor qualquer
 
 * \\ Final de R00101F9.PRG
+

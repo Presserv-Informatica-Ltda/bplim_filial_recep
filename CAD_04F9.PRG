@@ -1,3 +1,4 @@
+procedure cad_04f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Ind£stria de Urnas Bignotto Ltda
@@ -118,3 +119,4 @@ ENDD
 RETU .t.  // <- deve retornar um valor L¢GICO
 
 * \\ Final de CAD_04F9.PRG
+

@@ -1,3 +1,4 @@
+procedure r08703f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -32,3 +33,4 @@ POINTER_DBF(reg_dbf)
 RETU []      // <- deve retornar um valor qualquer
 
 * \\ Final de R08703F9.PRG
+

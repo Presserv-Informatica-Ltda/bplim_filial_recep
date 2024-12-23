@@ -1,3 +1,4 @@
+procedure v02002f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -29,3 +30,4 @@
 RETU .t.       // <- deve retornar um valor L¢GICO
 
 * \\ Final de V02002F9.PRG
+

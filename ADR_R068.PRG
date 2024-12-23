@@ -1,3 +1,4 @@
+procedure adr_r068
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -265,3 +266,4 @@ POINTER_DBF(sit_dbf)
 RETU auxiliar       // <- deve retornar um valor qualquer
 
 * \\ Final de MEN_01F9.PRG
+

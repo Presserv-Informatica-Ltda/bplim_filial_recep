@@ -1,3 +1,4 @@
+procedure v87001f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -26,3 +27,4 @@ AFILL(detprc,[])
 RETU .t.       // <- deve retornar um valor L¢GICO
 
 * \\ Final de V87001F9.PRG
+

@@ -1,3 +1,4 @@
+procedure dci03f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -48,3 +49,4 @@ ENDCASE
 RETU       // <- deve retornar um valor qualquer
 
 * \\ Final de DCI03F9.PRG
+

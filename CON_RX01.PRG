@@ -1,3 +1,4 @@
+procedure con_rx01
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Ind£stria de Urnas Bignotto Ltda
@@ -255,3 +256,4 @@ RETU
 * \\ Final de CON_R001.PRG
 FUNC R001GF9
 RETURN numero
+

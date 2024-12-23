@@ -1,3 +1,4 @@
+procedure processa
 #include "SIXNSX.CH"
 #define RDDNAME "SIXNSX"
 #define MEMOEXT ".SMT"
@@ -40,3 +41,4 @@ appe from c:\vip4\arquivos\inscrits
 repl codigo with [010]+codigo all
 
 
+

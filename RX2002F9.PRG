@@ -1,3 +1,4 @@
+procedure rx2002f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -28,3 +29,4 @@ li_aux+=[previstas no artigo 171 do C¢digo Penal.]
 RETU M->li_aux      // <- deve retornar um valor qualquer
 
 * \\ Final de R02002F9.PRG
+

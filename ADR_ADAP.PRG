@@ -1,3 +1,4 @@
+procedure adr_adap
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -673,3 +674,4 @@ SETKEY(K_F10,t_f10)
 RETU
 
 * \\ Final de ADR_ADAP.PRG
+

@@ -1,3 +1,4 @@
+procedure adm_rs18
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -303,3 +304,4 @@ ENDI
 RETU
 
 * \\ Final de ADM_RS18.PRG
+

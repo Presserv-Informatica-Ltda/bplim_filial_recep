@@ -1,3 +1,4 @@
+procedure adm_r041
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Ind£stria de Urnas Bignotto Ltda
@@ -357,3 +358,4 @@ ENDCASE
 RETU EMPT(GRUPOS->ultimp_)    //S¢ quero os n„o impressos
 
 * \\ Final de R04101F9.PRG
+

@@ -1,3 +1,4 @@
+procedure ale_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -24,3 +25,4 @@ ENDI
 RETU .F. // <- deve retornar um valor L¢GICO
 
 * \\ Final de ALE_01F9.PRG
+

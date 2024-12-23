@@ -1,3 +1,4 @@
+procedure dci04f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -54,3 +55,4 @@ ENDCASE
 RETU M->donex     // <- deve retornar um valor qualquer
 
 * \\ Final de DCI04F9.PRG
+

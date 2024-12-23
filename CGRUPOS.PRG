@@ -1,3 +1,4 @@
+procedure cgrupos
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -1575,3 +1576,4 @@ rcodin:=sTRzero(VAL(numero)+1,6,0)
 //POINTER_DBF(reg_dbf)
 
 RETU M->rcodin       // <- deve retornar um valor qualquer
+

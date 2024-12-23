@@ -1,3 +1,4 @@
+procedure gru_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -33,3 +34,4 @@
 RETU (!EMPT(M->grupo))   // <- deve retornar um valor L¢GICO
 
 * \\ Final de GRU_01F9.PRG
+

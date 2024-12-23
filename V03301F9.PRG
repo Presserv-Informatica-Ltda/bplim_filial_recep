@@ -1,3 +1,4 @@
+procedure v03301f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Grupo Bom Pastor
@@ -16,3 +17,4 @@ PARAMETROS('mcirc',rcirc)
 RETU .t.   // <- deve retornar um valor L¢GICO
 
 * \\ Final de V03301F9.PRG
+

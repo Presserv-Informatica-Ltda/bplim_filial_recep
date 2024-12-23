@@ -1,3 +1,4 @@
+procedure adr_atr1
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -88,7 +89,7 @@ AADD(sistema[009,O_CAMPO],{;            // AFUNER
      /* cmd especial  */    "VDBF(6,3,20,77,'GRUPOS',{'codigo','grupo','nome','endereco'},1,'codigo',[])",;
      /* default       */    "",;
      /* pre-validacao */    "",;
-     /* validacao     */    "PTAB(contrato,'GRUPOS',1).AND.CAD_04F9(op_menu).AND.(PTAB(contrato,'TAXAS',1).OR.PTAB(GRUPOS->grupo,'ARQGRUP',1).OR.1=1)~CONTRATO n„o existe em arquivo de tabela",;
+     /* validacao     */    "PTAB(contrato,'GRUPOS',1).AND.CAD_04F9(op_menu).AND.(PTAB(contrato,'TAXAS',1).OR.PTAB(GRUPOS->grupo,'ARQGRUP',1).OR.(1=1))~CONTRATO n„o existe em arquivo de tabela",;
      /* help do campo */    "Informe o n£mero do contrato";
                          };
 )
@@ -1754,3 +1755,4 @@ AADD(sistema[019,O_FORMULA],{;          // CIRCULAR - Descri‡„o
 )
 
 * \\ Final de ADR_ATR1.PRG
+

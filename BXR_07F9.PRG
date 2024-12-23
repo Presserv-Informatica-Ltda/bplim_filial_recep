@@ -1,3 +1,4 @@
+procedure bxr_07f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Ind£stria de Urnas Bignotto Ltda
@@ -86,3 +87,4 @@ POINTER_DBF(reg_dbf)
 retu PTAB(respx,[GRUPOS],1)	 // <- deve retornar um valor qualquer
 
 
+

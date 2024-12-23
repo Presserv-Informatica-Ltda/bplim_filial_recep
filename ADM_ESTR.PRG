@@ -1,3 +1,4 @@
+procedure adm_estr
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -427,3 +428,4 @@ DBCREATE(dbf,{;
 RETU
 
 * \\ Final de ADM_ESTR.PRG
+

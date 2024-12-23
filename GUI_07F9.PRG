@@ -1,3 +1,4 @@
+procedure gui_07f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -81,3 +82,4 @@ POINTER_DBF(reg_dbf)
 retu PTAB(respx,[GRUPOS])	 // <- deve retornar um valor qualquer
 
 * \\ Final de GUI_02F9.PRG
+

@@ -1,3 +1,4 @@
+procedure obx_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Ind£stria de Urnas Bignotto Ltda
@@ -84,3 +85,4 @@ SET(_SET_DELETED,dele_atu)                         // os excluidos serao vistos
 RETU []         // <- deve retornar um valor qualquer
 
 * \\ Final de BXR_01F9.PRG
+

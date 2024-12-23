@@ -1,3 +1,4 @@
+procedure cgr_02f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -20,3 +21,4 @@ rcodin:=sTRzero(VAL(numero)+1,6,0)
 RETU M->rcodin       // <- deve retornar um valor qualquer
 
 * \\ Final de GRU_02F9.PRG
+

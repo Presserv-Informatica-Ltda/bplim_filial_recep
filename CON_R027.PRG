@@ -1,3 +1,4 @@
+procedure con_r027
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -118,3 +119,4 @@ ENDI
 RETU
 
 * \\ Final de CON_R027.PRG
+

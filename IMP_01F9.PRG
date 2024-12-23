@@ -1,3 +1,4 @@
+procedure imp_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -33,3 +34,4 @@ ENDIF
 RETU [<<N„o encontrado>>]      // <- deve retornar um valor qualquer
 
 * \\ Final de IMP_01F9.PRG
+

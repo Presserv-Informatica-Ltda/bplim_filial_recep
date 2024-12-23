@@ -1,3 +1,4 @@
+procedure ben_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -33,3 +34,4 @@ RETU memoline(linhas,60,qual)
        // <- deve retornar um valor qualquer
 
 * \\ Final de BEN_01F9.PRG
+

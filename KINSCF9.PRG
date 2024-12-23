@@ -1,3 +1,4 @@
+procedure kinscf9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -15,3 +16,4 @@
 RETU INSCRITS->codigo //+INSCRITS->grau+STR(INSCRITS->seq,02,00)
 
 * \\ Final de KINSCF9.PRG
+

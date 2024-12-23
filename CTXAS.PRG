@@ -1,3 +1,4 @@
+procedure ctxas
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -63,3 +64,4 @@ SET RELA TO                                        // retira os relacionamentos
 RETU                                               // volta para o menu anterior
 
 * \\ Final de CTXAS.PRG
+

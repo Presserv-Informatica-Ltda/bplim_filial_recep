@@ -1,3 +1,40 @@
+REQUEST SMTCDX
+// *Acertos do arquivo principal
+function main()
+#include "hbgtinfo.ch"
+#include "dbinfo.ch"
+ntx:=""
+drvautohelp:=.F.
+Hb_GTInfo(HB_GTI_MOUSESTATUS, .F. )
+setmode(25,80)
+*--
+
+REQUEST HB_LANG_PT
+REQUEST HB_CODEPAGE_ES850C
+REQUEST DESCEND, MTAB, VUF, VDV2, VCGC, NMES, VHORA, EXT
+*--
+// Variáveis estáticas utilizadas pela lib
+Static11:= ""
+Static13:= {}
+Static14:= "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ-. *$/+%"
+Static15:= {"412321214","214321214","414321212","212341214","412341212","214341212","212321414","412321412","214321412","212341412","412123214","214123214","414123212", ;
+"212143214","412143212","214143212","212123414","412123412","214123412","212143412","412121234","214121234","414121232","212141234","412141232","214141232","212121434", ;
+"412121432","214121432","212141432","432121214","234121214","434121212", ;
+"232141214","432141212","234141212","232121414","432121412","234121412","232141412","232323212","232321232","232123232","212323232",Nil}
+Static16:= "0123456789"
+Static17:= "212"
+Static18:= "12121"
+Static19:= {"1112212","1122112","1121122","1222212","1211122","1221112","1212222","1222122","1221222","1112122"}
+Static20:= {"1211222","1221122","1122122","1211112","1122212","1222112","1111212","1121112","1112112","1121222"}
+Static21:= {"2221121","2211221","2212211","2111121","2122211","2112221","2121111","2111211","2112111","2221211"}
+Static22:= {"AAAAAA","AABABB","AABBAB","AABBBA","ABAABB","ABBAAB","ABBBAA","ABABAB","ABABBA","ABBABA"}
+Static23:= {"22442","42224","24224","44222","22424","42422","24422","22244","42242","24242",Nil}
+Static24:= {"11331","31113","13113","33111","11313","31311","13311","11133","31131","13131",Nil}
+//	Hb_GTInfo(HB_GTI_MOUSESTATUS, .f. )  // mouse off
+//	HB_SETCODEPAGE('ES850C')
+//    HB_CDPSELECT('ES850C')
+//	HB_LANGSELECT('PT')
+*--
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (19)3452.3712
@@ -11,22 +48,23 @@
 */
 
 #include "adrbig.ch"    // inicializa constantes manifestas
-/*
-#include "SIXNSX.CH"
-#define RDDNAME "SIXNSX"
-*/
-#define MEMOEXT ".SMT"
+
 
 /*
    Funcoes chamadas dentro de macros
 */
 
 REQUEST DESCEND, MTAB, VUF, VDV2, MMAA, DLAPSO, VHORA, NMES, EXT, VCGC, LTOC
+REQUEST SMTCDX
 
 #include "ADR_PUBL.ch"  // contem variaveis publicas
 // campo utilizado em cad_04f9 pra controlar a solicitacao de letra teclada
 PUBL ultcodmsg:=[//\\/\/\]
 
+******
+PUBLIC aGauge
+PUBLIC aGauge_alias:="     ", aGauge_count:=0
+******
 V0=SAVESCREEN(0,0,MAXROW(),79)
 CLEA SCREEN
 VideoSeg=IF(CARDTYPE()=V_MONO,45056,-18432) // area de video
@@ -185,7 +223,7 @@ arqgeral="ADR"
  IF EMPTY(ide_maq)                      // se netname() retornou nulo,
   ide_maq=LEFT(GETENV("ESTACAO"),4)     // tenta variavel de ambiente ESTACAO
  ENDI
- 
+
  /*
     Se rede, e se NETNAME() do Clipper ou ESTACAO retornam "", pede ao usuario
     a identificacao da estacao para gravar arquivos de configuracoes
@@ -223,6 +261,10 @@ arqconf=direxe+arqgeral+;          // nome do arquivo de configuracoes
         ide_maq+".sys"
 IF FILE(arqconf)
  REST FROM (arqconf) ADDI          // restaura configuracoes gravadas
+******
+ntxpw=drverr+arqgeral+"PW"
+dbfpw=ntxpw+".SYS"                 // nomes dos arquivos de senhas
+******
 
  #ifdef COM_MOUSE
   IF drvmouse
@@ -234,7 +276,7 @@ IF FILE(arqconf)
  #endi
 
 ELSE
- 
+
  /*
     cria variaveis default de cores, codigos de impressao, etc...
  */
@@ -274,7 +316,7 @@ ELSE
   SETPOS(MAXROW()-1,1)             // cursor na penultima linha, coluna 1
   RETU                             // de volta ao DOS
  ENDI
- 
+
  /*
     cria os arquivos de senha e o inicializa com o primeiro usuario
  */
@@ -355,7 +397,7 @@ ADR_ATR2()
 #endi
 
 #ifdef COM_PROTECAO
- 
+
  /*
     protege arquivo de dados contra acesso dBase e muda para "read-only"
     vamos comentar este "code block" ...

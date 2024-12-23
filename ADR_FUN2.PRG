@@ -1,3 +1,4 @@
+procedure adr_fun2
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -2066,3 +2067,4 @@ ENDI
 RETU NIL
 
 * \\ Final de ADR_FUN2.PRG
+

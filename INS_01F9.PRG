@@ -1,3 +1,4 @@
+procedure ins_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Funer ria Bom Pastor
@@ -20,3 +21,4 @@ M->pseq+=IIF(grau>[6],1,0)
 RETU M->pseq
 
 * \\ Final de INS_01F9.PRG
+

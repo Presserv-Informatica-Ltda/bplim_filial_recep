@@ -1,3 +1,4 @@
+procedure recmens
 
 dbox([Informe uma expressao valida])
 criterio=[]
@@ -17,3 +18,4 @@ endd
 
 dbox(auxiliar)
 retur
+

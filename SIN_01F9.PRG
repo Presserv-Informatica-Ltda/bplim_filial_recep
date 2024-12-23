@@ -1,3 +1,4 @@
+procedure sin_01f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -22,3 +23,4 @@ ENDI
 RETU .T.       // <- deve retornar um valor L¢GICO
 
 * \\ Final de SIN_01F9.PRG
+

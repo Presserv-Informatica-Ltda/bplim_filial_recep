@@ -1,3 +1,4 @@
+procedure adr_menu
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -431,3 +432,4 @@ ENDD
 RETU
 
 * \\ Final de ADR_MENU.PRG
+

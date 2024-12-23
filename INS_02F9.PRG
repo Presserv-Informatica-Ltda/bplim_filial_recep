@@ -1,3 +1,4 @@
+procedure ins_02f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -23,3 +24,4 @@ RETU .T.       // <- deve retornar um valor L¢GICO
 
 
 * \\ Final de INS_02F9.PRG
+

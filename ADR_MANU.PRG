@@ -1,3 +1,4 @@
+procedure adr_manu
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -104,3 +105,4 @@ para filetxt
  menu02+=repl([0],1920-len(menu02))
 // memowrite([adrbig.inx],menu02)
 retu
+

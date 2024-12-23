@@ -1,3 +1,4 @@
+procedure adr_proc
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -2675,3 +2676,4 @@ ERRORBLOCK({|erro| ERROMSG(erro)})
 RETU
 
 * \\ Final de ADR_PROC.PRG
+

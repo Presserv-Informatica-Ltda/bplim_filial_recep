@@ -1,3 +1,4 @@
+procedure con_r001
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: Ind£stria de Urnas Bignotto Ltda
@@ -295,3 +296,4 @@ func v00101f9
 RETU .T.      // <- deve retornar um valor L¢GICO
 
 * \\ Final de V00101F9.PRG
+

@@ -1,3 +1,4 @@
+procedure r08702f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -74,3 +75,4 @@
 RETU M->recvalor          // <- deve retornar um valor qualquer
 
 * \\ Final de R08701F9.PRG
+

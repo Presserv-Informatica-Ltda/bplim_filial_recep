@@ -1,3 +1,4 @@
+procedure arqgrup
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -409,3 +410,4 @@ ENDI
 RETU
 
 * \\ Final de ARQGRUP.PRG
+

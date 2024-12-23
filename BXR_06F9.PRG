@@ -1,3 +1,4 @@
+procedure bxr_06f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -95,4 +96,4 @@ quando (data/hora)
 pedido:
 motivo da solicitacao/problema ocorrido:
 Nr.Protocolo:
-*/
+*/

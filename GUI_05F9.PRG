@@ -1,3 +1,4 @@
+procedure gui_05f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -15,3 +16,4 @@
 RETU INSCRITS->codigo+INSCRITS->grau+STR(INSCRITS->seq,2,0) // <- deve retornar um valor qualquer
 
 * \\ Final de GUI_05F9.PRG
+

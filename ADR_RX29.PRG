@@ -1,3 +1,4 @@
+procedure adr_rx29
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -294,3 +295,4 @@ ENDI
 RETU
 
 * \\ Final de ADR_RX29.PRG
+

@@ -1,3 +1,4 @@
+procedure con_p003
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica - Limeira (019)452.6623
@@ -164,3 +165,4 @@ CLOSE ALL                                          // fecha todos os arquivos e
 RETU                                               // volta para o menu anterior
 
 * \\ Final de CON_P003.PRG
+

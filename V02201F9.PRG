@@ -1,3 +1,4 @@
+procedure v02201f9
 /*
  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  \ Empresa.: PresServ Inform tica-Limeira (019)452.6623
@@ -18,3 +19,4 @@ PARAMETROS('impnrrec',rnumero)
 RETU .T.   // <- deve retornar um valor L¢GICO
 
 * \\ Final de V02201F9.PRG
+
